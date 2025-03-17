@@ -1,6 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Services.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faLeaf, 
+  faTint, 
+  faMapMarkedAlt, 
+  faShieldAlt, 
+  faChartLine, 
+  faTools, 
+  faSearchPlus, 
+  faClipboardCheck 
+} from '@fortawesome/free-solid-svg-icons';
 
 const Agricultural = () => {
   // Datos de ejemplo para drones agrícolas
@@ -9,7 +20,7 @@ const Agricultural = () => {
       id: 1,
       name: "Drone Fumigador XF-200",
       description: "Drone especializado para fumigación agrícola con tanque de 20L y autonomía de 30 minutos. Ideal para cultivos de mediana y gran extensión.",
-      image: "https://via.placeholder.com/400x300",
+      image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       specs: [
         "Tanque: 20L",
         "Autonomía: 30 minutos",
@@ -29,7 +40,7 @@ const Agricultural = () => {
       id: 2,
       name: "Drone Agrícola Multisensor AG-100",
       description: "Equipado con cámaras multiespectrales para análisis de cultivos, detección de estrés hídrico, deficiencias nutricionales y presencia de plagas.",
-      image: "https://via.placeholder.com/400x300",
+      image: "https://images.unsplash.com/photo-1562408590-e32931084e23?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       specs: [
         "Cámara: Multiespectral 5 bandas",
         "Autonomía: 45 minutos",
@@ -49,7 +60,7 @@ const Agricultural = () => {
       id: 3,
       name: "Drone Fumigador Compacto XF-100",
       description: "Versión compacta para pequeños agricultores y terrenos de difícil acceso. Fácil de transportar y operar.",
-      image: "https://via.placeholder.com/400x300",
+      image: "https://images.unsplash.com/photo-1579829366248-204fe8413f31?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       specs: [
         "Tanque: 10L",
         "Autonomía: 20 minutos",
@@ -67,6 +78,86 @@ const Agricultural = () => {
     }
   ];
 
+  // Aplicaciones en agricultura
+  const applications = [
+    {
+      icon: faLeaf,
+      title: "Cultivos Extensivos",
+      description: "Maíz, trigo, soja, arroz y otros cultivos de gran extensión donde la eficiencia es clave."
+    },
+    {
+      icon: faTint,
+      title: "Viñedos",
+      description: "Aplicación precisa en hileras de viñedos, incluso en terrenos con pendientes."
+    },
+    {
+      icon: faMapMarkedAlt,
+      title: "Frutales",
+      description: "Fumigación uniforme en árboles frutales de diferentes alturas y densidades."
+    },
+    {
+      icon: faShieldAlt,
+      title: "Horticultura",
+      description: "Tratamientos específicos para cultivos hortícolas con mínimo impacto."
+    }
+  ];
+
+  // Proceso de trabajo
+  const processSteps = [
+    {
+      number: 1,
+      title: "Evaluación Inicial",
+      description: "Analizamos las características del terreno, tipo de cultivo y necesidades específicas.",
+      icon: faSearchPlus
+    },
+    {
+      number: 2,
+      title: "Planificación",
+      description: "Diseñamos el plan de vuelo y determinamos la dosis y tipo de aplicación óptima.",
+      icon: faClipboardCheck
+    },
+    {
+      number: 3,
+      title: "Ejecución",
+      description: "Realizamos la fumigación siguiendo el plan establecido con precisión y eficiencia.",
+      icon: faTools
+    },
+    {
+      number: 4,
+      title: "Seguimiento",
+      description: "Evaluamos los resultados y proporcionamos informes detallados de la aplicación.",
+      icon: faChartLine
+    }
+  ];
+
+  // Beneficios principales
+  const mainBenefits = [
+    {
+      title: "Mayor precisión",
+      description: "en la aplicación de productos"
+    },
+    {
+      title: "Reducción significativa",
+      description: "en el uso de agua y productos químicos"
+    },
+    {
+      title: "Acceso a zonas difíciles",
+      description: "o con cultivos altos"
+    },
+    {
+      title: "Menor compactación del suelo",
+      description: "al evitar maquinaria pesada"
+    },
+    {
+      title: "Rapidez y eficiencia",
+      description: "en la cobertura de grandes áreas"
+    },
+    {
+      title: "Menor exposición",
+      description: "de los trabajadores a productos químicos"
+    }
+  ];
+
   return (
     <div className="service-page agricultural-page">
       {/* Hero Section */}
@@ -74,6 +165,10 @@ const Agricultural = () => {
         <div className="container">
           <h1>Fumigación Agrícola con Drones</h1>
           <p>Soluciones de precisión para la aplicación de productos fitosanitarios en todo tipo de cultivos</p>
+          <div className="service-hero-buttons">
+            <Link to="/contacto" className="btn btn-primary">Solicitar Presupuesto</Link>
+            <Link to="/servicios" className="btn btn-outline">Ver Todos los Servicios</Link>
+          </div>
         </div>
       </section>
 
@@ -88,16 +183,13 @@ const Agricultural = () => {
               
               <h3>Ventajas de la Fumigación con Drones</h3>
               <ul className="benefits-list">
-                <li><span>Mayor precisión</span> en la aplicación de productos</li>
-                <li><span>Reducción significativa</span> en el uso de agua y productos químicos</li>
-                <li><span>Acceso a zonas difíciles</span> o con cultivos altos</li>
-                <li><span>Menor compactación del suelo</span> al evitar maquinaria pesada</li>
-                <li><span>Rapidez y eficiencia</span> en la cobertura de grandes áreas</li>
-                <li><span>Menor exposición</span> de los trabajadores a productos químicos</li>
+                {mainBenefits.map((benefit, index) => (
+                  <li key={index}><span>{benefit.title}</span> {benefit.description}</li>
+                ))}
               </ul>
             </div>
             <div className="overview-image">
-              <img src="https://via.placeholder.com/600x400" alt="Drone fumigando cultivos" />
+              <img src="https://images.unsplash.com/photo-1586768045025-5ce7a4f8d5d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Drone fumigando cultivos" />
             </div>
           </div>
         </div>
@@ -109,26 +201,15 @@ const Agricultural = () => {
           <h2 className="section-title">Aplicaciones en Agricultura</h2>
           
           <div className="applications-grid">
-            <div className="application-card">
-              <div className="application-icon">🌾</div>
-              <h3>Cultivos Extensivos</h3>
-              <p>Maíz, trigo, soja, arroz y otros cultivos de gran extensión donde la eficiencia es clave.</p>
-            </div>
-            <div className="application-card">
-              <div className="application-icon">🍇</div>
-              <h3>Viñedos</h3>
-              <p>Aplicación precisa en hileras de viñedos, incluso en terrenos con pendientes.</p>
-            </div>
-            <div className="application-card">
-              <div className="application-icon">🌳</div>
-              <h3>Frutales</h3>
-              <p>Fumigación uniforme en árboles frutales de diferentes alturas y densidades.</p>
-            </div>
-            <div className="application-card">
-              <div className="application-icon">🥦</div>
-              <h3>Horticultura</h3>
-              <p>Tratamientos específicos para cultivos hortícolas con mínimo impacto.</p>
-            </div>
+            {applications.map((app, index) => (
+              <div className="application-card" key={index}>
+                <div className="application-icon">
+                  <FontAwesomeIcon icon={app.icon} />
+                </div>
+                <h3>{app.title}</h3>
+                <p>{app.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -180,36 +261,31 @@ const Agricultural = () => {
           <h2 className="section-title">Nuestro Proceso de Trabajo</h2>
           
           <div className="process-steps">
-            <div className="process-step">
-              <div className="step-number">1</div>
-              <h3>Evaluación Inicial</h3>
-              <p>Analizamos las características del terreno, tipo de cultivo y necesidades específicas.</p>
-            </div>
-            <div className="process-step">
-              <div className="step-number">2</div>
-              <h3>Planificación</h3>
-              <p>Diseñamos el plan de vuelo y determinamos la dosis y tipo de aplicación óptima.</p>
-            </div>
-            <div className="process-step">
-              <div className="step-number">3</div>
-              <h3>Ejecución</h3>
-              <p>Realizamos la fumigación siguiendo el plan establecido con precisión y eficiencia.</p>
-            </div>
-            <div className="process-step">
-              <div className="step-number">4</div>
-              <h3>Seguimiento</h3>
-              <p>Evaluamos los resultados y proporcionamos informes detallados de la aplicación.</p>
-            </div>
+            {processSteps.map((step, index) => (
+              <div className="process-step" key={index}>
+                <div className="step-number">{step.number}</div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+                <div className="step-icon">
+                  <FontAwesomeIcon icon={step.icon} />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="service-cta">
+      <section className="cta-section">
         <div className="container">
-          <h2>¿Necesitas un servicio de fumigación agrícola?</h2>
-          <p>Contáctanos para una evaluación personalizada y presupuesto sin compromiso.</p>
-          <Link to="/contactanos" className="btn btn-primary">Solicitar Información</Link>
+          <div className="cta-content">
+            <h2>¿Listo para revolucionar tu agricultura?</h2>
+            <p>Contáctanos hoy mismo para una evaluación personalizada de tus necesidades agrícolas y descubre cómo nuestros drones pueden transformar tu productividad.</p>
+            <div className="cta-buttons">
+              <Link to="/contacto" className="btn btn-light">Solicitar Información</Link>
+              <a href="tel:+123456789" className="btn btn-outline-light">Llamar Ahora</a>
+            </div>
+          </div>
         </div>
       </section>
     </div>
