@@ -83,7 +83,7 @@
   --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
   /* Container */
-  --container-width: 1200px;
+  --container-width: 1400px;
   --container-padding: 1rem;
   
   /* Z-index layers */
@@ -196,6 +196,11 @@ button {
   padding: 0 var(--container-padding);
 }
 
+.container-fluid {
+  width: 100%;
+  padding: 0 var(--container-padding);
+}
+
 .container-sm {
   max-width: 640px;
 }
@@ -210,10 +215,6 @@ button {
 
 .container-xl {
   max-width: 1280px;
-}
-
-.container-fluid {
-  max-width: 100%;
 }
 
 /* Section Styles */

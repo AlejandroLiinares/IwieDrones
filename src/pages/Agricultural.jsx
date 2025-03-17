@@ -159,47 +159,62 @@ const Agricultural = () => {
   ];
 
   return (
-    <div className="service-page agricultural-page">
+    <div className="agricultural-page">
       {/* Hero Section */}
       <section className="service-hero">
-        <div className="container">
-          <h1>Fumigación Agrícola con Drones</h1>
-          <p>Soluciones de precisión para la aplicación de productos fitosanitarios en todo tipo de cultivos</p>
-          <div className="service-hero-buttons">
-            <Link to="/contacto" className="btn btn-primary">Solicitar Presupuesto</Link>
-            <Link to="/servicios" className="btn btn-outline">Ver Todos los Servicios</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Overview */}
-      <section className="service-overview">
-        <div className="container">
-          <div className="overview-content">
-            <div className="overview-text">
-              <h2>Tecnología de Vanguardia para el Campo</h2>
-              <p>En Iwiedrones ofrecemos servicios especializados de fumigación agrícola mediante drones, una alternativa eficiente y precisa frente a los métodos tradicionales.</p>
-              <p>Nuestros drones están equipados con sistemas de pulverización de última generación que permiten una aplicación uniforme y controlada, reduciendo el desperdicio de producto y minimizando el impacto ambiental.</p>
-              
-              <h3>Ventajas de la Fumigación con Drones</h3>
-              <ul className="benefits-list">
-                {mainBenefits.map((benefit, index) => (
-                  <li key={index}><span>{benefit.title}</span> {benefit.description}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="overview-image">
-              <img src="https://images.unsplash.com/photo-1586768045025-5ce7a4f8d5d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Drone fumigando cultivos" />
+        <div className="container-fluid">
+          <div className="container">
+            <h1>Servicios de Drones Agrícolas</h1>
+            <p className="hero-description">
+              Optimiza tus cultivos con tecnología de vanguardia. Nuestros drones agrícolas ofrecen fumigación precisa, 
+              monitoreo de cultivos y mapeo detallado para maximizar tu rendimiento y reducir costos.
+            </p>
+            <div className="hero-buttons">
+              <Link to="/contactanos" className="btn btn-primary btn-icon">
+                <FontAwesomeIcon icon={faClipboardCheck} /> Solicitar Cotización
+              </Link>
+              <a href="#servicios" className="btn btn-outline-light btn-icon">
+                <FontAwesomeIcon icon={faSearchPlus} /> Ver Servicios
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Applications */}
+      {/* Overview Section */}
+      <section className="overview-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>Ventajas de la Fumigación con Drones</h2>
+            <p className="section-description">
+              La fumigación con drones representa una revolución en la agricultura moderna, 
+              ofreciendo numerosas ventajas frente a los métodos tradicionales.
+            </p>
+          </div>
+          <div className="benefits-container">
+            <ul className="benefits-list">
+              <li>Reducción del 80% en uso de agua</li>
+              <li>Aplicación precisa y uniforme de agroquímicos</li>
+              <li>Acceso a áreas de difícil acceso o con obstáculos</li>
+              <li>Reducción de la exposición humana a productos químicos</li>
+              <li>Menor compactación del suelo</li>
+              <li>Mayor velocidad de aplicación</li>
+              <li>Reducción de costos operativos</li>
+              <li>Menor impacto ambiental</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Applications Section */}
       <section className="applications-section">
         <div className="container">
-          <h2 className="section-title">Aplicaciones en Agricultura</h2>
-          
+          <div className="section-header">
+            <h2>Aplicaciones</h2>
+            <p className="section-description">
+              Nuestros servicios de fumigación con drones son ideales para diversos tipos de cultivos y escenarios agrícolas.
+            </p>
+          </div>
           <div className="applications-grid">
             {applications.map((app, index) => (
               <div className="application-card" key={index}>
@@ -214,24 +229,26 @@ const Agricultural = () => {
         </div>
       </section>
 
-      {/* Drones Catalog */}
-      <section className="drones-catalog">
+      {/* Drones Catalog Section */}
+      <section className="drones-section">
         <div className="container">
-          <h2 className="section-title">Nuestros Drones Agrícolas</h2>
-          <p className="section-description">Contamos con una flota de drones especializados para diferentes necesidades agrícolas.</p>
-          
-          <div className="drones-list">
+          <div className="section-header">
+            <h2>Catálogo de Drones Agrícolas</h2>
+            <p className="section-description">
+              Contamos con una amplia gama de drones especializados para diferentes necesidades agrícolas.
+            </p>
+          </div>
+          <div className="drones-grid">
             {agriculturalDrones.map(drone => (
-              <div className="drone-detail-card" key={drone.id}>
+              <div className="drone-card" key={drone.id}>
                 <div className="drone-image">
                   <img src={drone.image} alt={drone.name} />
                 </div>
-                <div className="drone-info">
+                <div className="drone-content">
                   <h3>{drone.name}</h3>
-                  <p className="drone-description">{drone.description}</p>
-                  
-                  <div className="drone-specs-container">
-                    <div className="specs-column">
+                  <p>{drone.description}</p>
+                  <div className="drone-details">
+                    <div className="specs">
                       <h4>Especificaciones</h4>
                       <ul className="specs-list">
                         {drone.specs.map((spec, index) => (
@@ -239,7 +256,7 @@ const Agricultural = () => {
                         ))}
                       </ul>
                     </div>
-                    <div className="specs-column">
+                    <div className="benefits">
                       <h4>Beneficios</h4>
                       <ul className="benefits-list">
                         {drone.benefits.map((benefit, index) => (
@@ -258,17 +275,21 @@ const Agricultural = () => {
       {/* Process Section */}
       <section className="process-section">
         <div className="container">
-          <h2 className="section-title">Nuestro Proceso de Trabajo</h2>
-          
+          <div className="section-header">
+            <h2>Nuestro Proceso</h2>
+            <p className="section-description">
+              Implementamos un proceso eficiente y profesional para garantizar resultados óptimos en cada servicio.
+            </p>
+          </div>
           <div className="process-steps">
             {processSteps.map((step, index) => (
               <div className="process-step" key={index}>
-                <div className="step-number">{step.number}</div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-                <div className="step-icon">
+                <div className="step-number">{index + 1}</div>
+                <div className="process-icon">
                   <FontAwesomeIcon icon={step.icon} />
                 </div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
               </div>
             ))}
           </div>
@@ -280,10 +301,12 @@ const Agricultural = () => {
         <div className="container">
           <div className="cta-content">
             <h2>¿Listo para revolucionar tu agricultura?</h2>
-            <p>Contáctanos hoy mismo para una evaluación personalizada de tus necesidades agrícolas y descubre cómo nuestros drones pueden transformar tu productividad.</p>
+            <p>
+              Contáctanos hoy mismo para una consulta gratuita y descubre cómo nuestros servicios de drones pueden transformar tus operaciones agrícolas.
+            </p>
             <div className="cta-buttons">
-              <Link to="/contacto" className="btn btn-light">Solicitar Información</Link>
-              <a href="tel:+123456789" className="btn btn-outline-light">Llamar Ahora</a>
+              <Link to="/contacto" className="btn btn-primary">Solicitar Presupuesto</Link>
+              <Link to="/contacto" className="btn btn-secondary">Más Información</Link>
             </div>
           </div>
         </div>
