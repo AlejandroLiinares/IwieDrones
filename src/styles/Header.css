@@ -29,7 +29,7 @@
 
 .logo {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--color-primary);
   font-weight: bold;
   transition: transform var(--transition-fast);
   display: flex;
@@ -43,14 +43,14 @@
 
 .logo i {
   font-size: 1.75rem;
-  color: var(--primary-color);
+  color: var(--color-primary);
   margin-right: var(--spacing-xs);
 }
 
 .logo h1 {
   margin: 0;
   font-size: 1.75rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -90,17 +90,18 @@
 
 .nav-link i {
   font-size: 1rem;
-  color: var(--primary-color);
+  color: var(--color-medium);
   transition: transform var(--transition-fast);
 }
 
 .nav-link:hover {
-  color: var(--primary-color);
-  background-color: rgba(0, 86, 179, 0.05);
+  color: var(--color-primary);
+  background-color: var(--color-lightest);
 }
 
 .nav-link:hover i {
   transform: translateY(-2px);
+  color: var(--color-primary);
 }
 
 .nav-item .nav-link::after {
@@ -111,7 +112,7 @@
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
   transition: width var(--transition-normal);
 }
 
@@ -120,7 +121,7 @@
 }
 
 .contact-link {
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
   color: white !important;
   border-radius: var(--border-radius-md);
   padding: 0.75rem 1.25rem;
@@ -135,7 +136,7 @@
 }
 
 .contact-link:hover {
-  background-color: var(--primary-dark);
+  background-color: var(--color-dark);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -150,25 +151,22 @@
 
 .mobile-menu-button {
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 1.5rem;
   cursor: pointer;
-  z-index: var(--z-index-dropdown);
-  padding: var(--spacing-xs);
-  border-radius: var(--border-radius-sm);
-  transition: background-color var(--transition-fast);
+  transition: all var(--transition-normal);
 }
 
 .mobile-menu-button:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--color-dark);
 }
 
 .mobile-menu-button span {
   height: 3px;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
   border-radius: 3px;
   transition: all var(--transition-fast);
 }
@@ -217,6 +215,7 @@
 
   .nav-menu.active {
     right: 0;
+    border-top: 3px solid var(--color-primary);
   }
 
   .nav-list {

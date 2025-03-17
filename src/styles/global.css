@@ -1,22 +1,29 @@
 /* Global Styles */
 :root {
   /* Color Palette */
-  --primary-color: #0056b3;
-  --primary-dark: #003d82;
-  --primary-light: #4d8ac6;
-  --secondary-color: #ff6b00;
-  --secondary-dark: #cc5500;
-  --secondary-light: #ff8c33;
-  --accent-color: #00c896;
-  --text-color: #333333;
-  --text-light: #666666;
-  --background-light: #f8f9fa;
-  --background-white: #ffffff;
-  --background-dark: #2c3e50;
-  --border-color: #e0e0e0;
+  --color-darkest: #0C2F52;    /* Azul muy oscuro */
+  --color-dark: #11467A;       /* Azul oscuro */
+  --color-primary: #175DA3;    /* Azul principal */
+  --color-medium: #457DB5;     /* Azul medio */
+  --color-light: #A2BEDA;      /* Azul claro */
+  --color-lightest: #D1DFED;   /* Azul muy claro */
+  
+  /* Asignación de variables funcionales */
+  --primary-color: var(--color-primary);
+  --primary-dark: var(--color-dark);
+  --primary-light: var(--color-medium);
+  --accent-color: var(--color-medium);
+  --background-white: #FFFFFF;
+  --background-light: var(--color-lightest);
+  --background-dark: var(--color-darkest);
+  --text-color: var(--color-darkest);
+  --text-light: var(--color-dark);
+  --text-muted: var(--color-medium);
+  --border-color: var(--color-light);
   --success-color: #28a745;
   --warning-color: #ffc107;
-  --error-color: #dc3545;
+  --danger-color: #dc3545;
+  --info-color: var(--color-medium);
 
   /* Typography */
   --font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', sans-serif;
@@ -62,10 +69,10 @@
   --border-width-thick: 4px;
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 2px rgba(12, 47, 82, 0.1);
+  --shadow-md: 0 4px 6px rgba(12, 47, 82, 0.1);
+  --shadow-lg: 0 10px 15px rgba(12, 47, 82, 0.1);
+  --shadow-xl: 0 20px 25px rgba(12, 47, 82, 0.1);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   --shadow-outline: 0 0 0 3px rgba(0, 86, 179, 0.5);
 
@@ -266,40 +273,40 @@ button {
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
   color: white;
-  box-shadow: 0 4px 10px rgba(0, 86, 179, 0.25);
+  box-shadow: 0 4px 10px rgba(23, 93, 163, 0.25);
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-dark);
+  background-color: var(--color-dark);
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 86, 179, 0.3);
+  box-shadow: 0 6px 15px rgba(23, 93, 163, 0.3);
 }
 
 .btn-outline {
   background-color: transparent;
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .btn-outline:hover {
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
   color: white;
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 86, 179, 0.2);
+  box-shadow: 0 6px 15px rgba(23, 93, 163, 0.2);
 }
 
 .btn-light {
   background-color: white;
-  color: var(--primary-color);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: var(--color-primary);
+  box-shadow: 0 4px 10px rgba(12, 47, 82, 0.1);
 }
 
 .btn-light:hover {
-  background-color: var(--background-light);
+  background-color: var(--color-lightest);
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 15px rgba(12, 47, 82, 0.15);
 }
 
 .btn-outline-light {
@@ -311,7 +318,7 @@ button {
 .btn-outline-light:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 15px rgba(12, 47, 82, 0.15);
 }
 
 .btn-icon {
