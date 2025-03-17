@@ -48,57 +48,56 @@ const Header = () => {
       <div className="container header-container">
         <div className="logo-container">
           <Link to="/" className="logo">
-            <i className="fas fa-drone-alt"></i>
             <h1>Iwiedrones.com</h1>
           </Link>
         </div>
 
-        <div className={`mobile-menu-button ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Menú principal">
+        <button className={`mobile-menu-button ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Menú principal">
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
 
         <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <ul className="nav-list">
             <li className="nav-item">
               <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-home"></i> Inicio
+                Inicio
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/agricola" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-seedling"></i> Agrícola
+                Agrícola
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/industrial" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-industry"></i> Industrial
+                Industrial
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/capacitaciones" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-graduation-cap"></i> Capacitaciones
+                Capacitaciones
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/inspecciones" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-search"></i> Inspecciones
+                Inspecciones
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/forestal" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-tree"></i> Forestal
+                Forestal
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/servicio-tecnico" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-tools"></i> Servicio técnico
+                Servicio técnico
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/contactanos" className="nav-link contact-link" onClick={() => setIsMenuOpen(false)}>
-                <i className="fas fa-envelope"></i> Contáctanos
+                Contáctanos
               </Link>
             </li>
           </ul>
