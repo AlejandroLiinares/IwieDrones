@@ -1,34 +1,41 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+// Componentes
+import Header from './components/Header'
+import Footer from './components/Footer'
 
+// Páginas
+import Home from './pages/Home'
+import Agricultural from './pages/Agricultural'
+import Industrial from './pages/Industrial'
+import Training from './pages/Training'
+import Inspections from './pages/Inspections'
+import Forestry from './pages/Forestry'
+import TechnicalService from './pages/TechnicalService'
+import Contact from './pages/Contact'
+
+function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app">
+        <Header />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/agricola" element={<Agricultural />} />
+            <Route path="/industrial" element={<Industrial />} />
+            <Route path="/capacitaciones" element={<Training />} />
+            <Route path="/inspecciones" element={<Inspections />} />
+            <Route path="/forestal" element={<Forestry />} />
+            <Route path="/servicio-tecnico" element={<TechnicalService />} />
+            <Route path="/contactanos" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </Router>
   )
 }
 

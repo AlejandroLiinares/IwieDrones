@@ -1,0 +1,349 @@
+/* Service Hero Section */
+.service-hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x500') no-repeat center center;
+  background-size: cover;
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.service-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.service-hero p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Service Overview */
+.service-overview {
+  padding: 5rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.overview-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.overview-text h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.overview-text p {
+  margin-bottom: 1.5rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.overview-text h3 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  color: #333;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.benefits-list li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  color: #666;
+}
+
+.benefits-list li:before {
+  content: '✓';
+  color: #0056b3;
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+}
+
+.benefits-list span {
+  font-weight: 600;
+  color: #333;
+}
+
+.overview-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Applications Section */
+.applications-section {
+  padding: 5rem 2rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #333;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #0056b3;
+  margin: 1rem auto 0;
+}
+
+.section-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.applications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.application-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.application-card:hover {
+  transform: translateY(-10px);
+}
+
+.application-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.application-card h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.application-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Drones Catalog */
+.drones-catalog {
+  padding: 5rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.drones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.drone-detail-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.drone-image {
+  height: 100%;
+}
+
+.drone-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.drone-info {
+  padding: 2rem;
+}
+
+.drone-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.drone-description {
+  margin-bottom: 1.5rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.drone-specs-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.specs-column h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #0056b3;
+}
+
+.specs-list, .benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.specs-list li, .benefits-list li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  color: #666;
+}
+
+.specs-list li:before, .benefits-list li:before {
+  content: '✓';
+  color: #0056b3;
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+}
+
+/* Process Section */
+.process-section {
+  padding: 5rem 2rem;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.process-step {
+  text-align: center;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background-color: #0056b3;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 auto 1.5rem;
+}
+
+.process-step h3 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.process-step p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.service-cta {
+  background-color: #0056b3;
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.service-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-cta p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: white;
+  color: #0056b3;
+}
+
+.btn-primary:hover {
+  background-color: #f0f0f0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .overview-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .overview-image {
+    order: -1;
+  }
+  
+  .drone-detail-card {
+    grid-template-columns: 1fr;
+  }
+  
+  .drone-image {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .drone-specs-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .service-cta h2 {
+    font-size: 2rem;
+  }
+}
