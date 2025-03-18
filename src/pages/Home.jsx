@@ -8,9 +8,61 @@ const Home = () => {
   const aboutRef = useRef(null);
   const droneRef = useRef(null);
   const ctaRef = useRef(null);
+  const playerRef = useRef(null);
 
   useEffect(() => {
-    // Función para manejar las animaciones basadas en scroll
+    // Cargar la API de YouTube
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Inicializar el reproductor de YouTube cuando la API esté lista
+    window.onYouTubeIframeAPIReady = () => {
+      playerRef.current = new window.YT.Player('youtube-player', {
+        videoId: '3t-UOzi9j3E',
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          showinfo: 0,
+          rel: 0,
+          loop: 1,
+          playlist: '3t-UOzi9j3E',
+          playsinline: 1,
+          enablejsapi: 1,
+          origin: window.location.origin,
+          modestbranding: 1,
+          iv_load_policy: 3, // Ocultar anotaciones
+          fs: 0, // Deshabilitar pantalla completa
+          disablekb: 1, // Deshabilitar controles de teclado
+        },
+        events: {
+          onReady: (event) => {
+            event.target.setPlaybackQuality('hd1080'); // Forzar calidad 1080p
+            event.target.playVideo();
+          },
+          onStateChange: (event) => {
+            // Reiniciar el video cuando termina
+            if (event.data === window.YT.PlayerState.ENDED) {
+              event.target.playVideo();
+            }
+          }
+        }
+      });
+    };
+
+    return () => {
+      // Limpiar
+      if (playerRef.current) {
+        playerRef.current.destroy();
+      }
+      window.onYouTubeIframeAPIReady = null;
+    };
+  }, []);
+
+  // Función para manejar las animaciones basadas en scroll
+  useEffect(() => {
     const handleScrollAnimation = () => {
       const sections = [
         { ref: servicesRef, className: 'animate-services' },
@@ -80,13 +132,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="video-container">
-          <iframe 
-            src="https://www.youtube.com/embed/3t-UOzi9j3E?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=3t-UOzi9j3E&playsinline=1&enablejsapi=1" 
-            title="Video de drones" 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen
-          ></iframe>
+          <div id="youtube-player"></div>
         </div>
         <div className="hero-overlay"></div>
         <div className="container">
@@ -101,6 +147,23 @@ const Home = () => {
             >
               APRENDE MÁS
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Quote Section */}
+      <section className="quote-section">
+        <div className="container">
+          <div className="quote-container">
+            <div className="quote-text">
+              <blockquote>
+                "Estaremos realmente atrapados con la tecnología cuando todo lo que queramos sean sólo cosas que funcionen."
+              </blockquote>
+              <cite>– Douglas Adams</cite>
+            </div>
+            <div className="quote-image">
+              <img src="/douglas.webp" alt="Douglas Adams" />
+            </div>
           </div>
         </div>
       </section>
