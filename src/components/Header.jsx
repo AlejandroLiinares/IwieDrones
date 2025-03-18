@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/Header.css';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
+  const location = useLocation();
 
   // Detectar scroll para cambiar la apariencia del header
   useEffect(() => {
@@ -27,15 +28,18 @@ const Header = () => {
   }, []);
 
   // Manejar el toggle del menú móvil
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    // Añadir o quitar la clase menu-open al body para prevenir scroll
-    if (!isMenuOpen) {
-      document.body.classList.add('menu-open');
-    } else {
-      document.body.classList.remove('menu-open');
-    }
-  };
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prevState => {
+      const newState = !prevState;
+      // Añadir o quitar la clase menu-open al body para prevenir scroll
+      if (newState) {
+        document.body.classList.add('menu-open');
+      } else {
+        document.body.classList.remove('menu-open');
+      }
+      return newState;
+    });
+  }, []);
 
   // Cerrar el menú al hacer clic fuera de él
   useEffect(() => {
@@ -45,6 +49,7 @@ const Header = () => {
       
       if (isMenuOpen && nav && !nav.contains(event.target) && !button.contains(event.target)) {
         setIsMenuOpen(false);
+        document.body.classList.remove('menu-open');
       }
     };
 
@@ -59,6 +64,7 @@ const Header = () => {
     const handleResize = () => {
       if (window.innerWidth > 992 && isMenuOpen) {
         setIsMenuOpen(false);
+        document.body.classList.remove('menu-open');
       }
     };
 
@@ -83,14 +89,17 @@ const Header = () => {
 
   // Determinar la página activa basada en la URL actual
   useEffect(() => {
-    const path = window.location.pathname;
+    const path = location.pathname;
+    
     const navItems = [
       { path: '/', index: 0 },
-      { path: '/#servicios', index: 1 },
-      { path: '/#sobre-nosotros', index: 2 },
-      { path: '/#drones', index: 3 },
-      { path: '/capacitaciones', index: 4 },
-      { path: '/contactanos', index: 5 }
+      { path: '/agricola', index: 1 },
+      { path: '/industrial', index: 2 },
+      { path: '/capacitaciones', index: 3 },
+      { path: '/inspecciones', index: 4 },
+      { path: '/forestal', index: 5 },
+      { path: '/servicio-tecnico', index: 6 },
+      { path: '/contactanos', index: 7 }
     ];
     
     const currentItem = navItems.find(item => item.path === path);
@@ -99,33 +108,17 @@ const Header = () => {
     } else {
       setActiveIndex(null);
     }
-  }, []);
+  }, [location]);
 
-  // Función para el desplazamiento suave
-  const handleSmoothScroll = (e, targetId) => {
-    // Solo para enlaces internos que comienzan con #
-    if (targetId && targetId.startsWith('#')) {
-      e.preventDefault();
-      const targetElement = document.querySelector(targetId);
-      
-      if (targetElement) {
-        // Cerrar el menú móvil si está abierto
-        if (isMenuOpen) {
-          toggleMenu();
-        }
-        
-        // Calcular la posición de desplazamiento teniendo en cuenta el header
-        const headerHeight = document.querySelector('.header').offsetHeight;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        
-        // Realizar el desplazamiento suave
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-      }
+  // Función para cerrar el menú móvil al navegar
+  const handleNavigation = useCallback((index) => {
+    setActiveIndex(index);
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+      document.body.classList.remove('menu-open');
+      document.body.style.overflow = '';
     }
-  };
+  }, [isMenuOpen]);
 
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
@@ -136,57 +129,63 @@ const Header = () => {
               <Link 
                 to="/" 
                 className={`nav-link ${activeIndex === 0 ? 'active' : ''}`} 
-                onClick={(e) => {
-                  setActiveIndex(0);
-                  handleSmoothScroll(e, '#home');
-                }}
+                onClick={() => handleNavigation(0)}
               >
                 Inicio
               </Link>
             </li>
             <li className="nav-item">
               <Link 
-                to="/#servicios" 
+                to="/agricola" 
                 className={`nav-link ${activeIndex === 1 ? 'active' : ''}`} 
-                onClick={(e) => {
-                  setActiveIndex(1);
-                  handleSmoothScroll(e, '#servicios');
-                }}
+                onClick={() => handleNavigation(1)}
               >
-                Servicios
+                Agrícola
               </Link>
             </li>
             <li className="nav-item">
               <Link 
-                to="/#sobre-nosotros" 
+                to="/industrial" 
                 className={`nav-link ${activeIndex === 2 ? 'active' : ''}`} 
-                onClick={(e) => {
-                  setActiveIndex(2);
-                  handleSmoothScroll(e, '#sobre-nosotros');
-                }}
+                onClick={() => handleNavigation(2)}
               >
-                Sobre Nosotros
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link 
-                to="/#drones" 
-                className={`nav-link ${activeIndex === 3 ? 'active' : ''}`} 
-                onClick={(e) => {
-                  setActiveIndex(3);
-                  handleSmoothScroll(e, '#drones');
-                }}
-              >
-                Drones
+                Industrial
               </Link>
             </li>
             <li className="nav-item">
               <Link 
                 to="/capacitaciones" 
-                className={`nav-link ${activeIndex === 4 ? 'active' : ''}`} 
-                onClick={() => setActiveIndex(4)}
+                className={`nav-link ${activeIndex === 3 ? 'active' : ''}`} 
+                onClick={() => handleNavigation(3)}
               >
                 Capacitaciones
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                to="/inspecciones" 
+                className={`nav-link ${activeIndex === 4 ? 'active' : ''}`} 
+                onClick={() => handleNavigation(4)}
+              >
+                Inspecciones
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                to="/forestal" 
+                className={`nav-link ${activeIndex === 5 ? 'active' : ''}`} 
+                onClick={() => handleNavigation(5)}
+              >
+                Forestal
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                to="/servicio-tecnico" 
+                className={`nav-link ${activeIndex === 6 ? 'active' : ''}`} 
+                onClick={() => handleNavigation(6)}
+              >
+                Servicio Técnico
               </Link>
             </li>
           </ul>
@@ -195,8 +194,8 @@ const Header = () => {
         <div className="contact-button">
           <Link 
             to="/contactanos" 
-            className={`btn-primary ${activeIndex === 5 ? 'active' : ''}`}
-            onClick={() => setActiveIndex(5)}
+            className={`btn-primary ${activeIndex === 7 ? 'active' : ''}`}
+            onClick={() => handleNavigation(7)}
           >
             Contáctanos
           </Link>
@@ -205,7 +204,7 @@ const Header = () => {
         <button 
           className={`mobile-menu-button ${isMenuOpen ? 'active' : ''}`} 
           onClick={toggleMenu}
-          aria-label="Menú principal"
+          aria-label="Menú"
           aria-expanded={isMenuOpen}
         >
           <div className="menu-icon">

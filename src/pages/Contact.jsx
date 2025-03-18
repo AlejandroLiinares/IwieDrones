@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import '../styles/Contact.css';
 
 const Contact = () => {
@@ -17,16 +17,27 @@ const Contact = () => {
     message: ''
   });
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
       [name]: value
     }));
-  };
+  }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
+    
+    // Validación básica del formulario
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setFormStatus({
+        submitted: true,
+        success: false,
+        message: 'Por favor, completa todos los campos obligatorios.'
+      });
+      return;
+    }
+    
     // Simulación de envío del formulario
     setFormStatus({
       submitted: true,
@@ -53,7 +64,7 @@ const Contact = () => {
         message: ''
       });
     }, 5000);
-  };
+  }, [formData]);
 
   return (
     <div className="contact-page">
@@ -72,7 +83,9 @@ const Contact = () => {
             
             <div className="contact-details">
               <div className="contact-item">
-                <div className="contact-icon">📧</div>
+                <div className="contact-icon">
+                  <i className="fas fa-envelope"></i>
+                </div>
                 <div className="contact-text">
                   <h3>Email</h3>
                   <p>info@iwiedrones.com</p>
@@ -80,7 +93,9 @@ const Contact = () => {
               </div>
               
               <div className="contact-item">
-                <div className="contact-icon">📱</div>
+                <div className="contact-icon">
+                  <i className="fas fa-phone-alt"></i>
+                </div>
                 <div className="contact-text">
                   <h3>Teléfono</h3>
                   <p>+56 9 1234 5678</p>
@@ -88,7 +103,9 @@ const Contact = () => {
               </div>
               
               <div className="contact-item">
-                <div className="contact-icon">📍</div>
+                <div className="contact-icon">
+                  <i className="fas fa-map-marker-alt"></i>
+                </div>
                 <div className="contact-text">
                   <h3>Dirección</h3>
                   <p>Av. Principal 123, Santiago, Chile</p>
@@ -96,7 +113,9 @@ const Contact = () => {
               </div>
               
               <div className="contact-item">
-                <div className="contact-icon">⏰</div>
+                <div className="contact-icon">
+                  <i className="fas fa-clock"></i>
+                </div>
                 <div className="contact-text">
                   <h3>Horario de Atención</h3>
                   <p>Lunes a Viernes: 9:00 - 18:00</p>
@@ -126,6 +145,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="Ingresa tu nombre completo"
+                  aria-required="true"
                 />
               </div>
               
@@ -140,6 +160,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     placeholder="ejemplo@correo.com"
+                    aria-required="true"
                   />
                 </div>
                 
@@ -185,6 +206,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="Asunto de tu mensaje"
+                  aria-required="true"
                 />
               </div>
               
@@ -198,10 +220,13 @@ const Contact = () => {
                   required
                   placeholder="Escribe tu mensaje aquí..."
                   rows="5"
+                  aria-required="true"
                 ></textarea>
               </div>
               
-              <button type="submit" className="submit-button">Enviar Mensaje</button>
+              <button type="submit" className="submit-button">
+                <i className="fas fa-paper-plane"></i> Enviar Mensaje
+              </button>
             </form>
           </div>
         </div>
@@ -211,9 +236,8 @@ const Contact = () => {
         <div className="container">
           <h2>Nuestra Ubicación</h2>
           <div className="map-container">
-            {/* En un caso real, aquí iría un mapa de Google Maps o similar */}
             <div className="placeholder-map">
-              <p>Mapa de ubicación</p>
+              <p>Mapa de Google Maps se cargará aquí</p>
             </div>
           </div>
         </div>
