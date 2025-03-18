@@ -994,6 +994,146 @@ body {
   }
 }
 
+/* Services Carousel */
+.services-carousel {
+  width: 100%;
+  position: relative;
+  margin: var(--spacing-xl) 0;
+  overflow: hidden;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  animation: carousel 40s linear infinite;
+}
+
+@keyframes carousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%); /* Ajustar según la cantidad de slides */
+  }
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .carousel-slide {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .carousel-slide {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+  }
+}
+
+.service-image {
+  position: relative;
+  height: 400px;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s ease;
+}
+
+.service-image:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.service-image:hover img {
+  transform: scale(1.05);
+}
+
+.service-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+  z-index: 1;
+}
+
+.service-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  color: white;
+  z-index: 2;
+  text-align: left;
+}
+
+.service-title h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.service-title h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+}
+
+.service-title p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  opacity: 0.9;
+  max-width: 90%;
+}
+
+.service-title .service-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.service-title .service-link:hover {
+  color: var(--color-primary);
+}
+
+/* Pausar la animación al pasar el mouse */
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
 /* Quote Section */
 .quote-section {
   padding: 5rem 2rem;

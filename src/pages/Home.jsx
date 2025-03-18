@@ -176,45 +176,99 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title">Nuestros Servicios</h2>
           <p className="section-description">Ofrecemos soluciones especializadas con tecnología de drones para diversos sectores</p>
-          <div className="services-grid">
-            <div className="service-card" data-delay="0">
-              <div className="service-icon">
-                <i className="fas fa-seedling"></i>
-              </div>
-              <div className="service-content">
-                <h3>Fumigación Agrícola</h3>
-                <p>Aplicación precisa de productos fitosanitarios con drones especializados para cultivos.</p>
-                <Link to="/agricola" className="service-link">Ver más</Link>
-              </div>
-            </div>
-            <div className="service-card" data-delay="200">
-              <div className="service-icon">
-                <i className="fas fa-industry"></i>
-              </div>
-              <div className="service-content">
-                <h3>Fumigación Industrial</h3>
-                <p>Soluciones de fumigación para instalaciones industriales y comerciales.</p>
-                <Link to="/industrial" className="service-link">Ver más</Link>
-              </div>
-            </div>
-            <div className="service-card" data-delay="400">
-              <div className="service-icon">
-                <i className="fas fa-search"></i>
-              </div>
-              <div className="service-content">
-                <h3>Inspecciones</h3>
-                <p>Inspecciones aéreas de infraestructuras, edificios y terrenos con drones equipados con cámaras de alta resolución.</p>
-                <Link to="/inspecciones" className="service-link">Ver más</Link>
-              </div>
-            </div>
-            <div className="service-card" data-delay="600">
-              <div className="service-icon">
-                <i className="fas fa-tree"></i>
-              </div>
-              <div className="service-content">
-                <h3>Forestal</h3>
-                <p>Monitoreo y fumigación de áreas forestales para control de plagas y prevención de incendios.</p>
-                <Link to="/forestal" className="service-link">Ver más</Link>
+          
+          <div className="services-carousel">
+            <div className="carousel-container">
+              <div className="carousel-track">
+                {/* INDUSTRIA */}
+                <div className="carousel-slide">
+                  <div className="service-image">
+                    <img src="/placeholder-industria.jpg" alt="Servicio de Industria" />
+                    <div className="service-overlay"></div>
+                    <div className="service-title">
+                      <h3>INDUSTRIA</h3>
+                      <p>Soluciones industriales con tecnología de drones para optimizar procesos y seguridad.</p>
+                      <Link to="/industrial" className="service-link">SABER MÁS →</Link>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* TELEVIGILANCIA */}
+                <div className="carousel-slide">
+                  <div className="service-image">
+                    <img src="/placeholder-televigilancia.jpg" alt="Servicio de Televigilancia" />
+                    <div className="service-overlay"></div>
+                    <div className="service-title">
+                      <h3>TELEVIGILANCIA</h3>
+                      <p>Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.</p>
+                      <Link to="/televigilancia" className="service-link">SABER MÁS →</Link>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* ENERGÍA */}
+                <div className="carousel-slide">
+                  <div className="service-image">
+                    <img src="/placeholder-energia.jpg" alt="Servicio de Energía" />
+                    <div className="service-overlay"></div>
+                    <div className="service-title">
+                      <h3>ENERGÍA</h3>
+                      <p>Inspección y mantenimiento de infraestructuras energéticas con drones especializados.</p>
+                      <Link to="/energia" className="service-link">SABER MÁS →</Link>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* CAPACITACIÓN */}
+                <div className="carousel-slide">
+                  <div className="service-image">
+                    <img src="/placeholder-capacitacion.jpg" alt="Servicio de Capacitación" />
+                    <div className="service-overlay"></div>
+                    <div className="service-title">
+                      <h3>CAPACITACIÓN</h3>
+                      <p>Programas de formación especializada para pilotos de drones y personal técnico.</p>
+                      <Link to="/capacitacion" className="service-link">SABER MÁS →</Link>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* AGRÍCOLA */}
+                <div className="carousel-slide">
+                  <div className="service-image">
+                    <img src="/placeholder-agricola.jpg" alt="Servicio Agrícola" />
+                    <div className="service-overlay"></div>
+                    <div className="service-title">
+                      <h3>AGRÍCOLA</h3>
+                      <p>Aplicación precisa de productos fitosanitarios con drones especializados para cultivos.</p>
+                      <Link to="/agricola" className="service-link">SABER MÁS →</Link>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Duplicar los primeros slides para crear efecto infinito */}
+                <div className="carousel-slide">
+                  <div className="service-image">
+                    <img src="/placeholder-industria.jpg" alt="Servicio de Industria" />
+                    <div className="service-overlay"></div>
+                    <div className="service-title">
+                      <h3>INDUSTRIA</h3>
+                      <p>Soluciones industriales con tecnología de drones para optimizar procesos y seguridad.</p>
+                      <Link to="/industrial" className="service-link">SABER MÁS →</Link>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="carousel-slide">
+                  <div className="service-image">
+                    <img src="/placeholder-televigilancia.jpg" alt="Servicio de Televigilancia" />
+                    <div className="service-overlay"></div>
+                    <div className="service-title">
+                      <h3>TELEVIGILANCIA</h3>
+                      <p>Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.</p>
+                      <Link to="/televigilancia" className="service-link">SABER MÁS →</Link>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
