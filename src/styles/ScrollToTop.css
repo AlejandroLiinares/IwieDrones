@@ -5,7 +5,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: #4285f4;
   color: white;
   border: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -17,7 +17,8 @@
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 80;
+  z-index: 990;
+  border: 2px solid transparent;
 }
 
 .scroll-to-top.visible {
@@ -26,8 +27,10 @@
 }
 
 .scroll-to-top:hover {
+  background: rgba(66, 133, 244, 0.9);
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.4);
+  box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .scroll-to-top:active {
@@ -40,6 +43,23 @@
 
 .scroll-to-top:hover i {
   transform: translateY(-3px);
+}
+
+/* Animación de pulso sutil */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(66, 133, 244, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(66, 133, 244, 0);
+  }
+}
+
+.scroll-to-top.visible {
+  animation: pulse 2s infinite;
 }
 
 @media (max-width: 768px) {
