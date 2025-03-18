@@ -6,6 +6,7 @@ import './App.css'
 // Componentes
 import Header from './components/Header'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 // Páginas
 import Home from './pages/Home'
@@ -35,6 +36,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <ScrollToTop />
       </div>
     </Router>
   )
