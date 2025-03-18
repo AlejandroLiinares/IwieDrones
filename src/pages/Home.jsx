@@ -137,8 +137,8 @@ const Home = () => {
         <div className="hero-overlay"></div>
         <div className="container">
           <div className="hero-content">
-            <p className="hero-subtitle">Sé parte de la</p>
-            <h1 className="hero-title">INDUSTRIA DEL<br/>FUTURO</h1>
+            <p className="hero-subtitle">Sé parte de</p>
+            <h1 className="hero-title">LA INDUSTRIA DEL<br/>FUTURO</h1>
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLScgwO1KYwaibQZYrREAYoebI05qgcvgikzRHxhDIQUSMTGnhA/viewform" 
               target="_blank" 
@@ -162,7 +162,10 @@ const Home = () => {
               <cite>– Douglas Adams</cite>
             </div>
             <div className="quote-image">
-              <img src="/douglas.webp" alt="Douglas Adams" />
+              <img 
+                src="/douglas.webp" 
+                alt="Douglas Adams" 
+              />
             </div>
           </div>
         </div>
