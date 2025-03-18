@@ -79,9 +79,9 @@ const Home = () => {
     <div className="home-page" id="home">
       {/* Hero Section */}
       <section className="hero">
-        <div className="video-background">
+        <div className="video-container">
           <iframe 
-            src="https://www.youtube.com/embed/3t-UOzi9j3E?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=3t-UOzi9j3E" 
+            src="https://www.youtube.com/embed/3t-UOzi9j3E?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=3t-UOzi9j3E&playsinline=1&enablejsapi=1" 
             title="Video de drones" 
             frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -92,7 +92,7 @@ const Home = () => {
         <div className="container">
           <div className="hero-content">
             <p className="hero-subtitle">Sé parte de la</p>
-            <h1 className="hero-title">Industria del futuro</h1>
+            <h1 className="hero-title">INDUSTRIA DEL<br/>FUTURO</h1>
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLScgwO1KYwaibQZYrREAYoebI05qgcvgikzRHxhDIQUSMTGnhA/viewform" 
               target="_blank" 

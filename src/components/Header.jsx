@@ -130,27 +130,6 @@ const Header = () => {
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <div className="header-container">
-        <div className="logo-container">
-          <Link to="/" className="logo" onClick={() => setActiveIndex(0)}>
-            <img src="/logo.png" alt="Iwiedrones Logo" />
-            <span>Iwiedrones</span>
-          </Link>
-        </div>
-        
-        <button 
-          className={`mobile-menu-button ${isMenuOpen ? 'active' : ''}`} 
-          onClick={toggleMenu}
-          aria-label="Menú principal"
-          aria-expanded={isMenuOpen}
-        >
-          <div className="menu-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </button>
-
         <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <ul className="nav-list">
             <li className="nav-item">
@@ -205,28 +184,37 @@ const Header = () => {
               <Link 
                 to="/capacitaciones" 
                 className={`nav-link ${activeIndex === 4 ? 'active' : ''}`} 
-                onClick={(e) => {
-                  setActiveIndex(4);
-                  handleSmoothScroll(e, '#capacitaciones');
-                }}
+                onClick={() => setActiveIndex(4)}
               >
                 Capacitaciones
               </Link>
             </li>
-            <li className="nav-item">
-              <Link 
-                to="/contactanos" 
-                className={`nav-link contact-link ${activeIndex === 5 ? 'active' : ''}`} 
-                onClick={(e) => {
-                  setActiveIndex(5);
-                  handleSmoothScroll(e, '#contactanos');
-                }}
-              >
-                <span>Contáctanos</span>
-              </Link>
-            </li>
           </ul>
         </nav>
+        
+        <div className="contact-button">
+          <Link 
+            to="/contactanos" 
+            className={`btn-primary ${activeIndex === 5 ? 'active' : ''}`}
+            onClick={() => setActiveIndex(5)}
+          >
+            Contáctanos
+          </Link>
+        </div>
+        
+        <button 
+          className={`mobile-menu-button ${isMenuOpen ? 'active' : ''}`} 
+          onClick={toggleMenu}
+          aria-label="Menú principal"
+          aria-expanded={isMenuOpen}
+        >
+          <div className="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
       </div>
     </header>
   );
