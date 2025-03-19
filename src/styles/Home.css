@@ -295,7 +295,7 @@ html, body {
 
 /* Services Section */
 .services {
-  padding: var(--spacing-3xl) var(--spacing-lg);
+  padding: var(--spacing-3xl) 0;
   background-color: var(--background-light);
   position: relative;
   opacity: 0;
@@ -308,22 +308,28 @@ html, body {
   transform: translateY(0);
 }
 
-.section-title {
-  text-align: center;
-  font-size: var(--font-size-3xl);
-  margin-bottom: var(--spacing-md);
-  color: var(--text-color);
-  position: relative;
-  font-weight: 700;
+.services .container {
+  max-width: 100%;
+  padding: 0;
 }
 
-.section-title::after {
+.section-title, .quienes-somos-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: var(--text-color);
+  text-align: left;
+  padding-left: 50px;
+}
+
+.section-title::after, .quienes-somos-divider {
   content: '';
   display: block;
   width: 80px;
   height: 4px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  margin: var(--spacing-md) auto 0;
+  margin: 15px 0 25px;
   border-radius: var(--border-radius-sm);
   animation: expandWidth 2s ease-out;
 }
@@ -337,57 +343,56 @@ html, body {
   }
 }
 
-.section-description {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto var(--spacing-2xl);
-  color: var(--text-light);
-  font-size: var(--font-size-lg);
+.section-description, .quienes-somos-content p {
+  font-size: 1rem;
   line-height: 1.6;
+  margin-bottom: 30px;
+  color: var(--text-light);
+  text-align: left;
+  padding-left: 50px;
+  max-width: 800px;
 }
 
 .services-slider {
   width: 100%;
   position: relative;
-  margin: var(--spacing-xl) 0;
 }
 
 .slider-container {
   width: 100%;
-  position: relative;
+  overflow: hidden;
 }
 
 .slides-container {
   width: 100%;
   position: relative;
-  overflow: hidden;
-  height: 500px;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
+  height: 500px; /* Altura fija para evitar saltos */
 }
 
 .slide {
-  position: absolute;
+  width: 100%;
+  position: absolute; /* Posicionamiento absoluto para superposición */
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-  transform: scale(1.05);
   display: none;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s ease; /* Transición más suave */
+  z-index: 1;
 }
 
 .slide:first-child {
+  display: block;
   opacity: 1;
   transform: scale(1);
-  display: block;
+  z-index: 2;
 }
 
 .slide-image {
-  position: relative;
   width: 100%;
   height: 100%;
+  position: relative;
   overflow: hidden;
 }
 
@@ -395,11 +400,6 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 6s ease;
-}
-
-.slide:hover .slide-image img {
-  transform: scale(1.1);
 }
 
 .slide-overlay {
@@ -408,8 +408,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
-  z-index: 1;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
 }
 
 .slide-text {
@@ -417,16 +416,15 @@ html, body {
   bottom: 0;
   left: 0;
   width: 50%;
-  padding: 3rem;
+  padding: 2rem 50px;
   color: white;
-  z-index: 2;
   text-align: left;
 }
 
 .slide-text h3 {
   font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
   color: white;
   text-transform: uppercase;
 }
@@ -435,13 +433,13 @@ html, body {
   width: 80px;
   height: 4px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  margin-bottom: 1.5rem;
+  margin: 0 0 25px;
 }
 
 .slide-text p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 30px;
   color: rgba(255, 255, 255, 0.9);
   max-width: 90%;
 }
@@ -458,6 +456,7 @@ html, body {
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 1px;
+  margin-top: 1rem;
 }
 
 .btn-saber-mas:hover {
@@ -681,22 +680,25 @@ html, body {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.about-section.animate-about {
-  opacity: 1;
-  transform: translateY(0);
+  background: url('/quienes-somos.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
 }
 
 .about-section::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, rgba(var(--color-primary-rgb), 0.05) 0%, rgba(0, 0, 0, 0) 70%);
-  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.about-section.animate-about {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about-content {
@@ -705,7 +707,7 @@ html, body {
   gap: var(--spacing-2xl);
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .about-image {
@@ -1179,4 +1181,65 @@ body {
     flex: 0 0 200px;
     height: 200px;
   }
+}
+
+/* QUIÉNES SOMOS Section */
+.quienes-somos-container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.quienes-somos-content {
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+  padding: 50px 0;
+}
+
+.quienes-somos-content h2 {
+  color: white;
+}
+
+.quienes-somos-content p {
+  color: white;
+}
+
+.quienes-somos-divider {
+  margin: 15px 0 25px 50px;
+}
+
+.saber-mas-btn {
+  display: inline-block;
+  background-color: #4285f4;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.saber-mas-btn:hover {
+  background-color: #3367d6;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.arrow-icon {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+/* Estilo específico para el divisor en la sección Hero */
+.hero-content .slide-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  margin: 0 auto 1.5rem;
+  display: block;
 }

@@ -23,6 +23,7 @@ const Home = () => {
         // Animación de salida para el slide actual
         slide.style.opacity = '0';
         slide.style.transform = 'scale(0.95)';
+        slide.style.zIndex = '1';
       }
     });
     
@@ -34,6 +35,7 @@ const Home = () => {
         // Animación de entrada para el nuevo slide
         selectedSlide.style.opacity = '1';
         selectedSlide.style.transform = 'scale(1)';
+        selectedSlide.style.zIndex = '2';
       }, 50);
     }
     
@@ -44,7 +46,7 @@ const Home = () => {
           slide.style.display = 'none';
         }
       });
-    }, 1000);
+    }, 800); // Aumentar el tiempo para coincidir con la duración de la transición CSS
     
     // Actualizar los dots de navegación
     const dots = document.querySelectorAll('.dot');
@@ -224,6 +226,7 @@ const Home = () => {
         <div className="container">
           <div className="hero-content">
             <p className="hero-subtitle">Sé parte de</p>
+            <div className="slide-divider"></div>
             <h1 className="hero-title">LA INDUSTRIA DEL<br/>FUTURO</h1>
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLScgwO1KYwaibQZYrREAYoebI05qgcvgikzRHxhDIQUSMTGnhA/viewform" 
@@ -352,42 +355,12 @@ const Home = () => {
 
       {/* About Section */}
       <section className="about-section" ref={aboutRef} id="sobre-nosotros">
-        <div className="container">
-          <div className="about-content">
-            <div className="about-text">
-              <h2>QUIÉNES SOMOS</h2>
-              <p>Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.</p>
-              <a href="#" className="btn-saber-mas">SABER MÁS</a>
-              <div className="about-features">
-                <div className="feature-item" data-delay="0">
-                  <div className="feature-icon">
-                    <i className="fas fa-check-circle"></i>
-                  </div>
-                  <div>Equipo certificado y con experiencia</div>
-                </div>
-                <div className="feature-item" data-delay="150">
-                  <div className="feature-icon">
-                    <i className="fas fa-check-circle"></i>
-                  </div>
-                  <div>Tecnología de última generación</div>
-                </div>
-                <div className="feature-item" data-delay="300">
-                  <div className="feature-icon">
-                    <i className="fas fa-check-circle"></i>
-                  </div>
-                  <div>Soluciones personalizadas</div>
-                </div>
-                <div className="feature-item" data-delay="450">
-                  <div className="feature-icon">
-                    <i className="fas fa-check-circle"></i>
-                  </div>
-                  <div>Compromiso con el medio ambiente</div>
-                </div>
-              </div>
-            </div>
-            <div className="about-image">
-              <img src="https://via.placeholder.com/600x400" alt="Iwiedrones en acción" />
-            </div>
+        <div className="quienes-somos-container">
+          <div className="quienes-somos-content">
+            <h2>QUIÉNES SOMOS</h2>
+            <div className="quienes-somos-divider"></div>
+            <p>Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.</p>
+            <a href="#" className="saber-mas-btn">SABER MÁS <span className="arrow-icon">→</span></a>
           </div>
         </div>
       </section>
