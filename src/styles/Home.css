@@ -34,16 +34,17 @@
 
 .hero-content {
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0;
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 1.5rem;
   position: relative;
   z-index: 2;
   animation: fadeInUp 1.2s ease-out;
+  padding-left: 6%;
 }
 
 @keyframes fadeInUp {
@@ -60,16 +61,10 @@
 .hero .container {
   position: relative;
   z-index: 3;
-  text-align: center;
+  text-align: left;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.hero-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 3rem;
 }
 
 .hero-subtitle {
@@ -84,6 +79,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1.2;
+  align-self: flex-start;
 }
 
 .hero-title {
@@ -99,6 +95,7 @@
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
   line-height: 1.2;
   display: block;
+  align-self: flex-start;
 }
 
 .cta-button {
@@ -118,6 +115,7 @@
   animation-delay: 1.1s;
   letter-spacing: 1px;
   margin-top: 1rem;
+  align-self: flex-start;
 }
 
 .cta-button:hover {
@@ -293,7 +291,7 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Services Section */
+/* Services Section - Optimizado */
 .services {
   padding: var(--spacing-3xl) 0;
   background-color: var(--background-light);
@@ -320,7 +318,7 @@ html, body {
   text-transform: uppercase;
   color: var(--text-color);
   text-align: left;
-  padding-left: 50px;
+  padding-left: 6%;
 }
 
 .section-title::after, .quienes-somos-divider {
@@ -328,8 +326,9 @@ html, body {
   display: block;
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(90deg, #4285f4, #34a853);
   margin: 15px 0 25px;
+  margin-left: 6%;
   border-radius: var(--border-radius-sm);
   animation: expandWidth 2s ease-out;
 }
@@ -349,7 +348,7 @@ html, body {
   margin-bottom: 30px;
   color: var(--text-light);
   text-align: left;
-  padding-left: 50px;
+  padding-left: 6%;
   max-width: 800px;
 }
 
@@ -366,19 +365,19 @@ html, body {
 .slides-container {
   width: 100%;
   position: relative;
-  height: 500px; /* Altura fija para evitar saltos */
+  height: 600px;
 }
 
 .slide {
   width: 100%;
-  position: absolute; /* Posicionamiento absoluto para superposición */
+  position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   display: none;
   opacity: 0;
   transform: scale(0.95);
-  transition: opacity 0.8s ease, transform 0.8s ease; /* Transición más suave */
+  transition: opacity 0.8s ease, transform 0.8s ease;
   z-index: 1;
 }
 
@@ -395,7 +394,7 @@ html, body {
   height: 100%;
   overflow: hidden;
   display: flex;
-  align-items: center; /* Centrar verticalmente el contenido */
+  align-items: center;
 }
 
 .slide-image img {
@@ -419,13 +418,14 @@ html, body {
   bottom: 0;
   left: 0;
   width: 50%;
-  padding: 0 0 0 6%; /* Aplicar el mismo padding izquierdo del 6% */
+  padding: 0 0 0 6%;
   color: white;
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centrar verticalmente */
-  align-items: flex-start; /* Alinear a la izquierda */
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 3;
 }
 
 .slide-text h3 {
@@ -471,7 +471,7 @@ html, body {
   letter-spacing: 1px;
   margin-top: 1rem;
   margin-left: 0;
-  align-self: flex-start; /* Asegurar alineación con el texto */
+  align-self: flex-start;
 }
 
 .btn-saber-mas:hover {
@@ -1219,9 +1219,9 @@ body {
   margin: 0;
   text-align: left;
   padding-left: 6%;
-  padding-right: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding-right: 6%;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1243,7 +1243,7 @@ body {
 .quienes-somos-divider {
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(90deg, #4285f4, #34a853);
   margin: 15px 0 25px 0;
   border-radius: var(--border-radius-sm);
   display: block;
@@ -1273,7 +1273,7 @@ body {
   display: inline-block;
   background-color: #4285f4;
   color: white;
-  padding: 10px 25px;
+  padding: 12px 30px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
@@ -1283,12 +1283,14 @@ body {
   margin-top: 10px;
   margin-left: 0;
   align-self: flex-start;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
 }
 
 .saber-mas-btn:hover {
   background-color: #3367d6;
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .arrow-icon {
@@ -1301,6 +1303,182 @@ body {
   width: 80px;
   height: 4px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  margin: 0 auto 1.5rem;
+  margin: 0 0 1.5rem 0;
   display: block;
+  align-self: flex-start;
+}
+
+/* Mejora para la sección de servicios */
+.slide-text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  padding: 0 0 0 6%;
+  color: white;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 3;
+}
+
+.slide-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.slide-image img {
+  width: 120%;
+  height: 120%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 100%);
+  z-index: 2;
+}
+
+/* Optimización para imágenes de fondo */
+.about-section {
+  padding: 0;
+  background-color: var(--background-light);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  background: url('/quienes-somos.jpg') no-repeat center center;
+  background-size: 120% auto;
+  color: white;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+/* Mejoras en la sección Hero */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a2b47;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#youtube-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+/* Ajustes responsive mejorados */
+@media (max-width: 992px) {
+  .slide-text {
+    width: 70%;
+    padding-left: 6%;
+  }
+  
+  .slide-text h3 {
+    font-size: 2rem;
+  }
+  
+  .quienes-somos-content {
+    padding-left: 6%;
+    padding-right: 4%;
+  }
+}
+
+@media (max-width: 768px) {
+  .slide-text {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+  
+  .hero-title {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .quienes-somos-content p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .slide-text {
+    padding: 1.5rem 6%;
+  }
+  
+  .slide-text h3 {
+    font-size: 1.5rem;
+  }
+  
+  .slides-container {
+    height: 450px;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 2rem;
+  }
+  
+  .section-title, .quienes-somos-content h2 {
+    padding-left: 0;
+  }
+  
+  .section-description, .quienes-somos-content p {
+    padding-left: 0;
+  }
 }
