@@ -225,16 +225,18 @@ const Home = () => {
         <div className="hero-overlay"></div>
         <div className="container">
           <div className="hero-content">
-            <p className="hero-subtitle">Sé parte de</p>
-            <div className="slide-divider"></div>
-            <h1 className="hero-title">LA INDUSTRIA DEL<br/>FUTURO</h1>
+            <div className="title-container">
+              <div className="subtitle">Sé parte de</div>
+              <hr className="hero-divider" />
+              <h1 className="hero-title">LA INDUSTRIA DEL<br/>FUTURO</h1>
+            </div>
             <a 
               href="https://docs.google.com/forms/d/e/1FAIpQLScgwO1KYwaibQZYrREAYoebI05qgcvgikzRHxhDIQUSMTGnhA/viewform" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="cta-button"
             >
-              APRENDE MÁS
+              Aprende más
             </a>
           </div>
         </div>
@@ -263,7 +265,7 @@ const Home = () => {
       {/* Services Section */}
       <section className="services" ref={servicesRef} id="servicios">
         <div className="container">
-          <h2 className="section-title">NUESTROS SERVICIOS</h2>
+          <h2 className="section-title">Nuestros Servicios</h2>
           
           <div className="services-slider">
             <div className="slider-container">
@@ -275,10 +277,10 @@ const Home = () => {
                     <img src="/industria.jpg" alt="Servicio de Industria" />
                     <div className="slide-overlay"></div>
                     <div className="slide-text">
-                      <h3>INDUSTRIA</h3>
+                      <h3>Industria</h3>
                       <div className="slide-divider"></div>
                       <p>Soluciones industriales con tecnología de drones para optimizar procesos y seguridad en entornos industriales.</p>
-                      <a href="/industrial" className="btn-saber-mas">SABER MÁS →</a>
+                      <a href="/industrial" className="btn-saber-mas">Saber más →</a>
                     </div>
                   </div>
                 </div>
@@ -289,10 +291,10 @@ const Home = () => {
                     <img src="/televigilancia.jpg" alt="Servicio de Televigilancia" />
                     <div className="slide-overlay"></div>
                     <div className="slide-text">
-                      <h3>TELEVIGILANCIA</h3>
+                      <h3>Televigilancia</h3>
                       <div className="slide-divider"></div>
                       <p>Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.</p>
-                      <a href="/televigilancia" className="btn-saber-mas">SABER MÁS →</a>
+                      <a href="/televigilancia" className="btn-saber-mas">Saber más →</a>
                     </div>
                   </div>
                 </div>
@@ -303,10 +305,10 @@ const Home = () => {
                     <img src="/energia.jpg" alt="Servicio de Energía" />
                     <div className="slide-overlay"></div>
                     <div className="slide-text">
-                      <h3>ENERGÍA</h3>
+                      <h3>Energía</h3>
                       <div className="slide-divider"></div>
                       <p>Aplicación al área de energías renovables y convencionales. Revisar las instalaciones, granjas fotovoltaicas, torres de alta tensión, entre otras.</p>
-                      <a href="/energia" className="btn-saber-mas">SABER MÁS →</a>
+                      <a href="/energia" className="btn-saber-mas">Saber más →</a>
                     </div>
                   </div>
                 </div>
@@ -317,10 +319,10 @@ const Home = () => {
                     <img src="/capacitacion.jpg" alt="Servicio de Capacitación" />
                     <div className="slide-overlay"></div>
                     <div className="slide-text">
-                      <h3>CAPACITACIÓN</h3>
+                      <h3>Capacitación</h3>
                       <div className="slide-divider"></div>
                       <p>Programas de formación especializada para pilotos de drones y personal técnico.</p>
-                      <a href="/capacitacion" className="btn-saber-mas">SABER MÁS →</a>
+                      <a href="/capacitacion" className="btn-saber-mas">Saber más →</a>
                     </div>
                   </div>
                 </div>
@@ -331,10 +333,10 @@ const Home = () => {
                     <img src="/agricola.jpg" alt="Servicio Agrícola" />
                     <div className="slide-overlay"></div>
                     <div className="slide-text">
-                      <h3>AGRÍCOLA</h3>
+                      <h3>Agrícola</h3>
                       <div className="slide-divider"></div>
                       <p>Aplicación precisa de productos fitosanitarios con drones especializados para cultivos.</p>
-                      <a href="/agricola" className="btn-saber-mas">SABER MÁS →</a>
+                      <a href="/agricola" className="btn-saber-mas">Saber más →</a>
                     </div>
                   </div>
                 </div>
@@ -357,55 +359,95 @@ const Home = () => {
       <section className="about-section" ref={aboutRef} id="sobre-nosotros">
         <div className="quienes-somos-container">
           <div className="quienes-somos-content">
-            <h2>QUIÉNES SOMOS</h2>
+            <h2>Quiénes somos</h2>
             <div className="quienes-somos-divider"></div>
             <p>Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.</p>
-            <a href="#" className="saber-mas-btn">SABER MÁS <span className="arrow-icon">→</span></a>
+            <a href="#" className="saber-mas-btn">Saber más <span className="arrow-icon">→</span></a>
           </div>
         </div>
       </section>
 
-      {/* Drone Catalog Preview */}
+      {/* Drone Catalog Section */}
       <section className="drone-catalog" ref={droneRef} id="drones">
         <div className="container">
           <h2 className="section-title">Catálogo de Drones</h2>
+          <div className="slide-divider"></div>
           <p className="section-description">Ofrecemos una amplia variedad de drones para diferentes aplicaciones, adaptados a las necesidades específicas de cada sector.</p>
           
           <div className="drones-grid">
             <div className="drone-card" data-delay="0">
-              <img src="https://via.placeholder.com/600x400" alt="Drone Agrícola" className="drone-image" />
+              <img src="/Dron.png" alt="Drone Agrícola" className="drone-image" />
               <div className="drone-info">
                 <h3>Drone Agrícola XF-200</h3>
-                <p>Drone especializado para fumigación agrícola con tanque de 20L y autonomía de 30 minutos.</p>
+                <div className="drone-divider"></div>
+                <p>Drone especializado para fumigación agrícola con tanque de 20L y autonomía de 30 minutos. Ideal para cultivos extensos.</p>
                 <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> 30 min</span>
-                  <span className="spec-tag"><i className="fas fa-tint"></i> 20L</span>
-                  <span className="spec-tag"><i className="fas fa-broadcast-tower"></i> 2km</span>
+                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 30 min</span>
+                  <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 20L</span>
+                  <span className="spec-tag"><i className="fas fa-broadcast-tower"></i> Alcance: 2km</span>
                 </div>
+                <div className="drone-specs">
+                  <span className="spec-tag"><i className="fas fa-weight-hanging"></i> Peso: 10kg</span>
+                  <span className="spec-tag"><i className="fas fa-wind"></i> Resistencia al viento: 28km/h</span>
+                </div>
+                <button className="drone-details-btn">Ver detalles</button>
               </div>
             </div>
+            
             <div className="drone-card" data-delay="200">
-              <img src="https://via.placeholder.com/600x400" alt="Drone Industrial" className="drone-image" />
+              <img src="/Dron.png" alt="Drone Industrial" className="drone-image" />
               <div className="drone-info">
                 <h3>Drone Industrial DI-500</h3>
-                <p>Diseñado para aplicaciones industriales con resistencia a condiciones adversas.</p>
+                <div className="drone-divider"></div>
+                <p>Diseñado para aplicaciones industriales con resistencia a condiciones adversas. Perfecto para inspecciones en entornos complejos.</p>
                 <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> 45 min</span>
-                  <span className="spec-tag"><i className="fas fa-weight-hanging"></i> 5kg</span>
-                  <span className="spec-tag"><i className="fas fa-shield-alt"></i> IP65</span>
+                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 45 min</span>
+                  <span className="spec-tag"><i className="fas fa-weight-hanging"></i> Carga útil: 5kg</span>
+                  <span className="spec-tag"><i className="fas fa-shield-alt"></i> Protección: IP65</span>
                 </div>
+                <div className="drone-specs">
+                  <span className="spec-tag"><i className="fas fa-temperature-high"></i> Rango térmico: -20°C a 50°C</span>
+                  <span className="spec-tag"><i className="fas fa-broadcast-tower"></i> Alcance: 5km</span>
+                </div>
+                <button className="drone-details-btn">Ver detalles</button>
               </div>
             </div>
+            
             <div className="drone-card" data-delay="400">
-              <img src="https://via.placeholder.com/600x400" alt="Drone Inspección" className="drone-image" />
+              <img src="/Dron.png" alt="Drone Inspección" className="drone-image" />
               <div className="drone-info">
                 <h3>Drone Inspección IS-100</h3>
-                <p>Equipado con cámara 4K y sensores térmicos para inspecciones detalladas.</p>
+                <div className="drone-divider"></div>
+                <p>Equipado con cámara 4K y sensores térmicos para inspecciones detalladas. Ideal para inspecciones técnicas de precisión.</p>
                 <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-camera"></i> 4K</span>
-                  <span className="spec-tag"><i className="fas fa-search-plus"></i> 30x</span>
-                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> 35 min</span>
+                  <span className="spec-tag"><i className="fas fa-camera"></i> Cámara: 4K HDR</span>
+                  <span className="spec-tag"><i className="fas fa-search-plus"></i> Zoom: 30x óptico</span>
+                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 35 min</span>
                 </div>
+                <div className="drone-specs">
+                  <span className="spec-tag"><i className="fas fa-microchip"></i> Sensores: RGB + Térmico</span>
+                  <span className="spec-tag"><i className="fas fa-broadcast-tower"></i> Alcance: 3km</span>
+                </div>
+                <button className="drone-details-btn">Ver detalles</button>
+              </div>
+            </div>
+            
+            <div className="drone-card" data-delay="600">
+              <img src="/Dron.png" alt="Drone Fotogrametría" className="drone-image" />
+              <div className="drone-info">
+                <h3>Drone Fotogrametría FM-300</h3>
+                <div className="drone-divider"></div>
+                <p>Especializado en captura de imágenes para fotogrametría y modelado 3D con precisión centimétrica.</p>
+                <div className="drone-specs">
+                  <span className="spec-tag"><i className="fas fa-camera"></i> Cámara: 42MP</span>
+                  <span className="spec-tag"><i className="fas fa-ruler-combined"></i> Precisión: 2cm/px</span>
+                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 40 min</span>
+                </div>
+                <div className="drone-specs">
+                  <span className="spec-tag"><i className="fas fa-satellite"></i> RTK/PPK: Integrado</span>
+                  <span className="spec-tag"><i className="fas fa-memory"></i> Almacenamiento: 256GB</span>
+                </div>
+                <button className="drone-details-btn">Ver detalles</button>
               </div>
             </div>
           </div>

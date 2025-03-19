@@ -3,10 +3,26 @@
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1920x1080') no-repeat center center;
   background-size: cover;
   color: white;
-  padding: 15rem 2rem;
+  padding: 10rem 2rem;
   text-align: center;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 10px;
 }
 
 .hero::before {
@@ -34,17 +50,17 @@
 
 .hero-content {
   max-width: 1000px;
-  margin: 0;
+  margin: 0 auto;
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
   position: relative;
   z-index: 2;
   animation: fadeInUp 1.2s ease-out;
-  padding-left: 6%;
+  width: 100%;
 }
 
 @keyframes fadeInUp {
@@ -58,54 +74,55 @@
   }
 }
 
-.hero .container {
-  position: relative;
-  z-index: 3;
-  text-align: left;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding: 1rem;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero-subtitle {
-  font-size: 5.5rem;
+.title-container .subtitle {
+  font-size: 2rem;
   font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
   color: #ffffff;
-  margin-bottom: 1rem;
-  opacity: 1;
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 0.5s;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2px;
-  line-height: 1.2;
-  align-self: flex-start;
+  margin-bottom: 0.7rem;
 }
 
-.hero-title {
-  font-size: 11rem;
+.title-container .hero-divider {
+  width: 80px;
+  height: 4px;
+  margin: 0.7rem auto;
+}
+
+.title-container .hero-title {
+  font-size: 3.5rem;
   font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
   color: #ffffff;
-  margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  opacity: 1;
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 0.8s;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
   line-height: 1.2;
-  display: block;
-  align-self: center;
+  margin: 0 auto 0.7rem;
 }
 
 .cta-button {
   display: inline-block;
   background: #4285f4;
   color: white;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
-  padding: 1rem 2.5rem;
+  padding: 0.7rem 1.8rem;
   border-radius: 50px;
   text-decoration: none;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -114,7 +131,7 @@
   animation: fadeInUp 1s ease forwards;
   animation-delay: 1.1s;
   letter-spacing: 1px;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   align-self: center;
 }
 
@@ -321,16 +338,49 @@ html, body {
   padding-left: 6%;
 }
 
-.section-title::after, .quienes-somos-divider {
-  content: '';
+/* Estilo común para todos los divisores decorativos */
+.title-container .hero-divider, 
+.section-title::after, 
+.quienes-somos-divider, 
+.slide-divider, 
+.hero-content .slide-divider {
+  background: linear-gradient(90deg, #00a8ff, #00eeff);
+  border: none;
+  box-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
+  border-radius: 3px;
   display: block;
+}
+
+/* Dimensiones y posicionamiento específicos para cada divisor */
+.title-container .hero-divider {
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #4285f4, #34a853);
+  margin: 0.7rem auto;
+}
+
+.section-title::after {
+  content: '';
+  width: 80px;
+  height: 4px;
   margin: 15px 0 25px;
   margin-left: 6%;
-  border-radius: var(--border-radius-sm);
   animation: expandWidth 2s ease-out;
+}
+
+.quienes-somos-divider {
+  width: 80px;
+  height: 4px;
+  margin: 15px 0 25px 0;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.hero-content .slide-divider {
+  width: 80px;
+  height: 4px;
+  margin: 0 auto -0.3rem;
+  align-self: center;
+  display: block;
 }
 
 @keyframes expandWidth {
@@ -434,15 +484,7 @@ html, body {
   margin-bottom: 15px;
   color: white;
   text-transform: uppercase;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.slide-divider {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  margin: 0 0 25px;
+  letter-spacing: 2px;
   margin-left: 0;
   padding-left: 0;
 }
@@ -584,6 +626,24 @@ html, body {
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+.drone-catalog .section-title {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.drone-catalog .slide-divider {
+  margin: 0.5rem auto 1.5rem;
+}
+
+.drone-catalog .section-description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
 .drone-catalog.animate-drones {
   opacity: 1;
   transform: translateY(0);
@@ -607,6 +667,9 @@ html, body {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .drone-card.in-view {
@@ -636,30 +699,42 @@ html, body {
   position: relative;
   z-index: 2;
   background: linear-gradient(to top, rgba(255, 255, 255, 1) 90%, rgba(255, 255, 255, 0.8) 100%);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .drone-card h3 {
   color: var(--text-color);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: 0.5rem;
   font-weight: 600;
   transition: color 0.3s ease;
+  font-size: 1.4rem;
 }
 
 .drone-card:hover h3 {
   color: var(--color-primary);
 }
 
+.drone-divider {
+  width: 60px;
+  height: 3px;
+  margin: 0.5rem 0 1rem;
+  align-self: flex-start;
+}
+
 .drone-card p {
   color: var(--text-light);
   line-height: 1.6;
   margin-bottom: var(--spacing-md);
+  flex-grow: 1;
 }
 
 .drone-specs {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-xs);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
 }
 
 .spec-tag {
@@ -680,10 +755,38 @@ html, body {
   transform: translateY(-2px);
 }
 
+.drone-details-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.drone-details-btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.drone-details-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.3);
+}
+
 .view-more-container {
   text-align: center;
   margin-top: var(--spacing-xl);
-  animation: fadeIn 1s ease-out;
 }
 
 /* About Section */
@@ -1240,17 +1343,6 @@ body {
   padding-left: 0;
 }
 
-.quienes-somos-divider {
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #4285f4, #34a853);
-  margin: 15px 0 25px 0;
-  border-radius: var(--border-radius-sm);
-  display: block;
-  margin-left: 0;
-  padding-left: 0;
-}
-
 .quienes-somos-content p {
   color: white;
   font-size: 1rem;
@@ -1302,10 +1394,9 @@ body {
 .hero-content .slide-divider {
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-  margin: 0 0 1.5rem 0;
+  margin: 0 auto -0.3rem;
+  align-self: center;
   display: block;
-  align-self: flex-start;
 }
 
 /* Mejora para la sección de servicios */
