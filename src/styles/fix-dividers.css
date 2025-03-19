@@ -8,7 +8,8 @@
 #drones .series-title::after,
 #drones .series-title::before,
 #drones hr,
-#drones .slide-divider,
+/* Permitimos el divisor principal */
+/* #drones .slide-divider, */
 #drones .category-divider,
 #drones .series-divider,
 .drone-catalog .section-title::after,
@@ -18,7 +19,8 @@
 .drone-catalog .series-title::after,
 .drone-catalog .series-title::before,
 .drone-catalog hr,
-.drone-catalog .slide-divider,
+/* Permitimos el divisor principal */
+/* .drone-catalog .slide-divider, */
 .drone-catalog .category-divider,
 .drone-catalog .series-divider {
   display: none !important;

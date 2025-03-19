@@ -381,6 +381,56 @@ const Home = () => {
   }, []);
 
   const [activeTab, setActiveTab] = useState('agricolas'); // Estado para controlar el tab activo
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [maxScroll, setMaxScroll] = useState(0);
+  const agricolasRef = useRef(null);
+  const industrialesRef = useRef(null);
+
+  // Función para manejar el desplazamiento hacia la izquierda
+  const scrollLeft = () => {
+    const container = activeTab === 'agricolas' ? agricolasRef.current : industrialesRef.current;
+    if (container) {
+      const newPosition = Math.max(scrollPosition - 300, 0);
+      container.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+      setScrollPosition(newPosition);
+    }
+  };
+
+  // Función para manejar el desplazamiento hacia la derecha
+  const scrollRight = () => {
+    const container = activeTab === 'agricolas' ? agricolasRef.current : industrialesRef.current;
+    if (container) {
+      const newPosition = Math.min(scrollPosition + 300, maxScroll);
+      container.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+      setScrollPosition(newPosition);
+    }
+  };
+
+  // Función para actualizar el estado de desplazamiento
+  const handleScroll = (e) => {
+    const { scrollLeft, scrollWidth, clientWidth } = e.target;
+    setScrollPosition(scrollLeft);
+    setMaxScroll(scrollWidth - clientWidth);
+  };
+
+  // Efecto para actualizar el maxScroll cuando cambia el tab
+  useEffect(() => {
+    const container = activeTab === 'agricolas' ? agricolasRef.current : industrialesRef.current;
+    if (container) {
+      setMaxScroll(container.scrollWidth - container.clientWidth);
+      setScrollPosition(0);
+      container.scrollTo({
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+  }, [activeTab]);
 
   return (
     <div className="home-page" id="home">
@@ -433,7 +483,6 @@ const Home = () => {
       <section className="services" ref={servicesRef} id="servicios">
         <div className="container">
           <h2 className="section-title">Nuestros Servicios</h2>
-          <div className="slide-divider"></div>
           
           <div className="services-slider">
             <div className="slider-container">
@@ -506,7 +555,7 @@ const Home = () => {
             
             {/* Todos los drones agrícolas en una fila */}
             <div className="drone-series">
-              <div className="drones-showcase">
+              <div className="drones-showcase" ref={agricolasRef} onScroll={handleScroll}>
                 {/* H32X */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H32X</h3>
@@ -603,6 +652,20 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+              <button 
+                className="scroll-left-btn" 
+                onClick={scrollLeft} 
+                disabled={scrollPosition <= 0}
+              >
+                <i className="fas fa-chevron-left"></i>
+              </button>
+              <button 
+                className="scroll-right-btn" 
+                onClick={scrollRight} 
+                disabled={scrollPosition >= maxScroll}
+              >
+                <i className="fas fa-chevron-right"></i>
+              </button>
             </div>
           </div>
           
@@ -612,7 +675,7 @@ const Home = () => {
             
             {/* Todos los drones industriales en una fila */}
             <div className="drone-series">
-              <div className="drones-showcase">
+              <div className="drones-showcase" ref={industrialesRef} onScroll={handleScroll}>
                 {/* H200 Extinción */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H200 Extinción</h3>
@@ -724,6 +787,20 @@ const Home = () => {
                   </div>
                 </div>
               </div>
+              <button 
+                className="scroll-left-btn" 
+                onClick={scrollLeft} 
+                disabled={scrollPosition <= 0}
+              >
+                <i className="fas fa-chevron-left"></i>
+              </button>
+              <button 
+                className="scroll-right-btn" 
+                onClick={scrollRight} 
+                disabled={scrollPosition >= maxScroll}
+              >
+                <i className="fas fa-chevron-right"></i>
+              </button>
             </div>
           </div>
         </div>

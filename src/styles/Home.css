@@ -653,9 +653,24 @@ html, body {
 }
 
 .drone-catalog .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
   text-align: center;
+  position: relative;
   width: 100%;
-  margin-bottom: 20px;
+}
+
+.drone-catalog .slide-divider {
+  width: 80px;
+  height: 3px;
+  margin: 0.5rem auto 2rem;
+  background: linear-gradient(90deg, #00a8ff, #00eeff);
+  border: none;
+  box-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
+  border-radius: 3px;
+  display: block;
 }
 
 .drone-catalog .section-description {
@@ -978,20 +993,21 @@ html, body {
 }
 
 .services .section-title {
-  text-align: left;
+  text-align: center;
   margin-bottom: 0.5rem;
-  padding-left: 6%;
+  padding-left: 0;
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--text-color);
   letter-spacing: -0.5px;
   position: relative;
+  width: 100%;
 }
 
 .services .slide-divider {
   width: 80px;
   height: 3px;
-  margin: 0.5rem 0 1.5rem 6%;
+  margin: 0.5rem auto 1.5rem;
   background: linear-gradient(90deg, #00a8ff, #00eeff);
   border: none;
   box-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
@@ -1491,7 +1507,7 @@ body {
   }
   
   .about-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xl);
   }
   
@@ -2327,4 +2343,90 @@ body {
 .drones-showcase::-webkit-scrollbar-thumb {
   background-color: rgba(23, 93, 163, 0.3);
   border-radius: 10px;
+}
+
+/* Estilos para los botones de navegación de drones */
+.drone-series {
+  margin-bottom: 4rem;
+  padding: 0 6%;
+  position: relative;
+}
+
+/* Botones de navegación */
+.scroll-left-btn,
+.scroll-right-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-left-btn:hover,
+.scroll-right-btn:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.scroll-left-btn {
+  left: 10px;
+}
+
+.scroll-right-btn {
+  right: 10px;
+}
+
+.scroll-left-btn:disabled,
+.scroll-right-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Modificar el contenedor de drones para que no muestre la barra de desplazamiento */
+.drones-showcase {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 30px;
+  margin: 20px 0;
+  padding-bottom: 20px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  justify-content: flex-start;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+.drones-showcase::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Estilos responsivos para los botones */
+@media (max-width: 768px) {
+  .scroll-left-btn,
+  .scroll-right-btn {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-left-btn,
+  .scroll-right-btn {
+    width: 30px;
+    height: 30px;
+  }
 }
