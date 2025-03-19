@@ -355,9 +355,9 @@ const Home = () => {
         <div className="container">
           <div className="about-content">
             <div className="about-text">
-              <h2>Sobre Iwiedrones</h2>
-              <p>Somos una empresa líder en soluciones con drones, especializada en servicios de fumigación agrícola e industrial. Nuestro equipo de profesionales cuenta con amplia experiencia y certificaciones para garantizar un servicio de calidad.</p>
-              <p>Utilizamos tecnología de vanguardia para ofrecer soluciones eficientes, seguras y respetuosas con el medio ambiente.</p>
+              <h2>QUIÉNES SOMOS</h2>
+              <p>Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.</p>
+              <a href="#" className="btn-saber-mas">SABER MÁS</a>
               <div className="about-features">
                 <div className="feature-item" data-delay="0">
                   <div className="feature-icon">
