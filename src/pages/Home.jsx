@@ -706,14 +706,9 @@ const Home = () => {
                     <button className="drone-details-btn-new">Ver detalles</button>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            {/* Séptimo drone centrado debajo */}
-            <div className="drone-series">
-              <div className="drones-showcase-single">
+                
                 {/* H60-4 */}
-                <div className="drone-card-new drone-card-centered">
+                <div className="drone-card-new">
                   <h3 className="drone-title-new">H60-4</h3>
                   <div className="drone-image-container-new">
                     <img src="/Dron.png" alt="H60-4" className="drone-image-new" />
