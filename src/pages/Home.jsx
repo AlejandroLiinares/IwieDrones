@@ -504,10 +504,10 @@ const Home = () => {
           <div className={`drone-category ${activeTab === 'agricolas' ? 'visible' : 'hidden'}`}>
             <h3 className="category-title">Drones Agrícolas</h3>
             
-            {/* Serie Bee */}
+            {/* Todos los drones agrícolas en una fila */}
             <div className="drone-series">
-              <h4 className="series-title">Serie Bee</h4>
               <div className="drones-showcase">
+                {/* H32X */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H32X</h3>
                   <div className="drone-image-container-new">
@@ -523,6 +523,7 @@ const Home = () => {
                   </div>
                 </div>
 
+                {/* H40X */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H40X</h3>
                   <div className="drone-image-container-new">
@@ -537,13 +538,8 @@ const Home = () => {
                     <button className="drone-details-btn-new">Ver detalles</button>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            {/* Serie Hercules */}
-            <div className="drone-series">
-              <h4 className="series-title">Serie Hercules</h4>
-              <div className="drones-showcase">
+                
+                {/* H120 */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H120</h3>
                   <div className="drone-image-container-new">
@@ -559,6 +555,7 @@ const Home = () => {
                   </div>
                 </div>
 
+                {/* H160 */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H160</h3>
                   <div className="drone-image-container-new">
@@ -573,13 +570,8 @@ const Home = () => {
                     <button className="drone-details-btn-new">Ver detalles</button>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            {/* Serie Roarer Agrícola */}
-            <div className="drone-series">
-              <h4 className="series-title">Serie Roarer</h4>
-              <div className="drones-showcase">
+                
+                {/* H200 */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H200</h3>
                   <div className="drone-image-container-new">
@@ -595,6 +587,7 @@ const Home = () => {
                   </div>
                 </div>
 
+                {/* H300 */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H300</h3>
                   <div className="drone-image-container-new">
@@ -617,10 +610,10 @@ const Home = () => {
           <div className={`drone-category ${activeTab === 'industriales' ? 'visible' : 'hidden'}`}>
             <h3 className="category-title">Drones Industriales</h3>
             
-            {/* Serie Roarer Industrial */}
+            {/* Todos los drones industriales en una fila */}
             <div className="drone-series">
-              <h4 className="series-title">Serie Roarer (Alta Carga)</h4>
               <div className="drones-showcase">
+                {/* H200 Extinción */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H200 Extinción</h3>
                   <div className="drone-image-container-new">
@@ -636,6 +629,7 @@ const Home = () => {
                   </div>
                 </div>
 
+                {/* H200 Transporte */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H200 Transporte</h3>
                   <div className="drone-image-container-new">
@@ -650,13 +644,8 @@ const Home = () => {
                     <button className="drone-details-btn-new">Ver detalles</button>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            {/* Serie Odin */}
-            <div className="drone-series">
-              <h4 className="series-title">Serie Odin (Larga Duración)</h4>
-              <div className="drones-showcase">
+                
+                {/* X491 */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">X491</h3>
                   <div className="drone-image-container-new">
@@ -671,6 +660,7 @@ const Home = () => {
                   </div>
                 </div>
 
+                {/* X441 */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">X441</h3>
                   <div className="drone-image-container-new">
@@ -684,13 +674,8 @@ const Home = () => {
                     <button className="drone-details-btn-new">Ver detalles</button>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            {/* Otras Series */}
-            <div className="drone-series">
-              <h4 className="series-title">Otras Series</h4>
-              <div className="drones-showcase">
+                
+                {/* Sentinel V13-5 */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">Sentinel V13-5</h3>
                   <div className="drone-image-container-new">
@@ -706,6 +691,7 @@ const Home = () => {
                   </div>
                 </div>
 
+                {/* Cavalry H50L-2 */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">Cavalry H50L-2</h3>
                   <div className="drone-image-container-new">
@@ -723,11 +709,11 @@ const Home = () => {
               </div>
             </div>
             
-            {/* Serie Cavalry */}
+            {/* Séptimo drone centrado debajo */}
             <div className="drone-series">
-              <h4 className="series-title">Serie Cavalry</h4>
-              <div className="drones-showcase">
-                <div className="drone-card-new">
+              <div className="drones-showcase-single">
+                {/* H60-4 */}
+                <div className="drone-card-new drone-card-centered">
                   <h3 className="drone-title-new">H60-4</h3>
                   <div className="drone-image-container-new">
                     <img src="/Dron.png" alt="H60-4" className="drone-image-new" />
