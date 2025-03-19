@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
+import '../styles/temp-fix.css'; // Importar estilos temporales para corregir el filtro oscuro
 
 const Home = () => {
   // Referencias para animaciones de scroll
@@ -374,80 +375,159 @@ const Home = () => {
           <div className="slide-divider"></div>
           <p className="section-description">Ofrecemos una amplia variedad de drones para diferentes aplicaciones, adaptados a las necesidades específicas de cada sector.</p>
           
-          <div className="drones-grid">
-            <div className="drone-card" data-delay="0">
-              <img src="/Dron.png" alt="Drone Agrícola" className="drone-image" />
-              <div className="drone-info">
-                <h3>Drone Agrícola XF-200</h3>
-                <div className="drone-divider"></div>
-                <p>Drone especializado para fumigación agrícola con tanque de 20L y autonomía de 30 minutos. Ideal para cultivos extensos.</p>
-                <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 30 min</span>
-                  <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 20L</span>
-                  <span className="spec-tag"><i className="fas fa-broadcast-tower"></i> Alcance: 2km</span>
+          {/* Drones Agrícolas */}
+          <div className="drone-category">
+            <h3 className="category-title">Drones Agrícolas</h3>
+            <div className="category-divider"></div>
+            
+            {/* Serie Bee */}
+            <div className="drone-series">
+              <h4 className="series-title">Serie Bee</h4>
+              <div className="drones-grid">
+                <div className="drone-card">
+                  <div className="drone-image-container">
+                    <img src="/Dron.png" alt="Drone H32X" className="drone-image" />
+                    <span className="drone-badge">Compacto</span>
+                  </div>
+                  <div className="drone-info">
+                    <h3 className="drone-title">H32X</h3>
+                    <div className="drone-divider"></div>
+                    <p className="drone-description">Diseñado para campos pequeños, con capacidad de pulverización de 16L, ofrece fiabilidad y eficiencia en un formato compacto.</p>
+                    <div className="drone-specs">
+                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 16L</span>
+                      <span className="spec-tag"><i className="fas fa-leaf"></i> Uso: Campos pequeños</span>
+                      <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 20min</span>
+                    </div>
+                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
+                  </div>
                 </div>
-                <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-weight-hanging"></i> Peso: 10kg</span>
-                  <span className="spec-tag"><i className="fas fa-wind"></i> Resistencia al viento: 28km/h</span>
+                
+                <div className="drone-card">
+                  <div className="drone-image-container">
+                    <img src="/Dron.png" alt="Drone H40X" className="drone-image" />
+                    <span className="drone-badge">Versátil</span>
+                  </div>
+                  <div className="drone-info">
+                    <h3 className="drone-title">H40X</h3>
+                    <div className="drone-divider"></div>
+                    <p className="drone-description">Ofrece un tanque de pulverización de 20L para cubrir campos más grandes, siendo una herramienta versátil para diversas aplicaciones agrícolas.</p>
+                    <div className="drone-specs">
+                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 20L</span>
+                      <span className="spec-tag"><i className="fas fa-leaf"></i> Uso: Campos medianos</span>
+                      <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 25min</span>
+                    </div>
+                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
+                  </div>
                 </div>
-                <button className="drone-details-btn">Ver detalles</button>
               </div>
             </div>
             
-            <div className="drone-card" data-delay="200">
-              <img src="/Dron.png" alt="Drone Industrial" className="drone-image" />
-              <div className="drone-info">
-                <h3>Drone Industrial DI-500</h3>
-                <div className="drone-divider"></div>
-                <p>Diseñado para aplicaciones industriales con resistencia a condiciones adversas. Perfecto para inspecciones en entornos complejos.</p>
-                <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 45 min</span>
-                  <span className="spec-tag"><i className="fas fa-weight-hanging"></i> Carga útil: 5kg</span>
-                  <span className="spec-tag"><i className="fas fa-shield-alt"></i> Protección: IP65</span>
+            {/* Serie Hercules */}
+            <div className="drone-series">
+              <h4 className="series-title">Serie Hercules</h4>
+              <div className="drones-grid">
+                <div className="drone-card">
+                  <div className="drone-image-container">
+                    <img src="/Dron.png" alt="Drone H120" className="drone-image" />
+                    <span className="drone-badge">Alta capacidad</span>
+                  </div>
+                  <div className="drone-info">
+                    <h3 className="drone-title">H120</h3>
+                    <div className="drone-divider"></div>
+                    <p className="drone-description">El Hercules H120 gestiona eficientemente campos grandes con un tanque de pulverización de 52L y una capacidad de dispersión de 60kg, reduciendo significativamente el tiempo y los costos de mano de obra.</p>
+                    <div className="drone-specs">
+                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 52L</span>
+                      <span className="spec-tag"><i className="fas fa-weight-hanging"></i> Dispersión: 60kg</span>
+                      <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 30min</span>
+                    </div>
+                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
+                  </div>
                 </div>
-                <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-temperature-high"></i> Rango térmico: -20°C a 50°C</span>
-                  <span className="spec-tag"><i className="fas fa-broadcast-tower"></i> Alcance: 5km</span>
+                
+                <div className="drone-card">
+                  <div className="drone-image-container">
+                    <img src="/Dron.png" alt="Drone H160" className="drone-image" />
+                    <span className="drone-badge">Premium</span>
+                  </div>
+                  <div className="drone-info">
+                    <h3 className="drone-title">H160</h3>
+                    <div className="drone-divider"></div>
+                    <p className="drone-description">El H160 es el buque insignia de la serie Hercules. Con una capacidad de pulverización de 72L~82L, ofrece la solución definitiva para la gestión extensiva de cultivos.</p>
+                    <div className="drone-specs">
+                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 72L~82L</span>
+                      <span className="spec-tag"><i className="fas fa-leaf"></i> Uso: Gestión extensiva</span>
+                      <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 35min</span>
+                    </div>
+                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
+                  </div>
                 </div>
-                <button className="drone-details-btn">Ver detalles</button>
               </div>
             </div>
             
-            <div className="drone-card" data-delay="400">
-              <img src="/Dron.png" alt="Drone Inspección" className="drone-image" />
-              <div className="drone-info">
-                <h3>Drone Inspección IS-100</h3>
-                <div className="drone-divider"></div>
-                <p>Equipado con cámara 4K y sensores térmicos para inspecciones detalladas. Ideal para inspecciones técnicas de precisión.</p>
-                <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-camera"></i> Cámara: 4K HDR</span>
-                  <span className="spec-tag"><i className="fas fa-search-plus"></i> Zoom: 30x óptico</span>
-                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 35 min</span>
+            {/* Serie Roarer */}
+            <div className="drone-series">
+              <h4 className="series-title">Serie Roarer</h4>
+              <div className="drones-grid">
+                <div className="drone-card">
+                  <div className="drone-image-container">
+                    <img src="/Dron.png" alt="Drone H200" className="drone-image" />
+                  </div>
+                  <div className="drone-info">
+                    <h3 className="drone-title">H200 Agrícola/Transporte</h3>
+                    <div className="drone-divider"></div>
+                    <p className="drone-description">Líder del mercado con su capacidad sin igual, el Roarer H200 redefine las operaciones a gran escala con su capacidad de pulverización de 92L y carga útil de 100kg, sirviendo como el dron todo en uno definitivo para pulverización y transporte.</p>
+                    <div className="drone-specs">
+                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 92L</span>
+                      <span className="spec-tag"><i className="fas fa-weight-hanging"></i> Carga útil: 100kg</span>
+                    </div>
+                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
+                  </div>
                 </div>
-                <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-microchip"></i> Sensores: RGB + Térmico</span>
-                  <span className="spec-tag"><i className="fas fa-broadcast-tower"></i> Alcance: 3km</span>
+                
+                <div className="drone-card">
+                  <div className="drone-image-container">
+                    <img src="/Dron.png" alt="Drone H300" className="drone-image" />
+                  </div>
+                  <div className="drone-info">
+                    <h3 className="drone-title">H300 Agrícola/Transporte</h3>
+                    <div className="drone-divider"></div>
+                    <p className="drone-description">El dron agrícola H300 tiene un diseño de plegado hacia arriba, un tanque de 95L y sensores de carga de grado aeroespacial para mayor precisión. Cuenta con un medidor de flujo de ondas milimétricas y soporta hasta 800A de potencia con disipación de calor.</p>
+                    <div className="drone-specs">
+                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 95L</span>
+                      <span className="spec-tag"><i className="fas fa-bolt"></i> Potencia: 800A</span>
+                      <span className="spec-tag"><i className="fas fa-microchip"></i> Sensores: Grado aeroespacial</span>
+                    </div>
+                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
+                  </div>
                 </div>
-                <button className="drone-details-btn">Ver detalles</button>
               </div>
             </div>
+          </div>
+          
+          {/* Drones Industriales */}
+          <div className="drone-category">
+            <h3 className="category-title">Drones Industriales</h3>
+            <div className="category-divider"></div>
             
-            <div className="drone-card" data-delay="600">
-              <img src="/Dron.png" alt="Drone Fotogrametría" className="drone-image" />
-              <div className="drone-info">
-                <h3>Drone Fotogrametría FM-300</h3>
-                <div className="drone-divider"></div>
-                <p>Especializado en captura de imágenes para fotogrametría y modelado 3D con precisión centimétrica.</p>
-                <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-camera"></i> Cámara: 42MP</span>
-                  <span className="spec-tag"><i className="fas fa-ruler-combined"></i> Precisión: 2cm/px</span>
-                  <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 40 min</span>
+            {/* Serie Roarer (Alta Carga) */}
+            <div className="drone-series">
+              <h4 className="series-title">Serie Roarer (Alta Carga)</h4>
+              <div className="drones-grid">
+                <div className="drone-card">
+                  <div className="drone-image-container">
+                    <img src="/Dron.png" alt="Drone H200 Extinción" className="drone-image" />
+                  </div>
+                  <div className="drone-info">
+                    <h3 className="drone-title">H200 - Extinción de Incendios</h3>
+                    <div className="drone-divider"></div>
+                    <p className="drone-description">Especializado en la extinción de incendios, este dron de alta capacidad ofrece soluciones eficientes para situaciones de emergencia en entornos de difícil acceso.</p>
+                    <div className="drone-specs">
+                      <span className="spec-tag"><i className="fas fa-fire-extinguisher"></i> Uso: Extinción de incendios</span>
+                      <span className="spec-tag"><i className="fas fa-weight-hanging"></i> Alta capacidad</span>
+                    </div>
+                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
+                  </div>
                 </div>
-                <div className="drone-specs">
-                  <span className="spec-tag"><i className="fas fa-satellite"></i> RTK/PPK: Integrado</span>
-                  <span className="spec-tag"><i className="fas fa-memory"></i> Almacenamiento: 256GB</span>
-                </div>
-                <button className="drone-details-btn">Ver detalles</button>
               </div>
             </div>
           </div>
