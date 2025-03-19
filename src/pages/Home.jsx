@@ -3,6 +3,43 @@ import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 import '../styles/temp-fix.css'; // Importar estilos temporales para corregir el filtro oscuro
 
+// Componente para tarjetas de drones
+const DroneCard = ({ image, title, description, specs, badge }) => (
+  <div className="drone-card">
+    <div className="drone-image-container">
+      <img src={image} alt={title} className="drone-image" />
+      {badge && <span className="drone-badge">{badge}</span>}
+    </div>
+    <div className="drone-info">
+      <h3 className="drone-title">{title}</h3>
+      <div className="drone-divider"></div>
+      <p className="drone-description">{description}</p>
+      <div className="drone-specs">
+        {specs.map((spec, index) => (
+          <span key={index} className="spec-tag">{spec}</span>
+        ))}
+      </div>
+      <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
+);
+
+// Componente para slides de servicios
+const ServiceSlide = ({ id, image, title, description, link }) => (
+  <div className="slide" id={`slide-${id}`}>
+    <div className="slide-image">
+      <img src={image} alt={`Servicio de ${title}`} />
+      <div className="slide-overlay"></div>
+      <div className="slide-text">
+        <h3>{title}</h3>
+        <div className="slide-divider"></div>
+        <p>{description}</p>
+        <a href={link} className="btn-saber-mas">Saber más →</a>
+      </div>
+    </div>
+  </div>
+);
+
 const Home = () => {
   // Referencias para animaciones de scroll
   const servicesRef = useRef(null);
@@ -14,6 +51,133 @@ const Home = () => {
   // Estado para controlar el slider
   const [currentSlide, setCurrentSlide] = useState(1);
   const slideInterval = useRef(null);
+  
+  // Datos de servicios para el slider
+  const serviceSlides = [
+    {
+      id: 1,
+      title: "Industria",
+      image: "/industria.jpg",
+      description: "Soluciones industriales con tecnología de drones para optimizar procesos y seguridad en entornos industriales.",
+      link: "/industrial"
+    },
+    {
+      id: 2,
+      title: "Televigilancia",
+      image: "/televigilancia.jpg",
+      description: "Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.",
+      link: "/televigilancia"
+    },
+    {
+      id: 3,
+      title: "Energía",
+      image: "/energia.jpg",
+      description: "Aplicación al área de energías renovables y convencionales. Revisar las instalaciones, granjas fotovoltaicas, torres de alta tensión, entre otras.",
+      link: "/energia"
+    },
+    {
+      id: 4,
+      title: "Capacitación",
+      image: "/capacitacion.jpg",
+      description: "Programas de formación especializada para pilotos de drones y personal técnico.",
+      link: "/capacitacion"
+    },
+    {
+      id: 5,
+      title: "Agrícola",
+      image: "/agricola.jpg",
+      description: "Aplicación precisa de productos fitosanitarios con drones especializados para cultivos.",
+      link: "/agricola"
+    }
+  ];
+  
+  // Datos de drones agrícolas
+  const agriculturalDrones = {
+    bee: [
+      {
+        title: "H32X",
+        image: "/Dron.png",
+        description: "Diseñado para campos pequeños, con capacidad de pulverización de 16L, ofrece fiabilidad y eficiencia en un formato compacto.",
+        specs: [
+          <><i className="fas fa-tint"></i> Capacidad: 16L</>,
+          <><i className="fas fa-leaf"></i> Uso: Campos pequeños</>,
+          <><i className="fas fa-battery-three-quarters"></i> Autonomía: 20min</>
+        ],
+        badge: "Compacto"
+      },
+      {
+        title: "H40X",
+        image: "/Dron.png",
+        description: "Ofrece un tanque de pulverización de 20L para cubrir campos más grandes, siendo una herramienta versátil para diversas aplicaciones agrícolas.",
+        specs: [
+          <><i className="fas fa-tint"></i> Capacidad: 20L</>,
+          <><i className="fas fa-leaf"></i> Uso: Campos medianos</>,
+          <><i className="fas fa-battery-three-quarters"></i> Autonomía: 25min</>
+        ],
+        badge: "Versátil"
+      }
+    ],
+    hercules: [
+      {
+        title: "H120",
+        image: "/Dron.png",
+        description: "El Hercules H120 gestiona eficientemente campos grandes con un tanque de pulverización de 52L y una capacidad de dispersión de 60kg, reduciendo significativamente el tiempo y los costos de mano de obra.",
+        specs: [
+          <><i className="fas fa-tint"></i> Capacidad: 52L</>,
+          <><i className="fas fa-weight-hanging"></i> Dispersión: 60kg</>,
+          <><i className="fas fa-battery-three-quarters"></i> Autonomía: 30min</>
+        ],
+        badge: "Alta capacidad"
+      },
+      {
+        title: "H160",
+        image: "/Dron.png",
+        description: "El H160 es el buque insignia de la serie Hercules. Con una capacidad de pulverización de 72L~82L, ofrece la solución definitiva para la gestión extensiva de cultivos.",
+        specs: [
+          <><i className="fas fa-tint"></i> Capacidad: 72L~82L</>,
+          <><i className="fas fa-leaf"></i> Uso: Gestión extensiva</>,
+          <><i className="fas fa-battery-three-quarters"></i> Autonomía: 35min</>
+        ],
+        badge: "Premium"
+      }
+    ],
+    roarer: [
+      {
+        title: "H200 Agrícola/Transporte",
+        image: "/Dron.png",
+        description: "Líder del mercado con su capacidad sin igual, el Roarer H200 redefine las operaciones a gran escala con su capacidad de pulverización de 92L y carga útil de 100kg, sirviendo como el dron todo en uno definitivo para pulverización y transporte.",
+        specs: [
+          <><i className="fas fa-tint"></i> Capacidad: 92L</>,
+          <><i className="fas fa-weight-hanging"></i> Carga útil: 100kg</>
+        ]
+      },
+      {
+        title: "H300 Agrícola/Transporte",
+        image: "/Dron.png",
+        description: "El dron agrícola H300 tiene un diseño de plegado hacia arriba, un tanque de 95L y sensores de carga de grado aeroespacial para mayor precisión. Cuenta con un medidor de flujo de ondas milimétricas y soporta hasta 800A de potencia con disipación de calor.",
+        specs: [
+          <><i className="fas fa-tint"></i> Capacidad: 95L</>,
+          <><i className="fas fa-bolt"></i> Potencia: 800A</>,
+          <><i className="fas fa-microchip"></i> Sensores: Grado aeroespacial</>
+        ]
+      }
+    ]
+  };
+  
+  // Datos de drones industriales
+  const industrialDrones = {
+    roarer: [
+      {
+        title: "H200 - Extinción de Incendios",
+        image: "/Dron.png",
+        description: "Especializado en la extinción de incendios, este dron de alta capacidad ofrece soluciones eficientes para situaciones de emergencia en entornos de difícil acceso.",
+        specs: [
+          <><i className="fas fa-fire-extinguisher"></i> Uso: Extinción de incendios</>,
+          <><i className="fas fa-weight-hanging"></i> Alta capacidad</>
+        ]
+      }
+    ]
+  };
 
   // Función para cambiar de slide
   const goToSlide = (slideNumber) => {
@@ -66,12 +230,12 @@ const Home = () => {
   
   // Función para ir al siguiente slide
   const nextSlide = () => {
-    const totalSlides = 5; // Total de slides
+    const totalSlides = serviceSlides.length;
     const nextSlideNumber = currentSlide >= totalSlides ? 1 : currentSlide + 1;
     goToSlide(nextSlideNumber);
   };
   
-  // Iniciar el slider automático
+  // Efecto para inicializar el slider y configurar el intervalo
   useEffect(() => {
     // Configurar el intervalo para cambiar automáticamente los slides
     slideInterval.current = setInterval(() => {
@@ -99,6 +263,7 @@ const Home = () => {
     };
   }, [currentSlide]); // Dependencia del estado currentSlide
 
+  // Efecto para cargar la API de YouTube
   useEffect(() => {
     // Cargar la API de YouTube
     const tag = document.createElement('script');
@@ -150,8 +315,9 @@ const Home = () => {
     };
   }, []);
 
-  // Función para manejar las animaciones basadas en scroll
+  // Efecto combinado para manejar animaciones y efectos de scroll
   useEffect(() => {
+    // Función para manejar las animaciones basadas en scroll
     const handleScrollAnimation = () => {
       const sections = [
         { ref: servicesRef, className: 'animate-services' },
@@ -172,6 +338,17 @@ const Home = () => {
       });
     };
 
+    // Función para manejar el efecto parallax
+    const handleParallax = () => {
+      const scrollPosition = window.scrollY;
+      const heroSection = document.querySelector('.hero');
+      
+      if (heroSection) {
+        // Aplicar el efecto de parallax al fondo
+        heroSection.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+      }
+    };
+
     // Observador de intersección para animaciones más eficientes
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -186,33 +363,20 @@ const Home = () => {
       observer.observe(el);
     });
 
+    // Función combinada para manejar todos los efectos de scroll
+    const handleScroll = () => {
+      handleScrollAnimation();
+      handleParallax();
+    };
+
     // Añadir el listener para el scroll
-    window.addEventListener('scroll', handleScrollAnimation);
+    window.addEventListener('scroll', handleScroll);
     // Ejecutar una vez al cargar para elementos ya visibles
-    handleScrollAnimation();
+    handleScroll();
 
     return () => {
-      window.removeEventListener('scroll', handleScrollAnimation);
+      window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
-    };
-  }, []);
-
-  // Efecto de parallax para la sección hero
-  useEffect(() => {
-    const handleParallax = () => {
-      const scrollPosition = window.scrollY;
-      const heroSection = document.querySelector('.hero');
-      
-      if (heroSection) {
-        // Aplicar el efecto de parallax al fondo
-        heroSection.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
-      }
-    };
-
-    window.addEventListener('scroll', handleParallax);
-    
-    return () => {
-      window.removeEventListener('scroll', handleParallax);
     };
   }, []);
 
@@ -267,89 +431,33 @@ const Home = () => {
       <section className="services" ref={servicesRef} id="servicios">
         <div className="container">
           <h2 className="section-title">Nuestros Servicios</h2>
+          <div className="slide-divider"></div>
           
           <div className="services-slider">
             <div className="slider-container">
               {/* Slides */}
               <div className="slides-container">
-                {/* INDUSTRIA Slide */}
-                <div className="slide" id="slide-1">
-                  <div className="slide-image">
-                    <img src="/industria.jpg" alt="Servicio de Industria" />
-                    <div className="slide-overlay"></div>
-                    <div className="slide-text">
-                      <h3>Industria</h3>
-                      <div className="slide-divider"></div>
-                      <p>Soluciones industriales con tecnología de drones para optimizar procesos y seguridad en entornos industriales.</p>
-                      <a href="/industrial" className="btn-saber-mas">Saber más →</a>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* TELEVIGILANCIA Slide */}
-                <div className="slide" id="slide-2">
-                  <div className="slide-image">
-                    <img src="/televigilancia.jpg" alt="Servicio de Televigilancia" />
-                    <div className="slide-overlay"></div>
-                    <div className="slide-text">
-                      <h3>Televigilancia</h3>
-                      <div className="slide-divider"></div>
-                      <p>Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.</p>
-                      <a href="/televigilancia" className="btn-saber-mas">Saber más →</a>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* ENERGÍA Slide */}
-                <div className="slide" id="slide-3">
-                  <div className="slide-image">
-                    <img src="/energia.jpg" alt="Servicio de Energía" />
-                    <div className="slide-overlay"></div>
-                    <div className="slide-text">
-                      <h3>Energía</h3>
-                      <div className="slide-divider"></div>
-                      <p>Aplicación al área de energías renovables y convencionales. Revisar las instalaciones, granjas fotovoltaicas, torres de alta tensión, entre otras.</p>
-                      <a href="/energia" className="btn-saber-mas">Saber más →</a>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* CAPACITACIÓN Slide */}
-                <div className="slide" id="slide-4">
-                  <div className="slide-image">
-                    <img src="/capacitacion.jpg" alt="Servicio de Capacitación" />
-                    <div className="slide-overlay"></div>
-                    <div className="slide-text">
-                      <h3>Capacitación</h3>
-                      <div className="slide-divider"></div>
-                      <p>Programas de formación especializada para pilotos de drones y personal técnico.</p>
-                      <a href="/capacitacion" className="btn-saber-mas">Saber más →</a>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* AGRÍCOLA Slide */}
-                <div className="slide" id="slide-5">
-                  <div className="slide-image">
-                    <img src="/agricola.jpg" alt="Servicio Agrícola" />
-                    <div className="slide-overlay"></div>
-                    <div className="slide-text">
-                      <h3>Agrícola</h3>
-                      <div className="slide-divider"></div>
-                      <p>Aplicación precisa de productos fitosanitarios con drones especializados para cultivos.</p>
-                      <a href="/agricola" className="btn-saber-mas">Saber más →</a>
-                    </div>
-                  </div>
-                </div>
+                {serviceSlides.map(slide => (
+                  <ServiceSlide 
+                    key={slide.id}
+                    id={slide.id}
+                    title={slide.title}
+                    image={slide.image}
+                    description={slide.description}
+                    link={slide.link}
+                  />
+                ))}
               </div>
               
               {/* Slider Navigation Dots */}
               <div className="slider-dots">
-                <span className="dot active" data-slide="1"></span>
-                <span className="dot" data-slide="2"></span>
-                <span className="dot" data-slide="3"></span>
-                <span className="dot" data-slide="4"></span>
-                <span className="dot" data-slide="5"></span>
+                {serviceSlides.map(slide => (
+                  <span 
+                    key={slide.id}
+                    className={`dot ${currentSlide === slide.id ? 'active' : ''}`} 
+                    data-slide={slide.id}
+                  ></span>
+                ))}
               </div>
             </div>
           </div>
@@ -384,41 +492,16 @@ const Home = () => {
             <div className="drone-series">
               <h4 className="series-title">Serie Bee</h4>
               <div className="drones-grid">
-                <div className="drone-card">
-                  <div className="drone-image-container">
-                    <img src="/Dron.png" alt="Drone H32X" className="drone-image" />
-                    <span className="drone-badge">Compacto</span>
-                  </div>
-                  <div className="drone-info">
-                    <h3 className="drone-title">H32X</h3>
-                    <div className="drone-divider"></div>
-                    <p className="drone-description">Diseñado para campos pequeños, con capacidad de pulverización de 16L, ofrece fiabilidad y eficiencia en un formato compacto.</p>
-                    <div className="drone-specs">
-                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 16L</span>
-                      <span className="spec-tag"><i className="fas fa-leaf"></i> Uso: Campos pequeños</span>
-                      <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 20min</span>
-                    </div>
-                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
-                  </div>
-                </div>
-                
-                <div className="drone-card">
-                  <div className="drone-image-container">
-                    <img src="/Dron.png" alt="Drone H40X" className="drone-image" />
-                    <span className="drone-badge">Versátil</span>
-                  </div>
-                  <div className="drone-info">
-                    <h3 className="drone-title">H40X</h3>
-                    <div className="drone-divider"></div>
-                    <p className="drone-description">Ofrece un tanque de pulverización de 20L para cubrir campos más grandes, siendo una herramienta versátil para diversas aplicaciones agrícolas.</p>
-                    <div className="drone-specs">
-                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 20L</span>
-                      <span className="spec-tag"><i className="fas fa-leaf"></i> Uso: Campos medianos</span>
-                      <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 25min</span>
-                    </div>
-                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
-                  </div>
-                </div>
+                {agriculturalDrones.bee.map((drone, index) => (
+                  <DroneCard 
+                    key={index}
+                    image={drone.image}
+                    title={drone.title}
+                    description={drone.description}
+                    specs={drone.specs}
+                    badge={drone.badge}
+                  />
+                ))}
               </div>
             </div>
             
@@ -426,41 +509,16 @@ const Home = () => {
             <div className="drone-series">
               <h4 className="series-title">Serie Hercules</h4>
               <div className="drones-grid">
-                <div className="drone-card">
-                  <div className="drone-image-container">
-                    <img src="/Dron.png" alt="Drone H120" className="drone-image" />
-                    <span className="drone-badge">Alta capacidad</span>
-                  </div>
-                  <div className="drone-info">
-                    <h3 className="drone-title">H120</h3>
-                    <div className="drone-divider"></div>
-                    <p className="drone-description">El Hercules H120 gestiona eficientemente campos grandes con un tanque de pulverización de 52L y una capacidad de dispersión de 60kg, reduciendo significativamente el tiempo y los costos de mano de obra.</p>
-                    <div className="drone-specs">
-                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 52L</span>
-                      <span className="spec-tag"><i className="fas fa-weight-hanging"></i> Dispersión: 60kg</span>
-                      <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 30min</span>
-                    </div>
-                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
-                  </div>
-                </div>
-                
-                <div className="drone-card">
-                  <div className="drone-image-container">
-                    <img src="/Dron.png" alt="Drone H160" className="drone-image" />
-                    <span className="drone-badge">Premium</span>
-                  </div>
-                  <div className="drone-info">
-                    <h3 className="drone-title">H160</h3>
-                    <div className="drone-divider"></div>
-                    <p className="drone-description">El H160 es el buque insignia de la serie Hercules. Con una capacidad de pulverización de 72L~82L, ofrece la solución definitiva para la gestión extensiva de cultivos.</p>
-                    <div className="drone-specs">
-                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 72L~82L</span>
-                      <span className="spec-tag"><i className="fas fa-leaf"></i> Uso: Gestión extensiva</span>
-                      <span className="spec-tag"><i className="fas fa-battery-three-quarters"></i> Autonomía: 35min</span>
-                    </div>
-                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
-                  </div>
-                </div>
+                {agriculturalDrones.hercules.map((drone, index) => (
+                  <DroneCard 
+                    key={index}
+                    image={drone.image}
+                    title={drone.title}
+                    description={drone.description}
+                    specs={drone.specs}
+                    badge={drone.badge}
+                  />
+                ))}
               </div>
             </div>
             
@@ -468,38 +526,16 @@ const Home = () => {
             <div className="drone-series">
               <h4 className="series-title">Serie Roarer</h4>
               <div className="drones-grid">
-                <div className="drone-card">
-                  <div className="drone-image-container">
-                    <img src="/Dron.png" alt="Drone H200" className="drone-image" />
-                  </div>
-                  <div className="drone-info">
-                    <h3 className="drone-title">H200 Agrícola/Transporte</h3>
-                    <div className="drone-divider"></div>
-                    <p className="drone-description">Líder del mercado con su capacidad sin igual, el Roarer H200 redefine las operaciones a gran escala con su capacidad de pulverización de 92L y carga útil de 100kg, sirviendo como el dron todo en uno definitivo para pulverización y transporte.</p>
-                    <div className="drone-specs">
-                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 92L</span>
-                      <span className="spec-tag"><i className="fas fa-weight-hanging"></i> Carga útil: 100kg</span>
-                    </div>
-                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
-                  </div>
-                </div>
-                
-                <div className="drone-card">
-                  <div className="drone-image-container">
-                    <img src="/Dron.png" alt="Drone H300" className="drone-image" />
-                  </div>
-                  <div className="drone-info">
-                    <h3 className="drone-title">H300 Agrícola/Transporte</h3>
-                    <div className="drone-divider"></div>
-                    <p className="drone-description">El dron agrícola H300 tiene un diseño de plegado hacia arriba, un tanque de 95L y sensores de carga de grado aeroespacial para mayor precisión. Cuenta con un medidor de flujo de ondas milimétricas y soporta hasta 800A de potencia con disipación de calor.</p>
-                    <div className="drone-specs">
-                      <span className="spec-tag"><i className="fas fa-tint"></i> Capacidad: 95L</span>
-                      <span className="spec-tag"><i className="fas fa-bolt"></i> Potencia: 800A</span>
-                      <span className="spec-tag"><i className="fas fa-microchip"></i> Sensores: Grado aeroespacial</span>
-                    </div>
-                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
-                  </div>
-                </div>
+                {agriculturalDrones.roarer.map((drone, index) => (
+                  <DroneCard 
+                    key={index}
+                    image={drone.image}
+                    title={drone.title}
+                    description={drone.description}
+                    specs={drone.specs}
+                    badge={drone.badge}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -513,21 +549,16 @@ const Home = () => {
             <div className="drone-series">
               <h4 className="series-title">Serie Roarer (Alta Carga)</h4>
               <div className="drones-grid">
-                <div className="drone-card">
-                  <div className="drone-image-container">
-                    <img src="/Dron.png" alt="Drone H200 Extinción" className="drone-image" />
-                  </div>
-                  <div className="drone-info">
-                    <h3 className="drone-title">H200 - Extinción de Incendios</h3>
-                    <div className="drone-divider"></div>
-                    <p className="drone-description">Especializado en la extinción de incendios, este dron de alta capacidad ofrece soluciones eficientes para situaciones de emergencia en entornos de difícil acceso.</p>
-                    <div className="drone-specs">
-                      <span className="spec-tag"><i className="fas fa-fire-extinguisher"></i> Uso: Extinción de incendios</span>
-                      <span className="spec-tag"><i className="fas fa-weight-hanging"></i> Alta capacidad</span>
-                    </div>
-                    <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
-                  </div>
-                </div>
+                {industrialDrones.roarer.map((drone, index) => (
+                  <DroneCard 
+                    key={index}
+                    image={drone.image}
+                    title={drone.title}
+                    description={drone.description}
+                    specs={drone.specs}
+                    badge={drone.badge}
+                  />
+                ))}
               </div>
             </div>
           </div>
