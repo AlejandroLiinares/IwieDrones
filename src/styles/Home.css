@@ -390,10 +390,12 @@ html, body {
 }
 
 .slide-image {
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center; /* Centrar verticalmente el contenido */
 }
 
 .slide-image img {
@@ -413,12 +415,17 @@ html, body {
 
 .slide-text {
   position: absolute;
+  top: 0;
   bottom: 0;
   left: 0;
   width: 50%;
-  padding: 2rem 50px;
+  padding: 0 0 0 6%; /* Aplicar el mismo padding izquierdo del 6% */
   color: white;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrar verticalmente */
+  align-items: flex-start; /* Alinear a la izquierda */
 }
 
 .slide-text h3 {
@@ -427,6 +434,8 @@ html, body {
   margin-bottom: 15px;
   color: white;
   text-transform: uppercase;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .slide-divider {
@@ -434,6 +443,8 @@ html, body {
   height: 4px;
   background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
   margin: 0 0 25px;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .slide-text p {
@@ -441,7 +452,9 @@ html, body {
   line-height: 1.6;
   margin-bottom: 30px;
   color: rgba(255, 255, 255, 0.9);
-  max-width: 90%;
+  max-width: 80%;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .btn-saber-mas {
@@ -457,6 +470,8 @@ html, body {
   font-size: 0.9rem;
   letter-spacing: 1px;
   margin-top: 1rem;
+  margin-left: 0;
+  align-self: flex-start; /* Asegurar alineación con el texto */
 }
 
 .btn-saber-mas:hover {
@@ -673,7 +688,7 @@ html, body {
 
 /* About Section */
 .about-section {
-  padding: var(--spacing-3xl) var(--spacing-lg);
+  padding: 0;
   background-color: var(--background-light);
   position: relative;
   overflow: hidden;
@@ -681,8 +696,11 @@ html, body {
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
   background: url('/quienes-somos.jpg') no-repeat center center;
-  background-size: cover;
+  background-size: 120% auto;
   color: white;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
 }
 
 .about-section::before {
@@ -1185,30 +1203,70 @@ body {
 
 /* QUIÉNES SOMOS Section */
 .quienes-somos-container {
-  max-width: 100%;
-  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 0;
   position: relative;
   z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  min-height: 600px;
 }
 
 .quienes-somos-content {
   max-width: 100%;
   margin: 0;
   text-align: left;
-  padding: 50px 0;
+  padding-left: 6%;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .quienes-somos-content h2 {
   color: white;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: block;
+  line-height: 1.2;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.quienes-somos-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  margin: 15px 0 25px 0;
+  border-radius: var(--border-radius-sm);
+  display: block;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .quienes-somos-content p {
   color: white;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 80%;
+  display: block;
+  margin-left: 0;
+  padding-left: 0;
 }
 
-.quienes-somos-divider {
-  margin: 15px 0 25px 50px;
+.saber-mas-container {
+  display: block;
+  text-align: left;
+  padding-left: 0;
+  margin-left: 0;
 }
 
 .saber-mas-btn {
@@ -1222,6 +1280,9 @@ body {
   font-size: 0.9rem;
   transition: all 0.3s ease;
   text-transform: uppercase;
+  margin-top: 10px;
+  margin-left: 0;
+  align-self: flex-start;
 }
 
 .saber-mas-btn:hover {
