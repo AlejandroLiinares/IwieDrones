@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 
@@ -9,6 +9,92 @@ const Home = () => {
   const droneRef = useRef(null);
   const ctaRef = useRef(null);
   const playerRef = useRef(null);
+
+  // Estado para controlar el slider
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const slideInterval = useRef(null);
+
+  // Función para cambiar de slide
+  const goToSlide = (slideNumber) => {
+    // Ocultar todos los slides
+    const slides = document.querySelectorAll('.slide');
+    slides.forEach(slide => {
+      if (slide.style.opacity === '1') {
+        // Animación de salida para el slide actual
+        slide.style.opacity = '0';
+        slide.style.transform = 'scale(0.95)';
+      }
+    });
+    
+    // Mostrar el slide seleccionado
+    const selectedSlide = document.getElementById(`slide-${slideNumber}`);
+    if (selectedSlide) {
+      selectedSlide.style.display = 'block';
+      setTimeout(() => {
+        // Animación de entrada para el nuevo slide
+        selectedSlide.style.opacity = '1';
+        selectedSlide.style.transform = 'scale(1)';
+      }, 50);
+    }
+    
+    // Ocultar los slides no seleccionados después de la transición
+    setTimeout(() => {
+      slides.forEach(slide => {
+        if (slide.id !== `slide-${slideNumber}`) {
+          slide.style.display = 'none';
+        }
+      });
+    }, 1000);
+    
+    // Actualizar los dots de navegación
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => {
+      dot.classList.remove('active');
+    });
+    
+    const activeDot = document.querySelector(`.dot[data-slide="${slideNumber}"]`);
+    if (activeDot) {
+      activeDot.classList.add('active');
+    }
+    
+    // Actualizar el estado
+    setCurrentSlide(slideNumber);
+  };
+  
+  // Función para ir al siguiente slide
+  const nextSlide = () => {
+    const totalSlides = 5; // Total de slides
+    const nextSlideNumber = currentSlide >= totalSlides ? 1 : currentSlide + 1;
+    goToSlide(nextSlideNumber);
+  };
+  
+  // Iniciar el slider automático
+  useEffect(() => {
+    // Configurar el intervalo para cambiar automáticamente los slides
+    slideInterval.current = setInterval(() => {
+      nextSlide();
+    }, 5000); // Cambiar cada 5 segundos
+    
+    // Agregar event listeners para los dots de navegación
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const slideNumber = parseInt(dot.getAttribute('data-slide'));
+        goToSlide(slideNumber);
+        
+        // Reiniciar el intervalo cuando se hace clic en un dot
+        clearInterval(slideInterval.current);
+        slideInterval.current = setInterval(() => {
+          nextSlide();
+        }, 5000);
+      });
+    });
+    
+    return () => {
+      // Limpiar el intervalo cuando el componente se desmonta
+      clearInterval(slideInterval.current);
+    };
+  }, [currentSlide]); // Dependencia del estado currentSlide
 
   useEffect(() => {
     // Cargar la API de YouTube
@@ -174,101 +260,90 @@ const Home = () => {
       {/* Services Section */}
       <section className="services" ref={servicesRef} id="servicios">
         <div className="container">
-          <h2 className="section-title">Nuestros Servicios</h2>
-          <p className="section-description">Ofrecemos soluciones especializadas con tecnología de drones para diversos sectores</p>
+          <h2 className="section-title">NUESTROS SERVICIOS</h2>
           
-          <div className="services-carousel">
-            <div className="carousel-container">
-              <div className="carousel-track">
-                {/* INDUSTRIA */}
-                <div className="carousel-slide">
-                  <div className="service-image">
-                    <img src="/placeholder-industria.jpg" alt="Servicio de Industria" />
-                    <div className="service-overlay"></div>
-                    <div className="service-title">
+          <div className="services-slider">
+            <div className="slider-container">
+              {/* Slides */}
+              <div className="slides-container">
+                {/* INDUSTRIA Slide */}
+                <div className="slide" id="slide-1">
+                  <div className="slide-image">
+                    <img src="/industria.jpg" alt="Servicio de Industria" />
+                    <div className="slide-overlay"></div>
+                    <div className="slide-text">
                       <h3>INDUSTRIA</h3>
-                      <p>Soluciones industriales con tecnología de drones para optimizar procesos y seguridad.</p>
-                      <Link to="/industrial" className="service-link">SABER MÁS →</Link>
+                      <div className="slide-divider"></div>
+                      <p>Soluciones industriales con tecnología de drones para optimizar procesos y seguridad en entornos industriales.</p>
+                      <a href="/industrial" className="btn-saber-mas">SABER MÁS →</a>
                     </div>
                   </div>
                 </div>
                 
-                {/* TELEVIGILANCIA */}
-                <div className="carousel-slide">
-                  <div className="service-image">
-                    <img src="/placeholder-televigilancia.jpg" alt="Servicio de Televigilancia" />
-                    <div className="service-overlay"></div>
-                    <div className="service-title">
+                {/* TELEVIGILANCIA Slide */}
+                <div className="slide" id="slide-2">
+                  <div className="slide-image">
+                    <img src="/televigilancia.jpg" alt="Servicio de Televigilancia" />
+                    <div className="slide-overlay"></div>
+                    <div className="slide-text">
                       <h3>TELEVIGILANCIA</h3>
+                      <div className="slide-divider"></div>
                       <p>Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.</p>
-                      <Link to="/televigilancia" className="service-link">SABER MÁS →</Link>
+                      <a href="/televigilancia" className="btn-saber-mas">SABER MÁS →</a>
                     </div>
                   </div>
                 </div>
                 
-                {/* ENERGÍA */}
-                <div className="carousel-slide">
-                  <div className="service-image">
-                    <img src="/placeholder-energia.jpg" alt="Servicio de Energía" />
-                    <div className="service-overlay"></div>
-                    <div className="service-title">
+                {/* ENERGÍA Slide */}
+                <div className="slide" id="slide-3">
+                  <div className="slide-image">
+                    <img src="/energia.jpg" alt="Servicio de Energía" />
+                    <div className="slide-overlay"></div>
+                    <div className="slide-text">
                       <h3>ENERGÍA</h3>
-                      <p>Inspección y mantenimiento de infraestructuras energéticas con drones especializados.</p>
-                      <Link to="/energia" className="service-link">SABER MÁS →</Link>
+                      <div className="slide-divider"></div>
+                      <p>Aplicación al área de energías renovables y convencionales. Revisar las instalaciones, granjas fotovoltaicas, torres de alta tensión, entre otras.</p>
+                      <a href="/energia" className="btn-saber-mas">SABER MÁS →</a>
                     </div>
                   </div>
                 </div>
                 
-                {/* CAPACITACIÓN */}
-                <div className="carousel-slide">
-                  <div className="service-image">
-                    <img src="/placeholder-capacitacion.jpg" alt="Servicio de Capacitación" />
-                    <div className="service-overlay"></div>
-                    <div className="service-title">
+                {/* CAPACITACIÓN Slide */}
+                <div className="slide" id="slide-4">
+                  <div className="slide-image">
+                    <img src="/capacitacion.jpg" alt="Servicio de Capacitación" />
+                    <div className="slide-overlay"></div>
+                    <div className="slide-text">
                       <h3>CAPACITACIÓN</h3>
+                      <div className="slide-divider"></div>
                       <p>Programas de formación especializada para pilotos de drones y personal técnico.</p>
-                      <Link to="/capacitacion" className="service-link">SABER MÁS →</Link>
+                      <a href="/capacitacion" className="btn-saber-mas">SABER MÁS →</a>
                     </div>
                   </div>
                 </div>
                 
-                {/* AGRÍCOLA */}
-                <div className="carousel-slide">
-                  <div className="service-image">
-                    <img src="/placeholder-agricola.jpg" alt="Servicio Agrícola" />
-                    <div className="service-overlay"></div>
-                    <div className="service-title">
+                {/* AGRÍCOLA Slide */}
+                <div className="slide" id="slide-5">
+                  <div className="slide-image">
+                    <img src="/agricola.jpg" alt="Servicio Agrícola" />
+                    <div className="slide-overlay"></div>
+                    <div className="slide-text">
                       <h3>AGRÍCOLA</h3>
+                      <div className="slide-divider"></div>
                       <p>Aplicación precisa de productos fitosanitarios con drones especializados para cultivos.</p>
-                      <Link to="/agricola" className="service-link">SABER MÁS →</Link>
+                      <a href="/agricola" className="btn-saber-mas">SABER MÁS →</a>
                     </div>
                   </div>
                 </div>
-                
-                {/* Duplicar los primeros slides para crear efecto infinito */}
-                <div className="carousel-slide">
-                  <div className="service-image">
-                    <img src="/placeholder-industria.jpg" alt="Servicio de Industria" />
-                    <div className="service-overlay"></div>
-                    <div className="service-title">
-                      <h3>INDUSTRIA</h3>
-                      <p>Soluciones industriales con tecnología de drones para optimizar procesos y seguridad.</p>
-                      <Link to="/industrial" className="service-link">SABER MÁS →</Link>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="carousel-slide">
-                  <div className="service-image">
-                    <img src="/placeholder-televigilancia.jpg" alt="Servicio de Televigilancia" />
-                    <div className="service-overlay"></div>
-                    <div className="service-title">
-                      <h3>TELEVIGILANCIA</h3>
-                      <p>Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.</p>
-                      <Link to="/televigilancia" className="service-link">SABER MÁS →</Link>
-                    </div>
-                  </div>
-                </div>
+              </div>
+              
+              {/* Slider Navigation Dots */}
+              <div className="slider-dots">
+                <span className="dot active" data-slide="1"></span>
+                <span className="dot" data-slide="2"></span>
+                <span className="dot" data-slide="3"></span>
+                <span className="dot" data-slide="4"></span>
+                <span className="dot" data-slide="5"></span>
               </div>
             </div>
           </div>
