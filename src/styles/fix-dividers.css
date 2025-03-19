@@ -1,0 +1,57 @@
+/* Estilos para eliminar completamente los divisores decorativos SOLO en el catálogo de drones */
+
+/* Selector específico para eliminar todos los divisores SOLO en el catálogo de drones */
+#drones .section-title::after,
+#drones .section-title::before,
+#drones .category-title::after,
+#drones .category-title::before,
+#drones .series-title::after,
+#drones .series-title::before,
+#drones hr,
+#drones .slide-divider,
+#drones .category-divider,
+#drones .series-divider,
+.drone-catalog .section-title::after,
+.drone-catalog .section-title::before,
+.drone-catalog .category-title::after,
+.drone-catalog .category-title::before,
+.drone-catalog .series-title::after,
+.drone-catalog .series-title::before,
+.drone-catalog hr,
+.drone-catalog .slide-divider,
+.drone-catalog .category-divider,
+.drone-catalog .series-divider {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  content: none !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Ajustar espaciado para compensar la eliminación de divisores */
+.drone-catalog .section-title,
+#drones .section-title {
+  margin-bottom: 3rem !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+}
+
+.drone-catalog .category-title,
+#drones .category-title {
+  margin-bottom: 2.5rem !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+}
+
+.drone-catalog .series-title,
+#drones .series-title {
+  margin-bottom: 2rem !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+}

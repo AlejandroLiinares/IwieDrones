@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 import '../styles/temp-fix.css'; // Importar estilos temporales para corregir el filtro oscuro
+import '../styles/fix-dividers.css'; // Importar estilos para eliminar divisores decorativos
 
 // Componente para tarjetas de drones
 const DroneCard = ({ image, title, description, specs, badge }) => (
@@ -12,7 +13,6 @@ const DroneCard = ({ image, title, description, specs, badge }) => (
     </div>
     <div className="drone-info">
       <h3 className="drone-title">{title}</h3>
-      <div className="drone-divider"></div>
       <p className="drone-description">{description}</p>
       <div className="drone-specs">
         {specs.map((spec, index) => (
@@ -380,6 +380,8 @@ const Home = () => {
     };
   }, []);
 
+  const [activeTab, setActiveTab] = useState('agricolas'); // Estado para controlar el tab activo
+
   return (
     <div className="home-page" id="home">
       {/* Hero Section */}
@@ -479,92 +481,269 @@ const Home = () => {
       {/* Drone Catalog Section */}
       <section className="drone-catalog" ref={droneRef} id="drones">
         <div className="container">
-          <h2 className="section-title">Catálogo de Drones</h2>
+          <h2 className="section-title">NUESTROS DRONES</h2>
           <div className="slide-divider"></div>
-          <p className="section-description">Ofrecemos una amplia variedad de drones para diferentes aplicaciones, adaptados a las necesidades específicas de cada sector.</p>
+          
+          {/* Tabs para filtrar categorías */}
+          <div className="drone-tabs">
+            <button 
+              className={`drone-tab ${activeTab === 'agricolas' ? 'active' : ''}`}
+              onClick={() => setActiveTab('agricolas')}
+            >
+              Agrícolas
+            </button>
+            <button 
+              className={`drone-tab ${activeTab === 'industriales' ? 'active' : ''}`}
+              onClick={() => setActiveTab('industriales')}
+            >
+              Industriales
+            </button>
+          </div>
           
           {/* Drones Agrícolas */}
-          <div className="drone-category">
+          <div className={`drone-category ${activeTab === 'agricolas' ? 'visible' : 'hidden'}`}>
             <h3 className="category-title">Drones Agrícolas</h3>
-            <div className="category-divider"></div>
             
             {/* Serie Bee */}
             <div className="drone-series">
               <h4 className="series-title">Serie Bee</h4>
-              <div className="drones-grid">
-                {agriculturalDrones.bee.map((drone, index) => (
-                  <DroneCard 
-                    key={index}
-                    image={drone.image}
-                    title={drone.title}
-                    description={drone.description}
-                    specs={drone.specs}
-                    badge={drone.badge}
-                  />
-                ))}
+              <div className="drones-showcase">
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">H32X</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="H32X" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Capacidad: 16L</li>
+                      <li>Uso: Campos pequeños</li>
+                      <li>Tipo: Pulverización</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
+
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">H40X</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="H40X" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Capacidad: 20L</li>
+                      <li>Uso: Campos medianos</li>
+                      <li>Tipo: Pulverización</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
               </div>
             </div>
             
             {/* Serie Hercules */}
             <div className="drone-series">
               <h4 className="series-title">Serie Hercules</h4>
-              <div className="drones-grid">
-                {agriculturalDrones.hercules.map((drone, index) => (
-                  <DroneCard 
-                    key={index}
-                    image={drone.image}
-                    title={drone.title}
-                    description={drone.description}
-                    specs={drone.specs}
-                    badge={drone.badge}
-                  />
-                ))}
+              <div className="drones-showcase">
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">H120</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="H120" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Capacidad: 52L</li>
+                      <li>Dispersión: 60kg</li>
+                      <li>Uso: Campos grandes</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
+
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">H160</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="H160" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Capacidad: 72L~82L</li>
+                      <li>Uso: Gestión extensiva</li>
+                      <li>Tipo: Pulverización</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
               </div>
             </div>
             
-            {/* Serie Roarer */}
+            {/* Serie Roarer Agrícola */}
             <div className="drone-series">
               <h4 className="series-title">Serie Roarer</h4>
-              <div className="drones-grid">
-                {agriculturalDrones.roarer.map((drone, index) => (
-                  <DroneCard 
-                    key={index}
-                    image={drone.image}
-                    title={drone.title}
-                    description={drone.description}
-                    specs={drone.specs}
-                    badge={drone.badge}
-                  />
-                ))}
+              <div className="drones-showcase">
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">H200</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="H200" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Capacidad: 92L</li>
+                      <li>Carga útil: 100kg</li>
+                      <li>Uso: Pulverización/Transporte</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
+
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">H300</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="H300" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Capacidad: 95L</li>
+                      <li>Diseño: Plegado hacia arriba</li>
+                      <li>Batería: Inteligente enchufable</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           
           {/* Drones Industriales */}
-          <div className="drone-category">
+          <div className={`drone-category ${activeTab === 'industriales' ? 'visible' : 'hidden'}`}>
             <h3 className="category-title">Drones Industriales</h3>
-            <div className="category-divider"></div>
             
-            {/* Serie Roarer (Alta Carga) */}
+            {/* Serie Roarer Industrial */}
             <div className="drone-series">
               <h4 className="series-title">Serie Roarer (Alta Carga)</h4>
-              <div className="drones-grid">
-                {industrialDrones.roarer.map((drone, index) => (
-                  <DroneCard 
-                    key={index}
-                    image={drone.image}
-                    title={drone.title}
-                    description={drone.description}
-                    specs={drone.specs}
-                    badge={drone.badge}
-                  />
-                ))}
+              <div className="drones-showcase">
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">H200 Extinción</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="H200 Extinción" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Carga máxima: 100kg</li>
+                      <li>Tiempo de vuelo: 40 min</li>
+                      <li>Uso: Extinción de incendios</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
+
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">H200 Transporte</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="H200 Transporte" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Carga máxima: 100kg</li>
+                      <li>Tiempo de vuelo: 40 min</li>
+                      <li>Uso: Transporte de mercancías</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          
-          <div className="view-more-container">
-            <Link to="/drones" className="btn btn-primary">Ver Catálogo Completo</Link>
+            
+            {/* Serie Odin */}
+            <div className="drone-series">
+              <h4 className="series-title">Serie Odin (Larga Duración)</h4>
+              <div className="drones-showcase">
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">X491</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="X491" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Duración: 120 min</li>
+                      <li>Carga máxima: 5kg</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
+
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">X441</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="X441" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Duración: 60 min</li>
+                      <li>Carga máxima: 2.5kg</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Otras Series */}
+            <div className="drone-series">
+              <h4 className="series-title">Otras Series</h4>
+              <div className="drones-showcase">
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">Sentinel V13-5</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="Sentinel V13-5" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Duración: 200 min</li>
+                      <li>Velocidad: 108 km/h</li>
+                      <li>Tipo: VTOL Inspección</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
+
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">Cavalry H50L-2</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="Cavalry H50L-2" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Uso: Extinción de incendios</li>
+                      <li>Función: Rompimiento de ventanas</li>
+                      <li>Área: Edificios de gran altura</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Serie Cavalry */}
+            <div className="drone-series">
+              <h4 className="series-title">Serie Cavalry</h4>
+              <div className="drones-showcase">
+                <div className="drone-card-new">
+                  <h3 className="drone-title-new">H60-4</h3>
+                  <div className="drone-image-container-new">
+                    <img src="/Dron.png" alt="H60-4" className="drone-image-new" />
+                  </div>
+                  <div className="drone-specs-overlay">
+                    <ul className="drone-specs-list">
+                      <li>Resistencia: IP67</li>
+                      <li>Peso: 21kg</li>
+                      <li>Tiempo de vuelo: 18-35 min</li>
+                      <li>Uso: Limpieza</li>
+                    </ul>
+                    <button className="drone-details-btn-new">Ver detalles</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

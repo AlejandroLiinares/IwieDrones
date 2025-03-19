@@ -248,6 +248,14 @@ button {
   background-color: var(--primary-color);
 }
 
+#drones .section-title::after,
+.drone-catalog .section-title::after {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
 .section-description {
   text-align: center;
   max-width: 800px;
