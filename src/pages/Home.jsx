@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import DroneCardNew from '../components/DroneCardNew';
 import DroneModal from '../components/DroneModal';
+import ServiceSlide from '../components/ServiceSlide';
+import AboutSlide from '../components/AboutSlide'; // Importar el componente AboutSlide
 import '../styles/Home.css';
 
 const Home = () => {
@@ -15,31 +17,77 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const slideInterval = useRef(null);
   
+  // Estado para el slider de quiénes somos
+  const [currentAboutSlide, setCurrentAboutSlide] = useState(1);
+  
   // Datos de los slides de servicios
   const serviceSlides = [
     {
       id: 1,
-      title: "Agricultura de Precisión",
-      description: "Optimiza tus cultivos con nuestras soluciones de mapeo y análisis.",
-      image: "/service1.jpg",
-      link: "/services/agriculture"
+      title: "Agrícola",
+      description: "Aplicación precisa de productos fitosanitarios con drones especializados para cultivos.",
+      image: "/agricola.jpg",
+      link: "/agricola"
     },
     {
       id: 2,
-      title: "Inspección Industrial",
-      description: "Inspecciones seguras y eficientes para infraestructuras críticas.",
-      image: "/service2.jpg",
-      link: "/services/industrial"
+      title: "Industria",
+      description: "Soluciones industriales con tecnología de drones para optimizar procesos y seguridad en entornos industriales.",
+      image: "/industria.jpg",
+      link: "/industrial"
     },
     {
       id: 3,
-      title: "Topografía y Cartografía",
-      description: "Mapeo preciso del terreno con tecnología de vanguardia.",
-      image: "/service3.jpg",
-      link: "/services/mapping"
+      title: "Televigilancia",
+      description: "Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.",
+      image: "/televigilancia.jpg",
+      link: "/televigilancia"
+    },
+    {
+      id: 4,
+      title: "Energía",
+      description: "Aplicación al área de energías renovables y convencionales. Revisar las instalaciones, granjas fotovoltaicas, torres de alta tensión, entre otras.",
+      image: "/energia.jpg",
+      link: "/energia"
+    },
+    {
+      id: 5,
+      title: "Capacitación",
+      description: "Programas de formación especializada para pilotos de drones y personal técnico.",
+      image: "/capacitacion.jpg",
+      link: "/capacitacion"
     }
   ];
   
+  // Datos de los slides de quiénes somos
+  const aboutSlides = [
+    {
+      id: 1,
+      title: "Quiénes Somos",
+      description: "Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.",
+      image: "/quienes-somos.jpg"
+    },
+    {
+      id: 2,
+      title: "Nuestra Misión",
+      description: "Proporcionar soluciones tecnológicas avanzadas con drones que optimicen procesos, mejoren la seguridad y aumenten la eficiencia en diversos sectores industriales y agrícolas.",
+      image: "/mision.jpg"
+    },
+    {
+      id: 3,
+      title: "Nuestra Visión",
+      description: "Ser líderes en la innovación y aplicación de tecnología de drones en Chile, estableciendo nuevos estándares de calidad y servicio en la industria.",
+      image: "/vision.jpg"
+    }
+  ];
+  
+  // Estado para controlar el tab activo
+  const [activeTab, setActiveTab] = useState('agricolas');
+  
+  // Estado para el modal
+  const [selectedDrone, setSelectedDrone] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Datos de los drones
   const drones = {
     agricolas: [
@@ -171,12 +219,57 @@ const Home = () => {
     ]
   };
 
-  // Estado para controlar el tab activo
-  const [activeTab, setActiveTab] = useState('agricolas');
-  
-  // Estado para el modal
-  const [selectedDrone, setSelectedDrone] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Estado para controlar el scroll horizontal
+  const agricolasRef = useRef(null);
+  const industrialesRef = useRef(null);
+
+  // Función genérica para cambiar de slide
+  const changeSlide = (slideNumber, slideType, setCurrentSlide) => {
+    // Ocultar todos los slides
+    const slides = document.querySelectorAll(`.${slideType}-slide`);
+    slides.forEach(slide => {
+      slide.style.display = 'none';
+    });
+    
+    // Mostrar el slide seleccionado
+    const selectedSlide = document.querySelector(`#${slideType}-slide-${slideNumber}`);
+    if (selectedSlide) {
+      selectedSlide.style.display = 'block';
+    }
+    
+    // Actualizar el estado
+    setCurrentSlide(slideNumber);
+  };
+
+  // Funciones para el slider de servicios
+  const goToSlide = (slideNumber) => {
+    changeSlide(slideNumber, 'slide', setCurrentSlide);
+  };
+
+  const prevSlide = () => {
+    const newSlide = currentSlide <= 1 ? serviceSlides.length : currentSlide - 1;
+    goToSlide(newSlide);
+  };
+
+  const nextSlide = () => {
+    const newSlide = currentSlide >= serviceSlides.length ? 1 : currentSlide + 1;
+    goToSlide(newSlide);
+  };
+
+  // Funciones para el slider de quiénes somos
+  const goToAboutSlide = (slideNumber) => {
+    changeSlide(slideNumber, 'about', setCurrentAboutSlide);
+  };
+
+  const prevAboutSlide = () => {
+    const newSlide = currentAboutSlide <= 1 ? aboutSlides.length : currentAboutSlide - 1;
+    goToAboutSlide(newSlide);
+  };
+
+  const nextAboutSlide = () => {
+    const newSlide = currentAboutSlide >= aboutSlides.length ? 1 : currentAboutSlide + 1;
+    goToAboutSlide(newSlide);
+  };
 
   // Función para abrir el modal con la información del drone
   const openDroneModal = (drone) => {
@@ -189,30 +282,11 @@ const Home = () => {
     setIsModalOpen(false);
   };
 
-  // Estado para controlar el scroll horizontal
-  const agricolasRef = useRef(null);
-  const industrialesRef = useRef(null);
-
-  // Función para cambiar de slide
-  const goToSlide = (slideNumber) => {
-    // Ocultar todos los slides
-    const slides = document.querySelectorAll('.service-slide');
-    slides.forEach(slide => {
-      slide.classList.remove('active');
-    });
-    
-    // Mostrar el slide seleccionado
-    const selectedSlide = document.querySelector(`.service-slide[data-slide="${slideNumber}"]`);
-    if (selectedSlide) {
-      selectedSlide.classList.add('active');
-    }
-    
-    // Actualizar el estado
-    setCurrentSlide(slideNumber);
-  };
-
   // Iniciar el slider automático
   useEffect(() => {
+    // Mostrar el primer slide al cargar
+    goToSlide(1);
+    
     slideInterval.current = setInterval(() => {
       const nextSlide = currentSlide >= serviceSlides.length ? 1 : currentSlide + 1;
       goToSlide(nextSlide);
@@ -223,20 +297,14 @@ const Home = () => {
         clearInterval(slideInterval.current);
       }
     };
-  }, [currentSlide, serviceSlides.length]);
+  }, [currentSlide]);
 
-  // Función para ir al slide anterior
-  const prevSlide = () => {
-    const newSlide = currentSlide <= 1 ? serviceSlides.length : currentSlide - 1;
-    goToSlide(newSlide);
-  };
+  // Inicializar el slider de quiénes somos
+  useEffect(() => {
+    // Mostrar el primer slide al cargar
+    goToAboutSlide(1);
+  }, []);
 
-  // Función para ir al slide siguiente
-  const nextSlide = () => {
-    const newSlide = currentSlide >= serviceSlides.length ? 1 : currentSlide + 1;
-    goToSlide(newSlide);
-  };
-  
   // Función para manejar el scroll horizontal
   const handleScroll = (e) => {
     // Implementación del scroll horizontal
@@ -275,45 +343,65 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Services Section */}
-      <section id="services" className="services-section" ref={servicesRef}>
-        <div className="section-header">
-          <h2>NUESTROS SERVICIOS</h2>
-          <div className="section-divider"></div>
+      {/* Quote Section */}
+      <section className="quote-section">
+        <div className="container">
+          <div className="quote-container">
+            <div className="quote-text">
+              <blockquote>
+                "Estaremos realmente atrapados con la tecnología cuando todo lo que queramos sean sólo cosas que funcionen."
+              </blockquote>
+              <cite>– Douglas Adams</cite>
+            </div>
+            <div className="quote-image">
+              <img 
+                src="/douglas.webp" 
+                alt="Douglas Adams" 
+              />
+            </div>
+          </div>
         </div>
-        
-        <div className="services-content">
-          <div className="services-slider">
-            {serviceSlides.map((slide) => (
-              <div 
-                key={slide.id} 
-                className={`service-slide ${slide.id === currentSlide ? 'active' : ''}`}
-                data-slide={slide.id}
-              >
-                <img src={slide.image} alt={slide.title} className="service-slide-image" />
-                <div className="service-slide-overlay">
-                  <h3 className="service-slide-title">{slide.title}</h3>
-                  <p className="service-slide-description">{slide.description}</p>
-                  <Link to={slide.link} className="service-slide-link">Saber más</Link>
-                </div>
+      </section>
+      
+      {/* Services Section */}
+      <section className="services" ref={servicesRef} id="servicios">
+        <div className="container">
+          <h2 className="section-title">NUESTROS SERVICIOS</h2>
+          <div className="section-divider"></div>
+          
+          <div className="services-content">
+            <div className="services-slider">
+              <div className="slides-container">
+                {serviceSlides.map((slide) => (
+                  <ServiceSlide
+                    key={slide.id}
+                    id={slide.id}
+                    image={slide.image}
+                    title={slide.title}
+                    description={slide.description}
+                    link={slide.link}
+                  />
+                ))}
               </div>
-            ))}
-            
-            <button className="slider-arrow prev" onClick={prevSlide}>
-              <i className="fas fa-chevron-left"></i>
-            </button>
-            <button className="slider-arrow next" onClick={nextSlide}>
-              <i className="fas fa-chevron-right"></i>
-            </button>
-            
-            <div className="slider-dots">
-              {serviceSlides.map((slide) => (
-                <span 
-                  key={slide.id} 
-                  className={`slider-dot ${slide.id === currentSlide ? 'active' : ''}`}
-                  onClick={() => goToSlide(slide.id)}
-                ></span>
-              ))}
+              
+              <div className="slider-nav">
+                <button className="slider-arrow prev" onClick={prevSlide}>
+                  <i className="fas fa-chevron-left"></i>
+                </button>
+                <button className="slider-arrow next" onClick={nextSlide}>
+                  <i className="fas fa-chevron-right"></i>
+                </button>
+              </div>
+              
+              <div className="slider-dots">
+                {serviceSlides.map((slide) => (
+                  <span 
+                    key={slide.id} 
+                    className={`slider-dot ${slide.id === currentSlide ? 'active' : ''}`}
+                    onClick={() => goToSlide(slide.id)}
+                  ></span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -327,14 +415,35 @@ const Home = () => {
         </div>
         
         <div className="about-content">
-          <div className="about-text">
-            <p>Somos una empresa líder en soluciones con drones para agricultura e industria, con más de 5 años de experiencia en el mercado.</p>
-            <p>Nuestro equipo está formado por profesionales altamente capacitados y certificados, con amplia experiencia en el sector.</p>
-            <p>Ofrecemos soluciones personalizadas para cada cliente, adaptándonos a sus necesidades específicas y brindando un servicio de calidad.</p>
-          </div>
-          
-          <div className="about-image">
-            <img src="/about-image.jpg" alt="Nuestro equipo" />
+          <div className="about-slider">
+            <div className="slides-container">
+              {aboutSlides.map((slide) => (
+                <AboutSlide
+                  key={slide.id}
+                  id={slide.id}
+                  image={slide.image}
+                  title={slide.title}
+                  description={slide.description}
+                />
+              ))}
+            </div>
+            <div className="slider-nav">
+              <button className="slider-arrow prev" onClick={prevAboutSlide}>
+                <i className="fas fa-chevron-left"></i>
+              </button>
+              <button className="slider-arrow next" onClick={nextAboutSlide}>
+                <i className="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <div className="slider-dots">
+              {aboutSlides.map((slide) => (
+                <span 
+                  key={slide.id} 
+                  className={`slider-dot ${slide.id === currentAboutSlide ? 'active' : ''}`}
+                  onClick={() => goToAboutSlide(slide.id)}
+                ></span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
