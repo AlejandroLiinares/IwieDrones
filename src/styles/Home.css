@@ -301,27 +301,6 @@
   background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
 }
 
-.slider-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: var(--color-text-dark);
-}
-
-.slider-divider {
-  width: 80px;
-  height: 3px;
-  background-color: var(--color-primary);
-  margin-bottom: 20px;
-}
-
-.slider-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  color: var(--color-text);
-}
-
 .slider-nav {
   position: absolute;
   top: 0;
@@ -495,28 +474,6 @@
   position: relative;
 }
 
-.section-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.section-header h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  color: var(--text-color);
-}
-
-.section-divider {
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, #00a8ff, #00eeff);
-  margin: 0 auto;
-  border-radius: 3px;
-  box-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
-}
-
 .services-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -530,26 +487,38 @@
   overflow: hidden;
 }
 
-.about-section .section-header {
-  text-align: center;
-  margin-bottom: var(--spacing-2xl);
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  position: relative;
 }
 
-.about-section h2 {
+/* Estilos comunes para secciones */
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2, .section-title {
   font-size: 2.5rem;
   font-weight: 700;
+  margin-bottom: 15px;
   color: var(--color-text-dark);
-  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
 }
 
-.about-section .section-divider {
+.section-divider {
   width: 80px;
   height: 3px;
-  background-color: var(--color-primary);
-  margin: 0 auto var(--spacing-xl);
+  background: linear-gradient(90deg, #00a8ff, #00eeff);
+  margin: 0 auto 40px;
+  border-radius: 3px;
+  box-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
 }
 
-.about-content {
+/* Contenedores comunes */
+.content-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
@@ -560,109 +529,226 @@
 .drones-section {
   padding: var(--spacing-3xl) 0;
   background-color: #f8f9fa;
-}
-
-/* Estilos para categorías de drones */
-.drone-category {
-  display: block;
-  animation: fadeIn 0.5s ease-out;
-}
-
-.drone-category.hidden {
-  display: none;
-}
-
-.drone-category.visible {
-  display: block;
-}
-
-/* Estilos para las pestañas de drones */
-.drone-tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-  gap: 20px;
-}
-
-.drone-tab {
-  padding: 10px 25px;
-  border-radius: 30px;
-  border: none;
-  background-color: rgba(23, 93, 163, 0.1);
-  color: var(--color-primary);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.drone-tab:hover {
-  background-color: rgba(23, 93, 163, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.drone-tab.active {
-  background-color: var(--color-primary);
-  color: white;
-  box-shadow: 0 4px 10px rgba(23, 93, 163, 0.3);
-}
-
-/* Estilos para la navegación horizontal de drones */
-.drone-series {
   position: relative;
-  display: flex;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  padding: 20px 0;
-  margin: 0 40px;
 }
 
-.drone-series-container {
+.drones-section .section-header h2 {
+  color: var(--color-text-dark);
+}
+
+.drones-section .section-divider {
+  margin-bottom: 30px;
+}
+
+.drones-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.drones-grid {
   display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 30px;
-  transition: transform 0.5s ease;
+  padding: 20px 0 40px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) #f1f1f1;
+  -webkit-overflow-scrolling: touch;
 }
 
-.scroll-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.drones-grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.drones-grid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.drones-grid::-webkit-scrollbar-thumb {
   background-color: var(--color-primary);
-  color: white;
-  border: none;
+  border-radius: 10px;
+}
+
+.drone-card {
+  flex: 0 0 16.666%;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 15px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.drone-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.drone-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+.drone-image {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.drone-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.drone-card:hover .drone-image img {
+  transform: scale(1.05);
+}
+
+.drone-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+}
+
+.drone-card:hover .drone-details {
+  max-height: 300px;
+  opacity: 1;
+  padding-top: 10px;
+}
+
+.drone-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  padding: 0 5px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drone-info-btn {
+  padding: 8px 16px;
+  background-color: transparent;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 4px;
   cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  display: inline-block;
 }
 
-.scroll-left-btn {
-  left: 10px;
+.drone-info-btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
 }
 
-.scroll-right-btn {
-  right: 10px;
+.drone-category-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin: 30px 0 20px;
+  position: relative;
+  padding-left: 15px;
 }
 
-.scroll-left-btn:hover,
-.scroll-right-btn:hover {
-  background-color: var(--color-secondary);
-  transform: translateY(-50%) scale(1.1);
+.drone-category-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 24px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
 }
 
-.scroll-left-btn:disabled,
-.scroll-right-btn:disabled {
-  background-color: #f0f0f0;
-  color: #ccc;
-  cursor: not-allowed;
-  box-shadow: none;
+/* Media Queries para la sección de drones */
+@media (max-width: 1400px) {
+  .drone-card {
+    flex: 0 0 20%;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .drone-card {
+    flex: 0 0 25%;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 992px) {
+  .drone-card {
+    flex: 0 0 33.333%;
+    min-width: 180px;
+  }
+  
+  .drone-name {
+    font-size: 1.1rem;
+  }
+  
+  .drone-description {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .drone-card {
+    flex: 0 0 50%;
+    min-width: 160px;
+  }
+  
+  .drone-image {
+    height: 150px;
+  }
+  
+  .drone-category-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .drone-card {
+    flex: 0 0 100%;
+    min-width: 220px;
+  }
+  
+  .drone-image {
+    height: 160px;
+  }
+  
+  .drones-grid {
+    padding-bottom: 30px;
+  }
 }
 
 /* CTA Section */
@@ -770,42 +856,7 @@
   object-fit: cover;
 }
 
-@media (max-width: 768px) {
-  .quote-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .quote-text {
-    padding-right: 0;
-    margin-bottom: 30px;
-  }
-  
-  .quote-text blockquote {
-    font-size: 22px;
-    padding-left: 0;
-  }
-  
-  .quote-text blockquote::before {
-    position: static;
-    display: block;
-    text-align: center;
-    line-height: 40px;
-    height: 40px;
-    margin-bottom: 10px;
-  }
-  
-  .quote-text cite {
-    text-align: center;
-    padding-right: 0;
-  }
-  
-  .quote-image {
-    flex: 0 0 200px;
-    height: 200px;
-  }
-}
-
+/* Media Queries para responsive */
 @media (max-width: 992px) {
   .title-container .hero-title {
     font-size: 2.5rem;
@@ -822,10 +873,14 @@
   .slide-text h3 {
     font-size: 2rem;
   }
+  
+  .section-header h2, .section-title {
+    font-size: 2.2rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .about-content {
+  .about-content, .quote-container {
     flex-direction: column;
   }
   
@@ -859,6 +914,39 @@
     width: 40px;
     height: 40px;
   }
+  
+  .section-header h2, .section-title {
+    font-size: 2rem;
+  }
+  
+  .quote-text {
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+  
+  .quote-text blockquote {
+    font-size: 22px;
+    padding-left: 0;
+  }
+  
+  .quote-text blockquote::before {
+    position: static;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .quote-text cite {
+    text-align: center;
+    padding-right: 0;
+  }
+  
+  .quote-image {
+    flex: 0 0 200px;
+    height: 200px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -870,8 +958,9 @@
     font-size: 1rem;
   }
   
-  .cta-button {
+  .cta-button, .btn-primary, .btn-secondary {
     padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
   }
   
   .slide {
@@ -912,135 +1001,7 @@
     height: 10px;
   }
   
-  .tab-button {
-    padding: 0.6rem 1.5rem;
-  }
-}
-
-/* Services Section Styles */
-.services {
-  padding: 80px 0;
-  background-color: #f9f9f9;
-}
-
-.services .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.services .section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: var(--color-text-dark);
-}
-
-.services .section-divider {
-  width: 80px;
-  height: 3px;
-  background-color: var(--color-primary);
-  margin: 0 auto 40px;
-}
-
-.services-content {
-  width: 100%;
-}
-
-.slides-container {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.slider-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.slider-nav button {
-  pointer-events: auto;
-}
-
-/* Media Queries para responsive */
-@media (max-width: 992px) {
-  .slide-text {
-    max-width: 70%;
-  }
-  
-  .slide-text h3 {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .slide-text {
-    max-width: 80%;
-  }
-  
-  .slide-text h3 {
+  .section-header h2, .section-title {
     font-size: 1.8rem;
-  }
-  
-  .slide-divider {
-    width: 60px;
-    margin-bottom: 15px;
-  }
-  
-  .slide-text p {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-  }
-  
-  .slider-arrow {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-@media (max-width: 576px) {
-  .slide {
-    height: 400px;
-  }
-  
-  .slide-text {
-    max-width: 90%;
-    left: 5%;
-  }
-  
-  .slide-text h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .slide-divider {
-    width: 50px;
-    margin-bottom: 10px;
-  }
-  
-  .slide-text p {
-    font-size: 0.8rem;
-    margin-bottom: 15px;
-  }
-  
-  .slider-arrow {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .slider-dots {
-    bottom: 10px;
-  }
-  
-  .slider-dot {
-    width: 10px;
-    height: 10px;
   }
 }

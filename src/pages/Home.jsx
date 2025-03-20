@@ -1,16 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import DroneCardNew from '../components/DroneCardNew';
-import DroneModal from '../components/DroneModal';
+import { useState, useEffect, useRef } from 'react';
 import ServiceSlide from '../components/ServiceSlide';
-import AboutSlide from '../components/AboutSlide'; // Importar el componente AboutSlide
+import AboutSlide from '../components/AboutSlide';
 import '../styles/Home.css';
 
 const Home = () => {
   // Referencias para animaciones de scroll
   const servicesRef = useRef(null);
   const aboutRef = useRef(null);
-  const droneRef = useRef(null);
+  const dronesRef = useRef(null);
   const ctaRef = useRef(null);
   
   // Estado para el slider de servicios
@@ -20,42 +18,139 @@ const Home = () => {
   // Estado para el slider de quiénes somos
   const [currentAboutSlide, setCurrentAboutSlide] = useState(1);
   
+  // Datos de los drones
+  const drones = [
+    // Drones Agrícolas
+    {
+      id: 1,
+      category: "Agrícola",
+      series: "Serie Bee",
+      name: "H32X",
+      image: "/H32X.webp",
+      description: "Diseñado para campos pequeños, con capacidad de pulverización de 16L, ofrece fiabilidad y eficiencia en un formato compacto."
+    },
+    {
+      id: 2,
+      category: "Agrícola",
+      series: "Serie Bee",
+      name: "H40X",
+      image: "/H40X.webp",
+      description: "Ofrece un tanque de pulverización de 20L para cubrir campos más grandes, siendo una herramienta versátil para diversas aplicaciones agrícolas."
+    },
+    {
+      id: 3,
+      category: "Agrícola",
+      series: "Serie Hercules",
+      name: "H120",
+      image: "/H120.webp",
+      description: "El Hercules H120 gestiona eficientemente campos grandes con un tanque de pulverización de 52L y una capacidad de dispersión de 60kg, reduciendo significativamente el tiempo y los costos de mano de obra."
+    },
+    {
+      id: 4,
+      category: "Agrícola",
+      series: "Serie Hercules",
+      name: "H160",
+      image: "/H160.webp",
+      description: "El H160 es el buque insignia de la serie Hercules. Con una capacidad de pulverización de 72L~82L, ofrece la solución definitiva para la gestión extensiva de cultivos."
+    },
+    {
+      id: 5,
+      category: "Agrícola",
+      series: "Serie Roarer",
+      name: "H200 Agrícola/Transporte",
+      image: "/H200.png",
+      description: "Líder del mercado con su capacidad sin igual, el Roarer H200 redefine las operaciones a gran escala con su capacidad de pulverización de 92L y carga útil de 100kg, sirviendo como el dron todo en uno definitivo para pulverización y transporte."
+    },
+    {
+      id: 6,
+      category: "Agrícola",
+      series: "Serie Roarer",
+      name: "H300 Agrícola/Transporte",
+      image: "/H300.png",
+      description: "El dron agrícola H300 tiene un diseño de plegado hacia arriba, un tanque de 95L y sensores de carga de grado aeroespacial para mayor precisión. Cuenta con un medidor de flujo de ondas milimétricas y soporta hasta 800A de potencia con disipación de calor. La batería inteligente enchufable es compatible con todas las baterías convencionales."
+    },
+    
+    // Drones Industriales
+    {
+      id: 7,
+      category: "Industrial",
+      series: "Serie Roarer (Alta Carga)",
+      name: "H200 - Extinción de Incendios",
+      image: "/H200-EXTINCION.png",
+      description: "Carga máxima: 100 kg | Tiempo de vuelo: 40 minutos. Los drones para extinción de incendios son adecuados para uso en áreas montañosas, pastizales, incendios forestales y para extinguir incendios en áreas urbanas específicas."
+    },
+    {
+      id: 8,
+      category: "Industrial",
+      series: "Serie Roarer (Alta Carga)",
+      name: "H200 - Transporte",
+      image: "/H200-TRANSPORTE.webp",
+      description: "Carga máxima: 100 kg | Tiempo de vuelo: 40 minutos. Los drones de carga pesada se utilizan ampliamente para el transporte de mercancías, frutas y otros artículos, reduciendo los costos de mano de obra y mejorando la eficiencia del trabajo."
+    },
+    {
+      id: 9,
+      category: "Industrial",
+      series: "Serie Odin (Larga Duración)",
+      name: "X491",
+      image: "/X491.webp",
+      description: "Duración: 120 min | Carga máxima: 5 kg."
+    },
+    {
+      id: 10,
+      category: "Industrial",
+      series: "Serie Odin (Larga Duración)",
+      name: "X441",
+      image: "/X441.webp",
+      description: "Duración: 60 min | Carga máxima: 2.5 kg."
+    },
+    {
+      id: 11,
+      category: "Industrial",
+      series: "Otras Series",
+      name: "Sentinel V13-5 VTOL",
+      image: "/SENTINEL-V13-5.jpg",
+      description: "Duración: 200 min | Velocidad máxima de crucero: 108 km/h."
+    },
+    {
+      id: 12,
+      category: "Industrial",
+      series: "Otras Series",
+      name: "Cavalry H50L-2",
+      image: "/CAVALRY-H50L-2.png",
+      description: "Principalmente utilizado para extinguir incendios en edificios urbanos de gran altura o áreas específicas."
+    },
+    {
+      id: 13,
+      category: "Industrial",
+      series: "Serie Cavalry",
+      name: "H60-4 Dron de Limpieza",
+      image: "/H60-4.webp",
+      description: "Un dron de limpieza con resistencia al agua IP67, peso total de 21 kg, tiempo de vuelo de 18-35 minutos, y capacidad para limpiar ventanas de gran altura, fachadas de edificios, paneles solares y techos. Cuenta con un sistema de pulverización con presión de agua de 8-30 Mpa y distancia de pulverización de 10-20 metros."
+    }
+  ];
+  
   // Datos de los slides de servicios
   const serviceSlides = [
     {
       id: 1,
-      title: "Agrícola",
-      description: "Aplicación precisa de productos fitosanitarios con drones especializados para cultivos.",
-      image: "/agricola.jpg",
-      link: "/agricola"
+      title: "Servicios de Drones Agrícolas",
+      description: "Ofrecemos soluciones de alta precisión para la agricultura con drones especializados en fumigación, siembra y monitoreo de cultivos.",
+      image: "/servicio-agricola.jpg",
+      link: "/services/agricultural"
     },
     {
       id: 2,
-      title: "Industria",
-      description: "Soluciones industriales con tecnología de drones para optimizar procesos y seguridad en entornos industriales.",
-      image: "/industria.jpg",
-      link: "/industrial"
+      title: "Servicios de Drones Industriales",
+      description: "Nuestros drones industriales están equipados con tecnología avanzada para inspecciones, mapeo 3D, termografía y más.",
+      image: "/servicio-industrial.jpg",
+      link: "/services/industrial"
     },
     {
       id: 3,
-      title: "Televigilancia",
-      description: "Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.",
-      image: "/televigilancia.jpg",
-      link: "/televigilancia"
-    },
-    {
-      id: 4,
-      title: "Energía",
-      description: "Aplicación al área de energías renovables y convencionales. Revisar las instalaciones, granjas fotovoltaicas, torres de alta tensión, entre otras.",
-      image: "/energia.jpg",
-      link: "/energia"
-    },
-    {
-      id: 5,
-      title: "Capacitación",
-      description: "Programas de formación especializada para pilotos de drones y personal técnico.",
-      image: "/capacitacion.jpg",
-      link: "/capacitacion"
+      title: "Capacitación y Certificación",
+      description: "Programas de formación para pilotos de drones con certificación oficial, adaptados a diferentes niveles y necesidades.",
+      image: "/servicio-capacitacion.jpg",
+      link: "/services/training"
     }
   ];
   
@@ -63,9 +158,9 @@ const Home = () => {
   const aboutSlides = [
     {
       id: 1,
-      title: "Quiénes Somos",
-      description: "Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.",
-      image: "/quienes-somos.jpg"
+      title: "Nuestra Historia",
+      description: "Fundada en 2018, IWIE nació con la visión de revolucionar la industria agrícola e industrial en Chile a través de la tecnología de drones. Desde entonces, hemos crecido hasta convertirnos en líderes del sector.",
+      image: "/historia.jpg"
     },
     {
       id: 2,
@@ -81,148 +176,6 @@ const Home = () => {
     }
   ];
   
-  // Estado para controlar el tab activo
-  const [activeTab, setActiveTab] = useState('agricolas');
-  
-  // Estado para el modal
-  const [selectedDrone, setSelectedDrone] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Datos de los drones
-  const drones = {
-    agricolas: [
-      {
-        image: "/MG-1P.png",
-        title: "MG-1P",
-        description: "Drone agrícola de alta eficiencia para fumigación y siembra.",
-        specs: [
-          "Capacidad: 10L",
-          "Autonomía: 20min",
-          "Cobertura: 10ha/h"
-        ]
-      },
-      {
-        image: "/T30.png",
-        title: "T30",
-        description: "Drone de alta capacidad para grandes extensiones agrícolas.",
-        specs: [
-          "Capacidad: 30L",
-          "Autonomía: 25min",
-          "Cobertura: 16ha/h"
-        ],
-        badge: "Nuevo"
-      },
-      {
-        image: "/T20P.png",
-        title: "T20P",
-        description: "Solución intermedia para fumigación de precisión.",
-        specs: [
-          "Capacidad: 20L",
-          "Autonomía: 23min",
-          "Cobertura: 13ha/h"
-        ]
-      },
-      {
-        image: "/T10.png",
-        title: "T10",
-        description: "Drone compacto para agricultura de precisión.",
-        specs: [
-          "Capacidad: 10L",
-          "Autonomía: 18min",
-          "Cobertura: 8ha/h"
-        ]
-      },
-      {
-        image: "/P100-PRO.png",
-        title: "P100 Pro",
-        description: "Drone profesional para análisis y mapeo agrícola.",
-        specs: [
-          "Cámara: 100MP",
-          "Autonomía: 45min",
-          "Cobertura: 200ha/vuelo"
-        ],
-        badge: "Pro"
-      },
-      {
-        image: "/P50.png",
-        title: "P50",
-        description: "Solución económica para análisis y mapeo agrícola.",
-        specs: [
-          "Cámara: 50MP",
-          "Autonomía: 35min",
-          "Cobertura: 150ha/vuelo"
-        ]
-      }
-    ],
-    industriales: [
-      {
-        image: "/M300-RTK.png",
-        title: "M300 RTK",
-        description: "Drone industrial de alta resistencia para inspecciones críticas.",
-        specs: [
-          "Autonomía: 55min",
-          "Resistencia: IP45",
-          "Sensores: 6 direcciones"
-        ],
-        badge: "Premium"
-      },
-      {
-        image: "/M30T.png",
-        title: "M30T",
-        description: "Drone compacto con cámara térmica para inspecciones industriales.",
-        specs: [
-          "Cámara: 48MP + Térmica",
-          "Autonomía: 40min",
-          "Resistencia: IP55"
-        ]
-      },
-      {
-        image: "/M3E.png",
-        title: "M3E",
-        description: "Solución ligera para inspecciones industriales básicas.",
-        specs: [
-          "Cámara: 20MP",
-          "Autonomía: 45min",
-          "Peso: 920g"
-        ]
-      },
-      {
-        image: "/H20T.png",
-        title: "H20T - Cámara",
-        description: "Cámara avanzada con capacidades térmicas para inspecciones detalladas.",
-        specs: [
-          "Zoom: 200x",
-          "Resolución térmica: 640x512",
-          "Campo visual: 40°"
-        ]
-      },
-      {
-        image: "/Z30.png",
-        title: "Z30 - Cámara",
-        description: "Cámara con zoom potente para inspecciones a distancia.",
-        specs: [
-          "Zoom: 30x",
-          "Resolución: 1080p",
-          "Estabilización: 3 ejes"
-        ]
-      },
-      {
-        image: "/H200-EXTINCION.png",
-        title: "H200 - Extinción de Incendios",
-        description: "Especializado en extinción de incendios, ofrece soluciones para situaciones de emergencia.",
-        specs: [
-          "Capacidad: 92L",
-          "Uso: Extinción de incendios",
-          "Alta capacidad"
-        ]
-      }
-    ]
-  };
-
-  // Estado para controlar el scroll horizontal
-  const agricolasRef = useRef(null);
-  const industrialesRef = useRef(null);
-
   // Función genérica para cambiar de slide
   const changeSlide = (slideNumber, slideType, setCurrentSlide) => {
     // Ocultar todos los slides
@@ -271,17 +224,6 @@ const Home = () => {
     goToAboutSlide(newSlide);
   };
 
-  // Función para abrir el modal con la información del drone
-  const openDroneModal = (drone) => {
-    setSelectedDrone(drone);
-    setIsModalOpen(true);
-  };
-
-  // Función para cerrar el modal
-  const closeDroneModal = () => {
-    setIsModalOpen(false);
-  };
-
   // Iniciar el slider automático
   useEffect(() => {
     // Mostrar el primer slide al cargar
@@ -304,16 +246,6 @@ const Home = () => {
     // Mostrar el primer slide al cargar
     goToAboutSlide(1);
   }, []);
-
-  // Función para manejar el scroll horizontal
-  const handleScroll = (e) => {
-    // Implementación del scroll horizontal
-  };
-
-  // Función para cambiar el tab activo
-  const changeTab = (tab) => {
-    setActiveTab(tab);
-  };
 
   return (
     <div className="home-container">
@@ -448,75 +380,54 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Catálogo de Drones Section */}
-      <section id="drones" className="drones-section" ref={droneRef}>
+      {/* Drones Section */}
+      <section id="drones" className="drones-section" ref={dronesRef}>
         <div className="section-header">
           <h2>NUESTROS DRONES</h2>
+          <div className="section-divider"></div>
         </div>
         
-        <div className="drones-tabs">
-          <button 
-            className={`tab-button ${activeTab === 'agricolas' ? 'active' : ''}`}
-            onClick={() => changeTab('agricolas')}
-          >
-            Agrícolas
-          </button>
-          <button 
-            className={`tab-button ${activeTab === 'industriales' ? 'active' : ''}`}
-            onClick={() => changeTab('industriales')}
-          >
-            Industriales
-          </button>
-        </div>
-        
-        <div className="drones-content">
-          
+        <div className="drones-container content-container">
           {/* Drones Agrícolas */}
-          <div className={`drone-category ${activeTab === 'agricolas' ? 'visible' : 'hidden'}`}>
-            <h3 className="category-title">Drones Agrícolas</h3>
-            
-            {/* Todos los drones agrícolas en una fila */}
-            <div className="drone-series">
-              <div className="drones-showcase" ref={agricolasRef} onScroll={handleScroll}>
-                {drones.agricolas.map((drone, index) => (
-                  <DroneCardNew
-                    key={index}
-                    image={drone.image}
-                    title={drone.title}
-                    description={drone.description}
-                    specs={drone.specs}
-                    badge={drone.badge}
-                    onClick={() => openDroneModal(drone)}
-                  />
-                ))}
-              </div>
-            </div>
+          <h3 className="drone-category-title">Drones Agrícolas</h3>
+          <div className="drones-grid">
+            {drones
+              .filter(drone => drone.category === "Agrícola")
+              .map((drone) => (
+                <div key={drone.id} className="drone-card">
+                  <h3 className="drone-name">{drone.name}</h3>
+                  <div className="drone-image">
+                    <img src={drone.image} alt={drone.name} />
+                  </div>
+                  <div className="drone-details">
+                    <p className="drone-description">{drone.description}</p>
+                    <button className="drone-info-btn">Ver detalles</button>
+                  </div>
+                </div>
+              ))}
           </div>
           
           {/* Drones Industriales */}
-          <div className={`drone-category ${activeTab === 'industriales' ? 'visible' : 'hidden'}`}>
-            <h3 className="category-title">Drones Industriales</h3>
-            
-            {/* Todos los drones industriales en una fila */}
-            <div className="drone-series">
-              <div className="drones-showcase" ref={industrialesRef} onScroll={handleScroll}>
-                {drones.industriales.map((drone, index) => (
-                  <DroneCardNew
-                    key={index}
-                    image={drone.image}
-                    title={drone.title}
-                    description={drone.description}
-                    specs={drone.specs}
-                    badge={drone.badge}
-                    onClick={() => openDroneModal(drone)}
-                  />
-                ))}
-              </div>
-            </div>
+          <h3 className="drone-category-title">Drones Industriales</h3>
+          <div className="drones-grid">
+            {drones
+              .filter(drone => drone.category === "Industrial")
+              .map((drone) => (
+                <div key={drone.id} className="drone-card">
+                  <h3 className="drone-name">{drone.name}</h3>
+                  <div className="drone-image">
+                    <img src={drone.image} alt={drone.name} />
+                  </div>
+                  <div className="drone-details">
+                    <p className="drone-description">{drone.description}</p>
+                    <button className="drone-info-btn">Ver detalles</button>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </section>
-      
+
       {/* Call to Action Section */}
       <section className="cta-section" ref={ctaRef}>
         <div className="cta-content">
@@ -525,13 +436,6 @@ const Home = () => {
           <Link to="/contact" className="btn-primary">Contáctanos</Link>
         </div>
       </section>
-      
-      {/* Modal para detalles del drone */}
-      <DroneModal
-        drone={selectedDrone}
-        isOpen={isModalOpen}
-        onClose={closeDroneModal}
-      />
     </div>
   );
 };

@@ -72,11 +72,7 @@ body > div:not(#root):not(.modal-backdrop.active),
 }
 
 /* Asegurar que las tarjetas de drones sean visibles */
-.drone-card-new {
-  visibility: visible !important;
-  opacity: 1 !important;
-  display: block !important;
-}
+/* Eliminado para reconstruir desde cero */
 
 /* Eliminar cualquier elemento con nombres comunes de overlay */
 [class*="overlay"]:not(.hero-overlay),
