@@ -1,87 +1,8 @@
-import React, { useEffect, useRef, useState, Fragment } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import DroneCardNew from '../components/DroneCardNew';
+import DroneModal from '../components/DroneModal';
 import '../styles/Home.css';
-import '../styles/temp-fix.css'; // Importar estilos temporales para corregir el filtro oscuro
-import '../styles/fix-dividers.css'; // Importar estilos para eliminar divisores decorativos
-import '../styles/fix-white-overlay.css'; // Importar estilos para eliminar la capa blanca
-import '../styles/emergency-fix.css'; // Importar el nuevo archivo de emergencia
-// Componente para tarjetas de drones
-const DroneCard = ({ image, title, description, specs, badge }) => (
-  <div className="drone-card">
-    <div className="drone-image-container">
-      <img src={image} alt={title} className="drone-image" />
-      {badge && <span className="drone-badge">{badge}</span>}
-    </div>
-    <div className="drone-info">
-      <h3 className="drone-title">{title}</h3>
-      <p className="drone-description">{description}</p>
-      <div className="drone-specs">
-        {specs.map((spec, index) => (
-          <span key={index} className="spec-tag">{spec}</span>
-        ))}
-      </div>
-      <button className="drone-details-btn">Ver detalles <i className="fas fa-arrow-right"></i></button>
-    </div>
-  </div>
-);
-
-// Componente para tarjetas de drones con modal
-const DroneCardNew = ({ image, title, description, specs, badge, onClick }) => (
-  <div className="drone-card-new" onClick={onClick}>
-    <div className="drone-image-container-new">
-      <img src={image} alt={title} className="drone-image-new" />
-    </div>
-    <h3 className="drone-title-new">{title}</h3>
-    <p className="drone-description">{description}</p>
-    <button className="drone-details-btn-new">Más información</button>
-  </div>
-);
-
-// Componente Modal para detalles del drone
-const DroneModal = ({ drone, isOpen, onClose }) => {
-  if (!isOpen || !drone) return null;
-  
-  return (
-    <div className={`modal-backdrop ${isOpen ? 'active' : ''}`} onClick={(e) => {
-      if (e.target.classList.contains('modal-backdrop')) {
-        onClose();
-      }
-    }}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>×</button>
-        <div className="modal-image">
-          <img src={drone.image} alt={drone.title} />
-        </div>
-        <h2 className="modal-title">{drone.title}</h2>
-        <p className="modal-subtitle">{drone.description}</p>
-        <div className="modal-specs">
-          <h4>Especificaciones técnicas</h4>
-          <ul className="modal-specs-list">
-            {drone.specs && drone.specs.map((spec, index) => (
-              <li key={index}>{typeof spec === 'string' ? spec : ''}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Componente para slides de servicios
-const ServiceSlide = ({ id, image, title, description, link }) => (
-  <div className="slide" id={`slide-${id}`}>
-    <div className="slide-image">
-      <img src={image} alt={`Servicio de ${title}`} />
-      <div className="slide-overlay"></div>
-      <div className="slide-text">
-        <h3>{title}</h3>
-        <div className="slide-divider"></div>
-        <p>{description}</p>
-        <a href={link} className="btn-saber-mas">Saber más →</a>
-      </div>
-    </div>
-  </div>
-);
 
 const Home = () => {
   // Referencias para animaciones de scroll
@@ -89,118 +10,160 @@ const Home = () => {
   const aboutRef = useRef(null);
   const droneRef = useRef(null);
   const ctaRef = useRef(null);
-  const playerRef = useRef(null);
-
-  // Estado para controlar el slider
+  
+  // Estado para el slider de servicios
   const [currentSlide, setCurrentSlide] = useState(1);
   const slideInterval = useRef(null);
   
-  // Datos de servicios para el slider
+  // Datos de los slides de servicios
   const serviceSlides = [
     {
       id: 1,
-      title: "Industria",
-      image: "/industria.jpg",
-      description: "Soluciones industriales con tecnología de drones para optimizar procesos y seguridad en entornos industriales.",
-      link: "/industrial"
+      title: "Agricultura de Precisión",
+      description: "Optimiza tus cultivos con nuestras soluciones de mapeo y análisis.",
+      image: "/service1.jpg",
+      link: "/services/agriculture"
     },
     {
       id: 2,
-      title: "Agricultura",
-      image: "/agricultura.jpg",
-      description: "Drones especializados para el sector agrícola que optimizan la gestión de cultivos y reducen costos operativos.",
-      link: "/agricultura"
+      title: "Inspección Industrial",
+      description: "Inspecciones seguras y eficientes para infraestructuras críticas.",
+      image: "/service2.jpg",
+      link: "/services/industrial"
     },
     {
       id: 3,
-      title: "Educación",
-      image: "/educacion.jpg",
-      description: "Programas educativos con drones para instituciones académicas, fomentando el aprendizaje tecnológico.",
-      link: "/educacion"
+      title: "Topografía y Cartografía",
+      description: "Mapeo preciso del terreno con tecnología de vanguardia.",
+      image: "/service3.jpg",
+      link: "/services/mapping"
     }
   ];
   
-  // Datos de drones agrícolas
-  const agriculturalDrones = {
-    bee: [
+  // Datos de los drones
+  const drones = {
+    agricolas: [
       {
-        title: "H32X",
-        image: "/H32X.webp",
-        description: "Diseñado para campos pequeños, con capacidad de pulverización de 16L, ofrece fiabilidad y eficiencia en un formato compacto.",
+        image: "/MG-1P.png",
+        title: "MG-1P",
+        description: "Drone agrícola de alta eficiencia para fumigación y siembra.",
         specs: [
-          "Capacidad: 16L",
-          "Uso: Campos pequeños",
-          "Autonomía: 20min"
-        ],
-        badge: "Compacto"
+          "Capacidad: 10L",
+          "Autonomía: 20min",
+          "Cobertura: 10ha/h"
+        ]
       },
       {
-        title: "H40X",
-        image: "/H40X.webp",
-        description: "Ofrece un tanque de pulverización de 20L para cubrir campos más grandes, siendo una herramienta versátil para diversas aplicaciones agrícolas.",
+        image: "/T30.png",
+        title: "T30",
+        description: "Drone de alta capacidad para grandes extensiones agrícolas.",
+        specs: [
+          "Capacidad: 30L",
+          "Autonomía: 25min",
+          "Cobertura: 16ha/h"
+        ],
+        badge: "Nuevo"
+      },
+      {
+        image: "/T20P.png",
+        title: "T20P",
+        description: "Solución intermedia para fumigación de precisión.",
         specs: [
           "Capacidad: 20L",
-          "Uso: Campos medianos",
-          "Autonomía: 25min"
-        ],
-        badge: "Versátil"
-      }
-    ],
-    hercules: [
-      {
-        title: "H120",
-        image: "/H120.webp",
-        description: "El Hercules H120 gestiona eficientemente campos grandes con un tanque de pulverización de 52L y una capacidad de dispersión de 60kg, reduciendo significativamente el tiempo y los costos de mano de obra.",
-        specs: [
-          "Capacidad: 52L",
-          "Dispersión: 60kg",
-          "Autonomía: 30min"
-        ],
-        badge: "Alta capacidad"
+          "Autonomía: 23min",
+          "Cobertura: 13ha/h"
+        ]
       },
       {
-        title: "H160",
-        image: "/H160.webp",
-        description: "El H160 es el buque insignia de la serie Hercules. Con una capacidad de pulverización de 72L~82L, ofrece la solución definitiva para la gestión extensiva de cultivos.",
+        image: "/T10.png",
+        title: "T10",
+        description: "Drone compacto para agricultura de precisión.",
         specs: [
-          "Capacidad: 72L~82L",
-          "Uso: Gestión extensiva",
-          "Autonomía: 35min"
+          "Capacidad: 10L",
+          "Autonomía: 18min",
+          "Cobertura: 8ha/h"
+        ]
+      },
+      {
+        image: "/P100-PRO.png",
+        title: "P100 Pro",
+        description: "Drone profesional para análisis y mapeo agrícola.",
+        specs: [
+          "Cámara: 100MP",
+          "Autonomía: 45min",
+          "Cobertura: 200ha/vuelo"
+        ],
+        badge: "Pro"
+      },
+      {
+        image: "/P50.png",
+        title: "P50",
+        description: "Solución económica para análisis y mapeo agrícola.",
+        specs: [
+          "Cámara: 50MP",
+          "Autonomía: 35min",
+          "Cobertura: 150ha/vuelo"
+        ]
+      }
+    ],
+    industriales: [
+      {
+        image: "/M300-RTK.png",
+        title: "M300 RTK",
+        description: "Drone industrial de alta resistencia para inspecciones críticas.",
+        specs: [
+          "Autonomía: 55min",
+          "Resistencia: IP45",
+          "Sensores: 6 direcciones"
         ],
         badge: "Premium"
-      }
-    ],
-    roarer: [
+      },
       {
-        title: "H200 Agrícola/Transporte",
-        image: "/H200.png",
-        description: "Líder del mercado con su capacidad sin igual, el Roarer H200 redefine las operaciones a gran escala con su capacidad de pulverización de 92L y carga útil de 100kg, sirviendo como el dron todo en uno definitivo para pulverización y transporte.",
+        image: "/M30T.png",
+        title: "M30T",
+        description: "Drone compacto con cámara térmica para inspecciones industriales.",
         specs: [
-          "Capacidad: 92L",
-          "Carga útil: 100kg"
+          "Cámara: 48MP + Térmica",
+          "Autonomía: 40min",
+          "Resistencia: IP55"
         ]
       },
       {
-        title: "H300 Agrícola/Transporte",
-        image: "/H300.png",
-        description: "El dron agrícola H300 tiene un diseño de plegado hacia arriba, un tanque de 95L y sensores de carga de grado aeroespacial para mayor precisión. Cuenta con un medidor de flujo de ondas milimétricas y soporta hasta 800A de potencia con disipación de calor.",
+        image: "/M3E.png",
+        title: "M3E",
+        description: "Solución ligera para inspecciones industriales básicas.",
         specs: [
-          "Capacidad: 95L",
-          "Potencia: 800A",
-          "Sensores: Grado aeroespacial"
+          "Cámara: 20MP",
+          "Autonomía: 45min",
+          "Peso: 920g"
         ]
-      }
-    ]
-  };
-  
-  // Datos de drones industriales
-  const industrialDrones = {
-    roarer: [
+      },
       {
-        title: "H200 - Extinción de Incendios",
-        image: "/H200-EXTINCION.png",
-        description: "Especializado en la extinción de incendios, este dron de alta capacidad ofrece soluciones eficientes para situaciones de emergencia en entornos de difícil acceso.",
+        image: "/H20T.png",
+        title: "H20T - Cámara",
+        description: "Cámara avanzada con capacidades térmicas para inspecciones detalladas.",
         specs: [
+          "Zoom: 200x",
+          "Resolución térmica: 640x512",
+          "Campo visual: 40°"
+        ]
+      },
+      {
+        image: "/Z30.png",
+        title: "Z30 - Cámara",
+        description: "Cámara con zoom potente para inspecciones a distancia.",
+        specs: [
+          "Zoom: 30x",
+          "Resolución: 1080p",
+          "Estabilización: 3 ejes"
+        ]
+      },
+      {
+        image: "/H200-EXTINCION.png",
+        title: "H200 - Extinción de Incendios",
+        description: "Especializado en extinción de incendios, ofrece soluciones para situaciones de emergencia.",
+        specs: [
+          "Capacidad: 92L",
           "Uso: Extinción de incendios",
           "Alta capacidad"
         ]
@@ -211,284 +174,179 @@ const Home = () => {
   // Estado para controlar el tab activo
   const [activeTab, setActiveTab] = useState('agricolas');
   
-  // Estado para controlar el modal
-  const [modalOpen, setModalOpen] = useState(false);
+  // Estado para el modal
   const [selectedDrone, setSelectedDrone] = useState(null);
-  
-  // Referencias para el scroll horizontal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Función para abrir el modal con la información del drone
+  const openDroneModal = (drone) => {
+    setSelectedDrone(drone);
+    setIsModalOpen(true);
+  };
+
+  // Función para cerrar el modal
+  const closeDroneModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Estado para controlar el scroll horizontal
   const agricolasRef = useRef(null);
   const industrialesRef = useRef(null);
 
   // Función para cambiar de slide
   const goToSlide = (slideNumber) => {
     // Ocultar todos los slides
-    const slides = document.querySelectorAll('.slide');
+    const slides = document.querySelectorAll('.service-slide');
     slides.forEach(slide => {
-      if (slide.style.opacity === '1') {
-        // Animación de salida para el slide actual
-        slide.style.opacity = '0';
-        slide.style.transform = 'scale(0.95)';
-        slide.style.zIndex = '1';
-      }
+      slide.classList.remove('active');
     });
     
     // Mostrar el slide seleccionado
-    const selectedSlide = document.getElementById(`slide-${slideNumber}`);
+    const selectedSlide = document.querySelector(`.service-slide[data-slide="${slideNumber}"]`);
     if (selectedSlide) {
-      selectedSlide.style.display = 'block';
-      setTimeout(() => {
-        // Animación de entrada para el nuevo slide
-        selectedSlide.style.opacity = '1';
-        selectedSlide.style.transform = 'scale(1)';
-        selectedSlide.style.zIndex = '2';
-      }, 50);
+      selectedSlide.classList.add('active');
     }
     
     // Actualizar el estado
     setCurrentSlide(slideNumber);
   };
-  
+
+  // Iniciar el slider automático
+  useEffect(() => {
+    slideInterval.current = setInterval(() => {
+      const nextSlide = currentSlide >= serviceSlides.length ? 1 : currentSlide + 1;
+      goToSlide(nextSlide);
+    }, 5000);
+    
+    return () => {
+      if (slideInterval.current) {
+        clearInterval(slideInterval.current);
+      }
+    };
+  }, [currentSlide, serviceSlides.length]);
+
   // Función para ir al slide anterior
   const prevSlide = () => {
-    const newSlide = currentSlide === 1 ? serviceSlides.length : currentSlide - 1;
+    const newSlide = currentSlide <= 1 ? serviceSlides.length : currentSlide - 1;
     goToSlide(newSlide);
   };
-  
+
   // Función para ir al slide siguiente
   const nextSlide = () => {
-    const newSlide = currentSlide === serviceSlides.length ? 1 : currentSlide + 1;
+    const newSlide = currentSlide >= serviceSlides.length ? 1 : currentSlide + 1;
     goToSlide(newSlide);
-  };
-  
-  // Función para abrir el modal con detalles del drone
-  const openDroneModal = (drone) => {
-    setSelectedDrone(drone);
-    setModalOpen(true);
-  };
-  
-  // Función para cerrar el modal
-  const closeDroneModal = () => {
-    setModalOpen(false);
   };
   
   // Función para manejar el scroll horizontal
   const handleScroll = (e) => {
     // Implementación del scroll horizontal
   };
-  
-  // Efecto para inicializar el slider al cargar la página
-  useEffect(() => {
-    // Eliminar cualquier capa blanca que pueda estar cubriendo la página
-    const removeWhiteOverlay = () => {
-      // Buscar y eliminar cualquier elemento que pueda estar causando la capa blanca
-      const overlays = document.querySelectorAll('div[style*="position: fixed"][style*="top: 0"][style*="left: 0"][style*="width: 100%"][style*="height: 100%"]');
-      overlays.forEach(overlay => {
-        if (!overlay.classList.contains('modal-backdrop') || !overlay.classList.contains('active')) {
-          overlay.style.display = 'none';
-          overlay.style.visibility = 'hidden';
-          overlay.style.opacity = '0';
-          overlay.style.pointerEvents = 'none';
-        }
-      });
 
-      // Mostrar el primer slide
-      const firstSlide = document.getElementById('slide-1');
-      if (firstSlide) {
-        firstSlide.style.display = 'block';
-        firstSlide.style.opacity = '1';
-        firstSlide.style.transform = 'scale(1)';
-        firstSlide.style.zIndex = '2';
-      }
-      
-      // Iniciar el intervalo para cambiar slides automáticamente
-      slideInterval.current = setInterval(() => {
-        nextSlide();
-      }, 8000);
-      
-      // Eliminar la capa blanca
-      removeWhiteOverlay();
-      
-      // Limpiar el intervalo al desmontar el componente
-      return () => {
-        if (slideInterval.current) {
-          clearInterval(slideInterval.current);
-        }
-      };
-    };
-    
-    // Ejecutar la función al montar el componente
-    removeWhiteOverlay();
-  }, []);
-  
-  // Efecto para animaciones de scroll
-  useEffect(() => {
-    const handleScrollAnimations = () => {
-      // Implementación de animaciones de scroll
-    };
-    
-    window.addEventListener('scroll', handleScrollAnimations);
-    handleScrollAnimations(); // Ejecutar al montar para verificar elementos visibles inicialmente
-    
-    return () => {
-      window.removeEventListener('scroll', handleScrollAnimations);
-    };
-  }, []);
-
-  // Efecto para asegurar que no haya ninguna capa blanca
-  useEffect(() => {
-    // Función para eliminar cualquier capa blanca
-    const removeWhiteOverlay = () => {
-      // Buscar y eliminar cualquier elemento que pueda estar causando la capa blanca
-      const overlays = document.querySelectorAll('div[style*="position: fixed"][style*="top: 0"][style*="left: 0"][style*="width: 100%"][style*="height: 100%"]');
-      overlays.forEach(overlay => {
-        if (!overlay.classList.contains('modal-backdrop') || !overlay.classList.contains('active')) {
-          overlay.style.display = 'none';
-          overlay.style.visibility = 'hidden';
-          overlay.style.opacity = '0';
-          overlay.style.pointerEvents = 'none';
-          overlay.style.zIndex = '-9999';
-        }
-      });
-
-      // Asegurar que el contenido principal sea visible
-      document.body.style.overflow = 'auto';
-      document.body.style.visibility = 'visible';
-      document.body.style.opacity = '1';
-    };
-
-    // Ejecutar la función al montar el componente
-    removeWhiteOverlay();
-
-    // Ejecutar la función cada 500ms para asegurar que no aparezca ninguna capa blanca
-    const interval = setInterval(removeWhiteOverlay, 500);
-
-    // Limpiar el intervalo al desmontar el componente
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  // Función para cambiar el tab activo
+  const changeTab = (tab) => {
+    setActiveTab(tab);
+  };
 
   return (
-    <div className="home-page" id="home" style={{ visibility: 'visible', opacity: 1, position: 'relative', zIndex: 1 }}>
+    <div className="home-container">
       {/* Hero Section */}
-      <section className="hero">
-        <div className="video-container">
-          <div id="youtube-player"></div>
-        </div>
-        <div className="hero-overlay"></div>
-        <div className="container">
-          <div className="hero-content">
-            <div className="title-container">
-              <div className="subtitle">Sé parte de</div>
-              <hr className="hero-divider" />
-              <h1 className="hero-title">LA INDUSTRIA DEL<br/>FUTURO</h1>
-            </div>
-            <a 
-              href="https://docs.google.com/forms/d/e/1FAIpQLScgwO1KYwaibQZYrREAYoebI05qgcvgikzRHxhDIQUSMTGnhA/viewform" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="cta-button"
-            >
-              Aprende más
-            </a>
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1>Soluciones con Drones para Agricultura e Industria</h1>
+          <p>Tecnología de vanguardia para optimizar procesos y maximizar resultados</p>
+          <div className="hero-buttons">
+            <Link to="/contact" className="btn-primary">Contáctanos</Link>
+            <a href="#services" className="btn-secondary">Nuestros Servicios</a>
           </div>
         </div>
       </section>
-
-      {/* Quote Section */}
-      <section className="quote-section">
-        <div className="container">
-          <div className="quote-container">
-            <div className="quote-text">
-              <blockquote>
-                "Estaremos realmente atrapados con la tecnología cuando todo lo que queramos sean sólo cosas que funcionen."
-              </blockquote>
-              <cite>– Douglas Adams</cite>
-            </div>
-            <div className="quote-image">
-              <img 
-                src="/douglas.webp" 
-                alt="Douglas Adams" 
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       {/* Services Section */}
-      <section className="services" ref={servicesRef} id="servicios">
-        <div className="container">
-          <h2 className="section-title">Nuestros Servicios</h2>
-          
+      <section id="services" className="services-section" ref={servicesRef}>
+        <div className="section-header">
+          <h2>NUESTROS SERVICIOS</h2>
+          <div className="section-divider"></div>
+        </div>
+        
+        <div className="services-content">
           <div className="services-slider">
-            <div className="slider-container">
-              {/* Slides */}
-              <div className="slides-container">
-                {serviceSlides.map(slide => (
-                  <ServiceSlide 
-                    key={slide.id}
-                    id={slide.id}
-                    title={slide.title}
-                    image={slide.image}
-                    description={slide.description}
-                    link={slide.link}
-                  />
-                ))}
+            {serviceSlides.map((slide) => (
+              <div 
+                key={slide.id} 
+                className={`service-slide ${slide.id === currentSlide ? 'active' : ''}`}
+                data-slide={slide.id}
+              >
+                <img src={slide.image} alt={slide.title} className="service-slide-image" />
+                <div className="service-slide-overlay">
+                  <h3 className="service-slide-title">{slide.title}</h3>
+                  <p className="service-slide-description">{slide.description}</p>
+                  <Link to={slide.link} className="service-slide-link">Saber más</Link>
+                </div>
               </div>
-              
-              {/* Navegación */}
-              <div className="slider-nav">
-                <button 
-                  className="prev-slide-btn" 
-                  onClick={prevSlide}
-                >
-                  <i className="fas fa-chevron-left"></i>
-                </button>
-                <button 
-                  className="next-slide-btn" 
-                  onClick={nextSlide}
-                >
-                  <i className="fas fa-chevron-right"></i>
-                </button>
-              </div>
+            ))}
+            
+            <button className="slider-arrow prev" onClick={prevSlide}>
+              <i className="fas fa-chevron-left"></i>
+            </button>
+            <button className="slider-arrow next" onClick={nextSlide}>
+              <i className="fas fa-chevron-right"></i>
+            </button>
+            
+            <div className="slider-dots">
+              {serviceSlides.map((slide) => (
+                <span 
+                  key={slide.id} 
+                  className={`slider-dot ${slide.id === currentSlide ? 'active' : ''}`}
+                  onClick={() => goToSlide(slide.id)}
+                ></span>
+              ))}
             </div>
           </div>
         </div>
       </section>
-
+      
       {/* About Section */}
-      <section className="about-section" ref={aboutRef} id="sobre-nosotros">
-        <div className="quienes-somos-container">
-          <div className="quienes-somos-content">
-            <h2>Quiénes somos</h2>
-            <div className="quienes-somos-divider"></div>
-            <p>Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.</p>
-            <a href="#" className="saber-mas-btn">Saber más <span className="arrow-icon">→</span></a>
+      <section id="about" className="about-section" ref={aboutRef}>
+        <div className="section-header">
+          <h2>QUIÉNES SOMOS</h2>
+          <div className="section-divider"></div>
+        </div>
+        
+        <div className="about-content">
+          <div className="about-text">
+            <p>Somos una empresa líder en soluciones con drones para agricultura e industria, con más de 5 años de experiencia en el mercado.</p>
+            <p>Nuestro equipo está formado por profesionales altamente capacitados y certificados, con amplia experiencia en el sector.</p>
+            <p>Ofrecemos soluciones personalizadas para cada cliente, adaptándonos a sus necesidades específicas y brindando un servicio de calidad.</p>
+          </div>
+          
+          <div className="about-image">
+            <img src="/about-image.jpg" alt="Nuestro equipo" />
           </div>
         </div>
       </section>
 
-      {/* Drone Catalog Section */}
-      <section className="drone-catalog" ref={droneRef} id="drones">
-        <div className="container">
-          <h2 className="section-title">NUESTROS DRONES</h2>
-          <div className="slide-divider"></div>
-          
-          {/* Tabs para filtrar categorías */}
-          <div className="drone-tabs">
-            <button 
-              className={`drone-tab ${activeTab === 'agricolas' ? 'active' : ''}`}
-              onClick={() => setActiveTab('agricolas')}
-            >
-              Agrícolas
-            </button>
-            <button 
-              className={`drone-tab ${activeTab === 'industriales' ? 'active' : ''}`}
-              onClick={() => setActiveTab('industriales')}
-            >
-              Industriales
-            </button>
-          </div>
+      {/* Catálogo de Drones Section */}
+      <section id="drones" className="drones-section" ref={droneRef}>
+        <div className="section-header">
+          <h2>NUESTROS DRONES</h2>
+        </div>
+        
+        <div className="drones-tabs">
+          <button 
+            className={`tab-button ${activeTab === 'agricolas' ? 'active' : ''}`}
+            onClick={() => changeTab('agricolas')}
+          >
+            Agrícolas
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'industriales' ? 'active' : ''}`}
+            onClick={() => changeTab('industriales')}
+          >
+            Industriales
+          </button>
+        </div>
+        
+        <div className="drones-content">
           
           {/* Drones Agrícolas */}
           <div className={`drone-category ${activeTab === 'agricolas' ? 'visible' : 'hidden'}`}>
@@ -497,82 +355,17 @@ const Home = () => {
             {/* Todos los drones agrícolas en una fila */}
             <div className="drone-series">
               <div className="drones-showcase" ref={agricolasRef} onScroll={handleScroll}>
-                {/* H32X */}
-                <DroneCardNew
-                  image="/H32X.webp"
-                  title="H32X"
-                  description="Diseñado para campos pequeños, con capacidad de pulverización de 16L."
-                  specs={[
-                    "Capacidad: 16L",
-                    "Uso: Campos pequeños",
-                    "Tipo: Pulverización"
-                  ]}
-                  onClick={() => openDroneModal(agriculturalDrones.bee[0])}
-                />
-
-                {/* H40X */}
-                <DroneCardNew
-                  image="/H40X.webp"
-                  title="H40X"
-                  description="Tanque de 20L para cubrir campos más grandes, versátil para diversas aplicaciones."
-                  specs={[
-                    "Capacidad: 20L",
-                    "Uso: Campos medianos",
-                    "Tipo: Pulverización"
-                  ]}
-                  onClick={() => openDroneModal(agriculturalDrones.bee[1])}
-                />
-
-                {/* H120 */}
-                <DroneCardNew
-                  image="/H120.webp"
-                  title="H120"
-                  description="Gestiona eficientemente campos grandes con tanque de 52L y dispersión de 60kg."
-                  specs={[
-                    "Capacidad: 52L",
-                    "Dispersión: 60kg",
-                    "Autonomía: 30min"
-                  ]}
-                  onClick={() => openDroneModal(agriculturalDrones.hercules[0])}
-                />
-
-                {/* H160 */}
-                <DroneCardNew
-                  image="/H160.webp"
-                  title="H160"
-                  description="Buque insignia con capacidad de pulverización de 72L~82L para gestión extensiva."
-                  specs={[
-                    "Capacidad: 72L~82L",
-                    "Uso: Gestión extensiva",
-                    "Autonomía: 35min"
-                  ]}
-                  onClick={() => openDroneModal(agriculturalDrones.hercules[1])}
-                />
-
-                {/* H200 Agrícola/Transporte */}
-                <DroneCardNew
-                  image="/H200.png"
-                  title="H200 Agrícola/Transporte"
-                  description="Líder del mercado con capacidad de pulverización de 92L y carga útil de 100kg."
-                  specs={[
-                    "Capacidad: 92L",
-                    "Carga útil: 100kg"
-                  ]}
-                  onClick={() => openDroneModal(agriculturalDrones.roarer[0])}
-                />
-
-                {/* H300 Agrícola/Transporte */}
-                <DroneCardNew
-                  image="/H300.png"
-                  title="H300 Agrícola/Transporte"
-                  description="Diseño plegable, tanque de 95L y sensores de carga de grado aeroespacial."
-                  specs={[
-                    "Capacidad: 95L",
-                    "Potencia: 800A",
-                    "Sensores: Grado aeroespacial"
-                  ]}
-                  onClick={() => openDroneModal(agriculturalDrones.roarer[1])}
-                />
+                {drones.agricolas.map((drone, index) => (
+                  <DroneCardNew
+                    key={index}
+                    image={drone.image}
+                    title={drone.title}
+                    description={drone.description}
+                    specs={drone.specs}
+                    badge={drone.badge}
+                    onClick={() => openDroneModal(drone)}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -584,31 +377,38 @@ const Home = () => {
             {/* Todos los drones industriales en una fila */}
             <div className="drone-series">
               <div className="drones-showcase" ref={industrialesRef} onScroll={handleScroll}>
-                {/* H200 - Extinción de Incendios */}
-                <DroneCardNew
-                  image="/H200-EXTINCION.png"
-                  title="H200 - Extinción de Incendios"
-                  description="Especializado en extinción de incendios, ofrece soluciones para situaciones de emergencia."
-                  specs={[
-                    "Uso: Extinción de incendios",
-                    "Alta capacidad"
-                  ]}
-                  onClick={() => openDroneModal(industrialDrones.roarer[0])}
-                />
+                {drones.industriales.map((drone, index) => (
+                  <DroneCardNew
+                    key={index}
+                    image={drone.image}
+                    title={drone.title}
+                    description={drone.description}
+                    specs={drone.specs}
+                    badge={drone.badge}
+                    onClick={() => openDroneModal(drone)}
+                  />
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
       
+      {/* Call to Action Section */}
+      <section className="cta-section" ref={ctaRef}>
+        <div className="cta-content">
+          <h2>¿Listo para optimizar tus procesos?</h2>
+          <p>Contáctanos hoy mismo y descubre cómo nuestras soluciones con drones pueden ayudarte</p>
+          <Link to="/contact" className="btn-primary">Contáctanos</Link>
+        </div>
+      </section>
+      
       {/* Modal para detalles del drone */}
-      {selectedDrone && (
-        <DroneModal
-          drone={selectedDrone}
-          isOpen={modalOpen}
-          onClose={closeDroneModal}
-        />
-      )}
+      <DroneModal
+        drone={selectedDrone}
+        isOpen={isModalOpen}
+        onClose={closeDroneModal}
+      />
     </div>
   );
 };
