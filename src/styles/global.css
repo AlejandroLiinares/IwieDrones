@@ -14,7 +14,7 @@
   --primary-light: var(--color-medium);
   --accent-color: var(--color-medium);
   --background-white: #FFFFFF;
-  --background-light: var(--color-lightest);
+  --background-light: #FFFFFF;
   --background-dark: var(--color-darkest);
   --text-color: var(--color-darkest);
   --text-light: var(--color-dark);
