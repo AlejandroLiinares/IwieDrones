@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState, Fragment } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 import '../styles/temp-fix.css'; // Importar estilos temporales para corregir el filtro oscuro
 import '../styles/fix-dividers.css'; // Importar estilos para eliminar divisores decorativos
-import '../styles/fix-white-overlay.css'; // Importar estilos para eliminar la capa blanca
-import '../styles/emergency-fix.css'; // Importar el nuevo archivo de emergencia
+
 // Componente para tarjetas de drones
 const DroneCard = ({ image, title, description, specs, badge }) => (
   <div className="drone-card">
@@ -39,14 +38,10 @@ const DroneCardNew = ({ image, title, description, specs, badge, onClick }) => (
 
 // Componente Modal para detalles del drone
 const DroneModal = ({ drone, isOpen, onClose }) => {
-  if (!isOpen || !drone) return null;
+  if (!isOpen) return null;
   
   return (
-    <div className={`modal-backdrop ${isOpen ? 'active' : ''}`} onClick={(e) => {
-      if (e.target.classList.contains('modal-backdrop')) {
-        onClose();
-      }
-    }}>
+    <div className={`modal-backdrop ${isOpen ? 'active' : ''}`} onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>×</button>
         <div className="modal-image">
@@ -57,8 +52,8 @@ const DroneModal = ({ drone, isOpen, onClose }) => {
         <div className="modal-specs">
           <h4>Especificaciones técnicas</h4>
           <ul className="modal-specs-list">
-            {drone.specs && drone.specs.map((spec, index) => (
-              <li key={index}>{typeof spec === 'string' ? spec : ''}</li>
+            {drone.specs.map((spec, index) => (
+              <li key={index}>{spec}</li>
             ))}
           </ul>
         </div>
@@ -106,17 +101,31 @@ const Home = () => {
     },
     {
       id: 2,
-      title: "Agricultura",
-      image: "/agricultura.jpg",
-      description: "Drones especializados para el sector agrícola que optimizan la gestión de cultivos y reducen costos operativos.",
-      link: "/agricultura"
+      title: "Televigilancia",
+      image: "/televigilancia.jpg",
+      description: "Los drones son una herramienta eficaz contra la delincuencia al vigilar grandes sectores.",
+      link: "/televigilancia"
     },
     {
       id: 3,
-      title: "Educación",
-      image: "/educacion.jpg",
-      description: "Programas educativos con drones para instituciones académicas, fomentando el aprendizaje tecnológico.",
-      link: "/educacion"
+      title: "Energía",
+      image: "/energia.jpg",
+      description: "Aplicación al área de energías renovables y convencionales. Revisar las instalaciones, granjas fotovoltaicas, torres de alta tensión, entre otras.",
+      link: "/energia"
+    },
+    {
+      id: 4,
+      title: "Capacitación",
+      image: "/capacitacion.jpg",
+      description: "Programas de formación especializada para pilotos de drones y personal técnico.",
+      link: "/capacitacion"
+    },
+    {
+      id: 5,
+      title: "Agrícola",
+      image: "/agricola.jpg",
+      description: "Aplicación precisa de productos fitosanitarios con drones especializados para cultivos.",
+      link: "/agricola"
     }
   ];
   
@@ -244,132 +253,126 @@ const Home = () => {
       }, 50);
     }
     
+    // Ocultar los slides no seleccionados después de la transición
+    setTimeout(() => {
+      slides.forEach(slide => {
+        if (slide.id !== `slide-${slideNumber}`) {
+          slide.style.display = 'none';
+        }
+      });
+    }, 800); // Aumentar el tiempo para coincidir con la duración de la transición CSS
+    
     // Actualizar el estado
     setCurrentSlide(slideNumber);
   };
   
   // Función para ir al slide anterior
   const prevSlide = () => {
-    const newSlide = currentSlide === 1 ? serviceSlides.length : currentSlide - 1;
-    goToSlide(newSlide);
+    const totalSlides = serviceSlides.length;
+    const prevSlideNumber = currentSlide <= 1 ? totalSlides : currentSlide - 1;
+    goToSlide(prevSlideNumber);
   };
   
-  // Función para ir al slide siguiente
+  // Función para ir al siguiente slide
   const nextSlide = () => {
-    const newSlide = currentSlide === serviceSlides.length ? 1 : currentSlide + 1;
-    goToSlide(newSlide);
+    const totalSlides = serviceSlides.length;
+    const nextSlideNumber = currentSlide >= totalSlides ? 1 : currentSlide + 1;
+    goToSlide(nextSlideNumber);
   };
   
-  // Función para abrir el modal con detalles del drone
+  // Efecto para inicializar el slider y configurar el intervalo
+  useEffect(() => {
+    // Configurar el intervalo para cambiar automáticamente los slides
+    slideInterval.current = setInterval(() => {
+      nextSlide();
+    }, 5000); // Cambiar cada 5 segundos
+    
+    return () => {
+      // Limpiar el intervalo cuando el componente se desmonta
+      clearInterval(slideInterval.current);
+    };
+  }, [currentSlide]); // Dependencia del estado currentSlide
+
+  // Función para cargar la API de YouTube
+  useEffect(() => {
+    // Cargar la API de YouTube
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Inicializar el reproductor de YouTube cuando la API esté lista
+    window.onYouTubeIframeAPIReady = () => {
+      playerRef.current = new window.YT.Player('youtube-player', {
+        videoId: '3t-UOzi9j3E',
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          showinfo: 0,
+          rel: 0,
+          loop: 1,
+          playlist: '3t-UOzi9j3E',
+          playsinline: 1,
+          enablejsapi: 1,
+          origin: window.location.origin,
+          modestbranding: 1,
+          iv_load_policy: 3, // Ocultar anotaciones
+          fs: 0, // Deshabilitar pantalla completa
+          disablekb: 1, // Deshabilitar controles de teclado
+        },
+        events: {
+          onReady: (event) => {
+            event.target.setPlaybackQuality('hd1080'); // Forzar calidad 1080p
+            event.target.playVideo();
+          },
+          onStateChange: (event) => {
+            // Reiniciar el video cuando termina
+            if (event.data === window.YT.PlayerState.ENDED) {
+              event.target.playVideo();
+            }
+          }
+        }
+      });
+    };
+
+    return () => {
+      // Limpiar
+      if (playerRef.current) {
+        playerRef.current.destroy();
+      }
+      window.onYouTubeIframeAPIReady = null;
+    };
+  }, []);
+
+  // Función para manejar el scroll horizontal
+  const handleScroll = (e) => {
+    const { scrollLeft, scrollWidth, clientWidth } = e.target;
+    const container = activeTab === 'agricolas' ? agricolasRef.current : industrialesRef.current;
+    if (container) {
+      const newPosition = scrollLeft;
+      container.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Función para abrir el modal con los detalles del drone
   const openDroneModal = (drone) => {
     setSelectedDrone(drone);
     setModalOpen(true);
+    document.body.style.overflow = 'hidden'; // Prevenir scroll del body
   };
   
   // Función para cerrar el modal
   const closeDroneModal = () => {
     setModalOpen(false);
+    document.body.style.overflow = ''; // Restaurar scroll del body
   };
-  
-  // Función para manejar el scroll horizontal
-  const handleScroll = (e) => {
-    // Implementación del scroll horizontal
-  };
-  
-  // Efecto para inicializar el slider al cargar la página
-  useEffect(() => {
-    // Eliminar cualquier capa blanca que pueda estar cubriendo la página
-    const removeWhiteOverlay = () => {
-      // Buscar y eliminar cualquier elemento que pueda estar causando la capa blanca
-      const overlays = document.querySelectorAll('div[style*="position: fixed"][style*="top: 0"][style*="left: 0"][style*="width: 100%"][style*="height: 100%"]');
-      overlays.forEach(overlay => {
-        if (!overlay.classList.contains('modal-backdrop') || !overlay.classList.contains('active')) {
-          overlay.style.display = 'none';
-          overlay.style.visibility = 'hidden';
-          overlay.style.opacity = '0';
-          overlay.style.pointerEvents = 'none';
-        }
-      });
-
-      // Mostrar el primer slide
-      const firstSlide = document.getElementById('slide-1');
-      if (firstSlide) {
-        firstSlide.style.display = 'block';
-        firstSlide.style.opacity = '1';
-        firstSlide.style.transform = 'scale(1)';
-        firstSlide.style.zIndex = '2';
-      }
-      
-      // Iniciar el intervalo para cambiar slides automáticamente
-      slideInterval.current = setInterval(() => {
-        nextSlide();
-      }, 8000);
-      
-      // Eliminar la capa blanca
-      removeWhiteOverlay();
-      
-      // Limpiar el intervalo al desmontar el componente
-      return () => {
-        if (slideInterval.current) {
-          clearInterval(slideInterval.current);
-        }
-      };
-    };
-    
-    // Ejecutar la función al montar el componente
-    removeWhiteOverlay();
-  }, []);
-  
-  // Efecto para animaciones de scroll
-  useEffect(() => {
-    const handleScrollAnimations = () => {
-      // Implementación de animaciones de scroll
-    };
-    
-    window.addEventListener('scroll', handleScrollAnimations);
-    handleScrollAnimations(); // Ejecutar al montar para verificar elementos visibles inicialmente
-    
-    return () => {
-      window.removeEventListener('scroll', handleScrollAnimations);
-    };
-  }, []);
-
-  // Efecto para asegurar que no haya ninguna capa blanca
-  useEffect(() => {
-    // Función para eliminar cualquier capa blanca
-    const removeWhiteOverlay = () => {
-      // Buscar y eliminar cualquier elemento que pueda estar causando la capa blanca
-      const overlays = document.querySelectorAll('div[style*="position: fixed"][style*="top: 0"][style*="left: 0"][style*="width: 100%"][style*="height: 100%"]');
-      overlays.forEach(overlay => {
-        if (!overlay.classList.contains('modal-backdrop') || !overlay.classList.contains('active')) {
-          overlay.style.display = 'none';
-          overlay.style.visibility = 'hidden';
-          overlay.style.opacity = '0';
-          overlay.style.pointerEvents = 'none';
-          overlay.style.zIndex = '-9999';
-        }
-      });
-
-      // Asegurar que el contenido principal sea visible
-      document.body.style.overflow = 'auto';
-      document.body.style.visibility = 'visible';
-      document.body.style.opacity = '1';
-    };
-
-    // Ejecutar la función al montar el componente
-    removeWhiteOverlay();
-
-    // Ejecutar la función cada 500ms para asegurar que no aparezca ninguna capa blanca
-    const interval = setInterval(removeWhiteOverlay, 500);
-
-    // Limpiar el intervalo al desmontar el componente
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
 
   return (
-    <div className="home-page" id="home" style={{ visibility: 'visible', opacity: 1, position: 'relative', zIndex: 1 }}>
+    <div className="home-page" id="home">
       {/* Hero Section */}
       <section className="hero">
         <div className="video-container">

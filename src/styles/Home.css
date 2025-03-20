@@ -2103,6 +2103,10 @@ body {
   transition: transform 0.3s ease;
 }
 
+.drone-card-new:hover .drone-image-new {
+  transform: scale(1.05);
+}
+
 .drone-title-new {
   color: var(--color-primary);
   font-size: 1.3rem;
@@ -2159,10 +2163,6 @@ body {
 /* Efecto hover para mostrar las especificaciones */
 .drone-card-new:hover {
   transform: translateY(-5px);
-}
-
-.drone-card-new:hover .drone-image-new {
-  transform: scale(1.05);
 }
 
 /* Ajustes para pantallas más pequeñas */
@@ -2259,6 +2259,8 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+  margin-top: 20px;
 }
 
 .drone-tab:hover {
@@ -2439,7 +2441,7 @@ body {
 
 .prev-slide-btn,
 .next-slide-btn {
-  position: relative;
+  position: static;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -2604,18 +2606,21 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
 }
 
 .modal-backdrop.active {
+  display: flex;
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .modal-content {
@@ -2664,6 +2669,7 @@ body {
   margin-bottom: 20px;
   border-bottom: 2px solid var(--color-primary);
   padding-bottom: 10px;
+  text-align: center;
 }
 
 .modal-subtitle {
@@ -2671,6 +2677,7 @@ body {
   color: #555;
   margin-bottom: 20px;
   font-weight: 500;
+  text-align: center;
 }
 
 .modal-specs {
@@ -2695,15 +2702,16 @@ body {
   color: #555;
   display: flex;
   align-items: flex-start;
+  padding-left: 20px;
+  position: relative;
 }
 
 .modal-specs-list li:before {
   content: "•";
+  position: absolute;
+  left: 0;
   color: var(--color-primary);
-  font-weight: bold;
-  display: inline-block;
-  width: 1em;
-  margin-right: 5px;
+  font-size: 1.2rem;
 }
 
 .modal-image {

@@ -1,0 +1,93 @@
+/* 
+   SOLUCIÓN DE EMERGENCIA - Eliminar capa blanca
+   Este archivo debe ser importado en index.html o en el componente principal
+*/
+
+/* Resetear cualquier superposición en todo el documento */
+html, body, #root, .home-page {
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: transparent !important;
+  position: relative !important;
+  z-index: auto !important;
+  overflow: auto !important;
+}
+
+/* Eliminar cualquier elemento que pueda estar causando la capa blanca */
+body::before,
+body::after,
+#root::before,
+#root::after,
+.home-page::before,
+.home-page::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Eliminar cualquier superposición con posición fija */
+body > div:not(#root):not(.modal-backdrop.active),
+#root > div:not(.home-page):not(.modal-backdrop.active) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -9999 !important;
+}
+
+/* Asegurar que todas las secciones sean visibles */
+.hero,
+.quote-section,
+.services,
+.about-section,
+.drone-catalog,
+.drone-category,
+.drone-series,
+.drones-showcase {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: auto !important;
+}
+
+/* Asegurar que el modal solo aparezca cuando esté activo */
+.modal-backdrop:not(.active) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Estilos para el modal activo */
+.modal-backdrop.active {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Asegurar que las tarjetas de drones sean visibles */
+.drone-card-new {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+/* Eliminar cualquier elemento con nombres comunes de overlay */
+[class*="overlay"]:not(.hero-overlay),
+[class*="backdrop"]:not(.modal-backdrop.active),
+[class*="cover"],
+[class*="layer"],
+[class*="mask"],
+[class*="screen"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -9999 !important;
+}

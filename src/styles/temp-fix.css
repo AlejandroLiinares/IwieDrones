@@ -35,3 +35,38 @@
   z-index: 2;
   pointer-events: none;
 }
+
+/* Corrección temporal para eliminar la capa blanca */
+body::before {
+  content: none !important;
+  display: none !important;
+}
+
+body::after {
+  content: none !important;
+  display: none !important;
+}
+
+body > div:not(.home-page):not(#root) {
+  display: none !important;
+}
+
+.modal-backdrop:not(.active) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Asegurar que no haya elementos con position fixed que cubran la página */
+[style*="position: fixed"] {
+  z-index: auto !important;
+}
+
+/* Eliminar cualquier elemento que pueda estar causando la capa blanca */
+.overlay-white,
+.white-overlay,
+.page-overlay,
+.loading-overlay {
+  display: none !important;
+}
