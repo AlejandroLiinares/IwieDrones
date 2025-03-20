@@ -1005,3 +1005,106 @@
     font-size: 1.8rem;
   }
 }
+
+/* Tabs de drones */
+.drones-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 12px 25px;
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  margin: 0 5px;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 0 8px rgba(0, 168, 255, 0.5);
+}
+
+.tab-btn.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.tab-btn.active::after {
+  width: 100%;
+}
+
+.tab-btn:hover {
+  color: var(--color-primary);
+}
+
+.tab-btn:hover::after {
+  width: 50%;
+}
+
+.tab-content {
+  position: relative;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries para las pestañas */
+@media (max-width: 768px) {
+  .drones-tabs {
+    padding: 0 10px;
+  }
+  
+  .tab-btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .drones-tabs {
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  .tab-btn {
+    flex: 1;
+    padding: 10px 5px;
+    font-size: 0.9rem;
+    margin: 0 2px;
+    text-align: center;
+  }
+}

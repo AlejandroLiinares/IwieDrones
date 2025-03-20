@@ -18,6 +18,9 @@ const Home = () => {
   // Estado para el slider de quiénes somos
   const [currentAboutSlide, setCurrentAboutSlide] = useState(1);
   
+  // Estado para las pestañas
+  const [currentTab, setCurrentTab] = useState('agricolas');
+  
   // Datos de los drones
   const drones = [
     // Drones Agrícolas
@@ -388,42 +391,44 @@ const Home = () => {
         </div>
         
         <div className="drones-container content-container">
-          {/* Drones Agrícolas */}
-          <h3 className="drone-category-title">Drones Agrícolas</h3>
-          <div className="drones-grid">
-            {drones
-              .filter(drone => drone.category === "Agrícola")
-              .map((drone) => (
-                <div key={drone.id} className="drone-card">
-                  <h3 className="drone-name">{drone.name}</h3>
-                  <div className="drone-image">
-                    <img src={drone.image} alt={drone.name} />
-                  </div>
-                  <div className="drone-details">
-                    <p className="drone-description">{drone.description}</p>
-                    <button className="drone-info-btn">Ver detalles</button>
-                  </div>
-                </div>
-              ))}
+          {/* Tabs de categorías */}
+          <div className="drones-tabs">
+            <button 
+              className={`tab-btn ${currentTab === 'agricolas' ? 'active' : ''}`}
+              onClick={() => setCurrentTab('agricolas')}
+            >
+              Drones Agrícolas
+            </button>
+            <button 
+              className={`tab-btn ${currentTab === 'industriales' ? 'active' : ''}`}
+              onClick={() => setCurrentTab('industriales')}
+            >
+              Drones Industriales
+            </button>
           </div>
           
-          {/* Drones Industriales */}
-          <h3 className="drone-category-title">Drones Industriales</h3>
-          <div className="drones-grid">
-            {drones
-              .filter(drone => drone.category === "Industrial")
-              .map((drone) => (
-                <div key={drone.id} className="drone-card">
-                  <h3 className="drone-name">{drone.name}</h3>
-                  <div className="drone-image">
-                    <img src={drone.image} alt={drone.name} />
-                  </div>
-                  <div className="drone-details">
-                    <p className="drone-description">{drone.description}</p>
-                    <button className="drone-info-btn">Ver detalles</button>
-                  </div>
+          {/* Contenido de pestañas */}
+          <div className="tab-content">
+            {['agricolas', 'industriales'].map((tabName) => (
+              <div key={tabName} className={`tab-pane ${currentTab === tabName ? 'active' : ''}`}>
+                <div className="drones-grid">
+                  {drones
+                    .filter(drone => drone.category === (tabName === 'agricolas' ? "Agrícola" : "Industrial"))
+                    .map((drone) => (
+                      <div key={drone.id} className="drone-card">
+                        <h3 className="drone-name">{drone.name}</h3>
+                        <div className="drone-image">
+                          <img src={drone.image} alt={drone.name} />
+                        </div>
+                        <div className="drone-details">
+                          <p className="drone-description">{drone.description}</p>
+                          <button className="drone-info-btn">Ver detalles</button>
+                        </div>
+                      </div>
+                    ))}
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
