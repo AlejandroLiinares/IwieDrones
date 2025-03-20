@@ -2355,16 +2355,14 @@ body {
 /* Botones de navegación */
 .scroll-left-btn,
 .scroll-right-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background-color: var(--color-primary);
   color: white;
   border: none;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -2372,20 +2370,22 @@ body {
   opacity: 0.8;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-right: 10px;
+  margin-top: 20px;
 }
 
 .scroll-left-btn:hover,
 .scroll-right-btn:hover {
   opacity: 1;
-  transform: translateY(-50%) scale(1.05);
+  transform: scale(1.05);
 }
 
 .scroll-left-btn {
-  left: 10px;
+  margin-right: 10px;
 }
 
 .scroll-right-btn {
-  right: 10px;
+  margin-left: 10px;
 }
 
 .scroll-left-btn:disabled,
@@ -2393,6 +2393,13 @@ body {
   background-color: #ccc;
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.scroll-buttons-container {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 6%;
+  margin-bottom: 20px;
 }
 
 /* Modificar el contenedor de drones para que no muestre la barra de desplazamiento */

@@ -263,7 +263,7 @@ const Home = () => {
     };
   }, [currentSlide]); // Dependencia del estado currentSlide
 
-  // Efecto para cargar la API de YouTube
+  // Función para cargar la API de YouTube
   useEffect(() => {
     // Cargar la API de YouTube
     const tag = document.createElement('script');
@@ -383,6 +383,8 @@ const Home = () => {
   const [activeTab, setActiveTab] = useState('agricolas'); // Estado para controlar el tab activo
   const [scrollPosition, setScrollPosition] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
+  const [scrollPositionIndustriales, setScrollPositionIndustriales] = useState(0);
+  const [maxScrollIndustriales, setMaxScrollIndustriales] = useState(0);
   const agricolasRef = useRef(null);
   const industrialesRef = useRef(null);
 
@@ -412,6 +414,32 @@ const Home = () => {
     }
   };
 
+  // Función para manejar el desplazamiento hacia la izquierda en la sección de drones industriales
+  const scrollLeftIndustriales = () => {
+    const container = industrialesRef.current;
+    if (container) {
+      const newPosition = Math.max(scrollPositionIndustriales - 300, 0);
+      container.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+      setScrollPositionIndustriales(newPosition);
+    }
+  };
+
+  // Función para manejar el desplazamiento hacia la derecha en la sección de drones industriales
+  const scrollRightIndustriales = () => {
+    const container = industrialesRef.current;
+    if (container) {
+      const newPosition = Math.min(scrollPositionIndustriales + 300, maxScrollIndustriales);
+      container.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+      setScrollPositionIndustriales(newPosition);
+    }
+  };
+
   // Función para actualizar el estado de desplazamiento
   const handleScroll = (e) => {
     const { scrollLeft, scrollWidth, clientWidth } = e.target;
@@ -419,18 +447,70 @@ const Home = () => {
     setMaxScroll(scrollWidth - clientWidth);
   };
 
-  // Efecto para actualizar el maxScroll cuando cambia el tab
+  // Función para actualizar el estado de desplazamiento en la sección de drones industriales
+  const handleScrollIndustriales = (e) => {
+    const { scrollLeft, scrollWidth, clientWidth } = e.target;
+    setScrollPositionIndustriales(scrollLeft);
+    setMaxScrollIndustriales(scrollWidth - clientWidth);
+  };
+
+  // Efecto para detectar el cambio de pestaña y actualizar los valores de desplazamiento
   useEffect(() => {
-    const container = activeTab === 'agricolas' ? agricolasRef.current : industrialesRef.current;
-    if (container) {
-      setMaxScroll(container.scrollWidth - container.clientWidth);
-      setScrollPosition(0);
-      container.scrollTo({
-        left: 0,
-        behavior: 'smooth'
-      });
-    }
+    // Función para actualizar los valores de desplazamiento
+    const updateScrollValues = () => {
+      if (activeTab === 'agricolas' && agricolasRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = agricolasRef.current;
+        setScrollPosition(scrollLeft);
+        setMaxScroll(scrollWidth - clientWidth);
+      } else if (activeTab === 'industriales' && industrialesRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = industrialesRef.current;
+        setScrollPositionIndustriales(scrollLeft);
+        setMaxScrollIndustriales(scrollWidth - clientWidth);
+      }
+    };
+
+    // Actualizar valores iniciales
+    updateScrollValues();
+
+    // Establecer un pequeño retraso para asegurar que los elementos se hayan renderizado completamente
+    const timer = setTimeout(() => {
+      updateScrollValues();
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [activeTab]);
+
+  // Efecto para inicializar los valores de scroll máximo cuando se monta el componente
+  useEffect(() => {
+    // Función para actualizar los valores de desplazamiento máximo
+    const updateMaxScrollValues = () => {
+      if (agricolasRef.current) {
+        const { scrollWidth, clientWidth } = agricolasRef.current;
+        setMaxScroll(scrollWidth - clientWidth);
+      }
+      
+      if (industrialesRef.current) {
+        const { scrollWidth, clientWidth } = industrialesRef.current;
+        setMaxScrollIndustriales(scrollWidth - clientWidth);
+      }
+    };
+
+    // Actualizar valores iniciales
+    updateMaxScrollValues();
+    
+    // Actualizar valores cuando cambie el tamaño de la ventana
+    window.addEventListener('resize', updateMaxScrollValues);
+    
+    // Establecer un pequeño retraso para asegurar que los elementos se hayan renderizado completamente
+    const timer = setTimeout(() => {
+      updateMaxScrollValues();
+    }, 500);
+    
+    return () => {
+      window.removeEventListener('resize', updateMaxScrollValues);
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
     <div className="home-page" id="home">
@@ -652,20 +732,22 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <button 
-                className="scroll-left-btn" 
-                onClick={scrollLeft} 
-                disabled={scrollPosition <= 0}
-              >
-                <i className="fas fa-chevron-left"></i>
-              </button>
-              <button 
-                className="scroll-right-btn" 
-                onClick={scrollRight} 
-                disabled={scrollPosition >= maxScroll}
-              >
-                <i className="fas fa-chevron-right"></i>
-              </button>
+              <div className="scroll-buttons-container">
+                <button 
+                  className="scroll-left-btn" 
+                  onClick={scrollLeft} 
+                  disabled={scrollPosition <= 0}
+                >
+                  <i className="fas fa-chevron-left"></i>
+                </button>
+                <button 
+                  className="scroll-right-btn" 
+                  onClick={scrollRight} 
+                  disabled={scrollPosition >= maxScroll}
+                >
+                  <i className="fas fa-chevron-right"></i>
+                </button>
+              </div>
             </div>
           </div>
           
@@ -675,7 +757,7 @@ const Home = () => {
             
             {/* Todos los drones industriales en una fila */}
             <div className="drone-series">
-              <div className="drones-showcase" ref={industrialesRef} onScroll={handleScroll}>
+              <div className="drones-showcase" ref={industrialesRef} onScroll={handleScrollIndustriales}>
                 {/* H200 Extinción */}
                 <div className="drone-card-new">
                   <h3 className="drone-title-new">H200 Extinción</h3>
@@ -787,20 +869,22 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <button 
-                className="scroll-left-btn" 
-                onClick={scrollLeft} 
-                disabled={scrollPosition <= 0}
-              >
-                <i className="fas fa-chevron-left"></i>
-              </button>
-              <button 
-                className="scroll-right-btn" 
-                onClick={scrollRight} 
-                disabled={scrollPosition >= maxScroll}
-              >
-                <i className="fas fa-chevron-right"></i>
-              </button>
+              <div className="scroll-buttons-container">
+                <button 
+                  className="scroll-left-btn" 
+                  onClick={scrollLeftIndustriales} 
+                  disabled={scrollPositionIndustriales <= 0}
+                >
+                  <i className="fas fa-chevron-left"></i>
+                </button>
+                <button 
+                  className="scroll-right-btn" 
+                  onClick={scrollRightIndustriales} 
+                  disabled={scrollPositionIndustriales >= maxScrollIndustriales}
+                >
+                  <i className="fas fa-chevron-right"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
