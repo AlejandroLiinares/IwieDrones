@@ -526,7 +526,7 @@
   }
 }
 
-/* About Section */
+/* About Section 4 horas y media*/
 .about-section {
   padding: var(--spacing-3xl) 0;
   position: relative;
@@ -675,42 +675,26 @@
 
 .drones-grid {
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px;
   padding: 20px 0 40px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-primary) #f1f1f1;
-  -webkit-overflow-scrolling: touch;
-}
-
-.drones-grid::-webkit-scrollbar {
-  height: 8px;
-}
-
-.drones-grid::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.drones-grid::-webkit-scrollbar-thumb {
-  background-color: var(--color-primary);
-  border-radius: 10px;
+  width: 100%;
 }
 
 .drone-card {
-  flex: 0 0 16.666%;
-  min-width: 220px;
+  flex: 0 0 calc(33.333% - 20px);
+  min-width: 280px;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 15px;
+  padding: 25px;
   border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color: white;
-  position: relative;
-  overflow: visible;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .drone-card:hover {
@@ -718,23 +702,13 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.drone-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 15px;
-  text-align: center;
-  width: 100%;
-}
-
 .drone-image {
   width: 100%;
   height: 180px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease;
 }
 
 .drone-image img {
@@ -748,31 +722,32 @@
   transform: scale(1.05);
 }
 
+.drone-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+}
+
 .drone-details {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+  max-height: none;
+  opacity: 1;
   width: 100%;
   text-align: center;
   padding: 0;
 }
 
-.drone-card:hover .drone-details {
-  max-height: 300px;
-  opacity: 1;
-  padding-top: 10px;
-}
-
 .drone-description {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #666;
-  margin-bottom: 15px;
-  line-height: 1.4;
-  padding: 0 5px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  padding: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -797,46 +772,20 @@
   border-color: var(--color-primary);
 }
 
-.drone-category-title {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--color-text-dark);
-  margin: 30px 0 20px;
-  position: relative;
-  padding-left: 15px;
-}
-
-.drone-category-title::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 5px;
-  height: 24px;
-  background-color: var(--color-primary);
-  border-radius: 2px;
-}
-
 /* Media Queries para la sección de drones */
-@media (max-width: 1400px) {
+@media (max-width: 768px) {
   .drone-card {
-    flex: 0 0 20%;
-    min-width: 200px;
+    padding: 20px;
+  }
+  
+  .drone-image {
+    height: 160px;
   }
 }
 
-@media (max-width: 1200px) {
-  .drone-card {
-    flex: 0 0 25%;
-    min-width: 200px;
-  }
-}
-
-@media (max-width: 992px) {
-  .drone-card {
-    flex: 0 0 33.333%;
-    min-width: 180px;
+@media (max-width: 480px) {
+  .drone-image {
+    height: 160px;
   }
   
   .drone-name {
@@ -844,37 +793,7 @@
   }
   
   .drone-description {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .drone-card {
-    flex: 0 0 50%;
-    min-width: 160px;
-  }
-  
-  .drone-image {
-    height: 150px;
-  }
-  
-  .drone-category-title {
-    font-size: 1.4rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .drone-card {
-    flex: 0 0 100%;
-    min-width: 220px;
-  }
-  
-  .drone-image {
-    height: 160px;
-  }
-  
-  .drones-grid {
-    padding-bottom: 30px;
+    font-size: 0.9rem;
   }
 }
 

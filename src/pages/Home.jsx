@@ -340,7 +340,6 @@ const Home = () => {
                     .filter(drone => drone.category === "Agrícola")
                     .map((drone) => (
                       <div key={drone.id} className="drone-card">
-                        <h3 className="drone-name">{drone.name}</h3>
                         <div className="drone-image">
                           <img 
                             src={drone.image} 
@@ -348,6 +347,7 @@ const Home = () => {
                             onError={handleImageError}
                           />
                         </div>
+                        <h3 className="drone-name">{drone.name}</h3>
                         <div className="drone-details">
                           <p className="drone-description">{drone.description}</p>
                           <Link to={`/drones/${drone.id}`} className="drone-info-btn">Ver detalles</Link>
@@ -367,7 +367,6 @@ const Home = () => {
                     .filter(drone => drone.category === "Industrial")
                     .map((drone) => (
                       <div key={drone.id} className="drone-card">
-                        <h3 className="drone-name">{drone.name}</h3>
                         <div className="drone-image">
                           <img 
                             src={drone.image} 
@@ -375,6 +374,7 @@ const Home = () => {
                             onError={handleImageError}
                           />
                         </div>
+                        <h3 className="drone-name">{drone.name}</h3>
                         <div className="drone-details">
                           <p className="drone-description">{drone.description}</p>
                           <Link to={`/drones/${drone.id}`} className="drone-info-btn">Ver detalles</Link>
