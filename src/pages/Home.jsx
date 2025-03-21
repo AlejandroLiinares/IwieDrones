@@ -1,26 +1,9 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
+import '../styles/Home.css';
 import ServiceSlide from '../components/ServiceSlide';
 import AboutSlide from '../components/AboutSlide';
-import '../styles/Home.css';
 
 const Home = () => {
-  // Referencias para animaciones de scroll
-  const servicesRef = useRef(null);
-  const aboutRef = useRef(null);
-  const dronesRef = useRef(null);
-  const ctaRef = useRef(null);
-  
-  // Estado para el slider de servicios
-  const [currentSlide, setCurrentSlide] = useState(1);
-  const slideInterval = useRef(null);
-  
-  // Estado para el slider de quiénes somos
-  const [currentAboutSlide, setCurrentAboutSlide] = useState(1);
-  
-  // Estado para las pestañas
-  const [currentTab, setCurrentTab] = useState('agricolas');
-  
   // Datos de los drones
   const drones = [
     // Drones Agrícolas
@@ -136,23 +119,37 @@ const Home = () => {
   const serviceSlides = [
     {
       id: 1,
-      title: "Servicios de Drones Agrícolas",
+      title: "Servicios Agrícolas",
       description: "Ofrecemos soluciones de alta precisión para la agricultura con drones especializados en fumigación, siembra y monitoreo de cultivos.",
-      image: "/servicio-agricola.jpg",
+      image: "/agricola.jpg",
       link: "/services/agricultural"
     },
     {
       id: 2,
-      title: "Servicios de Drones Industriales",
+      title: "Servicios Industriales",
       description: "Nuestros drones industriales están equipados con tecnología avanzada para inspecciones, mapeo 3D, termografía y más.",
-      image: "/servicio-industrial.jpg",
+      image: "/industria.jpg",
       link: "/services/industrial"
     },
     {
       id: 3,
+      title: "Televigilancia",
+      description: "Sistemas de vigilancia aérea con drones para monitoreo de seguridad, control de perímetros y supervisión de eventos.",
+      image: "/televigilancia.jpg",
+      link: "/services/surveillance"
+    },
+    {
+      id: 4,
+      title: "Servicios de Energía",
+      description: "Inspección de infraestructuras energéticas, paneles solares y líneas eléctricas con drones equipados con cámaras térmicas y sensores especializados.",
+      image: "/energia.jpg",
+      link: "/services/energy"
+    },
+    {
+      id: 5,
       title: "Capacitación y Certificación",
       description: "Programas de formación para pilotos de drones con certificación oficial, adaptados a diferentes niveles y necesidades.",
-      image: "/servicio-capacitacion.jpg",
+      image: "/capacitacion.jpg",
       link: "/services/training"
     }
   ];
@@ -178,77 +175,6 @@ const Home = () => {
       image: "/vision.jpg"
     }
   ];
-  
-  // Función genérica para cambiar de slide
-  const changeSlide = (slideNumber, slideType, setCurrentSlide) => {
-    // Ocultar todos los slides
-    const slides = document.querySelectorAll(`.${slideType}-slide`);
-    slides.forEach(slide => {
-      slide.style.display = 'none';
-    });
-    
-    // Mostrar el slide seleccionado
-    const selectedSlide = document.querySelector(`#${slideType}-slide-${slideNumber}`);
-    if (selectedSlide) {
-      selectedSlide.style.display = 'block';
-    }
-    
-    // Actualizar el estado
-    setCurrentSlide(slideNumber);
-  };
-
-  // Funciones para el slider de servicios
-  const goToSlide = (slideNumber) => {
-    changeSlide(slideNumber, 'slide', setCurrentSlide);
-  };
-
-  const prevSlide = () => {
-    const newSlide = currentSlide <= 1 ? serviceSlides.length : currentSlide - 1;
-    goToSlide(newSlide);
-  };
-
-  const nextSlide = () => {
-    const newSlide = currentSlide >= serviceSlides.length ? 1 : currentSlide + 1;
-    goToSlide(newSlide);
-  };
-
-  // Funciones para el slider de quiénes somos
-  const goToAboutSlide = (slideNumber) => {
-    changeSlide(slideNumber, 'about', setCurrentAboutSlide);
-  };
-
-  const prevAboutSlide = () => {
-    const newSlide = currentAboutSlide <= 1 ? aboutSlides.length : currentAboutSlide - 1;
-    goToAboutSlide(newSlide);
-  };
-
-  const nextAboutSlide = () => {
-    const newSlide = currentAboutSlide >= aboutSlides.length ? 1 : currentAboutSlide + 1;
-    goToAboutSlide(newSlide);
-  };
-
-  // Iniciar el slider automático
-  useEffect(() => {
-    // Mostrar el primer slide al cargar
-    goToSlide(1);
-    
-    slideInterval.current = setInterval(() => {
-      const nextSlide = currentSlide >= serviceSlides.length ? 1 : currentSlide + 1;
-      goToSlide(nextSlide);
-    }, 5000);
-    
-    return () => {
-      if (slideInterval.current) {
-        clearInterval(slideInterval.current);
-      }
-    };
-  }, [currentSlide]);
-
-  // Inicializar el slider de quiénes somos
-  useEffect(() => {
-    // Mostrar el primer slide al cargar
-    goToAboutSlide(1);
-  }, []);
 
   return (
     <div className="home-container">
@@ -298,51 +224,30 @@ const Home = () => {
       </section>
       
       {/* Services Section */}
-      <section className="services" ref={servicesRef} id="servicios">
+      <section className="services" id="servicios">
         <div className="container">
           <h2 className="section-title">NUESTROS SERVICIOS</h2>
           <div className="section-divider"></div>
           
           <div className="services-content">
             <div className="services-slider">
-              <div className="slides-container">
-                {serviceSlides.map((slide) => (
-                  <ServiceSlide
-                    key={slide.id}
-                    id={slide.id}
-                    image={slide.image}
-                    title={slide.title}
-                    description={slide.description}
-                    link={slide.link}
-                  />
-                ))}
-              </div>
-              
-              <div className="slider-nav">
-                <button className="slider-arrow prev" onClick={prevSlide}>
-                  <i className="fas fa-chevron-left"></i>
-                </button>
-                <button className="slider-arrow next" onClick={nextSlide}>
-                  <i className="fas fa-chevron-right"></i>
-                </button>
-              </div>
-              
-              <div className="slider-dots">
-                {serviceSlides.map((slide) => (
-                  <span 
-                    key={slide.id} 
-                    className={`slider-dot ${slide.id === currentSlide ? 'active' : ''}`}
-                    onClick={() => goToSlide(slide.id)}
-                  ></span>
-                ))}
-              </div>
+              {serviceSlides.map((slide) => (
+                <ServiceSlide
+                  key={slide.id}
+                  id={slide.id}
+                  title={slide.title}
+                  description={slide.description}
+                  image={slide.image}
+                  link={slide.link}
+                />
+              ))}
             </div>
           </div>
         </div>
       </section>
       
       {/* About Section */}
-      <section id="about" className="about-section" ref={aboutRef}>
+      <section id="about" className="about-section">
         <div className="section-header">
           <h2>QUIÉNES SOMOS</h2>
           <div className="section-divider"></div>
@@ -350,69 +255,48 @@ const Home = () => {
         
         <div className="about-content">
           <div className="about-slider">
-            <div className="slides-container">
-              {aboutSlides.map((slide) => (
-                <AboutSlide
-                  key={slide.id}
-                  id={slide.id}
-                  image={slide.image}
-                  title={slide.title}
-                  description={slide.description}
-                />
-              ))}
-            </div>
-            <div className="slider-nav">
-              <button className="slider-arrow prev" onClick={prevAboutSlide}>
-                <i className="fas fa-chevron-left"></i>
-              </button>
-              <button className="slider-arrow next" onClick={nextAboutSlide}>
-                <i className="fas fa-chevron-right"></i>
-              </button>
-            </div>
-            <div className="slider-dots">
-              {aboutSlides.map((slide) => (
-                <span 
-                  key={slide.id} 
-                  className={`slider-dot ${slide.id === currentAboutSlide ? 'active' : ''}`}
-                  onClick={() => goToAboutSlide(slide.id)}
-                ></span>
-              ))}
-            </div>
+            {aboutSlides.map((slide) => (
+              <AboutSlide
+                key={slide.id}
+                id={slide.id}
+                image={slide.image}
+                title={slide.title}
+                description={slide.description}
+              />
+            ))}
           </div>
         </div>
       </section>
 
       {/* Drones Section */}
-      <section id="drones" className="drones-section" ref={dronesRef}>
-        <div className="section-header">
-          <h2>NUESTROS DRONES</h2>
-          <div className="section-divider"></div>
-        </div>
-        
-        <div className="drones-container content-container">
-          {/* Tabs de categorías */}
-          <div className="drones-tabs">
-            <button 
-              className={`tab-btn ${currentTab === 'agricolas' ? 'active' : ''}`}
-              onClick={() => setCurrentTab('agricolas')}
-            >
-              Drones Agrícolas
-            </button>
-            <button 
-              className={`tab-btn ${currentTab === 'industriales' ? 'active' : ''}`}
-              onClick={() => setCurrentTab('industriales')}
-            >
-              Drones Industriales
-            </button>
+      <section id="drones" className="drones-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>NUESTROS DRONES</h2>
+            <div className="section-divider"></div>
           </div>
           
-          {/* Contenido de pestañas (El jueves hice tres horas*/}
-          <div className="tab-content">
-            {['agricolas', 'industriales'].map((tabName) => (
-              <div key={tabName} className={`tab-pane ${currentTab === tabName ? 'active' : ''}`}>
+          <div className="drones-container content-container">
+            {/* Tabs de categorías */}
+            <div className="drones-tabs">
+              <button 
+                className="tab-btn"
+              >
+                Drones Agrícolas
+              </button>
+              <button 
+                className="tab-btn"
+              >
+                Drones Industriales
+              </button>
+            </div>
+            
+            {/* Contenido de pestañas */}
+            <div className="tab-content">
+              <div className="tab-pane">
                 <div className="drones-grid">
                   {drones
-                    .filter(drone => drone.category === (tabName === 'agricolas' ? "Agrícola" : "Industrial"))
+                    .filter(drone => drone.category === "Agrícola")
                     .map((drone) => (
                       <div key={drone.id} className="drone-card">
                         <h3 className="drone-name">{drone.name}</h3>
@@ -427,13 +311,31 @@ const Home = () => {
                     ))}
                 </div>
               </div>
-            ))}
+              <div className="tab-pane">
+                <div className="drones-grid">
+                  {drones
+                    .filter(drone => drone.category === "Industrial")
+                    .map((drone) => (
+                      <div key={drone.id} className="drone-card">
+                        <h3 className="drone-name">{drone.name}</h3>
+                        <div className="drone-image">
+                          <img src={drone.image} alt={drone.name} />
+                        </div>
+                        <div className="drone-details">
+                          <p className="drone-description">{drone.description}</p>
+                          <button className="drone-info-btn">Ver detalles</button>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Call to Action Section */}
-      <section className="cta-section" ref={ctaRef}>
+      <section className="cta-section">
         <div className="cta-content">
           <h2>¿Listo para optimizar tus procesos?</h2>
           <p>Contáctanos hoy mismo y descubre cómo nuestras soluciones con drones pueden ayudarte</p>
