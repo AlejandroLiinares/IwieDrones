@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 import ServiceSlide from '../components/ServiceSlide';
-import AboutSlide from '../components/AboutSlide';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const Home = () => {
   // Datos de los drones
@@ -168,17 +167,27 @@ const Home = () => {
   // Reference for the services slider
   const servicesSliderRef = useRef(null);
   
-  // Function to handle slide navigation
+  // Function to handle slide navigation with dynamic slide width calculation
   const handleSlideNavigation = (direction) => {
     const slider = servicesSliderRef.current;
     if (!slider) return;
     
-    const slideWidth = 350; // Width of each slide including gap
+    // Get the actual width of the first slide element for responsive navigation
+    const slides = slider.querySelectorAll('.slide');
+    if (!slides.length) return;
+    
+    const slideWidth = slides[0].offsetWidth + 20; // Width + gap
     const scrollAmount = direction === 'left' ? -slideWidth : slideWidth;
     slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
   const [activeTab, setActiveTab] = useState("Agrícola");
+
+  // Handle image loading errors
+  const handleImageError = (e) => {
+    e.target.src = '/placeholder-image.jpg'; // Fallback image
+    e.target.alt = 'Imagen no disponible';
+  };
 
   return (
     <div className="home-container">
@@ -192,6 +201,7 @@ const Home = () => {
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            aria-label="Video de fondo de Iwie Drones"
           ></iframe>
         </div>
         <div className="hero-overlay"></div>
@@ -202,7 +212,7 @@ const Home = () => {
               <div className="hero-divider"></div>
               <h1 className="hero-title">LA INDUSTRIA DEL FUTURO</h1>
             </div>
-            <a href="#services" className="cta-button">Más Información</a>
+            <a href="#servicios" className="cta-button" aria-label="Ver más información sobre nuestros servicios">Más Información</a>
           </div>
         </div>
       </section>
@@ -269,9 +279,9 @@ const Home = () => {
       </section>
       
       {/* About Section */}
-      <section id="about" className="about-section">
+      <section id="about" className="about-section" aria-labelledby="about-title">
         <div className="section-header" style={{ display: 'none' }}>
-          <h2>QUIÉNES SOMOS</h2>
+          <h2 id="about-title">QUIÉNES SOMOS</h2>
           <div className="section-divider"></div>
         </div>
         
@@ -285,25 +295,33 @@ const Home = () => {
       </section>
 
       {/* Drones Section */}
-      <section id="drones" className="drones-section">
+      <section id="drones" className="drones-section" aria-labelledby="drones-title">
         <div className="container">
           <div className="section-header">
-            <h2>NUESTROS DRONES</h2>
+            <h2 id="drones-title">NUESTROS DRONES</h2>
             <div className="section-divider"></div>
           </div>
           
           <div className="drones-container content-container">
             {/* Tabs de categorías */}
-            <div className="drones-tabs">
+            <div className="drones-tabs" role="tablist" aria-label="Categorías de drones">
               <button 
                 className={`tab-btn ${activeTab === "Agrícola" ? "active" : ""}`}
                 onClick={() => setActiveTab("Agrícola")}
+                role="tab"
+                aria-selected={activeTab === "Agrícola"}
+                aria-controls="tab-agricola"
+                id="tab-btn-agricola"
               >
                 Drones Agrícolas
               </button>
               <button 
                 className={`tab-btn ${activeTab === "Industrial" ? "active" : ""}`}
                 onClick={() => setActiveTab("Industrial")}
+                role="tab"
+                aria-selected={activeTab === "Industrial"}
+                aria-controls="tab-industrial"
+                id="tab-btn-industrial"
               >
                 Drones Industriales
               </button>
@@ -311,7 +329,12 @@ const Home = () => {
             
             {/* Contenido de pestañas */}
             <div className="tab-content">
-              <div className={`tab-pane ${activeTab === "Agrícola" ? "active" : ""}`}>
+              <div 
+                className={`tab-pane ${activeTab === "Agrícola" ? "active" : ""}`}
+                role="tabpanel"
+                id="tab-agricola"
+                aria-labelledby="tab-btn-agricola"
+              >
                 <div className="drones-grid">
                   {drones
                     .filter(drone => drone.category === "Agrícola")
@@ -319,17 +342,26 @@ const Home = () => {
                       <div key={drone.id} className="drone-card">
                         <h3 className="drone-name">{drone.name}</h3>
                         <div className="drone-image">
-                          <img src={drone.image} alt={drone.name} />
+                          <img 
+                            src={drone.image} 
+                            alt={`Drone ${drone.name}`} 
+                            onError={handleImageError}
+                          />
                         </div>
                         <div className="drone-details">
                           <p className="drone-description">{drone.description}</p>
-                          <button className="drone-info-btn">Ver detalles</button>
+                          <Link to={`/drones/${drone.id}`} className="drone-info-btn">Ver detalles</Link>
                         </div>
                       </div>
                     ))}
                 </div>
               </div>
-              <div className={`tab-pane ${activeTab === "Industrial" ? "active" : ""}`}>
+              <div 
+                className={`tab-pane ${activeTab === "Industrial" ? "active" : ""}`}
+                role="tabpanel"
+                id="tab-industrial"
+                aria-labelledby="tab-btn-industrial"
+              >
                 <div className="drones-grid">
                   {drones
                     .filter(drone => drone.category === "Industrial")
@@ -337,11 +369,15 @@ const Home = () => {
                       <div key={drone.id} className="drone-card">
                         <h3 className="drone-name">{drone.name}</h3>
                         <div className="drone-image">
-                          <img src={drone.image} alt={drone.name} />
+                          <img 
+                            src={drone.image} 
+                            alt={`Drone ${drone.name}`}
+                            onError={handleImageError}
+                          />
                         </div>
                         <div className="drone-details">
                           <p className="drone-description">{drone.description}</p>
-                          <button className="drone-info-btn">Ver detalles</button>
+                          <Link to={`/drones/${drone.id}`} className="drone-info-btn">Ver detalles</Link>
                         </div>
                       </div>
                     ))}
