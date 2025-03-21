@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 import ServiceSlide from '../components/ServiceSlide';
 import AboutSlide from '../components/AboutSlide';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const Home = () => {
   // Datos de los drones
@@ -162,24 +162,6 @@ const Home = () => {
       title: "QUIÉNES SOMOS",
       description: "Iwie Drones nace en el año 2022 con el objetivo de brindar servicios con drones en diversas áreas como agricultura, procesos industriales, educación, sistemas de energía, televigilancia y entretenimiento. Nos especializamos en ofrecer soluciones tecnológicas avanzadas que optimizan procesos y mejoran la eficiencia en diversos sectores.",
       image: "/quienes-somos.jpg"
-    },
-    {
-      id: 2,
-      title: "Nuestra Historia",
-      description: "Fundada en 2018, IWIE nació con la visión de revolucionar la industria agrícola e industrial en Chile a través de la tecnología de drones. Desde entonces, hemos crecido hasta convertirnos en líderes del sector.",
-      image: "/historia.jpg"
-    },
-    {
-      id: 3,
-      title: "Nuestra Misión",
-      description: "Proporcionar soluciones tecnológicas avanzadas con drones que optimicen procesos, mejoren la seguridad y aumenten la eficiencia en diversos sectores industriales y agrícolas.",
-      image: "/mision.jpg"
-    },
-    {
-      id: 4,
-      title: "Nuestra Visión",
-      description: "Ser líderes en la innovación y aplicación de tecnología de drones en Chile, estableciendo nuevos estándares de calidad y servicio en la industria.",
-      image: "/vision.jpg"
     }
   ];
 
@@ -195,6 +177,8 @@ const Home = () => {
     const scrollAmount = direction === 'left' ? -slideWidth : slideWidth;
     slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
+
+  const [activeTab, setActiveTab] = useState("Agrícola");
 
   return (
     <div className="home-container">
@@ -293,15 +277,9 @@ const Home = () => {
         
         <div className="about-content">
           <div className="about-slider">
-            {aboutSlides.map((slide) => (
-              <AboutSlide
-                key={slide.id}
-                id={slide.id}
-                image={slide.image}
-                title={slide.title}
-                description={slide.description}
-              />
-            ))}
+            <h3 className="slider-title">{aboutSlides[0].title}</h3>
+            <div className="slider-divider"></div>
+            <p className="slider-description">{aboutSlides[0].description}</p>
           </div>
         </div>
       </section>
@@ -318,12 +296,14 @@ const Home = () => {
             {/* Tabs de categorías */}
             <div className="drones-tabs">
               <button 
-                className="tab-btn"
+                className={`tab-btn ${activeTab === "Agrícola" ? "active" : ""}`}
+                onClick={() => setActiveTab("Agrícola")}
               >
                 Drones Agrícolas
               </button>
               <button 
-                className="tab-btn"
+                className={`tab-btn ${activeTab === "Industrial" ? "active" : ""}`}
+                onClick={() => setActiveTab("Industrial")}
               >
                 Drones Industriales
               </button>
@@ -331,7 +311,7 @@ const Home = () => {
             
             {/* Contenido de pestañas */}
             <div className="tab-content">
-              <div className="tab-pane">
+              <div className={`tab-pane ${activeTab === "Agrícola" ? "active" : ""}`}>
                 <div className="drones-grid">
                   {drones
                     .filter(drone => drone.category === "Agrícola")
@@ -349,7 +329,7 @@ const Home = () => {
                     ))}
                 </div>
               </div>
-              <div className="tab-pane">
+              <div className={`tab-pane ${activeTab === "Industrial" ? "active" : ""}`}>
                 <div className="drones-grid">
                   {drones
                     .filter(drone => drone.category === "Industrial")
