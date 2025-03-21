@@ -257,7 +257,7 @@ const Home = () => {
         <div className="video-container">
           <iframe 
             id="youtube-player" 
-            src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&controls=0&loop=1&playlist=VIDEO_ID&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1" 
+            src="https://www.youtube.com/embed/apmZ_e5tx0c?autoplay=1&mute=1&controls=0&loop=1&playlist=apmZ_e5tx0c&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1" 
             title="Background Video"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -268,11 +268,10 @@ const Home = () => {
         <div className="container">
           <div className="hero-content">
             <div className="title-container">
-              <h2 className="subtitle">IWIE DRONES</h2>
+              <h2 className="subtitle">Sé parte de</h2>
               <div className="hero-divider"></div>
-              <h1 className="hero-title">Soluciones con Drones para Agricultura e Industria</h1>
+              <h1 className="hero-title">LA INDUSTRIA DEL FUTURO</h1>
             </div>
-            <p>Tecnología de vanguardia para optimizar procesos y maximizar resultados</p>
             <a href="#services" className="cta-button">Más Información</a>
           </div>
         </div>
