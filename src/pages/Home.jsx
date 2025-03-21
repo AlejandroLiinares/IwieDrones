@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 import ServiceSlide from '../components/ServiceSlide';
 import AboutSlide from '../components/AboutSlide';
+import { useRef } from 'react';
 
 const Home = () => {
   // Datos de los drones
@@ -158,23 +159,42 @@ const Home = () => {
   const aboutSlides = [
     {
       id: 1,
+      title: "QUIÉNES SOMOS",
+      description: "Iwie Drones nace en el año 2022 con el objetivo de brindar servicios con drones en diversas áreas como agricultura, procesos industriales, educación, sistemas de energía, televigilancia y entretenimiento. Nos especializamos en ofrecer soluciones tecnológicas avanzadas que optimizan procesos y mejoran la eficiencia en diversos sectores.",
+      image: "/quienes-somos.jpg"
+    },
+    {
+      id: 2,
       title: "Nuestra Historia",
       description: "Fundada en 2018, IWIE nació con la visión de revolucionar la industria agrícola e industrial en Chile a través de la tecnología de drones. Desde entonces, hemos crecido hasta convertirnos en líderes del sector.",
       image: "/historia.jpg"
     },
     {
-      id: 2,
+      id: 3,
       title: "Nuestra Misión",
       description: "Proporcionar soluciones tecnológicas avanzadas con drones que optimicen procesos, mejoren la seguridad y aumenten la eficiencia en diversos sectores industriales y agrícolas.",
       image: "/mision.jpg"
     },
     {
-      id: 3,
+      id: 4,
       title: "Nuestra Visión",
       description: "Ser líderes en la innovación y aplicación de tecnología de drones en Chile, estableciendo nuevos estándares de calidad y servicio en la industria.",
       image: "/vision.jpg"
     }
   ];
+
+  // Reference for the services slider
+  const servicesSliderRef = useRef(null);
+  
+  // Function to handle slide navigation
+  const handleSlideNavigation = (direction) => {
+    const slider = servicesSliderRef.current;
+    if (!slider) return;
+    
+    const slideWidth = 350; // Width of each slide including gap
+    const scrollAmount = direction === 'left' ? -slideWidth : slideWidth;
+    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
 
   return (
     <div className="home-container">
@@ -230,7 +250,7 @@ const Home = () => {
           <div className="section-divider"></div>
           
           <div className="services-content">
-            <div className="services-slider">
+            <div className="services-slider" ref={servicesSliderRef}>
               {serviceSlides.map((slide) => (
                 <ServiceSlide
                   key={slide.id}
@@ -242,13 +262,31 @@ const Home = () => {
                 />
               ))}
             </div>
+            
+            {/* Navigation buttons */}
+            <div className="slider-controls">
+              <button 
+                className="slider-arrow" 
+                onClick={() => handleSlideNavigation('left')}
+                aria-label="Previous slide"
+              >
+                &#8249;
+              </button>
+              <button 
+                className="slider-arrow" 
+                onClick={() => handleSlideNavigation('right')}
+                aria-label="Next slide"
+              >
+                &#8250;
+              </button>
+            </div>
           </div>
         </div>
       </section>
       
       {/* About Section */}
       <section id="about" className="about-section">
-        <div className="section-header">
+        <div className="section-header" style={{ display: 'none' }}>
           <h2>QUIÉNES SOMOS</h2>
           <div className="section-divider"></div>
         </div>
