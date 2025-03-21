@@ -407,7 +407,7 @@ const Home = () => {
             </button>
           </div>
           
-          {/* Contenido de pestañas */}
+          {/* Contenido de pestañas (El jueves hice tres horas*/}
           <div className="tab-content">
             {['agricolas', 'industriales'].map((tabName) => (
               <div key={tabName} className={`tab-pane ${currentTab === tabName ? 'active' : ''}`}>
