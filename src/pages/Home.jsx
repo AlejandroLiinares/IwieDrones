@@ -167,6 +167,10 @@ const Home = () => {
   // Reference for the services slider
   const servicesSliderRef = useRef(null);
   
+  // Reference for the drones sliders
+  const dronesAgricolaSliderRef = useRef(null);
+  const dronesIndustrialSliderRef = useRef(null);
+  
   // Function to handle slide navigation with dynamic slide width calculation
   const handleSlideNavigation = (direction) => {
     const slider = servicesSliderRef.current;
@@ -179,6 +183,18 @@ const Home = () => {
     const slideWidth = slides[0].offsetWidth + 20; // Width + gap
     const scrollAmount = direction === 'left' ? -slideWidth : slideWidth;
     slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
+  // Function to handle drones navigation
+  const handleDronesNavigation = (direction, sliderRef) => {
+    if (sliderRef.current) {
+      const scrollAmount = 300;
+      if (direction === 'left') {
+        sliderRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
   };
 
   const [activeTab, setActiveTab] = useState("Agrícola");
@@ -335,21 +351,41 @@ const Home = () => {
                 id="tab-agricola"
                 aria-labelledby="tab-btn-agricola"
               >
-                <div className="drones-grid">
-                  {drones
-                    .filter(drone => drone.category === "Agrícola")
-                    .map((drone) => (
-                      <div key={drone.id}>
-                        <img 
-                          src={drone.image} 
-                          alt={`Drone ${drone.name}`} 
-                          onError={handleImageError}
-                        />
-                        <h3>{drone.name}</h3>
-                        <p>{drone.description}</p>
-                        <Link to={`/drones/${drone.id}`}>Ver detalles</Link>
-                      </div>
-                    ))}
+                <div className="drones-slider-container">
+                  <div className="drones-grid" ref={dronesAgricolaSliderRef}>
+                    {drones
+                      .filter(drone => drone.category === "Agrícola")
+                      .map((drone) => (
+                        <div key={drone.id}>
+                          <img 
+                            src={drone.image} 
+                            alt={`Drone ${drone.name}`} 
+                            onError={handleImageError}
+                          />
+                          <h3>{drone.name}</h3>
+                          <p>{drone.description}</p>
+                          <Link to={`/drones/${drone.id}`}>Ver detalles</Link>
+                        </div>
+                      ))}
+                  </div>
+                  
+                  {/* Botones de navegación para drones agrícolas */}
+                  <div className="slider-controls">
+                    <button 
+                      className="slider-arrow" 
+                      onClick={() => handleDronesNavigation('left', dronesAgricolaSliderRef)}
+                      aria-label="Drone anterior"
+                    >
+                      &#8249;
+                    </button>
+                    <button 
+                      className="slider-arrow" 
+                      onClick={() => handleDronesNavigation('right', dronesAgricolaSliderRef)}
+                      aria-label="Drone siguiente"
+                    >
+                      &#8250;
+                    </button>
+                  </div>
                 </div>
               </div>
               <div 
@@ -358,21 +394,41 @@ const Home = () => {
                 id="tab-industrial"
                 aria-labelledby="tab-btn-industrial"
               >
-                <div className="drones-grid">
-                  {drones
-                    .filter(drone => drone.category === "Industrial")
-                    .map((drone) => (
-                      <div key={drone.id}>
-                        <img 
-                          src={drone.image} 
-                          alt={`Drone ${drone.name}`}
-                          onError={handleImageError}
-                        />
-                        <h3>{drone.name}</h3>
-                        <p>{drone.description}</p>
-                        <Link to={`/drones/${drone.id}`}>Ver detalles</Link>
-                      </div>
-                    ))}
+                <div className="drones-slider-container">
+                  <div className="drones-grid" ref={dronesIndustrialSliderRef}>
+                    {drones
+                      .filter(drone => drone.category === "Industrial")
+                      .map((drone) => (
+                        <div key={drone.id}>
+                          <img 
+                            src={drone.image} 
+                            alt={`Drone ${drone.name}`}
+                            onError={handleImageError}
+                          />
+                          <h3>{drone.name}</h3>
+                          <p>{drone.description}</p>
+                          <Link to={`/drones/${drone.id}`}>Ver detalles</Link>
+                        </div>
+                      ))}
+                  </div>
+                  
+                  {/* Botones de navegación para drones industriales */}
+                  <div className="slider-controls">
+                    <button 
+                      className="slider-arrow" 
+                      onClick={() => handleDronesNavigation('left', dronesIndustrialSliderRef)}
+                      aria-label="Drone anterior"
+                    >
+                      &#8249;
+                    </button>
+                    <button 
+                      className="slider-arrow" 
+                      onClick={() => handleDronesNavigation('right', dronesIndustrialSliderRef)}
+                      aria-label="Drone siguiente"
+                    >
+                      &#8250;
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
