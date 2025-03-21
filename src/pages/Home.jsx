@@ -339,19 +339,15 @@ const Home = () => {
                   {drones
                     .filter(drone => drone.category === "Agrícola")
                     .map((drone) => (
-                      <div key={drone.id} className="drone-card">
-                        <div className="drone-image">
-                          <img 
-                            src={drone.image} 
-                            alt={`Drone ${drone.name}`} 
-                            onError={handleImageError}
-                          />
-                        </div>
-                        <h3 className="drone-name">{drone.name}</h3>
-                        <div className="drone-details">
-                          <p className="drone-description">{drone.description}</p>
-                          <Link to={`/drones/${drone.id}`} className="drone-info-btn">Ver detalles</Link>
-                        </div>
+                      <div key={drone.id}>
+                        <img 
+                          src={drone.image} 
+                          alt={`Drone ${drone.name}`} 
+                          onError={handleImageError}
+                        />
+                        <h3>{drone.name}</h3>
+                        <p>{drone.description}</p>
+                        <Link to={`/drones/${drone.id}`}>Ver detalles</Link>
                       </div>
                     ))}
                 </div>
@@ -366,19 +362,15 @@ const Home = () => {
                   {drones
                     .filter(drone => drone.category === "Industrial")
                     .map((drone) => (
-                      <div key={drone.id} className="drone-card">
-                        <div className="drone-image">
-                          <img 
-                            src={drone.image} 
-                            alt={`Drone ${drone.name}`}
-                            onError={handleImageError}
-                          />
-                        </div>
-                        <h3 className="drone-name">{drone.name}</h3>
-                        <div className="drone-details">
-                          <p className="drone-description">{drone.description}</p>
-                          <Link to={`/drones/${drone.id}`} className="drone-info-btn">Ver detalles</Link>
-                        </div>
+                      <div key={drone.id}>
+                        <img 
+                          src={drone.image} 
+                          alt={`Drone ${drone.name}`}
+                          onError={handleImageError}
+                        />
+                        <h3>{drone.name}</h3>
+                        <p>{drone.description}</p>
+                        <Link to={`/drones/${drone.id}`}>Ver detalles</Link>
                       </div>
                     ))}
                 </div>

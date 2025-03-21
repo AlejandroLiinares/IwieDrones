@@ -654,17 +654,8 @@
 
 /* Drones Section */
 .drones-section {
-  padding: var(--spacing-3xl) 0;
-  background-color: #f8f9fa;
-  position: relative;
-}
-
-.drones-section .section-header h2 {
-  color: var(--color-text-dark);
-}
-
-.drones-section .section-divider {
-  margin-bottom: 30px;
+  padding: 80px 0;
+  background-color: var(--color-light);
 }
 
 .drones-container {
@@ -676,124 +667,27 @@
 .drones-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 30px;
   padding: 20px 0 40px;
   width: 100%;
 }
 
-.drone-card {
-  flex: 0 0 calc(33.333% - 20px);
-  min-width: 280px;
-  max-width: 350px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 25px;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
-}
-
-.drone-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.drone-image {
-  width: 100%;
-  height: 180px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.drone-image img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.drone-card:hover .drone-image img {
-  transform: scale(1.05);
-}
-
-.drone-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  margin-bottom: 15px;
-  text-align: center;
-  width: 100%;
-}
-
-.drone-details {
-  max-height: none;
-  opacity: 1;
-  width: 100%;
-  text-align: center;
-  padding: 0;
-}
-
-.drone-description {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 20px;
-  line-height: 1.5;
-  padding: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.drone-info-btn {
-  padding: 8px 16px;
-  background-color: transparent;
-  color: #333;
-  border: 1px solid #333;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-  margin-top: 10px;
-  display: inline-block;
-}
-
-.drone-info-btn:hover {
-  background-color: var(--color-primary);
-  color: white;
-  border-color: var(--color-primary);
-}
-
 /* Media Queries para la sección de drones */
-@media (max-width: 768px) {
-  .drone-card {
-    padding: 20px;
+@media (max-width: 992px) {
+  .drones-section {
+    padding: 60px 0;
   }
-  
-  .drone-image {
-    height: 160px;
+}
+
+@media (max-width: 768px) {
+  .drones-section {
+    padding: 50px 0;
   }
 }
 
 @media (max-width: 480px) {
-  .drone-image {
-    height: 160px;
-  }
-  
-  .drone-name {
-    font-size: 1.1rem;
-  }
-  
-  .drone-description {
-    font-size: 0.9rem;
+  .drones-section {
+    padding: 40px 0;
   }
 }
 
