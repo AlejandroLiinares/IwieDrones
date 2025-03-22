@@ -13,7 +13,7 @@ html, body, #root, .home-page {
   overflow: auto !important;
 }
 
-/* Eliminar cualquier elemento que pueda estar causando la capa blanca */
+/* Eliminar cualquier elemento que pueda estar causando la capa blanca chamo estoy muy cansado.*/
 body::before,
 body::after,
 #root::before,
