@@ -120,17 +120,17 @@ const Home = () => {
   const serviceSlides = [
     {
       id: 1,
-      title: "Servicios Agrícolas",
+      title: "Agrícolas",
       description: "Ofrecemos soluciones de alta precisión para la agricultura con drones especializados en fumigación, siembra y monitoreo de cultivos.",
       image: "/agricola.jpg",
-      link: "/services/agricultural"
+      link: "/agricola"
     },
     {
       id: 2,
-      title: "Servicios Industriales",
+      title: "Industriales",
       description: "Nuestros drones industriales están equipados con tecnología avanzada para inspecciones, mapeo 3D, termografía y más.",
       image: "/industria.jpg",
-      link: "/services/industrial"
+      link: "/industrial"
     },
     {
       id: 3,
@@ -141,7 +141,7 @@ const Home = () => {
     },
     {
       id: 4,
-      title: "Servicios de Energía",
+      title: "Energía",
       description: "Inspección de infraestructuras energéticas, paneles solares y líneas eléctricas con drones equipados con cámaras térmicas y sensores especializados.",
       image: "/energia.jpg",
       link: "/services/energy"
@@ -186,24 +186,24 @@ const Home = () => {
     slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
-  // Function to handle drones navigation
-  const handleDronesNavigation = (direction, sliderRef) => {
-    if (sliderRef.current) {
-      const scrollAmount = 300;
-      if (direction === 'left') {
-        sliderRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else {
-        sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
+  const [activeTab, setActiveTab] = useState("Agrícola");
+  const [isTabChanging, setIsTabChanging] = useState(false);
+  
+  // Función para manejar el cambio de pestaña con animación
+  const handleTabChange = (tabName) => {
+    if (activeTab !== tabName) {
+      setIsTabChanging(true);
+      // No cambiamos inmediatamente el activeTab para que la animación del indicador sea suave
+      setTimeout(() => {
+        setActiveTab(tabName);
+        setIsTabChanging(false);
+      }, 300); // Tiempo de la animación de desvanecimiento
     }
   };
 
-  const [activeTab, setActiveTab] = useState("Agrícola");
-
-  // Handle image loading errors
+  // Función para manejar errores de carga de imágenes
   const handleImageError = (e) => {
-    e.target.src = '/placeholder-image.jpg'; // Fallback image
-    e.target.alt = 'Imagen no disponible';
+    e.target.src = '/placeholder-drone.png'; // Imagen de respaldo
   };
 
   return (
@@ -321,114 +321,96 @@ const Home = () => {
           
           <div className="drones-container content-container">
             {/* Tabs de categorías */}
-            <div className="drones-tabs" role="tablist" aria-label="Categorías de drones">
-              <button 
-                className={`tab-btn ${activeTab === "Agrícola" ? "active" : ""}`}
-                onClick={() => setActiveTab("Agrícola")}
-                role="tab"
-                aria-selected={activeTab === "Agrícola"}
-                aria-controls="tab-agricola"
-                id="tab-btn-agricola"
-              >
-                Drones Agrícolas
-              </button>
-              <button 
-                className={`tab-btn ${activeTab === "Industrial" ? "active" : ""}`}
-                onClick={() => setActiveTab("Industrial")}
-                role="tab"
-                aria-selected={activeTab === "Industrial"}
-                aria-controls="tab-industrial"
-                id="tab-btn-industrial"
-              >
-                Drones Industriales
-              </button>
-            </div>
-            
-            {/* Contenido de pestañas */}
-            <div className="tab-content">
-              <div 
-                className={`tab-pane ${activeTab === "Agrícola" ? "active" : ""}`}
-                role="tabpanel"
-                id="tab-agricola"
-                aria-labelledby="tab-btn-agricola"
-              >
-                <div className="drones-slider-container">
-                  <div className="drones-grid" ref={dronesAgricolaSliderRef}>
-                    {drones
-                      .filter(drone => drone.category === "Agrícola")
-                      .map((drone) => (
-                        <div key={drone.id}>
-                          <img 
-                            src={drone.image} 
-                            alt={`Drone ${drone.name}`} 
-                            onError={handleImageError}
-                          />
-                          <h3>{drone.name}</h3>
-                          <p>{drone.description}</p>
-                          <Link to={`/drones/${drone.id}`}>Ver detalles</Link>
-                        </div>
-                      ))}
-                  </div>
-                  
-                  {/* Botones de navegación para drones agrícolas */}
-                  <div className="slider-controls">
-                    <button 
-                      className="slider-arrow" 
-                      onClick={() => handleDronesNavigation('left', dronesAgricolaSliderRef)}
-                      aria-label="Drone anterior"
-                    >
-                      &#8249;
-                    </button>
-                    <button 
-                      className="slider-arrow" 
-                      onClick={() => handleDronesNavigation('right', dronesAgricolaSliderRef)}
-                      aria-label="Drone siguiente"
-                    >
-                      &#8250;
-                    </button>
+            <div className="tabs-container">
+              <div className="tabs-header" role="tablist" aria-label="Categorías de drones">
+                <button 
+                  className={`tab-btn ${activeTab === "Agrícola" ? "active" : ""}`}
+                  onClick={() => handleTabChange("Agrícola")}
+                  role="tab"
+                  aria-selected={activeTab === "Agrícola"}
+                  aria-controls="tab-agricola"
+                  id="tab-btn-agricola"
+                >
+                  Drones Agrícolas
+                </button>
+                <button 
+                  className={`tab-btn ${activeTab === "Industrial" ? "active" : ""}`}
+                  onClick={() => handleTabChange("Industrial")}
+                  role="tab"
+                  aria-selected={activeTab === "Industrial"}
+                  aria-controls="tab-industrial"
+                  id="tab-btn-industrial"
+                >
+                  Drones Industriales
+                </button>
+                <div 
+                  className="tab-indicator" 
+                  style={{ 
+                    left: activeTab === "Agrícola" ? '0' : '50%', 
+                    width: '50%',
+                    transition: 'left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
+                  }}
+                ></div>
+              </div>
+              
+              {/* Contenido de pestañas */}
+              <div className={`tab-content ${isTabChanging ? 'loading' : ''}`}>
+                <div 
+                  className={`tab-pane ${activeTab === "Agrícola" ? "active" : ""}`}
+                  role="tabpanel"
+                  id="tab-agricola"
+                  aria-labelledby="tab-btn-agricola"
+                >
+                  <div className="drones-slider-container">
+                    <div className="drones-grid" ref={dronesAgricolaSliderRef}>
+                      {drones
+                        .filter(drone => drone.category === "Agrícola")
+                        .map((drone) => (
+                          <div key={drone.id} className="drone-card">
+                            <div className="drone-image">
+                              <img 
+                                src={drone.image} 
+                                alt={`Drone ${drone.name}`} 
+                                onError={handleImageError}
+                              />
+                            </div>
+                            <div className="drone-content">
+                              <h3 className="drone-name">{drone.name}</h3>
+                              <p className="drone-description">{drone.description}</p>
+                              <Link to={`/drones/${drone.id}`} className="drone-details-btn">Más información</Link>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div 
-                className={`tab-pane ${activeTab === "Industrial" ? "active" : ""}`}
-                role="tabpanel"
-                id="tab-industrial"
-                aria-labelledby="tab-btn-industrial"
-              >
-                <div className="drones-slider-container">
-                  <div className="drones-grid" ref={dronesIndustrialSliderRef}>
-                    {drones
-                      .filter(drone => drone.category === "Industrial")
-                      .map((drone) => (
-                        <div key={drone.id}>
-                          <img 
-                            src={drone.image} 
-                            alt={`Drone ${drone.name}`}
-                            onError={handleImageError}
-                          />
-                          <h3>{drone.name}</h3>
-                          <p>{drone.description}</p>
-                          <Link to={`/drones/${drone.id}`}>Ver detalles</Link>
-                        </div>
-                      ))}
-                  </div>
-                  
-                  {/* Botones de navegación para drones industriales */}
-                  <div className="slider-controls">
-                    <button 
-                      className="slider-arrow" 
-                      onClick={() => handleDronesNavigation('left', dronesIndustrialSliderRef)}
-                      aria-label="Drone anterior"
-                    >
-                      &#8249;
-                    </button>
-                    <button 
-                      className="slider-arrow" 
-                      onClick={() => handleDronesNavigation('right', dronesIndustrialSliderRef)}
-                      aria-label="Drone siguiente"
-                    >
-                      &#8250;
-                    </button>
+                <div 
+                  className={`tab-pane ${activeTab === "Industrial" ? "active" : ""}`}
+                  role="tabpanel"
+                  id="tab-industrial"
+                  aria-labelledby="tab-btn-industrial"
+                >
+                  <div className="drones-slider-container">
+                    <div className="drones-grid" ref={dronesIndustrialSliderRef}>
+                      {drones
+                        .filter(drone => drone.category === "Industrial")
+                        .map((drone) => (
+                          <div key={drone.id} className="drone-card">
+                            <div className="drone-image">
+                              <img 
+                                src={drone.image} 
+                                alt={`Drone ${drone.name}`}
+                                onError={handleImageError}
+                              />
+                            </div>
+                            <div className="drone-content">
+                              <h3 className="drone-name">{drone.name}</h3>
+                              <p className="drone-description">{drone.description}</p>
+                              <Link to={`/drones/${drone.id}`} className="drone-details-btn">Más información</Link>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
                   </div>
                 </div>
               </div>

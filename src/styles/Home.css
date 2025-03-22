@@ -1,3 +1,33 @@
+.quote-text blockquote {
+  font-size: 28px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #0a1f44;
+  margin: 0 0 20px 0;
+  position: relative;
+  padding-left: 40px;
+}
+      
+.quote-text cite {
+  font-size: 18px;
+  color: #000000;
+  font-style: normal;
+  display: block;
+  text-align: center;
+  padding-right: 0;
+}
+
+.quote-image {
+  flex: 0 0 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 5px solid #0a1f44;
+}
+
 .quote-text blockquote::before {
   content: '';
   font-size: 80px;
@@ -8,6 +38,7 @@
   opacity: 0.5;
   font-family: Georgia, serif;
 }
+      
 .hero {
   position: relative;
   color: white;
@@ -106,7 +137,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   position: relative;
   z-index: 2;
   animation: fadeInUp 1.2s ease-out;
@@ -128,7 +159,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.8rem;
   text-align: center;
   padding: 1rem;
   max-width: 90%;
@@ -184,7 +215,7 @@
   animation: fadeInUp 1s ease forwards;
   animation-delay: 1.1s;
   letter-spacing: 1px;
-  margin-top: 0.5rem;
+  margin-top: 0.2rem;
   align-self: center;
 }
 
@@ -277,7 +308,7 @@
 
 /* Services Section */
 .services {
-  padding: var(--spacing-3xl) 0;
+  padding: 40px 0 var(--spacing-3xl);
   background-color: var(--color-bg-light);
   overflow: hidden;
 }
@@ -293,11 +324,11 @@
 .services-slider {
   display: flex;
   flex-wrap: nowrap;
-  gap: 20px;
+  gap: 10px;
   justify-content: flex-start;
   margin-top: 40px;
   overflow-x: auto;
-  padding: 20px 0;
+  padding: 20px 0 5px;
   padding-left: calc(50vw - 50% + 20px);
   scroll-behavior: smooth;
   -ms-overflow-style: none;  /* IE y Edge */
@@ -310,19 +341,23 @@
 }
 
 .slide {
-  flex: 0 0 300px;
+  flex: 0 0 680px;
   position: relative;
   border-radius: 15px;
   overflow: hidden;
-  height: 350px;
+  height: 580px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
+  margin-right: 0;
+  margin-left: 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
 }
 
 .slide:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 2;
 }
 
 .slide-content {
@@ -345,11 +380,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: none;
 }
 
 .slide:hover .slide-image img {
-  transform: scale(1.1);
+  transform: none;
 }
 
 .slide-overlay {
@@ -364,7 +399,7 @@
 
 .slide-text {
   position: relative;
-  padding: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -376,26 +411,22 @@
 }
 
 .service-title {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: white;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .service-description {
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin-bottom: 15px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
   color: rgba(255, 255, 255, 0.9);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  max-width: 100%;
+  text-align: left;
 }
 
 .btn-saber-mas {
@@ -431,44 +462,63 @@
 /* Controles de navegación */
 .slider-controls {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  margin-top: 20px;
-  gap: 15px;
-  padding-bottom: 20px;
+  margin-top: 10px;
+  gap: 10px;
+  padding-bottom: 0;
+  padding-right: 40px;
+  position: relative;
+  z-index: 10;
 }
 
 .slider-arrow {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: #f0f0f0;
+  background-color: #e6f0ff;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  color: #666;
-  font-size: 1.5rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  color: #0a1f44;
+  font-size: 1.8rem;
+  font-weight: 900;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin: 0 4px;
+  line-height: 0.8;
+  text-align: center;
+}
+
+.slider-arrow::before {
+  content: none;
+}
+
+.slider-controls button:first-child {
+  padding-right: 2px;
+}
+
+.slider-controls button:last-child {
+  padding-left: 2px;
 }
 
 .slider-arrow:hover {
-  background-color: var(--color-primary);
+  background-color: #0a1f44;
   color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  transform: scale(1.1);
 }
 
 .slider-arrow:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: scale(0.95);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .slider-arrow:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Media queries para servicios */
@@ -478,16 +528,17 @@
   }
   
   .slide {
-    flex: 0 0 350px;
-    height: 380px;
+    flex: 0 0 630px;
+    height: 550px;
+    margin-right: 0;
   }
   
   .service-title {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
   
   .service-description {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -497,19 +548,21 @@
   }
   
   .slide {
-    flex: 0 0 380px;
-    height: 400px;
+    flex: 0 0 680px;
+    height: 580px;
+    margin-right: 0;
   }
 }
 
 @media (max-width: 576px) {
   .services-slider {
-    gap: 15px;
+    gap: 10px;
   }
   
   .slide {
-    flex: 0 0 260px;
-    height: 320px;
+    flex: 0 0 430px;
+    height: 500px;
+    margin-right: 0;
   }
   
   .service-title {
@@ -523,6 +576,38 @@
   .btn-saber-mas {
     padding: 6px 12px;
     font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .slide {
+    flex: 0 0 630px;
+    height: 550px;
+    margin-right: 0;
+  }
+  
+  .service-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .slide {
+    flex: 0 0 680px;
+    height: 580px;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .slide {
+    flex: 0 0 430px;
+    height: 500px;
+    margin-right: 0;
+  }
+  
+  .service-title {
+    font-size: 1.4rem;
   }
 }
 
@@ -567,7 +652,8 @@
   flex-direction: column;
   align-items: flex-start;
   padding-left: 6%;
-  max-width: 800px;
+  max-width: 1000px;
+  width: 90%;
 }
 
 .slider-title {
@@ -575,7 +661,7 @@
   font-weight: 700;
   margin-bottom: 15px;
   color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: none;
   text-align: left;
   text-transform: uppercase;
 }
@@ -597,7 +683,8 @@
   color: rgba(255, 255, 255, 0.95);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   text-align: left;
-  max-width: 700px;
+  max-width: 1000px;
+  width: 100%;
 }
 
 @media (max-width: 992px) {
@@ -680,12 +767,6 @@
   }
 }
 
-/* Tabs de drones */
-/* Estos estilos han sido movidos a drones.css para consolidar todos los estilos relacionados con drones */
-
-/* Media queries para las pestañas */
-/* Estos estilos han sido movidos a drones.css para consolidar todos los estilos relacionados con drones */
-
 /* CTA Section */
 .cta-section {
   padding: var(--spacing-3xl) 0;
@@ -713,7 +794,7 @@
 /* Quote Section */
 .quote-section {
   background-color: #ffffff;
-  padding: 80px 0;
+  padding: 80px 0 40px;
   position: relative;
 }
       
@@ -738,7 +819,7 @@
   font-style: italic;
   font-weight: 300;
   line-height: 1.4;
-  color: #333;
+  color: #0a1f44;
   margin: 0 0 20px 0;
   position: relative;
   padding-left: 40px;
@@ -746,7 +827,7 @@
       
 .quote-text cite {
   font-size: 18px;
-  color: #666;
+  color: #000000;
   font-style: normal;
   display: block;
   text-align: center;
@@ -759,7 +840,7 @@
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border: 5px solid #000000;
+  border: 5px solid #0a1f44;
 }
 
 .quote-image img {

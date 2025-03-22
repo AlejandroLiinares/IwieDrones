@@ -6,7 +6,6 @@ import './App.css'
 // Componentes
 import Header from './components/Header'
 import Footer from './components/Footer'
-import ScrollToTop from './components/ScrollToTop'
 
 // Páginas
 import Home from './pages/Home'
@@ -17,6 +16,9 @@ import Inspections from './pages/Inspections'
 import Forestry from './pages/Forestry'
 import TechnicalService from './pages/TechnicalService'
 import Contact from './pages/Contact'
+
+// Páginas de demostración
+import DronesCardDemo from './examples/DronesCardDemo'
 
 function App() {
   return (
@@ -33,10 +35,10 @@ function App() {
             <Route path="/forestal" element={<Forestry />} />
             <Route path="/servicio-tecnico" element={<TechnicalService />} />
             <Route path="/contactanos" element={<Contact />} />
+            <Route path="/demo/drones" element={<DronesCardDemo />} />
           </Routes>
         </main>
         <Footer />
-        <ScrollToTop />
       </div>
     </Router>
   )
