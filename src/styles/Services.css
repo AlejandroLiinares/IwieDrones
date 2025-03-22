@@ -351,18 +351,18 @@
 .drone-card {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: transparent;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
   transition: all var(--transition-normal);
-  border: 1px solid var(--color-lightest);
+  border: 1px solid transparent;
 }
 
 .drone-card:hover {
-  transform: var(--service-card-hover-transform);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-light);
+  transform: none;
+  box-shadow: none;
+  border-color: transparent;
 }
 
 .drone-image {
@@ -390,7 +390,7 @@
   transition: transform var(--transition-normal);
 }
 
-.drone-card:hover .drone-image img {
+.drone-image:hover img {
   transform: scale(1.05);
 }
 

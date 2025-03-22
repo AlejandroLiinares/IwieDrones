@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
+import '../styles/drones.css';
 import ServiceSlide from '../components/ServiceSlide';
 import { useRef, useState, useEffect } from 'react';
 
