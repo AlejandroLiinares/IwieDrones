@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 /**
  * Componente Modal para mostrar información detallada de los drones
  * Se muestra cuando el usuario hace clic en una tarjeta de drone
- * Sigue el mismo patrón de diseño: imagen arriba, texto debajo
+ * Incluye soporte para modo oscuro y transiciones fluidas
  */
 const DroneModal = ({ drone, isOpen, onClose }) => {
   const [imageError, setImageError] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const modalRef = useRef(null);
   
   // Si el modal no está abierto o no hay datos, no renderizar nada
@@ -25,15 +26,24 @@ const DroneModal = ({ drone, isOpen, onClose }) => {
   // Manejar clic fuera del modal para cerrarlo
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      handleClose();
     }
+  };
+
+  // Manejar el cierre del modal con animación
+  const handleClose = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      onClose();
+      setIsAnimating(false);
+    }, 300);
   };
 
   // Permitir cerrar el modal con la tecla Escape
   useEffect(() => {
     const handleEscKey = (e) => {
       if (e.key === 'Escape' && isOpen) {
-        onClose();
+        handleClose();
       }
     };
 
@@ -42,9 +52,19 @@ const DroneModal = ({ drone, isOpen, onClose }) => {
       modalRef.current.focus();
     }
 
+    // Añadir clase al body para prevenir scroll
+    document.body.classList.add('modal-open');
+    
+    // Iniciar animación de entrada
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 300);
+
     document.addEventListener('keydown', handleEscKey);
     return () => {
       document.removeEventListener('keydown', handleEscKey);
+      document.body.classList.remove('modal-open');
     };
   }, [isOpen, onClose]);
 
@@ -53,21 +73,21 @@ const DroneModal = ({ drone, isOpen, onClose }) => {
 
   return (
     <div 
-      className="modal-backdrop active" 
+      className={`modal-backdrop active ${isAnimating ? 'animating' : ''}`}
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
     >
       <div 
-        className="modal-content" 
+        className={`modal-content ${isAnimating ? 'animating' : ''}`}
         onClick={(e) => e.stopPropagation()}
         ref={modalRef}
         tabIndex={-1}
       >
         <button 
           className="modal-close" 
-          onClick={onClose} 
+          onClick={handleClose} 
           aria-label="Cerrar modal"
         >
           ×
@@ -79,6 +99,7 @@ const DroneModal = ({ drone, isOpen, onClose }) => {
             src={imageToShow} 
             alt={droneTitle} 
             onError={handleImageError}
+            loading="lazy"
           />
         </div>
         
@@ -106,11 +127,23 @@ const DroneModal = ({ drone, isOpen, onClose }) => {
             </div>
           )}
 
+          {/* Características adicionales si existen */}
+          {drone.features && drone.features.length > 0 && (
+            <div className="modal-features">
+              <h3>Características destacadas</h3>
+              <ul>
+                {drone.features.map((feature, index) => (
+                  <li key={index}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {/* Botón para cerrar */}
           <div className="modal-actions">
             <button 
               className="drone-details-btn-new" 
-              onClick={onClose}
+              onClick={handleClose}
             >
               Cerrar
             </button>
@@ -129,6 +162,7 @@ DroneModal.propTypes = {
     description: PropTypes.string,
     image: PropTypes.string,
     specs: PropTypes.arrayOf(PropTypes.string),
+    features: PropTypes.arrayOf(PropTypes.string),
     badge: PropTypes.string
   }),
   isOpen: PropTypes.bool.isRequired,

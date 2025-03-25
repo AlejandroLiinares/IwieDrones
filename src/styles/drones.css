@@ -653,7 +653,7 @@
     background-color: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     margin: 15px 10px;
     cursor: pointer;
@@ -1003,4 +1003,152 @@
     .drone-card-horizontal {
       height: 180px;
     }
+  }
+  
+  /* Estilos para las tarjetas de drones con soporte para modo oscuro */
+  .drone-card-horizontal {
+    display: flex;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    margin: 15px 10px;
+    cursor: pointer;
+    height: 220px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Soporte para modo oscuro */
+  @media (prefers-color-scheme: dark) {
+    .drone-card-horizontal {
+      background-color: #2a2a2a;
+      border-color: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  .drone-card-horizontal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .drone-image-horizontal.hovered {
+    transform: scale(1.05);
+  }
+  
+  /* Estilos para el contenedor de especificaciones */
+  .drone-specs-horizontal li.more-specs {
+    background-color: rgba(23, 93, 163, 0.1);
+    color: var(--color-primary);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .drone-specs-horizontal li.more-specs {
+      background-color: rgba(23, 93, 163, 0.3);
+    }
+    
+    .drone-title-horizontal {
+      color: #f0f0f0;
+    }
+    
+    .drone-description-horizontal {
+      color: #aaa;
+    }
+    
+    .drone-specs-horizontal li {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ccc;
+    }
+  }
+  
+  .drone-content-top {
+    margin-bottom: 10px;
+  }
+  
+  .drone-content-bottom {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+  }
+  
+  /* Animaciones para la entrada de los drones */
+  .drones-showcase {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .drones-showcase.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .drone-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Estilos para el indicador de carga */
+  .loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+  }
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--color-primary);
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 15px;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .loading-spinner {
+      border-color: rgba(255, 255, 255, 0.1);
+      border-top-color: var(--color-primary);
+    }
+  }
+  
+  /* Ajuste del espacio entre tarjetas */
+  .drones-horizontal-scroll {
+    gap: 8px; /* Reducido de 20px a 8px según la memoria */
+  }
+  
+  .drone-item {
+    margin-right: 8px; /* Reducido de 20px a 8px según la memoria */
+  }
+  
+  .drone-image-container-horizontal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none; 
+    z-index: 1;
   }

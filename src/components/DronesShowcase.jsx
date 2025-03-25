@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DroneCardNew from './DroneCardNew';
 import DroneModal from './DroneModal';
@@ -10,6 +10,16 @@ import useModal from '../hooks/useModal';
  */
 const DronesShowcase = ({ drones, category, searchTerm }) => {
   const { isOpen, modalData, openModal, closeModal } = useModal();
+  const [isVisible, setIsVisible] = useState(false);
+  
+  // Efecto para animar la entrada de los drones
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
   
   // Filtrar drones por categoría y término de búsqueda si se proporcionan
   const filteredDrones = useMemo(() => {
@@ -37,14 +47,21 @@ const DronesShowcase = ({ drones, category, searchTerm }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <div className="drones-showcase">
+    <div className={`drones-showcase ${isVisible ? 'visible' : ''}`}>
       {isLoading ? (
-        <div className="loading-indicator">Cargando drones...</div>
+        <div className="loading-indicator">
+          <div className="loading-spinner"></div>
+          <p>Cargando drones...</p>
+        </div>
       ) : filteredDrones.length > 0 ? (
         <div className="drones-horizontal-container">
           <div className="drones-horizontal-scroll">
-            {filteredDrones.map((drone) => (
-              <div key={drone.id || `drone-${drone.name}`} className="drone-item">
+            {filteredDrones.map((drone, index) => (
+              <div 
+                key={drone.id || `drone-${drone.name}`} 
+                className="drone-item"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <DroneCardNew
                   image={drone.image}
                   title={drone.name || drone.title}
