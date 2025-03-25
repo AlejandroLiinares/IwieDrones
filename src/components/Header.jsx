@@ -81,8 +81,8 @@ const Header = () => {
                 Servicio Técnico
               </Link>
             </li>
-            <li className="nav-item contact-button">
-              <Link to="/contactanos" className={`btn-primary ${location.pathname === '/contactanos' ? 'active' : ''}`}>
+            <li className="nav-item">
+              <Link to="/contactanos" className={`nav-link ${location.pathname === '/contactanos' ? 'active' : ''}`}>
                 Contáctanos
               </Link>
             </li>
