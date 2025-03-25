@@ -927,3 +927,80 @@
       font-size: 24px;
     }
   }
+  
+  /* Estilos para mostrar drones horizontalmente */
+  .drones-horizontal-container {
+    width: 100%;
+    padding: 20px 0;
+    position: relative;
+  }
+  
+  .drones-horizontal-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 20px 10px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Para scroll suave en iOS */
+    scrollbar-width: thin; /* Para Firefox */
+    scrollbar-color: var(--color-primary) rgba(0, 0, 0, 0.1); /* Para Firefox */
+  }
+  
+  /* Personalización de la barra de desplazamiento para Chrome/Edge/Safari */
+  .drones-horizontal-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .drones-horizontal-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+  }
+  
+  .drones-horizontal-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 10px;
+  }
+  
+  .drone-item {
+    flex: 0 0 auto;
+    width: 350px;
+    margin-right: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .drone-item:last-child {
+    margin-right: 10px; /* Menos margen para el último elemento */
+  }
+  
+  .drone-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Ajustes responsive */
+  @media (max-width: 768px) {
+    .drone-item {
+      width: 300px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .drone-item {
+      width: 280px;
+    }
+    
+    .drones-horizontal-scroll {
+      padding: 15px 5px;
+    }
+  }
+  
+  /* Ajustes para las tarjetas horizontales en la vista horizontal */
+  .drone-card-horizontal {
+    height: 200px;
+    width: 100%;
+  }
+  
+  @media (max-width: 576px) {
+    .drone-card-horizontal {
+      height: 180px;
+    }
+  }

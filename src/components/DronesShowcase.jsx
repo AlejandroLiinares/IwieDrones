@@ -1,11 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import Slider from 'react-slick';
 import DroneCardNew from './DroneCardNew';
 import DroneModal from './DroneModal';
 import useModal from '../hooks/useModal';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 /**
  * Componente de demostración que muestra cómo utilizar DroneCardNew y DroneModal juntos
@@ -39,38 +36,15 @@ const DronesShowcase = ({ drones, category, searchTerm }) => {
   // Estado para manejar la carga de datos
   const [isLoading, setIsLoading] = useState(false);
 
-  // Configuración del carrusel
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: true,
-    adaptiveHeight: true,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      }
-    ]
-  };
-
   return (
     <div className="drones-showcase">
       {isLoading ? (
         <div className="loading-indicator">Cargando drones...</div>
       ) : filteredDrones.length > 0 ? (
-        <div className="drones-carousel-container">
-          <Slider {...sliderSettings}>
+        <div className="drones-horizontal-container">
+          <div className="drones-horizontal-scroll">
             {filteredDrones.map((drone) => (
-              <div key={drone.id || `drone-${drone.name}`} className="drone-slide">
+              <div key={drone.id || `drone-${drone.name}`} className="drone-item">
                 <DroneCardNew
                   image={drone.image}
                   title={drone.name || drone.title}
@@ -81,7 +55,7 @@ const DronesShowcase = ({ drones, category, searchTerm }) => {
                 />
               </div>
             ))}
-          </Slider>
+          </div>
         </div>
       ) : (
         <div className="no-drones-message">
