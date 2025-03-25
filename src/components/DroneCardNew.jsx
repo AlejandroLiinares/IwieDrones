@@ -11,11 +11,12 @@ const DroneCardNew = ({ image, title, description, specs, badge, onClick }) => {
   
   // Manejar errores de carga de imagen
   const handleImageError = () => {
+    console.log(`Error cargando imagen: ${image}`);
     setImageError(true);
   };
 
   // Determinar la imagen a mostrar (original o placeholder)
-  const imageToShow = imageError ? '/images/placeholder-drone.jpg' : image;
+  const imageToShow = imageError ? './placeholder-drone.jpg' : image;
 
   return (
     <div className="drone-card-new" onClick={onClick} role="button" tabIndex={0} aria-label={`Ver detalles de ${title}`}>

@@ -13,7 +13,7 @@ const Home = () => {
       category: "Agrícola",
       series: "Serie Bee",
       name: "H32X",
-      image: "/H32X.webp",
+      image: "./H32X.webp",
       description: "Diseñado para campos pequeños, con capacidad de pulverización de 16L, ofrece fiabilidad y eficiencia en un formato compacto."
     },
     {
@@ -21,7 +21,7 @@ const Home = () => {
       category: "Agrícola",
       series: "Serie Bee",
       name: "H40X",
-      image: "/H40X.webp",
+      image: "./H40X.webp",
       description: "Ofrece un tanque de pulverización de 20L para cubrir campos más grandes, siendo una herramienta versátil para diversas aplicaciones agrícolas."
     },
     {
@@ -29,7 +29,7 @@ const Home = () => {
       category: "Agrícola",
       series: "Serie Hercules",
       name: "H120",
-      image: "/H120.webp",
+      image: "./H120.webp",
       description: "El Hercules H120 gestiona eficientemente campos grandes con un tanque de pulverización de 52L y una capacidad de dispersión de 60kg, reduciendo significativamente el tiempo y los costos de mano de obra."
     },
     {
@@ -37,7 +37,7 @@ const Home = () => {
       category: "Agrícola",
       series: "Serie Hercules",
       name: "H160",
-      image: "/H160.webp",
+      image: "./H160.webp",
       description: "El H160 es el buque insignia de la serie Hercules. Con una capacidad de pulverización de 72L~82L, ofrece la solución definitiva para la gestión extensiva de cultivos."
     },
     {
@@ -45,7 +45,7 @@ const Home = () => {
       category: "Agrícola",
       series: "Serie Roarer",
       name: "H200 Agrícola/Transporte",
-      image: "/H200.png",
+      image: "./H200.png",
       description: "Líder del mercado con su capacidad sin igual, el Roarer H200 redefine las operaciones a gran escala con su capacidad de pulverización de 92L y carga útil de 100kg, sirviendo como el dron todo en uno definitivo para pulverización y transporte."
     },
     {
@@ -53,7 +53,7 @@ const Home = () => {
       category: "Agrícola",
       series: "Serie Roarer",
       name: "H300 Agrícola/Transporte",
-      image: "/H300.png",
+      image: "./H300.png",
       description: "El dron agrícola H300 tiene un diseño de plegado hacia arriba, un tanque de 95L y sensores de carga de grado aeroespacial para mayor precisión. Cuenta con un medidor de flujo de ondas milimétricas y soporta hasta 800A de potencia con disipación de calor. La batería inteligente enchufable es compatible con todas las baterías convencionales."
     },
     
@@ -63,7 +63,7 @@ const Home = () => {
       category: "Industrial",
       series: "Serie Roarer (Alta Carga)",
       name: "H200 - Extinción de Incendios",
-      image: "/H200-EXTINCION.png",
+      image: "./H200-EXTINCION.png",
       description: "Carga máxima: 100 kg | Tiempo de vuelo: 40 minutos. Los drones para extinción de incendios son adecuados para uso en áreas montañosas, pastizales, incendios forestales y para extinguir incendios en áreas urbanas específicas."
     },
     {
@@ -71,7 +71,7 @@ const Home = () => {
       category: "Industrial",
       series: "Serie Roarer (Alta Carga)",
       name: "H200 - Transporte",
-      image: "/H200-TRANSPORTE.webp",
+      image: "./H200-TRANSPORTE.webp",
       description: "Carga máxima: 100 kg | Tiempo de vuelo: 40 minutos. Los drones de carga pesada se utilizan ampliamente para el transporte de mercancías, frutas y otros artículos, reduciendo los costos de mano de obra y mejorando la eficiencia del trabajo."
     },
     {
@@ -79,7 +79,7 @@ const Home = () => {
       category: "Industrial",
       series: "Serie Odin (Larga Duración)",
       name: "X491",
-      image: "/X491.webp",
+      image: "./X491.webp",
       description: "Duración: 120 min | Carga máxima: 5 kg."
     },
     {
@@ -87,7 +87,7 @@ const Home = () => {
       category: "Industrial",
       series: "Serie Odin (Larga Duración)",
       name: "X441",
-      image: "/X441.webp",
+      image: "./X441.webp",
       description: "Duración: 60 min | Carga máxima: 2.5 kg."
     },
     {
@@ -95,7 +95,7 @@ const Home = () => {
       category: "Industrial",
       series: "Otras Series",
       name: "Sentinel V13-5 VTOL",
-      image: "/SENTINEL-V13-5.jpg",
+      image: "./SENTINEL-V13-5.jpg",
       description: "Duración: 200 min | Velocidad máxima de crucero: 108 km/h."
     },
     {
@@ -103,7 +103,7 @@ const Home = () => {
       category: "Industrial",
       series: "Otras Series",
       name: "Cavalry H50L-2",
-      image: "/CAVALRY-H50L-2.png",
+      image: "./CAVALRY-H50L-2.png",
       description: "Principalmente utilizado para extinguir incendios en edificios urbanos de gran altura o áreas específicas."
     },
     {
@@ -111,7 +111,7 @@ const Home = () => {
       category: "Industrial",
       series: "Serie Cavalry",
       name: "H60-4 Dron de Limpieza",
-      image: "/H60-4.webp",
+      image: "./H60-4.webp",
       description: "Un dron de limpieza con resistencia al agua IP67, peso total de 21 kg, tiempo de vuelo de 18-35 minutos, y capacidad para limpiar ventanas de gran altura, fachadas de edificios, paneles solares y techos. Cuenta con un sistema de pulverización con presión de agua de 8-30 Mpa y distancia de pulverización de 10-20 metros."
     }
   ];
@@ -122,35 +122,35 @@ const Home = () => {
       id: 1,
       title: "Agrícolas",
       description: "Ofrecemos soluciones de alta precisión para la agricultura con drones especializados en fumigación, siembra y monitoreo de cultivos.",
-      image: "/agricola.jpg",
+      image: "./agricola.jpg",
       link: "/agricola"
     },
     {
       id: 2,
       title: "Industriales",
       description: "Nuestros drones industriales están equipados con tecnología avanzada para inspecciones, mapeo 3D, termografía y más.",
-      image: "/industria.jpg",
+      image: "./industria.jpg",
       link: "/industrial"
     },
     {
       id: 3,
       title: "Televigilancia",
       description: "Sistemas de vigilancia aérea con drones para monitoreo de seguridad, control de perímetros y supervisión de eventos.",
-      image: "/televigilancia.jpg",
+      image: "./televigilancia.jpg",
       link: "/services/surveillance"
     },
     {
       id: 4,
       title: "Energía",
       description: "Inspección de infraestructuras energéticas, paneles solares y líneas eléctricas con drones equipados con cámaras térmicas y sensores especializados.",
-      image: "/energia.jpg",
+      image: "./energia.jpg",
       link: "/services/energy"
     },
     {
       id: 5,
       title: "Capacitación y Certificación",
       description: "Programas de formación para pilotos de drones con certificación oficial, adaptados a diferentes niveles y necesidades.",
-      image: "/capacitacion.jpg",
+      image: "./capacitacion.jpg",
       link: "/services/training"
     }
   ];
@@ -161,7 +161,7 @@ const Home = () => {
       id: 1,
       title: "QUIÉNES SOMOS",
       description: "Iwie Drones nace en el año 2022 con el objetivo de brindar servicios con drones en diversas áreas como agricultura, procesos industriales, educación, sistemas de energía, televigilancia y entretenimiento. Nos especializamos en ofrecer soluciones tecnológicas avanzadas que optimizan procesos y mejoran la eficiencia en diversos sectores.",
-      image: "/quienes-somos.jpg"
+      image: "./quienes-somos.jpg"
     }
   ];
 
@@ -203,7 +203,8 @@ const Home = () => {
 
   // Función para manejar errores de carga de imágenes
   const handleImageError = (e) => {
-    e.target.src = '/placeholder-drone.png'; // Imagen de respaldo
+    console.log(`Error cargando imagen: ${e.target.src}`);
+    e.target.src = 'placeholder-drone.png'; // Imagen de respaldo sin barra inicial
   };
 
   return (
@@ -246,7 +247,7 @@ const Home = () => {
             </div>
             <div className="quote-image">
               <img 
-                src="/douglas.webp" 
+                src="./douglas.webp" 
                 alt="Douglas Adams" 
               />
             </div>

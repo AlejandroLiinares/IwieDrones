@@ -15,11 +15,12 @@ const DroneModal = ({ drone, isOpen, onClose }) => {
 
   // Manejar errores de carga de imagen
   const handleImageError = () => {
+    console.log(`Error cargando imagen del modal: ${drone.image}`);
     setImageError(true);
   };
 
   // Determinar la imagen a mostrar (original o placeholder)
-  const imageToShow = imageError ? '/images/placeholder-drone.jpg' : drone.image;
+  const imageToShow = imageError ? './placeholder-drone.jpg' : drone.image;
   
   // Manejar clic fuera del modal para cerrarlo
   const handleBackdropClick = (e) => {
