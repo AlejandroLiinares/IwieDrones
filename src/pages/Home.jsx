@@ -5,117 +5,6 @@ import ServiceSlide from '../components/ServiceSlide';
 import { useRef, useState, useEffect } from 'react';
 
 const Home = () => {
-  // Datos de los drones
-  const drones = [
-    // Drones Agrícolas
-    {
-      id: 1,
-      category: "Agrícola",
-      series: "Serie Bee",
-      name: "H32X",
-      image: "./H32X.webp",
-      description: "Diseñado para campos pequeños, con capacidad de pulverización de 16L, ofrece fiabilidad y eficiencia en un formato compacto."
-    },
-    {
-      id: 2,
-      category: "Agrícola",
-      series: "Serie Bee",
-      name: "H40X",
-      image: "./H40X.webp",
-      description: "Ofrece un tanque de pulverización de 20L para cubrir campos más grandes, siendo una herramienta versátil para diversas aplicaciones agrícolas."
-    },
-    {
-      id: 3,
-      category: "Agrícola",
-      series: "Serie Hercules",
-      name: "H120",
-      image: "./H120.webp",
-      description: "El Hercules H120 gestiona eficientemente campos grandes con un tanque de pulverización de 52L y una capacidad de dispersión de 60kg, reduciendo significativamente el tiempo y los costos de mano de obra."
-    },
-    {
-      id: 4,
-      category: "Agrícola",
-      series: "Serie Hercules",
-      name: "H160",
-      image: "./H160.webp",
-      description: "El H160 es el buque insignia de la serie Hercules. Con una capacidad de pulverización de 72L~82L, ofrece la solución definitiva para la gestión extensiva de cultivos."
-    },
-    {
-      id: 5,
-      category: "Agrícola",
-      series: "Serie Roarer",
-      name: "H200 Agrícola/Transporte",
-      image: "./H200.png",
-      description: "Líder del mercado con su capacidad sin igual, el Roarer H200 redefine las operaciones a gran escala con su capacidad de pulverización de 92L y carga útil de 100kg, sirviendo como el dron todo en uno definitivo para pulverización y transporte."
-    },
-    {
-      id: 6,
-      category: "Agrícola",
-      series: "Serie Roarer",
-      name: "H300 Agrícola/Transporte",
-      image: "./H300.png",
-      description: "El dron agrícola H300 tiene un diseño de plegado hacia arriba, un tanque de 95L y sensores de carga de grado aeroespacial para mayor precisión. Cuenta con un medidor de flujo de ondas milimétricas y soporta hasta 800A de potencia con disipación de calor. La batería inteligente enchufable es compatible con todas las baterías convencionales."
-    },
-    
-    // Drones Industriales
-    {
-      id: 7,
-      category: "Industrial",
-      series: "Serie Roarer (Alta Carga)",
-      name: "H200 - Extinción de Incendios",
-      image: "./H200-EXTINCION.png",
-      description: "Carga máxima: 100 kg | Tiempo de vuelo: 40 minutos. Los drones para extinción de incendios son adecuados para uso en áreas montañosas, pastizales, incendios forestales y para extinguir incendios en áreas urbanas específicas."
-    },
-    {
-      id: 8,
-      category: "Industrial",
-      series: "Serie Roarer (Alta Carga)",
-      name: "H200 - Transporte",
-      image: "./H200-TRANSPORTE.webp",
-      description: "Carga máxima: 100 kg | Tiempo de vuelo: 40 minutos. Los drones de carga pesada se utilizan ampliamente para el transporte de mercancías, frutas y otros artículos, reduciendo los costos de mano de obra y mejorando la eficiencia del trabajo."
-    },
-    {
-      id: 9,
-      category: "Industrial",
-      series: "Serie Odin (Larga Duración)",
-      name: "X491",
-      image: "./X491.webp",
-      description: "Duración: 120 min | Carga máxima: 5 kg."
-    },
-    {
-      id: 10,
-      category: "Industrial",
-      series: "Serie Odin (Larga Duración)",
-      name: "X441",
-      image: "./X441.webp",
-      description: "Duración: 60 min | Carga máxima: 2.5 kg."
-    },
-    {
-      id: 11,
-      category: "Industrial",
-      series: "Otras Series",
-      name: "Sentinel V13-5 VTOL",
-      image: "./SENTINEL-V13-5.jpg",
-      description: "Duración: 200 min | Velocidad máxima de crucero: 108 km/h."
-    },
-    {
-      id: 12,
-      category: "Industrial",
-      series: "Otras Series",
-      name: "Cavalry H50L-2",
-      image: "./CAVALRY-H50L-2.png",
-      description: "Principalmente utilizado para extinguir incendios en edificios urbanos de gran altura o áreas específicas."
-    },
-    {
-      id: 13,
-      category: "Industrial",
-      series: "Serie Cavalry",
-      name: "H60-4 Dron de Limpieza",
-      image: "./H60-4.webp",
-      description: "Un dron de limpieza con resistencia al agua IP67, peso total de 21 kg, tiempo de vuelo de 18-35 minutos, y capacidad para limpiar ventanas de gran altura, fachadas de edificios, paneles solares y techos. Cuenta con un sistema de pulverización con presión de agua de 8-30 Mpa y distancia de pulverización de 10-20 metros."
-    }
-  ];
-  
   // Datos de los slides de servicios
   const serviceSlides = [
     {
@@ -168,10 +57,6 @@ const Home = () => {
   // Reference for the services slider
   const servicesSliderRef = useRef(null);
   
-  // Reference for the drones sliders
-  const dronesAgricolaSliderRef = useRef(null);
-  const dronesIndustrialSliderRef = useRef(null);
-  
   // Function to handle slide navigation with dynamic slide width calculation
   const handleSlideNavigation = (direction) => {
     const slider = servicesSliderRef.current;
@@ -184,21 +69,6 @@ const Home = () => {
     const slideWidth = slides[0].offsetWidth + 20; // Width + gap
     const scrollAmount = direction === 'left' ? -slideWidth : slideWidth;
     slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  };
-
-  const [activeTab, setActiveTab] = useState("Agrícola");
-  const [isTabChanging, setIsTabChanging] = useState(false);
-  
-  // Función para manejar el cambio de pestaña con animación
-  const handleTabChange = (tabName) => {
-    if (activeTab !== tabName) {
-      setIsTabChanging(true);
-      // No cambiamos inmediatamente el activeTab para que la animación del indicador sea suave
-      setTimeout(() => {
-        setActiveTab(tabName);
-        setIsTabChanging(false);
-      }, 300); // Tiempo de la animación de desvanecimiento
-    }
   };
 
   // Función para manejar errores de carga de imágenes
@@ -308,114 +178,6 @@ const Home = () => {
             <h3 className="slider-title">{aboutSlides[0].title}</h3>
             <div className="slider-divider"></div>
             <p className="slider-description">{aboutSlides[0].description}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Drones Section */}
-      <section id="drones" className="drones-section" aria-labelledby="drones-title">
-        <div className="container">
-          <div className="section-header">
-            <h2 id="drones-title">NUESTROS DRONES</h2>
-            <div className="section-divider"></div>
-          </div>
-          
-          <div className="drones-container content-container">
-            {/* Tabs de categorías */}
-            <div className="tabs-container">
-              <div className="tabs-header" role="tablist" aria-label="Categorías de drones">
-                <button 
-                  className={`tab-btn ${activeTab === "Agrícola" ? "active" : ""}`}
-                  onClick={() => handleTabChange("Agrícola")}
-                  role="tab"
-                  aria-selected={activeTab === "Agrícola"}
-                  aria-controls="tab-agricola"
-                  id="tab-btn-agricola"
-                >
-                  Drones Agrícolas
-                </button>
-                <button 
-                  className={`tab-btn ${activeTab === "Industrial" ? "active" : ""}`}
-                  onClick={() => handleTabChange("Industrial")}
-                  role="tab"
-                  aria-selected={activeTab === "Industrial"}
-                  aria-controls="tab-industrial"
-                  id="tab-btn-industrial"
-                >
-                  Drones Industriales
-                </button>
-                <div 
-                  className="tab-indicator" 
-                  style={{ 
-                    left: activeTab === "Agrícola" ? '0' : '50%', 
-                    width: '50%',
-                    transition: 'left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
-                  }}
-                ></div>
-              </div>
-              
-              {/* Contenido de pestañas */}
-              <div className={`tab-content ${isTabChanging ? 'loading' : ''}`}>
-                <div 
-                  className={`tab-pane ${activeTab === "Agrícola" ? "active" : ""}`}
-                  role="tabpanel"
-                  id="tab-agricola"
-                  aria-labelledby="tab-btn-agricola"
-                >
-                  <div className="drones-slider-container">
-                    <div className="drones-grid" ref={dronesAgricolaSliderRef}>
-                      {drones
-                        .filter(drone => drone.category === "Agrícola")
-                        .map((drone) => (
-                          <div key={drone.id} className="drone-card">
-                            <div className="drone-image">
-                              <img 
-                                src={drone.image} 
-                                alt={`Drone ${drone.name}`} 
-                                onError={handleImageError}
-                              />
-                            </div>
-                            <div className="drone-content">
-                              <h3 className="drone-name">{drone.name}</h3>
-                              <p className="drone-description">{drone.description}</p>
-                              <Link to={`/drones/${drone.id}`} className="drone-details-btn">Más información</Link>
-                            </div>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                </div>
-                <div 
-                  className={`tab-pane ${activeTab === "Industrial" ? "active" : ""}`}
-                  role="tabpanel"
-                  id="tab-industrial"
-                  aria-labelledby="tab-btn-industrial"
-                >
-                  <div className="drones-slider-container">
-                    <div className="drones-grid" ref={dronesIndustrialSliderRef}>
-                      {drones
-                        .filter(drone => drone.category === "Industrial")
-                        .map((drone) => (
-                          <div key={drone.id} className="drone-card">
-                            <div className="drone-image">
-                              <img 
-                                src={drone.image} 
-                                alt={`Drone ${drone.name}`}
-                                onError={handleImageError}
-                              />
-                            </div>
-                            <div className="drone-content">
-                              <h3 className="drone-name">{drone.name}</h3>
-                              <p className="drone-description">{drone.description}</p>
-                              <Link to={`/drones/${drone.id}`} className="drone-details-btn">Más información</Link>
-                            </div>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
