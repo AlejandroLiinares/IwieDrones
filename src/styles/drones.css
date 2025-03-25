@@ -1,3 +1,11 @@
+/* ========================================
+   IMPORTACIÓN DE VARIABLES CSS
+   ======================================== */
+@import url('./drone-variables.css');
+
+/* ========================================
+   SECCIÓN DE DRONES - ESTRUCTURA GENERAL
+   ======================================== */
 .drones-section {
     background-color: var(--color-bg-light);
     position: relative;
@@ -27,8 +35,11 @@
     margin: 0 auto var(--spacing-xl);
     border-radius: var(--border-radius-sm);
   }
-  
-  /* Tabs de categorías */
+
+/* ========================================
+   COMPONENTE: TABS DE NAVEGACIÓN
+   ======================================== */
+  /* Estilos para los tabs de navegación */
   .tabs-container {
     position: relative;
     margin-top: 30px;
@@ -118,6 +129,16 @@
     position: relative;
   }
   
+  /* Contenido de pestañas */
+  .tab-content {
+    position: relative;
+    overflow: hidden;
+  }
+
+/* ========================================
+   COMPONENTE: GRID DE DRONES
+   ======================================== */
+  /* Estilos para el grid de drones */
   /* Contenedor de drones */
   .drones-slider-container {
     position: relative;
@@ -151,7 +172,56 @@
       padding: 10px;
     }
   }
+
+  /* Ajustes para el carrusel con tarjetas horizontales */
+  .drones-carousel-container {
+    padding: 30px 60px;
+    margin-bottom: 60px;
+  }
   
+  .drone-slide {
+    padding: 10px;
+    box-sizing: border-box;
+    height: auto;
+  }
+
+  /* Estilos para el scroll horizontal de drones */
+  .drones-horizontal-scroll {
+    display: flex;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Para scroll suave en iOS */
+    scrollbar-width: thin; /* Para Firefox */
+    scrollbar-color: var(--color-primary) rgba(0, 0, 0, 0.1); /* Para Firefox */
+    gap: 8px;
+  }
+  
+  /* Personalización de la barra de desplazamiento para Chrome/Edge/Safari */
+  .drones-horizontal-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .drones-horizontal-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .drones-horizontal-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 10px;
+  }
+  
+  .drone-item {
+    flex: 0 0 auto;
+    width: 350px;
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+  }
+
+/* ========================================
+   COMPONENTE: TARJETA DE DRONE ESTÁNDAR
+   ======================================== */
   /* Tarjeta de drone */
   .drone-card {
     background-color: white;
@@ -278,13 +348,10 @@
       height: 180px;
     }
   }
-  
-  /* Contenido de pestañas */
-  .tab-content {
-    position: relative;
-    overflow: hidden;
-  }
-  
+
+/* ========================================
+   COMPONENTE: TARJETA DE DRONE NUEVA (DroneCardNew)
+   ======================================== */
   /* Estilos para el componente DroneCardNew */
   .drone-card-new {
     background-color: white;
@@ -416,7 +483,6 @@
     width: 100%;
     letter-spacing: 0.5px;
     margin-top: auto;
-    cursor: pointer;
   }
   
   .drone-details-btn-new:hover {
@@ -447,213 +513,17 @@
       height: 180px;
     }
   }
-  
-  /* Estilos para el componente DroneModal */
-  .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1050;
-  }
-  
-  .modal-backdrop.active {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .modal-content {
-    background-color: white;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 800px;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .modal-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    font-size: 28px;
-    color: #555;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    z-index: 5;
-  }
-  
-  .modal-close:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    color: var(--color-primary);
-  }
-  
-  .modal-image {
-    width: 100%;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f9f9f9;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    overflow: hidden;
-  }
-  
-  .modal-image img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
-  
-  .modal-text-content {
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .modal-badge {
-    display: inline-block;
-    margin-bottom: 15px;
-    align-self: center;
-  }
-  
-  .modal-badge span {
-    background-color: var(--color-primary);
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-  
-  .modal-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  
-  .modal-subtitle {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 25px;
-    line-height: 1.6;
-    text-align: center;
-  }
-  
-  .modal-specs {
-    margin: 0 0 30px;
-  }
-  
-  .modal-specs h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    margin-bottom: 15px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    text-align: center;
-  }
-  
-  .modal-specs ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 10px;
-  }
-  
-  .modal-specs li {
-    font-size: 1rem;
-    color: #444;
-    padding: 8px 0;
-    display: flex;
-    align-items: center;
-  }
-  
-  .modal-specs li:before {
-    content: "✓";
-    color: var(--color-primary);
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .modal-actions {
-    margin-top: auto;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .modal-actions .drone-details-btn-new {
-    max-width: 200px;
-    margin: 20px auto 0;
-  }
-  
-  @media (max-width: 768px) {
-    .modal-content {
-      padding: 0;
-    }
-    
-    .modal-image {
-      height: 250px;
-    }
-    
-    .modal-text-content {
-      padding: 20px;
-    }
-    
-    .modal-title {
-      font-size: 1.8rem;
-    }
-    
-    .modal-subtitle {
-      font-size: 1rem;
-    }
-    
-    .modal-specs ul {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .modal-text-content {
-      padding: 15px;
-    }
-    
-    .modal-image {
-      height: 200px;
-    }
-    
-    .modal-title {
-      font-size: 1.6rem;
-    }
-  }
-  
+
+/* ========================================
+   COMPONENTE: TARJETA DE DRONE HORIZONTAL
+   ======================================== */
   /* Estilos para tarjetas de drones horizontales */
   .drone-card-horizontal {
     display: flex;
     background-color: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
     margin: 15px 10px;
     cursor: pointer;
@@ -662,8 +532,8 @@
   }
   
   .drone-card-horizontal:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
   }
   
   .drone-image-container-horizontal {
@@ -676,11 +546,23 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
   }
   
   .drone-card-horizontal:hover .drone-image-horizontal {
-    transform: scale(1.05);
+    transform: scale(1.03);
+  }
+  
+  /* Eliminar completamente el pseudo-elemento que causaba problemas */
+  .drone-image-container-horizontal::before {
+    content: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: none;
+    z-index: 0;
   }
   
   .drone-badge-horizontal {
@@ -694,6 +576,7 @@
     font-size: 12px;
     font-weight: 600;
     z-index: 2;
+    box-shadow: none;
   }
   
   .drone-content-horizontal {
@@ -761,18 +644,6 @@
     background-color: var(--color-primary-dark);
   }
   
-  /* Ajustes para el carrusel con tarjetas horizontales */
-  .drones-carousel-container {
-    padding: 30px 60px;
-    margin-bottom: 60px;
-  }
-  
-  .drone-slide {
-    padding: 10px;
-    box-sizing: border-box;
-    height: auto;
-  }
-  
   /* Media queries para tarjetas horizontales */
   @media (max-width: 992px) {
     .drone-card-horizontal {
@@ -802,20 +673,354 @@
       -webkit-line-clamp: 2;
       line-clamp: 2;
     }
-    
-    .drone-specs-horizontal li {
-      font-size: 11px;
-    }
   }
   
-  @media (max-width: 576px) {
+  @media (max-width: 480px) {
     .drone-card-horizontal {
       flex-direction: column;
       height: auto;
     }
     
     .drone-image-container-horizontal {
-      flex: 0 0 150px;
+      flex: none;
+      height: 180px;
+    }
+    
+    .drone-content-horizontal {
+      flex: none;
+    }
+  }
+
+  .drone-image-horizontal.hovered {
+    transform: scale(1.03);
+  }
+
+/* ========================================
+   COMPONENTE: MODAL DE DRONE
+   ======================================== */
+  /* Estilos para el modal de detalles del drone */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .modal-content {
+    background-color: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-overlay.active .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+  }
+  
+  .modal-close:hover {
+    background-color: #f5f5f5;
+    transform: rotate(90deg);
+  }
+  
+  .modal-close:before, .modal-close:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background-color: #333;
+  }
+  
+  .modal-close:before {
+    transform: rotate(45deg);
+  }
+  
+  .modal-close:after {
+    transform: rotate(-45deg);
+  }
+  
+  .modal-image {
+    width: 100%;
+    height: 300px;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    position: relative;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  
+  .modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .modal-text-content {
+    padding: 30px;
+  }
+  
+  .modal-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 10px;
+    line-height: 1.2;
+  }
+  
+  .modal-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0 0 20px;
+    line-height: 1.4;
+  }
+  
+  .modal-description {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+  
+  .modal-specs {
+    margin-bottom: 25px;
+  }
+  
+  .modal-specs h3 {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    margin: 0 0 15px;
+    font-weight: 600;
+  }
+  
+  .modal-specs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .modal-specs li {
+    font-size: 0.95rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .modal-specs li:before {
+    content: "•";
+    color: var(--color-primary);
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .modal-actions .drone-details-btn-new {
+    max-width: 200px;
+    margin: 20px auto 0;
+  }
+  
+  @media (max-width: 768px) {
+    .modal-content {
+      padding: 0;
+    }
+    
+    .modal-image {
+      height: 250px;
+    }
+    
+    .modal-text-content {
+      padding: 20px;
+    }
+    
+    .modal-title {
+      font-size: 1.8rem;
+    }
+    
+    .modal-subtitle {
+      font-size: 1rem;
+    }
+    
+    .modal-specs ul {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .modal-text-content {
+      padding: 15px;
+    }
+    
+    .modal-image {
+      height: 200px;
+    }
+    
+    .modal-title {
+      font-size: 1.6rem;
+    }
+  }
+
+/* ========================================
+   COMPONENTE: CONTENEDOR DE ESPECIFICACIONES
+   ======================================== */
+  /* Estilos para el contenedor de especificaciones */
+  .specs-container {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .specs-container h4 {
+    font-size: 16px;
+    color: var(--color-primary);
+    margin: 0 0 10px 0;
+    font-weight: 600;
+  }
+  
+  .specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .specs-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .specs-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .spec-name {
+    color: #666;
+    font-weight: 500;
+  }
+  
+  .spec-value {
+    color: #333;
+    font-weight: 600;
+  }
+
+/* ========================================
+   COMPONENTE: BOTONES Y ACCIONES
+   ======================================== */
+  /* Estilos para botones y acciones relacionadas con drones */
+  .drone-action-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .drone-action-btn:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .drone-action-btn.secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+  
+  .drone-action-btn.secondary:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+/* ========================================
+   MEDIA QUERIES GLOBALES
+   ======================================== */
+  /* Media queries que afectan a múltiples componentes */
+  @media (max-width: 1200px) {
+    .drones-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .drones-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .tabs-container {
+      flex-wrap: wrap;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .drones-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    
+    .drone-card-horizontal {
+      flex-direction: column;
+      height: auto;
+    }
+    
+    .drone-image-container-horizontal {
+      flex: 0 0 200px;
     }
     
     .drone-content-horizontal {
@@ -823,332 +1028,12 @@
     }
   }
   
-  /* Estilos para el carrusel de drones */
-  .drones-carousel-container {
-    padding: 20px 40px;
-    margin-bottom: 50px;
-  }
-  
-  .drone-slide {
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  
-  /* Personalización de flechas del carrusel */
-  .slick-prev, 
-  .slick-next {
-    width: 40px;
-    height: 40px;
-    z-index: 10;
-  }
-  
-  .slick-prev {
-    left: -5px;
-  }
-  
-  .slick-next {
-    right: -5px;
-  }
-  
-  .slick-prev:before, 
-  .slick-next:before {
-    font-size: 30px;
-    color: var(--color-primary);
-    opacity: 0.8;
-  }
-  
-  .slick-prev:hover:before, 
-  .slick-next:hover:before {
-    opacity: 1;
-  }
-  
-  /* Personalización de puntos indicadores */
-  .slick-dots {
-    bottom: -35px;
-  }
-  
-  .slick-dots li button:before {
-    font-size: 12px;
-    color: var(--color-primary);
-    opacity: 0.5;
-  }
-  
-  .slick-dots li.slick-active button:before {
-    opacity: 1;
-  }
-  
-  /* Ajuste de tarjetas en el carrusel */
-  .drone-slide .drone-card-new {
-    height: 100%;
-    margin: 0 auto;
-    max-width: 350px;
-  }
-  
-  /* Animación suave para el carrusel */
-  .slick-slide {
-    opacity: 0.7;
-    transition: all 0.3s ease;
-    transform: scale(0.9);
-  }
-  
-  .slick-slide.slick-active.slick-current {
-    opacity: 1;
-    transform: scale(1);
-  }
-  
-  /* Estilos responsive para el carrusel */
-  @media (max-width: 768px) {
-    .drones-carousel-container {
-      padding: 20px 30px;
-    }
-    
-    .slick-prev {
-      left: -15px;
-    }
-    
-    .slick-next {
-      right: -15px;
-    }
-  }
-  
   @media (max-width: 576px) {
-    .drones-carousel-container {
-      padding: 10px 25px;
+    .drones-grid {
+      grid-template-columns: 1fr;
     }
     
-    .slick-prev, 
-    .slick-next {
-      width: 30px;
-      height: 30px;
+    .drone-card {
+      margin: 10px 0;
     }
-    
-    .slick-prev:before, 
-    .slick-next:before {
-      font-size: 24px;
-    }
-  }
-  
-  /* Estilos para mostrar drones horizontalmente */
-  .drones-horizontal-container {
-    width: 100%;
-    padding: 20px 0;
-    position: relative;
-  }
-  
-  .drones-horizontal-scroll {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 20px 10px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch; /* Para scroll suave en iOS */
-    scrollbar-width: thin; /* Para Firefox */
-    scrollbar-color: var(--color-primary) rgba(0, 0, 0, 0.1); /* Para Firefox */
-  }
-  
-  /* Personalización de la barra de desplazamiento para Chrome/Edge/Safari */
-  .drones-horizontal-scroll::-webkit-scrollbar {
-    height: 8px;
-  }
-  
-  .drones-horizontal-scroll::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-  }
-  
-  .drones-horizontal-scroll::-webkit-scrollbar-thumb {
-    background-color: var(--color-primary);
-    border-radius: 10px;
-  }
-  
-  .drone-item {
-    flex: 0 0 auto;
-    width: 350px;
-    margin-right: 20px;
-    transition: transform 0.3s ease;
-  }
-  
-  .drone-item:last-child {
-    margin-right: 10px; /* Menos margen para el último elemento */
-  }
-  
-  .drone-item:hover {
-    transform: translateY(-5px);
-  }
-  
-  /* Ajustes responsive */
-  @media (max-width: 768px) {
-    .drone-item {
-      width: 300px;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .drone-item {
-      width: 280px;
-    }
-    
-    .drones-horizontal-scroll {
-      padding: 15px 5px;
-    }
-  }
-  
-  /* Ajustes para las tarjetas horizontales en la vista horizontal */
-  .drone-card-horizontal {
-    height: 200px;
-    width: 100%;
-  }
-  
-  @media (max-width: 576px) {
-    .drone-card-horizontal {
-      height: 180px;
-    }
-  }
-  
-  /* Estilos para las tarjetas de drones con soporte para modo oscuro */
-  .drone-card-horizontal {
-    display: flex;
-    background-color: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    margin: 15px 10px;
-    cursor: pointer;
-    height: 220px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Soporte para modo oscuro */
-  @media (prefers-color-scheme: dark) {
-    .drone-card-horizontal {
-      background-color: #2a2a2a;
-      border-color: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-  }
-  
-  .drone-card-horizontal:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
-  
-  .drone-image-horizontal.hovered {
-    transform: scale(1.05);
-  }
-  
-  /* Estilos para el contenedor de especificaciones */
-  .drone-specs-horizontal li.more-specs {
-    background-color: rgba(23, 93, 163, 0.1);
-    color: var(--color-primary);
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    .drone-specs-horizontal li.more-specs {
-      background-color: rgba(23, 93, 163, 0.3);
-    }
-    
-    .drone-title-horizontal {
-      color: #f0f0f0;
-    }
-    
-    .drone-description-horizontal {
-      color: #aaa;
-    }
-    
-    .drone-specs-horizontal li {
-      background-color: rgba(255, 255, 255, 0.1);
-      color: #ccc;
-    }
-  }
-  
-  .drone-content-top {
-    margin-bottom: 10px;
-  }
-  
-  .drone-content-bottom {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: auto;
-  }
-  
-  /* Animaciones para la entrada de los drones */
-  .drones-showcase {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .drones-showcase.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .drone-item {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.5s forwards;
-  }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Estilos para el indicador de carga */
-  .loading-indicator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-  }
-  
-  .loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    border-top-color: var(--color-primary);
-    animation: spin 1s ease-in-out infinite;
-    margin-bottom: 15px;
-  }
-  
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    .loading-spinner {
-      border-color: rgba(255, 255, 255, 0.1);
-      border-top-color: var(--color-primary);
-    }
-  }
-  
-  /* Ajuste del espacio entre tarjetas */
-  .drones-horizontal-scroll {
-    gap: 8px; /* Reducido de 20px a 8px según la memoria */
-  }
-  
-  .drone-item {
-    margin-right: 8px; /* Reducido de 20px a 8px según la memoria */
-  }
-  
-  .drone-image-container-horizontal::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: none; 
-    z-index: 1;
   }
