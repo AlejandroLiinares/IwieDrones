@@ -239,10 +239,6 @@ const Home = () => {
       <section className="quote-section">
         <div className="container">
           <div className="quote-container">
-            <span className="corner-top-left"></span>
-            <span className="corner-top-right"></span>
-            <span className="corner-bottom-left"></span>
-            <span className="corner-bottom-right"></span>
             <div className="quote-text">
               <blockquote>
                 "Estaremos realmente atrapados con la tecnología cuando todo lo que queramos sean sólo cosas que funcionen."
