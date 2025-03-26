@@ -29,7 +29,7 @@ const Agricultural = () => {
     {
       icon: faMapMarkedAlt,
       title: "Frutales",
-      description: "Fumigación uniforme en árboles frutales de diferentes alturas y densidades."
+      description: "Aplicación uniforme en árboles frutales de diferentes alturas y densidades."
     },
     {
       icon: faShieldAlt,
@@ -55,7 +55,7 @@ const Agricultural = () => {
     {
       number: 3,
       title: "Ejecución",
-      description: "Realizamos la fumigación siguiendo el plan establecido con precisión y eficiencia.",
+      description: "Realizamos la aplicación siguiendo el plan establecido con precisión y eficiencia.",
       icon: faTools
     },
     {
@@ -102,7 +102,7 @@ const Agricultural = () => {
           <div className="container">
             <h1>Servicios Agrícolas Avanzados</h1>
             <p className="hero-description">
-              Optimiza tus cultivos con tecnología de vanguardia. Nuestros servicios ofrecen fumigación precisa, 
+              Optimiza tus cultivos con tecnología de vanguardia. Nuestros servicios ofrecen aplicación precisa, 
               monitoreo de cultivos y mapeo detallado para maximizar tu rendimiento y reducir costos.
             </p>
             <div className="hero-buttons">
@@ -121,9 +121,9 @@ const Agricultural = () => {
       <section className="overview-section">
         <div className="container">
           <div className="section-header">
-            <h2>Ventajas de Nuestra Tecnología de Fumigación</h2>
+            <h2>Ventajas de Nuestra Tecnología de Aplicación</h2>
             <p className="section-description">
-              Nuestra tecnología de fumigación representa una revolución en la agricultura moderna, 
+              Nuestra tecnología de aplicación representa una revolución en la agricultura moderna, 
               ofreciendo numerosas ventajas frente a los métodos tradicionales.
             </p>
           </div>
@@ -148,7 +148,7 @@ const Agricultural = () => {
           <div className="section-header">
             <h2>Aplicaciones</h2>
             <p className="section-description">
-              Nuestros servicios de fumigación son ideales para diversos tipos de cultivos y escenarios agrícolas.
+              Nuestros servicios de aplicación son ideales para diversos tipos de cultivos y escenarios agrícolas.
             </p>
           </div>
           <div className="applications-grid">
@@ -199,7 +199,6 @@ const Agricultural = () => {
             </p>
             <div className="cta-buttons">
               <Link to="/contacto" className="btn btn-primary">Solicitar Presupuesto</Link>
-              <Link to="/contacto" className="btn btn-secondary">Más Información</Link>
             </div>
           </div>
         </div>

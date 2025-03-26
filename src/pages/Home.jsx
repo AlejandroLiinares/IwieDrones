@@ -8,7 +8,7 @@ const Home = () => {
     {
       id: 1,
       title: "Agrícolas",
-      description: "Ofrecemos soluciones de alta precisión para la agricultura con tecnología especializada en fumigación, siembra y monitoreo de cultivos.",
+      description: "Ofrecemos soluciones de alta precisión para la agricultura con tecnología especializada en aplicación, siembra y monitoreo de cultivos.",
       image: "./agricola.jpg",
       link: "/agricola"
     },

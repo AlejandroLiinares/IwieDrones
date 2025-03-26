@@ -248,8 +248,8 @@ button {
   background-color: var(--primary-color);
 }
 
-#drones .section-title::after,
-.drone-catalog .section-title::after {
+#tech .section-title::after,
+.tech-catalog .section-title::after {
   display: none !important;
   content: none !important;
   width: 0 !important;

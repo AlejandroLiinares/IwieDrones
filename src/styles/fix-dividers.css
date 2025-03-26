@@ -1,28 +1,28 @@
-/* Estilos para eliminar completamente los divisores decorativos SOLO en el catálogo de drones */
+/* Estilos para eliminar completamente los divisores decorativos SOLO en el catálogo de tecnología */
 
-/* Selector específico para eliminar todos los divisores SOLO en el catálogo de drones */
-#drones .section-title::after,
-#drones .section-title::before,
-#drones .category-title::after,
-#drones .category-title::before,
-#drones .series-title::after,
-#drones .series-title::before,
-#drones hr,
+/* Selector específico para eliminar todos los divisores SOLO en el catálogo de tecnología */
+#tech .section-title::after,
+#tech .section-title::before,
+#tech .category-title::after,
+#tech .category-title::before,
+#tech .series-title::after,
+#tech .series-title::before,
+#tech hr,
 /* Permitimos el divisor principal */
-/* #drones .slide-divider, */
-#drones .category-divider,
-#drones .series-divider,
-.drone-catalog .section-title::after,
-.drone-catalog .section-title::before,
-.drone-catalog .category-title::after,
-.drone-catalog .category-title::before,
-.drone-catalog .series-title::after,
-.drone-catalog .series-title::before,
-.drone-catalog hr,
+/* #tech .slide-divider, */
+#tech .category-divider,
+#tech .series-divider,
+.tech-catalog .section-title::after,
+.tech-catalog .section-title::before,
+.tech-catalog .category-title::after,
+.tech-catalog .category-title::before,
+.tech-catalog .series-title::after,
+.tech-catalog .series-title::before,
+.tech-catalog hr,
 /* Permitimos el divisor principal */
-/* .drone-catalog .slide-divider, */
-.drone-catalog .category-divider,
-.drone-catalog .series-divider {
+/* .tech-catalog .slide-divider, */
+.tech-catalog .category-divider,
+.tech-catalog .series-divider {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
@@ -37,22 +37,22 @@
 }
 
 /* Ajustar espaciado para compensar la eliminación de divisores */
-.drone-catalog .section-title,
-#drones .section-title {
+.tech-catalog .section-title,
+#tech .section-title {
   margin-bottom: 3rem !important;
   padding-bottom: 0 !important;
   border-bottom: none !important;
 }
 
-.drone-catalog .category-title,
-#drones .category-title {
+.tech-catalog .category-title,
+#tech .category-title {
   margin-bottom: 2.5rem !important;
   padding-bottom: 0 !important;
   border-bottom: none !important;
 }
 
-.drone-catalog .series-title,
-#drones .series-title {
+.tech-catalog .series-title,
+#tech .series-title {
   margin-bottom: 2rem !important;
   padding-bottom: 0 !important;
   border-bottom: none !important;

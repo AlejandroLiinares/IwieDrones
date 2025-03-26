@@ -8,14 +8,14 @@ const TechnicalService = () => {
     {
       id: 1,
       name: "Mantenimiento Preventivo",
-      description: "Servicio completo de revisión y mantenimiento para prevenir fallos y garantizar el óptimo funcionamiento de sus drones.",
+      description: "Servicio completo de revisión y mantenimiento para prevenir fallos y garantizar el óptimo funcionamiento de sus equipos tecnológicos.",
       image: "https://via.placeholder.com/400x300",
       includes: [
         "Revisión completa de componentes",
         "Calibración de sensores y sistemas",
         "Actualización de firmware",
         "Limpieza de componentes",
-        "Ajuste de motores y hélices"
+        "Ajuste de motores y mecanismos"
       ],
       benefits: [
         "Prevención de fallos durante operaciones",
@@ -28,7 +28,7 @@ const TechnicalService = () => {
     {
       id: 2,
       name: "Reparación Especializada",
-      description: "Servicio de diagnóstico y reparación de averías en drones de cualquier marca y modelo, con técnicos certificados y piezas originales.",
+      description: "Servicio de diagnóstico y reparación de averías en equipos tecnológicos de cualquier marca y modelo, con técnicos certificados y piezas originales.",
       image: "https://via.placeholder.com/400x300",
       includes: [
         "Diagnóstico completo",
@@ -48,7 +48,7 @@ const TechnicalService = () => {
     {
       id: 3,
       name: "Modificaciones y Mejoras",
-      description: "Servicio de personalización y mejora de drones para adaptarlos a necesidades específicas o mejorar su rendimiento.",
+      description: "Servicio de personalización y mejora de equipos tecnológicos para adaptarlos a necesidades específicas o mejorar su rendimiento.",
       image: "https://via.placeholder.com/400x300",
       includes: [
         "Instalación de accesorios especializados",
@@ -72,8 +72,8 @@ const TechnicalService = () => {
       {/* Hero Section */}
       <section className="service-hero">
         <div className="container">
-          <h1>Servicio Técnico de Drones</h1>
-          <p>Mantenimiento, reparación y optimización de drones de todas las marcas y modelos</p>
+          <h1>Servicio Técnico Especializado</h1>
+          <p>Mantenimiento, reparación y optimización de equipos tecnológicos de todas las marcas y modelos</p>
         </div>
       </section>
 
@@ -83,7 +83,7 @@ const TechnicalService = () => {
           <div className="overview-content">
             <div className="overview-text">
               <h2>Soporte Técnico Profesional</h2>
-              <p>En Iwiedrones contamos con un equipo de técnicos especializados y un taller equipado con la última tecnología para ofrecer servicios de mantenimiento, reparación y optimización de drones de cualquier marca y modelo.</p>
+              <p>En Iwie contamos con un equipo de técnicos especializados y un taller equipado con la última tecnología para ofrecer servicios de mantenimiento, reparación y optimización de equipos tecnológicos de cualquier marca y modelo.</p>
               <p>Nuestro compromiso es garantizar el correcto funcionamiento de sus equipos, prolongar su vida útil y optimizar su rendimiento para que pueda sacar el máximo provecho de su inversión.</p>
               
               <h3>¿Por qué elegir nuestro servicio técnico?</h3>
@@ -97,29 +97,29 @@ const TechnicalService = () => {
               </ul>
             </div>
             <div className="overview-image">
-              <img src="https://via.placeholder.com/600x400" alt="Técnico reparando un drone" />
+              <img src="https://via.placeholder.com/600x400" alt="Técnico reparando un equipo tecnológico" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Catalog */}
-      <section className="drones-catalog">
+      <section className="tech-catalog">
         <div className="container">
           <h2 className="section-title">Nuestros Servicios Técnicos</h2>
-          <p className="section-description">Ofrecemos una amplia gama de servicios para mantener sus drones en óptimas condiciones.</p>
+          <p className="section-description">Ofrecemos una amplia gama de servicios para mantener sus equipos tecnológicos en óptimas condiciones.</p>
           
-          <div className="drones-list">
+          <div className="tech-list">
             {technicalServices.map(service => (
-              <div className="drone-detail-card" key={service.id}>
-                <div className="drone-image">
+              <div className="tech-detail-card" key={service.id}>
+                <div className="tech-image">
                   <img src={service.image} alt={service.name} />
                 </div>
-                <div className="drone-info">
+                <div className="tech-info">
                   <h3>{service.name}</h3>
-                  <p className="drone-description">{service.description}</p>
+                  <p className="tech-description">{service.description}</p>
                   
-                  <div className="drone-specs-container">
+                  <div className="tech-specs-container">
                     <div className="specs-column">
                       <h4>Incluye</h4>
                       <ul className="specs-list">
@@ -153,7 +153,7 @@ const TechnicalService = () => {
             <div className="process-step">
               <div className="step-number">1</div>
               <h3>Recepción y Diagnóstico</h3>
-              <p>Evaluamos el estado del drone y realizamos un diagnóstico detallado para identificar problemas.</p>
+              <p>Evaluamos el estado del equipo y realizamos un diagnóstico detallado para identificar problemas.</p>
             </div>
             <div className="process-step">
               <div className="step-number">2</div>
@@ -182,7 +182,7 @@ const TechnicalService = () => {
           <div className="faq-container" style={{maxWidth: '800px', margin: '0 auto'}}>
             <div className="faq-item" style={{marginBottom: '2rem'}}>
               <h3 style={{color: '#0056b3', marginBottom: '0.5rem'}}>¿Cuánto tiempo tarda el servicio de mantenimiento?</h3>
-              <p>El tiempo de servicio depende del tipo de mantenimiento y la complejidad del drone. Generalmente, un mantenimiento preventivo básico se realiza en 24-48 horas.</p>
+              <p>El tiempo de servicio depende del tipo de mantenimiento y la complejidad del equipo. Generalmente, un mantenimiento preventivo básico se realiza en 24-48 horas.</p>
             </div>
             
             <div className="faq-item" style={{marginBottom: '2rem'}}>
@@ -191,13 +191,13 @@ const TechnicalService = () => {
             </div>
             
             <div className="faq-item" style={{marginBottom: '2rem'}}>
-              <h3 style={{color: '#0056b3', marginBottom: '0.5rem'}}>¿Trabajan con todas las marcas de drones?</h3>
-              <p>Sí, nuestros técnicos están capacitados para trabajar con drones de cualquier marca y modelo, tanto de uso recreativo como profesional.</p>
+              <h3 style={{color: '#0056b3', marginBottom: '0.5rem'}}>¿Trabajan con todas las marcas de equipos?</h3>
+              <p>Sí, nuestros técnicos están capacitados para trabajar con equipos tecnológicos de cualquier marca y modelo, tanto de uso recreativo como profesional.</p>
             </div>
             
             <div className="faq-item" style={{marginBottom: '2rem'}}>
               <h3 style={{color: '#0056b3', marginBottom: '0.5rem'}}>¿Qué incluye el mantenimiento preventivo?</h3>
-              <p>El mantenimiento preventivo incluye revisión de componentes, calibración de sensores, actualización de firmware, limpieza general, ajuste de motores y hélices, y pruebas de funcionamiento.</p>
+              <p>El mantenimiento preventivo incluye revisión de componentes, calibración de sensores, actualización de firmware, limpieza general, ajuste de motores y mecanismos, y pruebas de funcionamiento.</p>
             </div>
           </div>
         </div>
@@ -206,8 +206,8 @@ const TechnicalService = () => {
       {/* CTA Section */}
       <section className="service-cta">
         <div className="container">
-          <h2>¿Tu drone necesita mantenimiento o reparación?</h2>
-          <p>Contáctanos para una evaluación personalizada y presupuesto sin compromiso.</p>
+          <h2>¿Necesita servicio técnico para sus equipos?</h2>
+          <p>Contáctenos hoy mismo para obtener un diagnóstico profesional y un servicio de calidad.</p>
           <Link to="/contactanos" className="btn btn-primary">Solicitar Servicio</Link>
         </div>
       </section>

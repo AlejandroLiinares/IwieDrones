@@ -39,10 +39,10 @@ body > div:not(#root):not(.modal-backdrop.active),
 .quote-section,
 .services,
 .about-section,
-.drone-catalog,
-.drone-category,
-.drone-series,
-.drones-showcase {
+.tech-catalog,
+.tech-category,
+.tech-series,
+.tech-showcase {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -71,7 +71,7 @@ body > div:not(#root):not(.modal-backdrop.active),
   align-items: center !important;
 }
 
-/* Asegurar que las tarjetas de drones sean visibles */
+/* Asegurar que las tarjetas de tecnología sean visibles */
 /* Eliminado para reconstruir desde cero */
 
 /* Eliminar cualquier elemento con nombres comunes de overlay */

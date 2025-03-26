@@ -186,13 +186,13 @@ const Contact = () => {
                   onChange={handleChange}
                 >
                   <option value="general">Información General</option>
-                  <option value="agricola">Fumigación Agrícola</option>
-                  <option value="industrial">Fumigación Industrial</option>
+                  <option value="agricola">Aplicación Agrícola</option>
+                  <option value="industrial">Aplicación Industrial</option>
                   <option value="capacitaciones">Capacitaciones</option>
                   <option value="inspecciones">Inspecciones</option>
                   <option value="forestal">Forestal</option>
                   <option value="tecnico">Servicio Técnico</option>
-                  <option value="drones">Compra de Drones</option>
+                  <option value="tecnologia">Tecnología Avanzada</option>
                 </select>
               </div>
               

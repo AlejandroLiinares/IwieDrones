@@ -7,8 +7,8 @@ const Training = () => {
   const trainingCourses = [
     {
       id: 1,
-      name: "Curso Básico de Tecnología Aérea",
-      description: "Aprende los fundamentos de la tecnología aérea, normativa vigente y prácticas seguras de operación. Curso ideal para principiantes sin experiencia previa.",
+      name: "Curso Básico de Tecnología Avanzada",
+      description: "Aprende los fundamentos de la tecnología avanzada, normativa vigente y prácticas seguras de operación. Curso ideal para principiantes sin experiencia previa.",
       image: "https://via.placeholder.com/400x300",
       details: [
         "Duración: 20 horas (10 teóricas, 10 prácticas)",
@@ -19,7 +19,7 @@ const Training = () => {
       ],
       topics: [
         "Principios básicos de operación",
-        "Normativa aeronáutica vigente",
+        "Normativa técnica vigente",
         "Seguridad operacional",
         "Meteorología básica",
         "Prácticas en diferentes escenarios"
@@ -28,7 +28,7 @@ const Training = () => {
     {
       id: 2,
       name: "Especialización en Aplicaciones Agrícolas",
-      description: "Capacitación especializada en el uso de tecnología para aplicaciones agrícolas, calibración de equipos y técnicas de fumigación de precisión.",
+      description: "Capacitación especializada en el uso de tecnología para aplicaciones agrícolas, calibración de equipos y técnicas de aplicación de precisión.",
       image: "https://via.placeholder.com/400x300",
       details: [
         "Duración: 30 horas (15 teóricas, 15 prácticas)",
@@ -39,10 +39,10 @@ const Training = () => {
       ],
       topics: [
         "Tecnología avanzada para agricultura",
-        "Calibración de equipos de fumigación",
-        "Planificación de misiones agrícolas",
+        "Calibración de equipos de aplicación",
+        "Planificación de operaciones agrícolas",
         "Productos fitosanitarios y su aplicación",
-        "Técnicas avanzadas de fumigación"
+        "Técnicas avanzadas de aplicación"
       ]
     },
     {
@@ -73,7 +73,7 @@ const Training = () => {
       id: 1,
       name: "Carlos Rodríguez",
       position: "Instructor Principal",
-      bio: "Ingeniero aeronáutico con más de 10 años de experiencia en el sector. Especialista en tecnología aérea y aplicaciones industriales.",
+      bio: "Ingeniero con más de 10 años de experiencia en el sector. Especialista en tecnología avanzada y aplicaciones industriales.",
       image: "https://via.placeholder.com/150"
     },
     {
@@ -101,7 +101,7 @@ const Training = () => {
             <h1>Capacitación y Certificación</h1>
             <p className="hero-description">
               Formación profesional con los más altos estándares de calidad. Nuestros cursos te preparan para dominar 
-              la tecnología aérea avanzada y sus aplicaciones en diversos sectores.
+              la tecnología avanzada y sus aplicaciones en diversos sectores.
             </p>
             <div className="hero-buttons">
               <Link to="/contactanos" className="btn btn-primary">Solicitar Información</Link>
@@ -199,8 +199,8 @@ const Training = () => {
               Contáctanos hoy mismo para recibir más información sobre nuestros cursos y fechas disponibles.
             </p>
             <div className="cta-buttons">
-              <Link to="/contacto" className="btn btn-primary">Solicitar Información</Link>
-              <Link to="/contacto" className="btn btn-secondary">Calendario de Cursos</Link>
+              <Link to="/contactanos" className="btn btn-primary">Solicitar Información</Link>
+              <a href="#cursos" className="btn btn-outline-light">Ver Todos los Cursos</a>
             </div>
           </div>
         </div>

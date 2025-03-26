@@ -79,7 +79,7 @@ html, body, #root, .home-page {
 .quote-section,
 .services,
 .about-section,
-.drone-catalog {
+.tech-catalog {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
