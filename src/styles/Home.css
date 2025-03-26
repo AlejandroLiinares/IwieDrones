@@ -1,28 +1,107 @@
 /* About Us Section */
 .about-us-section {
   padding: 5rem 0;
-  background-color: #f8f9fa;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  text-align: left;
+  background-image: url('/quienes-somos.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .about-us-section .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  text-align: left;
 }
 
 .about-hero-content {
-  text-align: center;
+  text-align: left;
   max-width: 800px;
-  margin: 0 auto 4rem;
+  margin: 0;
+  padding-left: 2rem;
+}
+
+.about-title {
+  color: white;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  text-align: left;
+  display: block;
+  clear: both;
+}
+
+.about-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #00a8ff, #00eeff);
+  margin: 1.5rem 0;
+  box-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
+  border-radius: 3px;
+  display: block;
+  clear: both;
 }
 
 .about-description {
   font-size: 1.2rem;
   line-height: 1.8;
-  color: #555;
+  color: white;
   margin-top: 1.5rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  text-align: left;
+  clear: both;
 }
 
+.about-us-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
+}
+
+/* Responsive adjustments for About section */
+@media (max-width: 768px) {
+  .about-us-section {
+    height: auto;
+    min-height: 80vh;
+    padding: 4rem 0;
+  }
+  
+  .about-title {
+    font-size: 2.5rem;
+  }
+  
+  .about-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-us-section {
+    padding: 3rem 0;
+  }
+  
+  .about-title {
+    font-size: 2rem;
+  }
+}
+
+/* ... */
 .mission-vision-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -919,6 +998,58 @@
   }
   
   .section-header h2, .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Drones Catalog Section */
+.drones-catalog-section {
+  padding: 5rem 0;
+  background-color: #f8f9fa;
+}
+
+.drones-catalog-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.drones-catalog-section .section-title {
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: left;
+  display: block;
+}
+
+.drones-catalog-section .section-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #00a8ff, #00eeff);
+  margin: 1.5rem 0 3rem 0;
+  box-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
+  border-radius: 3px;
+  display: block;
+}
+
+/* Responsive adjustments for Drones Catalog section */
+@media (max-width: 768px) {
+  .drones-catalog-section {
+    padding: 4rem 0;
+  }
+  
+  .drones-catalog-section .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .drones-catalog-section {
+    padding: 3rem 0;
+  }
+  
+  .drones-catalog-section .section-title {
     font-size: 1.8rem;
   }
 }

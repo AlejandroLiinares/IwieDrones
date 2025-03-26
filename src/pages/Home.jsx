@@ -164,8 +164,8 @@ const Home = () => {
       <section className="about-us-section" id="quienes-somos">
         <div className="container">
           <div className="about-hero-content">
-            <h2 className="section-title">QUIÉNES SOMOS</h2>
-            <div className="section-divider"></div>
+            <h2 className="section-title about-title">QUIÉNES SOMOS</h2>
+            <div className="about-divider"></div>
             <p className="about-description">
               Iwie nace en el año 2022 con el objetivo de brindar servicios con tecnología avanzada en diversas áreas como 
               agricultura, procesos industriales, educación, sistemas de energía, televigilancia y entretenimiento. Nos 
@@ -173,57 +173,14 @@ const Home = () => {
               eficiencia en diversos sectores.
             </p>
           </div>
-          
-          <div className="mission-vision-grid">
-            <div className="mission-box">
-              <h3>Nuestra Misión</h3>
-              <p>
-                Proporcionar soluciones tecnológicas innovadoras que transformen y optimicen los procesos de nuestros clientes, 
-                contribuyendo al desarrollo sostenible y la eficiencia en diversos sectores industriales y agrícolas.
-              </p>
-            </div>
-            <div className="vision-box">
-              <h3>Nuestra Visión</h3>
-              <p>
-                Ser líderes en la implementación de tecnología avanzada en Latinoamérica, reconocidos por nuestra 
-                excelencia técnica, innovación constante y compromiso con el desarrollo sostenible.
-              </p>
-            </div>
-          </div>
-          
-          <div className="values-section">
-            <h3 className="values-title">Nuestros Valores</h3>
-            <div className="values-grid">
-              <div className="value-card">
-                <div className="value-icon">
-                  <i className="fas fa-lightbulb"></i>
-                </div>
-                <h4>Innovación</h4>
-                <p>Buscamos constantemente nuevas soluciones y tecnologías para ofrecer servicios de vanguardia.</p>
-              </div>
-              <div className="value-card">
-                <div className="value-icon">
-                  <i className="fas fa-handshake"></i>
-                </div>
-                <h4>Compromiso</h4>
-                <p>Nos comprometemos con la satisfacción de nuestros clientes y la calidad de nuestros servicios.</p>
-              </div>
-              <div className="value-card">
-                <div className="value-icon">
-                  <i className="fas fa-leaf"></i>
-                </div>
-                <h4>Sostenibilidad</h4>
-                <p>Promovemos prácticas sostenibles que respetan el medio ambiente y optimizan recursos.</p>
-              </div>
-              <div className="value-card">
-                <div className="value-icon">
-                  <i className="fas fa-users"></i>
-                </div>
-                <h4>Trabajo en Equipo</h4>
-                <p>Valoramos la colaboración y el trabajo conjunto para lograr resultados excepcionales.</p>
-              </div>
-            </div>
-          </div>
+        </div>
+      </section>
+      
+      {/* Drones Catalog Section */}
+      <section className="drones-catalog-section" id="nuestros-drones">
+        <div className="container">
+          <h2 className="section-title">NUESTROS DRONES</h2>
+          <div className="section-divider"></div>
         </div>
       </section>
       
