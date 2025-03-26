@@ -265,10 +265,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/H40X.webp" alt="Drone H40X" className="drone-image" />
                 <h3 className="drone-title">H40X</h3>
-                <p className="drone-summary">Descripción breve del H40X.</p>
+                <p className="drone-summary">Tu mejor compañia en campos medianos.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H40X', 'Información detallada sobre el dron H40X.')}
+                  onClick={() => openDroneModal('H40X', 'Ofrece un tanque de pulverización de 20L para cubrir campos más grandes, siendo una herramienta versátil para diversas aplicaciones agrícolas.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -277,10 +277,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/H120.webp" alt="Drone H120" className="drone-image" />
                 <h3 className="drone-title">H120</h3>
-                <p className="drone-summary">Descripción breve del H120.</p>
+                <p className="drone-summary">Tus sueños hechos realidad para campos grandes.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H120', 'Información detallada sobre el dron H120.')}
+                  onClick={() => openDroneModal('H120', 'Gestiona eficientemente campos grandes con un tanque de pulverización de 52L y una capacidad de dispersión de 60kg, reduciendo significativamente el tiempo y los costos de mano de obra.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -289,10 +289,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/H160.webp" alt="Drone H160" className="drone-image" />
                 <h3 className="drone-title">H160</h3>
-                <p className="drone-summary">Descripción breve del H160.</p>
+                <p className="drone-summary">La buena gestión se comparte.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H160', 'Información detallada sobre el dron H160.')}
+                  onClick={() => openDroneModal('H160', 'El buque insignia de la serie Hercules. Con una capacidad de pulverización de 72L~82L, ofrece la solución definitiva para la gestión extensiva de cultivos.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -301,10 +301,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/H200.png" alt="Drone H200" className="drone-image" />
                 <h3 className="drone-title">H200 Agrícola y Transporte</h3>
-                <p className="drone-summary">Descripción breve del H200 Agrícola y Transporte.</p>
+                <p className="drone-summary">La perfección por los aires.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H200 Agrícola y Transporte', 'Información detallada sobre el dron H200 Agrícola y Transporte.')}
+                  onClick={() => openDroneModal('H200 Agrícola y Transporte', 'Líder del mercado con su capacidad sin igual, el Roarer H200 redefine las operaciones a gran escala con su capacidad de pulverización de 92L y carga útil de 100kg, sirviendo como el dron todo en uno definitivo para pulverización y transporte.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -313,10 +313,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/H300.png" alt="Drone H300" className="drone-image" />
                 <h3 className="drone-title">H300 Agrícola y Transporte</h3>
-                <p className="drone-summary">Descripción breve del H300 Agrícola y Transporte.</p>
+                <p className="drone-summary">Optimus-Drone-Prime</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H300 Agrícola y Transporte', 'Información detallada sobre el dron H300 Agrícola y Transporte.')}
+                  onClick={() => openDroneModal('H300 Agrícola y Transporte', 'Diseño de plegado hacia arriba, un tanque de 95L y sensores de carga de grado aeroespacial para mayor precisión. Cuenta con un medidor de flujo de ondas milimétricas y soporta hasta 800A de potencia con disipación de calor. La batería inteligente enchufable es compatible con todas las baterías convencionales.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -325,10 +325,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/H200-EXTINCION.png" alt="Drone H200 Extinción" className="drone-image" />
                 <h3 className="drone-title">H200 Extinción de incendios</h3>
-                <p className="drone-summary">Descripción breve del H200 Extinción de incendios.</p>
+                <p className="drone-summary">Las llamas no se apagan solas.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H200 Extinción de incendios', 'Información detallada sobre el dron H200 Extinción de incendios.')}
+                  onClick={() => openDroneModal('H200 Extinción de incendios', 'Carga máxima: 100 kg | Tiempo de vuelo: 40 minutos. Los drones para extinción de incendios son adecuados para uso en áreas montañosas, pastizales, incendios forestales y para extinguir incendios en áreas urbanas específicas.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -337,10 +337,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/H200-TRANSPORTE.webp" alt="Drone H200 Transporte" className="drone-image" />
                 <h3 className="drone-title">H200 Transporte</h3>
-                <p className="drone-summary">Descripción breve del H200 Transporte.</p>
+                <p className="drone-summary">Déjamelo todo a mí.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H200 Transporte', 'Información detallada sobre el dron H200 Transporte.')}
+                  onClick={() => openDroneModal('H200 Transporte', 'Carga máxima: 100 kg | Tiempo de vuelo: 40 minutos. Los drones de carga pesada se utilizan ampliamente para el transporte de mercancías, frutas y otros artículos, reduciendo los costos de mano de obra y mejorando la eficiencia del trabajo.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -349,10 +349,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/X491.webp" alt="Drone X491" className="drone-image" />
                 <h3 className="drone-title">X491</h3>
-                <p className="drone-summary">Descripción breve del X491.</p>
+                <p className="drone-summary">Contigo en las buenas y en las malas.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('X491', 'Información detallada sobre el dron X491.')}
+                  onClick={() => openDroneModal('X491', 'Duración: 120 min | Carga máxima: 5 kg.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -361,10 +361,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/X441.webp" alt="Drone X441" className="drone-image" />
                 <h3 className="drone-title">X441</h3>
-                <p className="drone-summary">Descripción breve del X441.</p>
+                <p className="drone-summary">Optimización ideal.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('X441', 'Información detallada sobre el dron X441.')}
+                  onClick={() => openDroneModal('X441', 'Duración: 60 min | Carga máxima: 2.5 kg.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -373,10 +373,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/SENTINEL-V13-5.jpg" alt="Drone SENTINEL V13-5" className="drone-image" />
                 <h3 className="drone-title">Sentinel V13-5 VTOL</h3>
-                <p className="drone-summary">Descripción breve del Sentinel V13-5 VTOL.</p>
+                <p className="drone-summary">Veamos quién observa más.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('Sentinel V13-5 VTOL', 'Información detallada sobre el dron Sentinel V13-5 VTOL.')}
+                  onClick={() => openDroneModal('Sentinel V13-5 VTOL', 'Duración: 200 min | Velocidad máxima de crucero: 108 km/h.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -385,10 +385,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/CAVALRY-H50L-2.png" alt="Drone CAVALRY H50L-2" className="drone-image" />
                 <h3 className="drone-title">Cavalry H50L-2</h3>
-                <p className="drone-summary">Descripción breve del Cavalry H50L-2.</p>
+                <p className="drone-summary">¿Alguien dijo "Rompimiento de Ventanas"?</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('Cavalry H50L-2', 'Información detallada sobre el dron Cavalry H50L-2.')}
+                  onClick={() => openDroneModal('Cavalry H50L-2', 'Principalmente utilizado para extinguir incendios en edificios urbanos de gran altura o áreas específicas.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
@@ -397,10 +397,10 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/H60-4.webp" alt="Drone H60-4" className="drone-image" />
                 <h3 className="drone-title">H60-4</h3>
-                <p className="drone-summary">Descripción breve del H60-4.</p>
+                <p className="drone-summary">Limpieza y pulverización por excelencia.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H60-4', 'Información detallada sobre el dron H60-4.')}
+                  onClick={() => openDroneModal('H60-4', 'Un dron de limpieza con resistencia al agua IP67, peso total de 21 kg, tiempo de vuelo de 18-35 minutos, y capacidad para limpiar ventanas de gran altura, fachadas de edificios, paneles solares y techos. Cuenta con un sistema de pulverización con presión de agua de 8-30 Mpa y distancia de pulverización de 10-20 metros.')}
                   aria-label="Ver más información"
                 >
                   <i className="fas fa-plus"></i>
