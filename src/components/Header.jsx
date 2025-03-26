@@ -52,11 +52,6 @@ const Header = () => {
         <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <ul className="nav-list">
             <li className="nav-item">
-              <Link to="/quienes-somos" className={`nav-link ${location.pathname === '/quienes-somos' ? 'active' : ''}`}>
-                Quiénes Somos
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link to="/agricola" className={`nav-link ${location.pathname === '/agricola' ? 'active' : ''}`}>
                 Agrícola
               </Link>
