@@ -181,6 +181,60 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title">NUESTROS DRONES</h2>
           <div className="section-divider"></div>
+          <div className="drones-grid">
+            <div className="drone-item">
+              <img src="/H120.webp" alt="Drone H120" className="drone-image" />
+              <h3 className="drone-title">H120</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/H160.webp" alt="Drone H160" className="drone-image" />
+              <h3 className="drone-title">H160</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/H200.png" alt="Drone H200" className="drone-image" />
+              <h3 className="drone-title">H200</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/H200-EXTINCION.png" alt="Drone H200 Extinción" className="drone-image" />
+              <h3 className="drone-title">H200 Extinción</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/H200-TRANSPORTE.webp" alt="Drone H200 Transporte" className="drone-image" />
+              <h3 className="drone-title">H200 Transporte</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/H300.png" alt="Drone H300" className="drone-image" />
+              <h3 className="drone-title">H300</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/H32X.webp" alt="Drone H32X" className="drone-image" />
+              <h3 className="drone-title">H32X</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/H40X.webp" alt="Drone H40X" className="drone-image" />
+              <h3 className="drone-title">H40X</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/H60-4.webp" alt="Drone H60-4" className="drone-image" />
+              <h3 className="drone-title">H60-4</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/CAVALRY-H50L-2.png" alt="Drone CAVALRY H50L-2" className="drone-image" />
+              <h3 className="drone-title">CAVALRY H50L-2</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/SENTINEL-V13-5.jpg" alt="Drone SENTINEL V13-5" className="drone-image" />
+              <h3 className="drone-title">SENTINEL V13-5</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/X441.webp" alt="Drone X441" className="drone-image" />
+              <h3 className="drone-title">X441</h3>
+            </div>
+            <div className="drone-item">
+              <img src="/X491.webp" alt="Drone X491" className="drone-image" />
+              <h3 className="drone-title">X491</h3>
+            </div>
+          </div>
         </div>
       </section>
       
