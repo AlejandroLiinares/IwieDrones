@@ -1569,7 +1569,7 @@
 
 .drone-item:first-child .drone-image {
   width: 100%;
-  height: 280px; /* Aumentar significativamente la altura */
+  height: 200px; /* Aumentar significativamente la altura */
   object-fit: contain;
   transition: transform 0.3s ease;
   margin-bottom: 0.5rem; /* Espacio adicional debajo de la imagen */
@@ -1641,4 +1641,61 @@
   .drone-item:first-child .drone-title {
     font-size: 1.1rem;
   }
+}
+
+/* Estilos comunes para todos los drones */
+.drone-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+  margin-right: 2rem;
+  padding: 1rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.drone-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.drone-image:hover {
+  transform: scale(1.05);
+}
+
+.drone-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.drone-summary {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.drone-info-toggle {
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.drone-info-toggle:hover {
+  background-color: #003d7a;
+  transform: scale(1.1);
 }

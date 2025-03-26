@@ -251,7 +251,7 @@ const Home = () => {
             
             <div className="drones-slider" ref={dronesSliderRef}>
               <div className="drone-item">
-                <img src="/H32X.webp" alt="Drone H32X" className="drone-image" />
+                <img src="/H32X.webp" alt="Drone H32X" className="drone-image h32x-image" />
                 <h3 className="drone-title">H32X</h3>
                 <p className="drone-summary">Perfecto para campos pequeños.</p>
                 <button 
@@ -265,50 +265,146 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/H40X.webp" alt="Drone H40X" className="drone-image" />
                 <h3 className="drone-title">H40X</h3>
+                <p className="drone-summary">Descripción breve del H40X.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H40X', 'Información detallada sobre el dron H40X.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/H120.webp" alt="Drone H120" className="drone-image" />
                 <h3 className="drone-title">H120</h3>
+                <p className="drone-summary">Descripción breve del H120.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H120', 'Información detallada sobre el dron H120.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/H160.webp" alt="Drone H160" className="drone-image" />
                 <h3 className="drone-title">H160</h3>
+                <p className="drone-summary">Descripción breve del H160.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H160', 'Información detallada sobre el dron H160.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/H200.png" alt="Drone H200" className="drone-image" />
                 <h3 className="drone-title">H200 Agrícola y Transporte</h3>
+                <p className="drone-summary">Descripción breve del H200 Agrícola y Transporte.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H200 Agrícola y Transporte', 'Información detallada sobre el dron H200 Agrícola y Transporte.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/H300.png" alt="Drone H300" className="drone-image" />
                 <h3 className="drone-title">H300 Agrícola y Transporte</h3>
+                <p className="drone-summary">Descripción breve del H300 Agrícola y Transporte.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H300 Agrícola y Transporte', 'Información detallada sobre el dron H300 Agrícola y Transporte.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/H200-EXTINCION.png" alt="Drone H200 Extinción" className="drone-image" />
                 <h3 className="drone-title">H200 Extinción de incendios</h3>
+                <p className="drone-summary">Descripción breve del H200 Extinción de incendios.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H200 Extinción de incendios', 'Información detallada sobre el dron H200 Extinción de incendios.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/H200-TRANSPORTE.webp" alt="Drone H200 Transporte" className="drone-image" />
                 <h3 className="drone-title">H200 Transporte</h3>
+                <p className="drone-summary">Descripción breve del H200 Transporte.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H200 Transporte', 'Información detallada sobre el dron H200 Transporte.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/X491.webp" alt="Drone X491" className="drone-image" />
                 <h3 className="drone-title">X491</h3>
+                <p className="drone-summary">Descripción breve del X491.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('X491', 'Información detallada sobre el dron X491.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/X441.webp" alt="Drone X441" className="drone-image" />
                 <h3 className="drone-title">X441</h3>
+                <p className="drone-summary">Descripción breve del X441.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('X441', 'Información detallada sobre el dron X441.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/SENTINEL-V13-5.jpg" alt="Drone SENTINEL V13-5" className="drone-image" />
                 <h3 className="drone-title">Sentinel V13-5 VTOL</h3>
+                <p className="drone-summary">Descripción breve del Sentinel V13-5 VTOL.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('Sentinel V13-5 VTOL', 'Información detallada sobre el dron Sentinel V13-5 VTOL.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/CAVALRY-H50L-2.png" alt="Drone CAVALRY H50L-2" className="drone-image" />
                 <h3 className="drone-title">Cavalry H50L-2</h3>
+                <p className="drone-summary">Descripción breve del Cavalry H50L-2.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('Cavalry H50L-2', 'Información detallada sobre el dron Cavalry H50L-2.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
               <div className="drone-item">
                 <img src="/H60-4.webp" alt="Drone H60-4" className="drone-image" />
                 <h3 className="drone-title">H60-4</h3>
+                <p className="drone-summary">Descripción breve del H60-4.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H60-4', 'Información detallada sobre el dron H60-4.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
               </div>
             </div>
             
