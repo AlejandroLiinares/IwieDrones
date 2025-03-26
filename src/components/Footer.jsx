@@ -8,8 +8,8 @@ const Footer = () => {
     <footer className="footer">
       <div className="container footer-container">
         <div className="footer-section">
-          <h3>Iwiedrones</h3>
-          <p>Soluciones con drones para agricultura, industria, inspecciones y más.</p>
+          <h3>Iwie Technologies</h3>
+          <p>Soluciones tecnológicas avanzadas para agricultura, industria, inspecciones y más.</p>
           <div className="social-links">
             <a href="https://facebook.com" className="social-link" aria-label="Facebook">
               <i className="fab fa-facebook-f"></i>
@@ -54,7 +54,7 @@ const Footer = () => {
                 <i className="fas fa-envelope"></i>
               </div>
               <div className="footer-contact-text">
-                <p>Email: info@iwiedrones.com</p>
+                <p>Email: info@iwietech.com</p>
               </div>
             </div>
             <div className="footer-contact-item">
@@ -79,7 +79,7 @@ const Footer = () => {
       
       <div className="footer-bottom">
         <div className="container">
-          <p>&copy; {currentYear} Iwiedrones. Todos los derechos reservados. Diseñado con <i className="fas fa-heart" style={{color: '#ff6b6b'}}></i> por <a href="#">Iwiedrones Team</a></p>
+          <p>&copy; {currentYear} Iwie Technologies. Todos los derechos reservados. Diseñado con <i className="fas fa-heart" style={{color: '#ff6b6b'}}></i> por <a href="#">Iwie Team</a></p>
         </div>
       </div>
     </footer>

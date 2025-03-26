@@ -31,7 +31,7 @@ const Header = () => {
       <div className="header-container">
         <div className="logo-container">
           <Link to="/" className="logo" aria-label="Ir a la página de inicio">
-            <img src="/ie.png" alt="Iwie Drones" className="logo-image" />
+            <img src="/ie.png" alt="Iwie Technologies" className="logo-image" />
           </Link>
         </div>
 

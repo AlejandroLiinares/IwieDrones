@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import '../styles/Services.css';
 
 const Industrial = () => {
-  // Datos de ejemplo para drones industriales
-  const industrialDrones = [
+  // Datos de ejemplo para equipos industriales
+  const industrialTech = [
     {
       id: 1,
-      name: "Drone Industrial DI-500",
-      description: "Drone especializado para aplicaciones industriales con resistencia a condiciones adversas y capacidad para transportar equipos de fumigación industrial.",
+      name: "Sistema Industrial DI-500",
+      description: "Equipo especializado para aplicaciones industriales con resistencia a condiciones adversas y capacidad para transportar equipos de fumigación industrial.",
       image: "https://via.placeholder.com/400x300",
       specs: [
         "Carga útil: 5kg",
@@ -27,7 +27,7 @@ const Industrial = () => {
     },
     {
       id: 2,
-      name: "Drone Fumigador Industrial IF-300",
+      name: "Sistema Fumigador Industrial IF-300",
       description: "Equipado con sistemas de fumigación de alta presión para aplicaciones industriales, incluyendo desinfección de grandes superficies y control de plagas.",
       image: "https://via.placeholder.com/400x300",
       specs: [
@@ -47,7 +47,7 @@ const Industrial = () => {
     },
     {
       id: 3,
-      name: "Drone Térmico Industrial IT-200",
+      name: "Sistema Térmico Industrial IT-200",
       description: "Equipado con cámaras térmicas para inspección industrial, detección de fugas y puntos calientes en instalaciones.",
       image: "https://via.placeholder.com/400x300",
       specs: [
@@ -72,7 +72,7 @@ const Industrial = () => {
       {/* Hero Section */}
       <section className="service-hero">
         <div className="container">
-          <h1>Fumigación Industrial con Drones</h1>
+          <h1>Fumigación Industrial con Tecnología Avanzada</h1>
           <p>Soluciones avanzadas para desinfección, control de plagas y aplicaciones industriales</p>
         </div>
       </section>
@@ -83,10 +83,10 @@ const Industrial = () => {
           <div className="overview-content">
             <div className="overview-text">
               <h2>Tecnología Avanzada para Entornos Industriales</h2>
-              <p>En Iwiedrones ofrecemos servicios especializados de fumigación industrial mediante drones, una solución eficiente y segura para instalaciones de todo tipo.</p>
-              <p>Nuestros drones industriales están diseñados para operar en entornos complejos y cuentan con sistemas de pulverización de alta presión que garantizan una aplicación efectiva de productos desinfectantes y biocidas.</p>
+              <p>En Iwie Technologies ofrecemos servicios especializados de fumigación industrial mediante tecnología avanzada, una solución eficiente y segura para instalaciones de todo tipo.</p>
+              <p>Nuestros equipos industriales están diseñados para operar en entornos complejos y cuentan con sistemas de pulverización de alta presión que garantizan una aplicación efectiva de productos desinfectantes y biocidas.</p>
               
-              <h3>Ventajas de la Fumigación Industrial con Drones</h3>
+              <h3>Ventajas de la Fumigación Industrial con Tecnología Avanzada</h3>
               <ul className="benefits-list">
                 <li><span>Acceso a áreas de difícil acceso</span> como techos, fachadas y estructuras elevadas</li>
                 <li><span>Reducción de riesgos</span> para el personal de mantenimiento</li>
@@ -97,7 +97,7 @@ const Industrial = () => {
               </ul>
             </div>
             <div className="overview-image">
-              <img src="https://via.placeholder.com/600x400" alt="Drone en entorno industrial" />
+              <img src="https://via.placeholder.com/600x400" alt="Tecnología en entorno industrial" />
             </div>
           </div>
         </div>
@@ -133,27 +133,27 @@ const Industrial = () => {
         </div>
       </section>
 
-      {/* Drones Catalog */}
-      <section className="drones-catalog">
+      {/* Technology Catalog */}
+      <section className="tech-catalog">
         <div className="container">
-          <h2 className="section-title">Nuestros Drones Industriales</h2>
-          <p className="section-description">Contamos con una flota de drones especializados para diferentes necesidades industriales.</p>
+          <h2 className="section-title">Nuestra Tecnología Industrial</h2>
+          <p className="section-description">Contamos con equipos especializados para diferentes necesidades industriales.</p>
           
-          <div className="drones-list">
-            {industrialDrones.map(drone => (
-              <div className="drone-detail-card" key={drone.id}>
-                <div className="drone-image">
-                  <img src={drone.image} alt={drone.name} />
+          <div className="tech-list">
+            {industrialTech.map(tech => (
+              <div className="tech-detail-card" key={tech.id}>
+                <div className="tech-image">
+                  <img src={tech.image} alt={tech.name} />
                 </div>
-                <div className="drone-info">
-                  <h3>{drone.name}</h3>
-                  <p className="drone-description">{drone.description}</p>
+                <div className="tech-info">
+                  <h3>{tech.name}</h3>
+                  <p className="tech-description">{tech.description}</p>
                   
-                  <div className="drone-specs-container">
+                  <div className="tech-specs-container">
                     <div className="specs-column">
                       <h4>Especificaciones</h4>
                       <ul className="specs-list">
-                        {drone.specs.map((spec, index) => (
+                        {tech.specs.map((spec, index) => (
                           <li key={index}>{spec}</li>
                         ))}
                       </ul>
@@ -161,7 +161,7 @@ const Industrial = () => {
                     <div className="specs-column">
                       <h4>Beneficios</h4>
                       <ul className="benefits-list">
-                        {drone.benefits.map((benefit, index) => (
+                        {tech.benefits.map((benefit, index) => (
                           <li key={index}>{benefit}</li>
                         ))}
                       </ul>

@@ -18,7 +18,7 @@ import TechnicalService from './pages/TechnicalService'
 import Contact from './pages/Contact'
 
 // Páginas de demostración
-import DronesCardDemo from './examples/DronesCardDemo'
+import TechDemoCard from './examples/DronesCardDemo'
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
             <Route path="/forestal" element={<Forestry />} />
             <Route path="/servicio-tecnico" element={<TechnicalService />} />
             <Route path="/contactanos" element={<Contact />} />
-            <Route path="/demo/drones" element={<DronesCardDemo />} />
+            <Route path="/demo/tech" element={<TechDemoCard />} />
           </Routes>
         </main>
         <Footer />

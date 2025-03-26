@@ -1,83 +1,60 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import DronesShowcase from '../components/DronesShowcase';
 
 /**
- * Ejemplo de cómo implementar los nuevos componentes en la página Home
- * Este archivo es solo una referencia y no afecta el código existente
+ * Versión simplificada del componente de ejemplo HomeWithComponents
+ * Esta versión no depende de los componentes eliminados
  */
-const HomeWithComponents = ({ drones }) => {
-  const [activeTab, setActiveTab] = useState("Agrícola");
-  const [isTabChanging, setIsTabChanging] = useState(false);
-  
-  // Función para manejar el cambio de pestaña con animación
-  const handleTabChange = (tabName) => {
-    if (activeTab !== tabName) {
-      setIsTabChanging(true);
-      setTimeout(() => {
-        setActiveTab(tabName);
-        setIsTabChanging(false);
-      }, 300);
-    }
-  };
-
+const HomeWithComponents = () => {
   return (
-    <section className="drones-section section-padding" id="drones">
-      <div className="container">
-        <div className="section-header">
-          <h2 className="section-title">Nuestros Drones</h2>
-          <p className="section-subtitle">
-            Descubre nuestra flota de drones especializados para diferentes sectores
-          </p>
+    <div className="home-page">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1>IWIE</h1>
+          <p className="hero-subtitle">Tecnología avanzada para optimizar procesos</p>
+          <div className="hero-buttons">
+            <a href="#services" className="btn-primary">Nuestros Servicios</a>
+            <Link to="/contactanos" className="btn-secondary">Contáctanos</Link>
+          </div>
         </div>
-        
-        <div className="tabs-container">
-          <div className="tabs-header">
-            <button
-              className={`tab-btn ${activeTab === "Agrícola" ? "active" : ""}`}
-              onClick={() => handleTabChange("Agrícola")}
-              id="tab-btn-agricola"
-              aria-controls="tab-agricola"
-              aria-selected={activeTab === "Agrícola"}
-            >
-              Agrícola
-            </button>
-            <button
-              className={`tab-btn ${activeTab === "Industrial" ? "active" : ""}`}
-              onClick={() => handleTabChange("Industrial")}
-              id="tab-btn-industrial"
-              aria-controls="tab-industrial"
-              aria-selected={activeTab === "Industrial"}
-            >
-              Industrial
-            </button>
-            <div className="tab-indicator" style={{ left: activeTab === "Agrícola" ? "0%" : "50%" }}></div>
+      </section>
+      
+      {/* Services Section */}
+      <section id="services" className="services-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>NUESTROS SERVICIOS</h2>
+            <p className="section-description">
+              Ofrecemos soluciones tecnológicas avanzadas para diversos sectores, 
+              adaptadas a las necesidades específicas de cada cliente.
+            </p>
           </div>
           
-          <div className={`tab-content-container ${isTabChanging ? "changing" : ""}`}>
-            <div
-              className={`tab-pane ${activeTab === "Agrícola" ? "active" : ""}`}
-              role="tabpanel"
-              id="tab-agricola"
-              aria-labelledby="tab-btn-agricola"
-            >
-              {/* Implementación del componente DronesShowcase para drones agrícolas */}
-              <DronesShowcase drones={drones} category="Agrícola" />
-            </div>
-            
-            <div
-              className={`tab-pane ${activeTab === "Industrial" ? "active" : ""}`}
-              role="tabpanel"
-              id="tab-industrial"
-              aria-labelledby="tab-btn-industrial"
-            >
-              {/* Implementación del componente DronesShowcase para drones industriales */}
-              <DronesShowcase drones={drones} category="Industrial" />
+          <div className="services-content">
+            <div className="placeholder-message" style={{ 
+              textAlign: 'center', 
+              padding: '50px', 
+              backgroundColor: '#f5f5f5',
+              borderRadius: '8px',
+              margin: '0 auto',
+              maxWidth: '800px'
+            }}>
+              <p>Sección en proceso de rediseño</p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="cta-section">
+        <div className="cta-content">
+          <h2>¿Listo para optimizar tus procesos?</h2>
+          <p>Contáctanos hoy mismo y descubre cómo nuestras soluciones pueden ayudarte</p>
+          <Link to="/contact" className="btn-primary">Contáctanos</Link>
+        </div>
+      </section>
+    </div>
   );
 };
 
