@@ -45,10 +45,68 @@ const Home = () => {
   // Reference for the services slider
   const servicesSliderRef = useRef(null);
   
+  // Reference for the drones slider
+  const dronesSliderRef = useRef(null);
+  
+  // Estado para controlar el modal de información del dron
+  const [modalInfo, setModalInfo] = useState({
+    isOpen: false,
+    title: '',
+    content: ''
+  });
+  
   // Función para manejar errores de carga de imágenes
   const handleImageError = (e) => {
     console.log(`Error cargando imagen: ${e.target.src}`);
     e.target.src = 'placeholder.jpg'; // Imagen de respaldo sin barra inicial
+  };
+
+  // Función para navegar por el slider de drones
+  const scrollDrones = (direction) => {
+    if (dronesSliderRef.current) {
+      const scrollAmount = 300; // Ajustar según sea necesario
+      const currentScroll = dronesSliderRef.current.scrollLeft;
+      
+      if (direction === 'left') {
+        dronesSliderRef.current.scrollTo({
+          left: currentScroll - scrollAmount,
+          behavior: 'smooth'
+        });
+      } else {
+        dronesSliderRef.current.scrollTo({
+          left: currentScroll + scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  // Función para abrir el modal con la información del dron
+  const openDroneModal = (title, content) => {
+    setModalInfo({
+      isOpen: true,
+      title,
+      content
+    });
+    // Prevenir scroll del body cuando el modal está abierto
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Función para cerrar el modal
+  const closeModal = () => {
+    setModalInfo({
+      ...modalInfo,
+      isOpen: false
+    });
+    // Restaurar scroll del body
+    document.body.style.overflow = 'auto';
+  };
+
+  // Cerrar el modal al hacer clic fuera de la tarjeta
+  const handleModalBackdropClick = (e) => {
+    if (e.target.classList.contains('modal-backdrop')) {
+      closeModal();
+    }
   };
 
   return (
@@ -181,62 +239,104 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title">NUESTROS DRONES</h2>
           <div className="section-divider"></div>
-          <div className="drones-grid">
-            <div className="drone-item">
-              <img src="/H120.webp" alt="Drone H120" className="drone-image" />
-              <h3 className="drone-title">H120</h3>
+          
+          <div className="drones-slider-container">
+            <button 
+              className="slider-nav-button slider-prev" 
+              onClick={() => scrollDrones('left')}
+              aria-label="Ver drones anteriores"
+            >
+              <i className="fas fa-chevron-left"></i>
+            </button>
+            
+            <div className="drones-slider" ref={dronesSliderRef}>
+              <div className="drone-item">
+                <img src="/H32X.webp" alt="Drone H32X" className="drone-image" />
+                <h3 className="drone-title">H32X</h3>
+                <p className="drone-summary">Perfecto para campos pequeños.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H32X', 'Con capacidad de pulverización de 16L, ofrece fiabilidad y eficiencia en un formato compacto.')}
+                  aria-label="Ver más información"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/H40X.webp" alt="Drone H40X" className="drone-image" />
+                <h3 className="drone-title">H40X</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/H120.webp" alt="Drone H120" className="drone-image" />
+                <h3 className="drone-title">H120</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/H160.webp" alt="Drone H160" className="drone-image" />
+                <h3 className="drone-title">H160</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/H200.png" alt="Drone H200" className="drone-image" />
+                <h3 className="drone-title">H200 Agrícola y Transporte</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/H300.png" alt="Drone H300" className="drone-image" />
+                <h3 className="drone-title">H300 Agrícola y Transporte</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/H200-EXTINCION.png" alt="Drone H200 Extinción" className="drone-image" />
+                <h3 className="drone-title">H200 Extinción de incendios</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/H200-TRANSPORTE.webp" alt="Drone H200 Transporte" className="drone-image" />
+                <h3 className="drone-title">H200 Transporte</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/X491.webp" alt="Drone X491" className="drone-image" />
+                <h3 className="drone-title">X491</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/X441.webp" alt="Drone X441" className="drone-image" />
+                <h3 className="drone-title">X441</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/SENTINEL-V13-5.jpg" alt="Drone SENTINEL V13-5" className="drone-image" />
+                <h3 className="drone-title">Sentinel V13-5 VTOL</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/CAVALRY-H50L-2.png" alt="Drone CAVALRY H50L-2" className="drone-image" />
+                <h3 className="drone-title">Cavalry H50L-2</h3>
+              </div>
+              <div className="drone-item">
+                <img src="/H60-4.webp" alt="Drone H60-4" className="drone-image" />
+                <h3 className="drone-title">H60-4</h3>
+              </div>
             </div>
-            <div className="drone-item">
-              <img src="/H160.webp" alt="Drone H160" className="drone-image" />
-              <h3 className="drone-title">H160</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/H200.png" alt="Drone H200" className="drone-image" />
-              <h3 className="drone-title">H200</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/H200-EXTINCION.png" alt="Drone H200 Extinción" className="drone-image" />
-              <h3 className="drone-title">H200 Extinción</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/H200-TRANSPORTE.webp" alt="Drone H200 Transporte" className="drone-image" />
-              <h3 className="drone-title">H200 Transporte</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/H300.png" alt="Drone H300" className="drone-image" />
-              <h3 className="drone-title">H300</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/H32X.webp" alt="Drone H32X" className="drone-image" />
-              <h3 className="drone-title">H32X</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/H40X.webp" alt="Drone H40X" className="drone-image" />
-              <h3 className="drone-title">H40X</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/H60-4.webp" alt="Drone H60-4" className="drone-image" />
-              <h3 className="drone-title">H60-4</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/CAVALRY-H50L-2.png" alt="Drone CAVALRY H50L-2" className="drone-image" />
-              <h3 className="drone-title">CAVALRY H50L-2</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/SENTINEL-V13-5.jpg" alt="Drone SENTINEL V13-5" className="drone-image" />
-              <h3 className="drone-title">SENTINEL V13-5</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/X441.webp" alt="Drone X441" className="drone-image" />
-              <h3 className="drone-title">X441</h3>
-            </div>
-            <div className="drone-item">
-              <img src="/X491.webp" alt="Drone X491" className="drone-image" />
-              <h3 className="drone-title">X491</h3>
-            </div>
+            
+            <button 
+              className="slider-nav-button slider-next" 
+              onClick={() => scrollDrones('right')}
+              aria-label="Ver más drones"
+            >
+              <i className="fas fa-chevron-right"></i>
+            </button>
           </div>
         </div>
       </section>
+      
+      {/* Modal para información detallada del dron */}
+      {modalInfo.isOpen && (
+        <div className="modal-backdrop" onClick={handleModalBackdropClick}>
+          <div className="modal-card">
+            <button className="modal-close-btn" onClick={closeModal} aria-label="Cerrar">
+              <i className="fas fa-times"></i>
+            </button>
+            <h3 className="modal-title">{modalInfo.title}</h3>
+            <div className="modal-content">
+              <p>{modalInfo.content}</p>
+            </div>
+          </div>
+        </div>
+      )}
       
       {/* Call to Action Section */}
       <section className="cta-section">
