@@ -253,7 +253,7 @@ const Home = () => {
       <section className="about-us-section" id="quienes-somos">
         <div className="container">
           <div className="about-hero-content">
-            <h2 className="section-title about-title">QUIÉNES SOMOS</h2>
+            <h2 className="about-title">QUIÉNES SOMOS</h2>
             <div className="about-divider"></div>
             <p className="about-description">
               Iwie nace en el año 2022 con el objetivo de brindar servicios con tecnología avanzada en diversas áreas como 
