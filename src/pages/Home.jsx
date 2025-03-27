@@ -3,7 +3,7 @@ import '../styles/Home.css';
 import { useRef, useState, useEffect } from 'react';
 
 const Home = () => {
-  // Datos de los slides de servicios
+  // Datos de los slides de servicios Una hora de chamba
   const serviceSlides = [
     {
       id: 1,
