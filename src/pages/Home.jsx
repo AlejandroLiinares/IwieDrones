@@ -55,6 +55,13 @@ const Home = () => {
     content: ''
   });
   
+  // Estado para controlar el modal de servicios
+  const [serviceModal, setServiceModal] = useState({
+    isOpen: false,
+    title: '',
+    description: ''
+  });
+
   // Función para manejar errores de carga de imágenes
   const handleImageError = (e) => {
     console.log(`Error cargando imagen: ${e.target.src}`);
@@ -92,6 +99,16 @@ const Home = () => {
     document.body.style.overflow = 'hidden';
   };
 
+  // Función para abrir el modal de servicios
+  const openServiceModal = (title, description) => {
+    setServiceModal({
+      isOpen: true,
+      title,
+      description
+    });
+    document.body.style.overflow = 'hidden';
+  };
+
   // Función para cerrar el modal
   const closeModal = () => {
     setModalInfo({
@@ -102,10 +119,20 @@ const Home = () => {
     document.body.style.overflow = 'auto';
   };
 
+  // Función para cerrar el modal de servicios
+  const closeServiceModal = () => {
+    setServiceModal({
+      ...serviceModal,
+      isOpen: false
+    });
+    document.body.style.overflow = 'auto';
+  };
+
   // Cerrar el modal al hacer clic fuera de la tarjeta
   const handleModalBackdropClick = (e) => {
     if (e.target.classList.contains('modal-backdrop')) {
       closeModal();
+      closeServiceModal();
     }
   };
 
@@ -167,12 +194,16 @@ const Home = () => {
             <div className="services-slider" ref={servicesSliderRef}>
               {serviceSlides.map((slide) => (
                 <div key={slide.id} className="slide">
-                  <h3 className="slide-title">{slide.title}</h3>
-                  <p className="slide-description">{slide.description}</p>
-                  <img src={slide.image} alt={slide.title} onError={handleImageError} />
-                  <Link to={slide.link} className="slide-info-toggle">
-                    <i className="fas fa-plus"></i>
-                  </Link>
+                  <div className="slide-content">
+                    <img src={slide.image} alt={slide.title} onError={handleImageError} />
+                    <button 
+                      onClick={() => openServiceModal(slide.title, slide.description)}
+                      className="slide-info-toggle"
+                    >
+                      <i className="fas fa-plus"></i>
+                    </button>
+                    <h3 className="slide-overlay-title">{slide.title}</h3>
+                  </div>
                 </div>
               ))}
             </div>
@@ -185,11 +216,10 @@ const Home = () => {
                   const slider = servicesSliderRef.current;
                   if (!slider) return;
                   
-                  // Get the actual width of the first slide element for responsive navigation
                   const slides = slider.querySelectorAll('.slide');
                   if (!slides.length) return;
                   
-                  const slideWidth = slides[0].offsetWidth + 20; // Width + gap
+                  const slideWidth = slides[0].offsetWidth + 20;
                   const scrollAmount = -slideWidth;
                   slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 }}
@@ -203,11 +233,10 @@ const Home = () => {
                   const slider = servicesSliderRef.current;
                   if (!slider) return;
                   
-                  // Get the actual width of the first slide element for responsive navigation
                   const slides = slider.querySelectorAll('.slide');
                   if (!slides.length) return;
                   
-                  const slideWidth = slides[0].offsetWidth + 20; // Width + gap
+                  const slideWidth = slides[0].offsetWidth + 20;
                   const scrollAmount = slideWidth;
                   slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 }}
@@ -431,6 +460,23 @@ const Home = () => {
             <h3 className="modal-title">{modalInfo.title}</h3>
             <div className="modal-content">
               <p>{modalInfo.content}</p>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Modal de servicios */}
+      {serviceModal.isOpen && (
+        <div className="modal-backdrop" onClick={handleModalBackdropClick}>
+          <div className="service-modal">
+            <div className="modal-header">
+              <h3 className="modal-title">{serviceModal.title}</h3>
+              <button className="modal-close" onClick={closeServiceModal}>
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+            <div className="modal-content">
+              <p className="modal-description">{serviceModal.description}</p>
             </div>
           </div>
         </div>
