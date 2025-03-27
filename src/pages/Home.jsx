@@ -481,15 +481,6 @@ const Home = () => {
           </div>
         </div>
       )}
-      
-      {/* Call to Action Section */}
-      <section className="cta-section">
-        <div className="cta-content">
-          <h2>¿Listo para optimizar tus procesos?</h2>
-          <p>Contáctanos hoy mismo y descubre cómo nuestras soluciones pueden ayudarte</p>
-          <Link to="/contact" className="btn-primary">Contáctanos</Link>
-        </div>
-      </section>
     </div>
   );
 };
