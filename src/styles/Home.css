@@ -664,6 +664,47 @@
   text-align: left;
 }
 
+.slide-info-toggle {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.slide-info-toggle:hover {
+  background-color: #003d7a;
+  transform: scale(1.1);
+}
+
+.slide-info-toggle i {
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .slide-info-toggle {
+    bottom: 15px;
+    left: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .slide-info-toggle {
+    bottom: 10px;
+    left: 10px;
+  }
+}
+
 .btn-saber-mas {
   display: inline-flex;
   align-items: center;

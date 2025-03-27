@@ -170,7 +170,9 @@ const Home = () => {
                   <h3 className="slide-title">{slide.title}</h3>
                   <p className="slide-description">{slide.description}</p>
                   <img src={slide.image} alt={slide.title} onError={handleImageError} />
-                  <a href={slide.link} className="slide-link">Ver más</a>
+                  <Link to={slide.link} className="slide-info-toggle">
+                    <i className="fas fa-plus"></i>
+                  </Link>
                 </div>
               ))}
             </div>
