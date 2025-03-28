@@ -1,7 +1,64 @@
 import { useState, useCallback } from 'react';
 import '../styles/Contact.css';
 
+// Opciones de servicios para el formulario
+const serviceOptions = [
+  { value: 'general', label: 'Información General' },
+  { value: 'agricola', label: 'Aplicación Agrícola' },
+  { value: 'industrial', label: 'Aplicación Industrial' },
+  { value: 'capacitaciones', label: 'Capacitaciones' },
+  { value: 'inspecciones', label: 'Inspecciones' },
+  { value: 'forestal', label: 'Forestal' },
+  { value: 'tecnico', label: 'Servicio Técnico' },
+  { value: 'tecnologia', label: 'Tecnología Avanzada' }
+];
+
+// Componente para campos de formulario
+const FormField = ({ id, label, type = 'text', value, onChange, required = false, placeholder, options = null, rows = null }) => (
+  <div className="form-group">
+    <label htmlFor={id}>{label} {required && <span className="required">*</span>}</label>
+    {type === 'select' ? (
+      <select
+        id={id}
+        name={id}
+        value={value}
+        onChange={onChange}
+        aria-required={required}
+      >
+        {options.map(option => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    ) : type === 'textarea' ? (
+      <textarea
+        id={id}
+        name={id}
+        value={value}
+        onChange={onChange}
+        required={required}
+        placeholder={placeholder}
+        rows={rows}
+        aria-required={required}
+      ></textarea>
+    ) : (
+      <input
+        type={type}
+        id={id}
+        name={id}
+        value={value}
+        onChange={onChange}
+        required={required}
+        placeholder={placeholder}
+        aria-required={required}
+      />
+    )}
+  </div>
+);
+
 const Contact = () => {
+  // Estado del formulario
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,12 +68,14 @@ const Contact = () => {
     service: 'general'
   });
 
+  // Estado para mensajes de éxito/error
   const [formStatus, setFormStatus] = useState({
     submitted: false,
     success: false,
     message: ''
   });
 
+  // Manejador de cambios en los campos
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -25,6 +84,7 @@ const Contact = () => {
     }));
   }, []);
 
+  // Manejador de envío del formulario
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
     
@@ -68,6 +128,7 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
+      {/* Hero Section - Simplificado */}
       <section className="contact-hero">
         <div className="container">
           <h1>Contáctanos</h1>
@@ -75,56 +136,9 @@ const Contact = () => {
         </div>
       </section>
 
-      <section className="contact-content">
-        <div className="container contact-container">
-          <div className="contact-info">
-            <h2>Información de Contacto</h2>
-            <p>Comunícate con nosotros para obtener más información sobre nuestros servicios o para solicitar una cotización personalizada.</p>
-            
-            <div className="contact-details">
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <i className="fas fa-envelope"></i>
-                </div>
-                <div className="contact-text">
-                  <h3>Email</h3>
-                  <p>info@iwiedrones.com</p>
-                </div>
-              </div>
-              
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <i className="fas fa-phone-alt"></i>
-                </div>
-                <div className="contact-text">
-                  <h3>Teléfono</h3>
-                  <p>+56 9 1234 5678</p>
-                </div>
-              </div>
-              
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <i className="fas fa-map-marker-alt"></i>
-                </div>
-                <div className="contact-text">
-                  <h3>Dirección</h3>
-                  <p>Av. Principal 123, Santiago, Chile</p>
-                </div>
-              </div>
-              
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <i className="fas fa-clock"></i>
-                </div>
-                <div className="contact-text">
-                  <h3>Horario de Atención</h3>
-                  <p>Lunes a Viernes: 9:00 - 18:00</p>
-                  <p>Sábado: 9:00 - 13:00</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
+      {/* Formulario de Contacto */}
+      <section className="contact-form-section">
+        <div className="container">
           <div className="contact-form-container">
             <h2>Envíanos un Mensaje</h2>
             
@@ -135,110 +149,69 @@ const Contact = () => {
             )}
             
             <form className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="name">Nombre Completo *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Ingresa tu nombre completo"
-                  aria-required="true"
-                />
-              </div>
+              <FormField
+                id="name"
+                label="Nombre Completo"
+                value={formData.name}
+                onChange={handleChange}
+                required={true}
+                placeholder="Ingresa tu nombre completo"
+              />
               
               <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="email">Email *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="ejemplo@correo.com"
-                    aria-required="true"
-                  />
-                </div>
+                <FormField
+                  id="email"
+                  label="Email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required={true}
+                  placeholder="ejemplo@correo.com"
+                />
                 
-                <div className="form-group">
-                  <label htmlFor="phone">Teléfono</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+56 9 XXXX XXXX"
-                  />
-                </div>
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="service">Servicio de Interés</label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
+                <FormField
+                  id="phone"
+                  label="Teléfono"
+                  type="tel"
+                  value={formData.phone}
                   onChange={handleChange}
-                >
-                  <option value="general">Información General</option>
-                  <option value="agricola">Aplicación Agrícola</option>
-                  <option value="industrial">Aplicación Industrial</option>
-                  <option value="capacitaciones">Capacitaciones</option>
-                  <option value="inspecciones">Inspecciones</option>
-                  <option value="forestal">Forestal</option>
-                  <option value="tecnico">Servicio Técnico</option>
-                  <option value="tecnologia">Tecnología Avanzada</option>
-                </select>
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="subject">Asunto *</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  placeholder="Asunto de tu mensaje"
-                  aria-required="true"
+                  placeholder="+56 9 XXXX XXXX"
                 />
               </div>
               
-              <div className="form-group">
-                <label htmlFor="message">Mensaje *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  placeholder="Escribe tu mensaje aquí..."
-                  rows="5"
-                  aria-required="true"
-                ></textarea>
-              </div>
+              <FormField
+                id="service"
+                label="Servicio de Interés"
+                type="select"
+                value={formData.service}
+                onChange={handleChange}
+                options={serviceOptions}
+              />
+              
+              <FormField
+                id="subject"
+                label="Asunto"
+                value={formData.subject}
+                onChange={handleChange}
+                required={true}
+                placeholder="Asunto de tu mensaje"
+              />
+              
+              <FormField
+                id="message"
+                label="Mensaje"
+                type="textarea"
+                value={formData.message}
+                onChange={handleChange}
+                required={true}
+                placeholder="Escribe tu mensaje aquí..."
+                rows={5}
+              />
               
               <button type="submit" className="submit-button">
                 <i className="fas fa-paper-plane"></i> Enviar Mensaje
               </button>
             </form>
-          </div>
-        </div>
-      </section>
-
-      <section className="map-section">
-        <div className="container">
-          <h2>Nuestra Ubicación</h2>
-          <div className="map-container">
-            <div className="placeholder-map">
-              <p>Mapa de Google Maps se cargará aquí</p>
-            </div>
           </div>
         </div>
       </section>
