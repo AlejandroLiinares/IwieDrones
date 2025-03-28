@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
 import '../styles/Home.css';
+import '../styles/Hero.css';
+import '../styles/Quote.css';
+import '../styles/Drones.css';
+import '../styles/Modal.css';
 import { useRef, useState, useEffect } from 'react';
 
 const Home = () => {

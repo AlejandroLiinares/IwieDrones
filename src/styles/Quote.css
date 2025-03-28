@@ -1,0 +1,134 @@
+/* 
+ * Quote.css - Estilos específicos para la sección de citas de Iwie Drones
+ * Este archivo contiene solo los estilos relacionados con la sección de citas
+ */
+
+/* Importar variables globales */
+@import './variables.css';
+
+/* Quote Section */
+.quote-section {
+  background-color: #ffffff;
+  padding: 80px 0 40px;
+  position: relative;
+}
+
+.quote-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 20px;
+}
+
+.quote-text {
+  flex: 1;
+  padding-right: 80px;
+}
+
+.quote-text blockquote {
+  font-size: 28px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #0a1f44;
+  margin: 0 0 20px 0;
+  position: relative;
+  padding-left: 40px;
+}
+
+.quote-text blockquote::before {
+  content: '';
+  font-size: 80px;
+  position: absolute;
+  left: 0;
+  top: -20px;
+  color: var(--color-primary);
+  opacity: 0.5;
+  font-family: Georgia, serif;
+}
+
+.quote-text cite {
+  font-size: 18px;
+  color: #000000;
+  font-style: normal;
+  display: block;
+  text-align: center;
+  padding-right: 0;
+}
+
+.quote-image {
+  flex: 0 0 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 5px solid #0a1f44;
+}
+
+.quote-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive adjustments for quote section */
+@media (max-width: 992px) {
+  .quote-text blockquote {
+    font-size: 24px;
+  }
+  
+  .quote-image {
+    flex: 0 0 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .quote-container {
+    flex-direction: column;
+  }
+  
+  .quote-text {
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+  
+  .quote-text blockquote {
+    font-size: 22px;
+    padding-left: 0;
+  }
+  
+  .quote-text blockquote::before {
+    position: static;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .quote-text cite {
+    text-align: center;
+    padding-right: 0;
+  }
+  
+  .quote-image {
+    flex: 0 0 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .quote-text blockquote {
+    font-size: 20px;
+  }
+  
+  .quote-image {
+    flex: 0 0 180px;
+    height: 180px;
+  }
+}
