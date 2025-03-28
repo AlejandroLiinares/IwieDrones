@@ -1,22 +1,26 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import './styles/variables.css'
+import './styles/base.css'
+import './styles/utilities.css'
+import './styles/buttons.css'
+import './styles/cards.css'
+import './styles/sections.css'
 import './styles/global.css'
 import './App.css'
 
 // Componentes
 import Header from './components/Header'
 import Footer from './components/Footer'
-
-// Páginas
-import Home from './pages/Home'
-import Agricultural from './pages/Agricultural'
-import Industrial from './pages/Industrial'
-import Training from './pages/Training'
-import Inspections from './pages/Inspections'
-import Forestry from './pages/Forestry'
-import TechnicalService from './pages/TechnicalService'
-import Contact from './pages/Contact'
-import About from './pages/About'
+import Home from './components/Home'
+import Agricultural from './components/Agricultural'
+import Industrial from './components/Industrial'
+import Training from './components/Training'
+import Inspections from './components/Inspections'
+import Forestry from './components/Forestry'
+import TechnicalService from './components/TechnicalService'
+import Contact from './components/Contact'
+import About from './components/About'
 
 function App() {
   return (

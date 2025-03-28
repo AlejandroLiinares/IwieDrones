@@ -1,0 +1,97 @@
+/* Variables CSS globales */
+:root {
+  /* Color Palette */
+  --color-darkest: #0C2F52;    /* Azul muy oscuro */
+  --color-dark: #11467A;       /* Azul oscuro */
+  --color-primary: #175DA3;    /* Azul principal */
+  --color-medium: #457DB5;     /* Azul medio */
+  --color-light: #A2BEDA;      /* Azul claro */
+  --color-lightest: #D1DFED;   /* Azul muy claro */
+  
+  /* Asignación de variables funcionales */
+  --primary-color: var(--color-primary);
+  --primary-dark: var(--color-dark);
+  --primary-light: var(--color-medium);
+  --accent-color: var(--color-medium);
+  --background-white: #FFFFFF;
+  --background-light: #FFFFFF;
+  --background-dark: var(--color-darkest);
+  --text-color: var(--color-darkest);
+  --text-light: var(--color-dark);
+  --text-muted: var(--color-medium);
+  --border-color: var(--color-light);
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: var(--color-medium);
+
+  /* Typography */
+  --font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', sans-serif;
+  --font-secondary: 'Montserrat', 'Helvetica Neue', sans-serif;
+  --font-size-base: 16px;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3rem;
+  --font-size-5xl: 4rem;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.6;
+  --line-height-loose: 2;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-4xl: 6rem;
+  --spacing-5xl: 8rem;
+
+  /* Borders */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-circle: 50%;
+  --border-width-thin: 1px;
+  --border-width-normal: 2px;
+  --border-width-thick: 4px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(12, 47, 82, 0.1);
+  --shadow-md: 0 4px 6px rgba(12, 47, 82, 0.1);
+  --shadow-lg: 0 10px 15px rgba(12, 47, 82, 0.1);
+  --shadow-xl: 0 20px 25px rgba(12, 47, 82, 0.1);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --shadow-outline: 0 0 0 3px rgba(0, 86, 179, 0.5);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+  /* Container */
+  --container-width: 1400px;
+  --container-padding: 1rem;
+  
+  /* Z-index layers */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+}

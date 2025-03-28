@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Services.css';
+import '../styles/Industrial.css';
 
 const Industrial = () => {
   return (

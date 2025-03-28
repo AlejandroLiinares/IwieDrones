@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Services.css';
+import '../styles/Training.css';
 
 const Training = () => {
   return (
