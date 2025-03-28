@@ -3,7 +3,7 @@ import '../styles/Home.css';
 import { useRef, useState, useEffect } from 'react';
 
 const Home = () => {
-  // Datos de los slides de servicios Una hora de chamba
+  // Datos de los slides de servicios
   const serviceSlides = [
     {
       id: 1,
@@ -38,101 +38,64 @@ const Home = () => {
       title: "Capacitación y Certificación",
       description: "Programas de formación con certificación oficial, adaptados a diferentes niveles y necesidades.",
       image: "./capacitacion.jpg",
-      link: "/services/training"
+      link: "/capacitaciones"
     }
   ];
   
-  // Reference for the services slider
+  // Referencias para los sliders
   const servicesSliderRef = useRef(null);
-  
-  // Reference for the drones slider
   const dronesSliderRef = useRef(null);
   
-  // Estado para controlar el modal de información del dron
-  const [modalInfo, setModalInfo] = useState({
-    isOpen: false,
-    title: '',
-    content: ''
-  });
-  
-  // Estado para controlar el modal de servicios
-  const [serviceModal, setServiceModal] = useState({
-    isOpen: false,
-    title: '',
-    description: ''
-  });
+  // Estados para los modales
+  const [modalInfo, setModalInfo] = useState({ isOpen: false, title: '', content: '' });
+  const [serviceModal, setServiceModal] = useState({ isOpen: false, title: '', description: '' });
 
   // Función para manejar errores de carga de imágenes
   const handleImageError = (e) => {
     console.log(`Error cargando imagen: ${e.target.src}`);
-    e.target.src = 'placeholder.jpg'; // Imagen de respaldo sin barra inicial
+    e.target.src = 'placeholder.jpg';
   };
 
-  // Función para navegar por el slider de drones
-  const scrollDrones = (direction) => {
-    if (dronesSliderRef.current) {
-      const scrollAmount = 300; // Ajustar según sea necesario
-      const currentScroll = dronesSliderRef.current.scrollLeft;
-      
-      if (direction === 'left') {
-        dronesSliderRef.current.scrollTo({
-          left: currentScroll - scrollAmount,
-          behavior: 'smooth'
-        });
-      } else {
-        dronesSliderRef.current.scrollTo({
-          left: currentScroll + scrollAmount,
-          behavior: 'smooth'
-        });
-      }
-    }
-  };
-
-  // Función para abrir el modal con la información del dron
-  const openDroneModal = (title, content) => {
-    setModalInfo({
-      isOpen: true,
-      title,
-      content
+  // Función genérica para navegar por cualquier slider
+  const scrollSlider = (sliderRef, direction) => {
+    if (!sliderRef.current) return;
+    
+    const scrollAmount = 300;
+    const currentScroll = sliderRef.current.scrollLeft;
+    
+    sliderRef.current.scrollTo({
+      left: currentScroll + (direction === 'left' ? -scrollAmount : scrollAmount),
+      behavior: 'smooth'
     });
-    // Prevenir scroll del body cuando el modal está abierto
-    document.body.style.overflow = 'hidden';
   };
 
-  // Función para abrir el modal de servicios
-  const openServiceModal = (title, description) => {
-    setServiceModal({
-      isOpen: true,
-      title,
-      description
-    });
-    document.body.style.overflow = 'hidden';
+  // Funciones para gestionar modales
+  const toggleBodyScroll = (disable) => {
+    document.body.style.overflow = disable ? 'hidden' : 'auto';
   };
 
-  // Función para cerrar el modal
-  const closeModal = () => {
-    setModalInfo({
-      ...modalInfo,
-      isOpen: false
-    });
-    // Restaurar scroll del body
-    document.body.style.overflow = 'auto';
+  const openModal = (setter, data) => {
+    setter({ ...data, isOpen: true });
+    toggleBodyScroll(true);
   };
 
-  // Función para cerrar el modal de servicios
-  const closeServiceModal = () => {
-    setServiceModal({
-      ...serviceModal,
-      isOpen: false
-    });
-    document.body.style.overflow = 'auto';
+  const closeModal = (setter, currentState) => {
+    setter({ ...currentState, isOpen: false });
+    toggleBodyScroll(false);
   };
+
+  // Manejadores específicos para cada modal
+  const openDroneModal = (title, content) => openModal(setModalInfo, { title, content });
+  const closeDroneModal = () => closeModal(setModalInfo, modalInfo);
+  
+  const openServiceModal = (title, description) => openModal(setServiceModal, { title, description });
+  const closeServiceModal = () => closeModal(setServiceModal, serviceModal);
 
   // Cerrar el modal al hacer clic fuera de la tarjeta
   const handleModalBackdropClick = (e) => {
     if (e.target.classList.contains('modal-backdrop')) {
-      closeModal();
-      closeServiceModal();
+      if (modalInfo.isOpen) closeDroneModal();
+      if (serviceModal.isOpen) closeServiceModal();
     }
   };
 
@@ -199,6 +162,7 @@ const Home = () => {
                     <button 
                       onClick={() => openServiceModal(slide.title, slide.description)}
                       className="slide-info-toggle"
+                      aria-label={`Ver más información sobre ${slide.title}`}
                     >
                       <i className="fas fa-plus"></i>
                     </button>
@@ -212,34 +176,14 @@ const Home = () => {
             <div className="slider-controls">
               <button 
                 className="slider-arrow" 
-                onClick={() => {
-                  const slider = servicesSliderRef.current;
-                  if (!slider) return;
-                  
-                  const slides = slider.querySelectorAll('.slide');
-                  if (!slides.length) return;
-                  
-                  const slideWidth = slides[0].offsetWidth + 20;
-                  const scrollAmount = -slideWidth;
-                  slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                }}
+                onClick={() => scrollSlider(servicesSliderRef, 'left')}
                 aria-label="Previous slide"
               >
                 &#8249;
               </button>
               <button 
                 className="slider-arrow" 
-                onClick={() => {
-                  const slider = servicesSliderRef.current;
-                  if (!slider) return;
-                  
-                  const slides = slider.querySelectorAll('.slide');
-                  if (!slides.length) return;
-                  
-                  const slideWidth = slides[0].offsetWidth + 20;
-                  const scrollAmount = slideWidth;
-                  slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                }}
+                onClick={() => scrollSlider(servicesSliderRef, 'right')}
                 aria-label="Next slide"
               >
                 &#8250;
@@ -273,7 +217,7 @@ const Home = () => {
           <div className="drones-slider-container">
             <button 
               className="slider-nav-button slider-prev" 
-              onClick={() => scrollDrones('left')}
+              onClick={() => scrollSlider(dronesSliderRef, 'left')}
               aria-label="Ver drones anteriores"
             >
               <i className="fas fa-chevron-left"></i>
@@ -287,7 +231,7 @@ const Home = () => {
                 <button 
                   className="drone-info-toggle" 
                   onClick={() => openDroneModal('H32X', 'Con capacidad de pulverización de 16L, ofrece fiabilidad y eficiencia en un formato compacto.')}
-                  aria-label="Ver más información"
+                  aria-label="Ver más información sobre H32X"
                 >
                   <i className="fas fa-plus"></i>
                 </button>
@@ -299,127 +243,7 @@ const Home = () => {
                 <button 
                   className="drone-info-toggle" 
                   onClick={() => openDroneModal('H40X', 'Ofrece un tanque de pulverización de 20L para cubrir campos más grandes, siendo una herramienta versátil para diversas aplicaciones agrícolas.')}
-                  aria-label="Ver más información"
-                >
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-              <div className="drone-item">
-                <img src="/H120.webp" alt="Drone H120" className="drone-image" />
-                <h3 className="drone-title">H120</h3>
-                <p className="drone-summary">Tus sueños hechos realidad para campos grandes.</p>
-                <button 
-                  className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H120', 'Gestiona eficientemente campos grandes con un tanque de pulverización de 52L y una capacidad de dispersión de 60kg, reduciendo significativamente el tiempo y los costos de mano de obra.')}
-                  aria-label="Ver más información"
-                >
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-              <div className="drone-item">
-                <img src="/H160.webp" alt="Drone H160" className="drone-image" />
-                <h3 className="drone-title">H160</h3>
-                <p className="drone-summary">La buena gestión se comparte.</p>
-                <button 
-                  className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H160', 'El buque insignia de la serie Hercules. Con una capacidad de pulverización de 72L~82L, ofrece la solución definitiva para la gestión extensiva de cultivos.')}
-                  aria-label="Ver más información"
-                >
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-              <div className="drone-item">
-                <img src="/H200.png" alt="Drone H200" className="drone-image" />
-                <h3 className="drone-title">H200 Agrícola y Transporte</h3>
-                <p className="drone-summary">La perfección por los aires.</p>
-                <button 
-                  className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H200 Agrícola y Transporte', 'Líder del mercado con su capacidad sin igual, el Roarer H200 redefine las operaciones a gran escala con su capacidad de pulverización de 92L y carga útil de 100kg, sirviendo como el dron todo en uno definitivo para pulverización y transporte.')}
-                  aria-label="Ver más información"
-                >
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-              <div className="drone-item">
-                <img src="/H300.png" alt="Drone H300" className="drone-image" />
-                <h3 className="drone-title">H300 Agrícola y Transporte</h3>
-                <p className="drone-summary">Optimus-Drone-Prime</p>
-                <button 
-                  className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H300 Agrícola y Transporte', 'Diseño de plegado hacia arriba, un tanque de 95L y sensores de carga de grado aeroespacial para mayor precisión. Cuenta con un medidor de flujo de ondas milimétricas y soporta hasta 800A de potencia con disipación de calor. La batería inteligente enchufable es compatible con todas las baterías convencionales.')}
-                  aria-label="Ver más información"
-                >
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-              <div className="drone-item">
-                <img src="/H200-EXTINCION.png" alt="Drone H200 Extinción" className="drone-image" />
-                <h3 className="drone-title">H200 Extinción de incendios</h3>
-                <p className="drone-summary">Las llamas no se apagan solas.</p>
-                <button 
-                  className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H200 Extinción de incendios', 'Carga máxima: 100 kg | Tiempo de vuelo: 40 minutos. Los drones para extinción de incendios son adecuados para uso en áreas montañosas, pastizales, incendios forestales y para extinguir incendios en áreas urbanas específicas.')}
-                  aria-label="Ver más información"
-                >
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-              <div className="drone-item">
-                <img src="/H200-TRANSPORTE.webp" alt="Drone H200 Transporte" className="drone-image" />
-                <h3 className="drone-title">H200 Transporte</h3>
-                <p className="drone-summary">Déjamelo todo a mí.</p>
-                <button 
-                  className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H200 Transporte', 'Carga máxima: 100 kg | Tiempo de vuelo: 40 minutos. Los drones de carga pesada se utilizan ampliamente para el transporte de mercancías, frutas y otros artículos, reduciendo los costos de mano de obra y mejorando la eficiencia del trabajo.')}
-                  aria-label="Ver más información"
-                >
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-              <div className="drone-item">
-                <img src="/X491.webp" alt="Drone X491" className="drone-image" />
-                <h3 className="drone-title">X491</h3>
-                <p className="drone-summary">Contigo en las buenas y en las malas.</p>
-                <button 
-                  className="drone-info-toggle" 
-                  onClick={() => openDroneModal('X491', 'Duración: 120 min | Carga máxima: 5 kg.')}
-                  aria-label="Ver más información"
-                >
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-              <div className="drone-item">
-                <img src="/X441.webp" alt="Drone X441" className="drone-image" />
-                <h3 className="drone-title">X441</h3>
-                <p className="drone-summary">Optimización ideal.</p>
-                <button 
-                  className="drone-info-toggle" 
-                  onClick={() => openDroneModal('X441', 'Duración: 60 min | Carga máxima: 2.5 kg.')}
-                  aria-label="Ver más información"
-                >
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-              <div className="drone-item">
-                <img src="/SENTINEL-V13-5.jpg" alt="Drone SENTINEL V13-5" className="drone-image" />
-                <h3 className="drone-title">Sentinel V13-5 VTOL</h3>
-                <p className="drone-summary">Veamos quién observa más.</p>
-                <button 
-                  className="drone-info-toggle" 
-                  onClick={() => openDroneModal('Sentinel V13-5 VTOL', 'Duración: 200 min | Velocidad máxima de crucero: 108 km/h.')}
-                  aria-label="Ver más información"
-                >
-                  <i className="fas fa-plus"></i>
-                </button>
-              </div>
-              <div className="drone-item">
-                <img src="/CAVALRY-H50L-2.png" alt="Drone CAVALRY H50L-2" className="drone-image" />
-                <h3 className="drone-title">Cavalry H50L-2</h3>
-                <p className="drone-summary">¿Alguien dijo "Rompimiento de Ventanas"?</p>
-                <button 
-                  className="drone-info-toggle" 
-                  onClick={() => openDroneModal('Cavalry H50L-2', 'Principalmente utilizado para extinguir incendios en edificios urbanos de gran altura o áreas específicas.')}
-                  aria-label="Ver más información"
+                  aria-label="Ver más información sobre H40X"
                 >
                   <i className="fas fa-plus"></i>
                 </button>
@@ -427,11 +251,131 @@ const Home = () => {
               <div className="drone-item">
                 <img src="/H60-4.webp" alt="Drone H60-4" className="drone-image" />
                 <h3 className="drone-title">H60-4</h3>
-                <p className="drone-summary">Limpieza y pulverización por excelencia.</p>
+                <p className="drone-summary">Ideal para aplicaciones de precisión.</p>
                 <button 
                   className="drone-info-toggle" 
-                  onClick={() => openDroneModal('H60-4', 'Un dron de limpieza con resistencia al agua IP67, peso total de 21 kg, tiempo de vuelo de 18-35 minutos, y capacidad para limpiar ventanas de gran altura, fachadas de edificios, paneles solares y techos. Cuenta con un sistema de pulverización con presión de agua de 8-30 Mpa y distancia de pulverización de 10-20 metros.')}
-                  aria-label="Ver más información"
+                  onClick={() => openDroneModal('H60-4', 'Diseñado para aplicaciones de precisión, con un tanque de 30L y tecnología avanzada de pulverización para una cobertura óptima.')}
+                  aria-label="Ver más información sobre H60-4"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/H120.webp" alt="Drone H120" className="drone-image" />
+                <h3 className="drone-title">H120</h3>
+                <p className="drone-summary">Potencia y eficiencia en un solo equipo.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H120', 'Con capacidad de 60L, este dron ofrece una combinación perfecta de potencia y eficiencia para grandes extensiones de terreno.')}
+                  aria-label="Ver más información sobre H120"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/H160.webp" alt="Drone H160" className="drone-image" />
+                <h3 className="drone-title">H160</h3>
+                <p className="drone-summary">La solución definitiva para grandes extensiones.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H160', 'Nuestro modelo más avanzado para aplicaciones agrícolas, con un tanque de 80L y la última tecnología en sistemas de pulverización de precisión.')}
+                  aria-label="Ver más información sobre H160"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/H200.png" alt="Drone H200" className="drone-image" />
+                <h3 className="drone-title">H200</h3>
+                <p className="drone-summary">Versatilidad y potencia para múltiples aplicaciones.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H200', 'Un dron multipropósito con capacidad de carga de hasta 100kg, ideal para aplicaciones agrícolas intensivas y transporte de materiales.')}
+                  aria-label="Ver más información sobre H200"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/H200-TRANSPORTE.webp" alt="Drone H200 Transporte" className="drone-image" />
+                <h3 className="drone-title">H200 Transporte</h3>
+                <p className="drone-summary">Especializado en logística y transporte.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H200 Transporte', 'Versión especializada del H200 para transporte de cargas, con capacidad de hasta 100kg y sistemas avanzados de navegación y seguridad.')}
+                  aria-label="Ver más información sobre H200 Transporte"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/H200-EXTINCION.png" alt="Drone H200 Extinción" className="drone-image" />
+                <h3 className="drone-title">H200 Extinción</h3>
+                <p className="drone-summary">Combate incendios con tecnología avanzada.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H200 Extinción', 'Equipado con sistemas especializados para combate de incendios, puede transportar hasta 100L de agentes extintores y operar en condiciones extremas.')}
+                  aria-label="Ver más información sobre H200 Extinción"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/H300.png" alt="Drone H300" className="drone-image" />
+                <h3 className="drone-title">H300</h3>
+                <p className="drone-summary">Nuestra solución más avanzada para aplicaciones industriales.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('H300', 'El modelo más avanzado de nuestra flota, con capacidad de carga de 150kg y autonomía extendida, ideal para aplicaciones industriales complejas.')}
+                  aria-label="Ver más información sobre H300"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/X441.webp" alt="Drone X441" className="drone-image" />
+                <h3 className="drone-title">X441</h3>
+                <p className="drone-summary">Compacto y versátil para inspecciones.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('X441', 'Dron compacto equipado con cámaras de alta resolución, ideal para inspecciones visuales y termográficas en entornos industriales.')}
+                  aria-label="Ver más información sobre X441"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/X491.webp" alt="Drone X491" className="drone-image" />
+                <h3 className="drone-title">X491</h3>
+                <p className="drone-summary">Mapeo y fotogrametría de alta precisión.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('X491', 'Especializado en mapeo y fotogrametría, equipado con sensores multiespectrales y sistemas de posicionamiento de alta precisión.')}
+                  aria-label="Ver más información sobre X491"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/CAVALRY-H50L-2.png" alt="Drone CAVALRY H50L-2" className="drone-image" />
+                <h3 className="drone-title">CAVALRY H50L-2</h3>
+                <p className="drone-summary">Vigilancia y seguridad avanzada.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('CAVALRY H50L-2', 'Diseñado para aplicaciones de vigilancia y seguridad, con cámaras térmicas, zoom óptico y capacidad de vuelo nocturno.')}
+                  aria-label="Ver más información sobre CAVALRY H50L-2"
+                >
+                  <i className="fas fa-plus"></i>
+                </button>
+              </div>
+              <div className="drone-item">
+                <img src="/SENTINEL-V13-5.jpg" alt="Drone SENTINEL V13-5" className="drone-image" />
+                <h3 className="drone-title">SENTINEL V13-5</h3>
+                <p className="drone-summary">Monitoreo de infraestructuras críticas.</p>
+                <button 
+                  className="drone-info-toggle" 
+                  onClick={() => openDroneModal('SENTINEL V13-5', 'Especializado en monitoreo de infraestructuras críticas, con sensores avanzados para detección de anomalías y sistemas de transmisión de datos en tiempo real.')}
+                  aria-label="Ver más información sobre SENTINEL V13-5"
                 >
                   <i className="fas fa-plus"></i>
                 </button>
@@ -440,8 +384,8 @@ const Home = () => {
             
             <button 
               className="slider-nav-button slider-next" 
-              onClick={() => scrollDrones('right')}
-              aria-label="Ver más drones"
+              onClick={() => scrollSlider(dronesSliderRef, 'right')}
+              aria-label="Ver drones siguientes"
             >
               <i className="fas fa-chevron-right"></i>
             </button>
@@ -449,34 +393,30 @@ const Home = () => {
         </div>
       </section>
       
-      {/* Modal para información detallada del dron */}
+      {/* Modal para información del dron */}
       {modalInfo.isOpen && (
         <div className="modal-backdrop" onClick={handleModalBackdropClick}>
           <div className="modal-card">
-            <button className="modal-close-btn" onClick={closeModal} aria-label="Cerrar">
+            <button className="modal-close" onClick={closeDroneModal} aria-label="Cerrar modal">
               <i className="fas fa-times"></i>
             </button>
             <h3 className="modal-title">{modalInfo.title}</h3>
-            <div className="modal-content">
-              <p>{modalInfo.content}</p>
-            </div>
+            <div className="modal-divider"></div>
+            <p className="modal-content">{modalInfo.content}</p>
           </div>
         </div>
       )}
       
-      {/* Modal de servicios */}
+      {/* Modal para servicios */}
       {serviceModal.isOpen && (
         <div className="modal-backdrop" onClick={handleModalBackdropClick}>
-          <div className="service-modal">
-            <div className="modal-header">
-              <h3 className="modal-title">{serviceModal.title}</h3>
-              <button className="modal-close" onClick={closeServiceModal}>
-                <i className="fas fa-times"></i>
-              </button>
-            </div>
-            <div className="modal-content">
-              <p className="modal-description">{serviceModal.description}</p>
-            </div>
+          <div className="modal-card">
+            <button className="modal-close" onClick={closeServiceModal} aria-label="Cerrar modal">
+              <i className="fas fa-times"></i>
+            </button>
+            <h3 className="modal-title">{serviceModal.title}</h3>
+            <div className="modal-divider"></div>
+            <p className="modal-content">{serviceModal.description}</p>
           </div>
         </div>
       )}
