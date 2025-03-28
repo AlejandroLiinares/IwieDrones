@@ -1,7 +1,43 @@
 import React from 'react';
 import '../styles/About.css';
 
+// Componente para tarjetas de valores
+const ValueCard = ({ icon, title, description }) => (
+  <div className="value-card">
+    <div className="value-icon">
+      <i className={`fas fa-${icon}`}></i>
+    </div>
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+);
+
 const About = () => {
+  // Datos de valores para facilitar mantenimiento
+  const values = [
+    {
+      icon: 'lightbulb',
+      title: 'Innovación',
+      description: 'Buscamos constantemente nuevas soluciones y tecnologías para ofrecer servicios de vanguardia.'
+    },
+    {
+      icon: 'handshake',
+      title: 'Compromiso',
+      description: 'Nos comprometemos con la satisfacción de nuestros clientes y la calidad de nuestros servicios.'
+    },
+    {
+      icon: 'leaf',
+      title: 'Sostenibilidad',
+      description: 'Promovemos prácticas sostenibles que respetan el medio ambiente y optimizan recursos.'
+    },
+    {
+      icon: 'users',
+      title: 'Trabajo en Equipo',
+      description: 'Valoramos la colaboración y el trabajo conjunto para lograr resultados excepcionales.'
+    }
+  ];
+
+  // Estilos para el hero
   const heroStyle = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/quienes-somos.jpg')`,
     backgroundRepeat: 'no-repeat',
@@ -12,10 +48,11 @@ const About = () => {
 
   return (
     <div className="about-page">
+      {/* Hero Section */}
       <section className="about-hero" style={heroStyle}>
         <div className="about-hero-content">
           <h1>QUIÉNES SOMOS</h1>
-          <div className="about-divider"></div>
+          <div className="about-divider" aria-hidden="true"></div>
           <p>
             Iwie nace en el año 2022 con el objetivo de brindar servicios con tecnología avanzada en diversas áreas como 
             agricultura, procesos industriales, educación, sistemas de energía, televigilancia y entretenimiento. Nos 
@@ -25,6 +62,7 @@ const About = () => {
         </div>
       </section>
 
+      {/* Mission & Vision Section */}
       <section className="about-mission-vision">
         <div className="container">
           <div className="mission-vision-grid">
@@ -46,38 +84,19 @@ const About = () => {
         </div>
       </section>
 
+      {/* Values Section */}
       <section className="about-values">
         <div className="container">
           <h2 className="section-title">Nuestros Valores</h2>
           <div className="values-grid">
-            <div className="value-card">
-              <div className="value-icon">
-                <i className="fas fa-lightbulb"></i>
-              </div>
-              <h3>Innovación</h3>
-              <p>Buscamos constantemente nuevas soluciones y tecnologías para ofrecer servicios de vanguardia.</p>
-            </div>
-            <div className="value-card">
-              <div className="value-icon">
-                <i className="fas fa-handshake"></i>
-              </div>
-              <h3>Compromiso</h3>
-              <p>Nos comprometemos con la satisfacción de nuestros clientes y la calidad de nuestros servicios.</p>
-            </div>
-            <div className="value-card">
-              <div className="value-icon">
-                <i className="fas fa-leaf"></i>
-              </div>
-              <h3>Sostenibilidad</h3>
-              <p>Promovemos prácticas sostenibles que respetan el medio ambiente y optimizan recursos.</p>
-            </div>
-            <div className="value-card">
-              <div className="value-icon">
-                <i className="fas fa-users"></i>
-              </div>
-              <h3>Trabajo en Equipo</h3>
-              <p>Valoramos la colaboración y el trabajo conjunto para lograr resultados excepcionales.</p>
-            </div>
+            {values.map((value, index) => (
+              <ValueCard 
+                key={index}
+                icon={value.icon}
+                title={value.title}
+                description={value.description}
+              />
+            ))}
           </div>
         </div>
       </section>
