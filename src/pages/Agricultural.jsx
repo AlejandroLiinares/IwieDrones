@@ -97,10 +97,24 @@ const Agricultural = () => {
   return (
     <div className="agricultural-page">
       {/* Hero Section */}
-      <section className="service-hero">
+      <section className="service-hero" style={{ 
+        backgroundImage: 'url("./agricola.jpg")', 
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center',
+        position: 'relative'
+      }}>
+        <div className="service-hero-overlay" style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 1
+        }}></div>
         <div className="container-fluid">
-          <div className="container">
-            <h1>Servicios Agrícolas Avanzados</h1>
+          <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+            <h1>AGRÍCOLA</h1>
             <p className="hero-description">
               Optimiza tus cultivos con tecnología de vanguardia. Nuestros servicios ofrecen aplicación precisa, 
               monitoreo de cultivos y mapeo detallado para maximizar tu rendimiento y reducir costos.
