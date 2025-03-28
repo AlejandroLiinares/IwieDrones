@@ -18,9 +18,6 @@ import TechnicalService from './pages/TechnicalService'
 import Contact from './pages/Contact'
 import About from './pages/About'
 
-// Páginas de demostración
-import TechDemoCard from './examples/TechCardDemo'
-
 function App() {
   return (
     <Router>
@@ -37,7 +34,6 @@ function App() {
             <Route path="/servicio-tecnico" element={<TechnicalService />} />
             <Route path="/contactanos" element={<Contact />} />
             <Route path="/quienes-somos" element={<About />} />
-            <Route path="/demo/tech" element={<TechDemoCard />} />
           </Routes>
         </main>
         <Footer />
