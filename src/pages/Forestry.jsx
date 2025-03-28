@@ -20,6 +20,7 @@ const Forestry = () => {
         }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <h1>FORESTAL</h1>
+          <p className="coming-soon">Próximamente</p>
         </div>
       </section>
 
@@ -28,7 +29,6 @@ const Forestry = () => {
         <div className="container">
           <div className="overview-content">
             <div className="overview-text">
-              <h2>PROXIMAMENTE</h2>
             </div>
           </div>
         </div>

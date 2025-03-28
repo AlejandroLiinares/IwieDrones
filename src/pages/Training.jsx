@@ -23,17 +23,7 @@ const Training = () => {
         }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <h1>CAPACITACIONES</h1>
-        </div>
-      </section>
-
-      {/* Service Overview */}
-      <section className="service-overview">
-        <div className="container">
-          <div className="overview-content">
-            <div className="overview-text">
-              <h2>PROXIMAMENTE</h2>
-            </div>
-          </div>
+          <p className="coming-soon">Próximamente</p>
         </div>
       </section>
     </div>
