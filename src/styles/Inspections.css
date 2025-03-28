@@ -1,0 +1,266 @@
+/* Estilos específicos para el componente Inspections */
+@import './variables.css';
+
+/* Hero Section */
+.inspections-hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.inspections-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.inspections-hero-content {
+  max-width: 800px;
+  z-index: 2;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.inspections-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.inspections-hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Services Section */
+.inspections-services {
+  padding: 5rem 0;
+  background-color: white;
+}
+
+.inspections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.inspection-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inspection-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.inspection-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.inspection-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.inspection-card:hover .inspection-image img {
+  transform: scale(1.1);
+}
+
+.inspection-content {
+  padding: 1.5rem;
+}
+
+.inspection-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+.inspection-description {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Technologies Section */
+.technologies-section {
+  padding: 5rem 0;
+  background-color: #f8f9fa;
+}
+
+.technology-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.technology-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+}
+
+.technology-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.technology-content p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Process Section */
+.process-section {
+  padding: 5rem 0;
+  background-color: white;
+}
+
+.process-steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.process-step {
+  flex: 0 0 calc(25% - 2rem);
+  text-align: center;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.process-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 2.5rem;
+  right: -1rem;
+  width: 2rem;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+.step-number {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+}
+
+.process-step h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.process-step p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.inspections-cta {
+  padding: 5rem 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/inspections-cta.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  text-align: center;
+}
+
+.inspections-cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.inspections-cta h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.inspections-cta p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .inspections-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .process-step {
+    flex: 0 0 calc(50% - 2rem);
+  }
+  
+  .process-step:nth-child(2)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .inspections-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .inspections-hero p {
+    font-size: 1rem;
+  }
+  
+  .inspections-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .inspections-cta h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .inspections-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .process-step {
+    flex: 0 0 100%;
+  }
+  
+  .process-step::after {
+    display: none;
+  }
+}

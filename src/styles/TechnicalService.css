@@ -1,0 +1,343 @@
+/* Estilos específicos para el componente TechnicalService */
+@import './variables.css';
+
+/* Hero Section */
+.technical-hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.technical-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.technical-hero-content {
+  max-width: 800px;
+  z-index: 2;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.technical-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.technical-hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Services Section */
+.technical-services {
+  padding: 5rem 0;
+  background-color: white;
+}
+
+.technical-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.technical-service-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  padding: 2rem;
+}
+
+.technical-service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.technical-service-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.technical-service-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+.technical-service-description {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Equipment Section */
+.equipment-section {
+  padding: 5rem 0;
+  background-color: #f8f9fa;
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.equipment-card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.equipment-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.equipment-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.equipment-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.equipment-card:hover .equipment-image img {
+  transform: scale(1.1);
+}
+
+.equipment-content {
+  padding: 1.5rem;
+}
+
+.equipment-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.equipment-specs {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.equipment-spec {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.equipment-spec i {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+}
+
+/* Process Section */
+.service-process {
+  padding: 5rem 0;
+  background-color: white;
+}
+
+.process-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 3rem auto 0;
+}
+
+.process-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-color: var(--primary-color);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  display: flex;
+}
+
+.timeline-item:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.timeline-item:nth-child(even) {
+  justify-content: flex-end;
+}
+
+.timeline-content {
+  width: calc(50% - 2rem);
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::after {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  right: -0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: white;
+  transform: rotate(45deg);
+  box-shadow: 5px -5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-item:nth-child(even) .timeline-content::after {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  left: -0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: white;
+  transform: rotate(45deg);
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+.timeline-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+.timeline-content p {
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.technical-cta {
+  padding: 5rem 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/technical-cta.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  text-align: center;
+}
+
+.technical-cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.technical-cta h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.technical-cta p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .technical-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .process-timeline::before {
+    left: 2rem;
+  }
+  
+  .timeline-item {
+    justify-content: flex-end !important;
+  }
+  
+  .timeline-content {
+    width: calc(100% - 4rem);
+  }
+  
+  .timeline-dot {
+    left: 2rem;
+  }
+  
+  .timeline-item:nth-child(odd) .timeline-content::after {
+    left: -0.5rem;
+    right: auto;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.05);
+  }
+}
+
+@media (max-width: 768px) {
+  .technical-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .technical-hero p {
+    font-size: 1rem;
+  }
+  
+  .technical-services-grid,
+  .equipment-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .technical-cta h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .technical-services-grid,
+  .equipment-grid {
+    grid-template-columns: 1fr;
+  }
+}
