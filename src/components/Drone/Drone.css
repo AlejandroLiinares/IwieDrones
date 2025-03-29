@@ -4,7 +4,7 @@
  */
 
 /* Importar variables globales */
-@import './variables.css';
+@import './rsc./App.css';
 
 /* Drones Slider */
 .drones-slider-container {
@@ -280,4 +280,34 @@
   .drone-item:first-child .drone-title {
     font-size: var(--font-size-md);
   }
+}
+/* Estilos para tarjetas */
+@import './variables.css';
+
+/* Card Styles */
+.card {
+  background-color: var(--background-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-body {
+  padding: var(--spacing-lg);
+}
+
+.card-footer {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
 }

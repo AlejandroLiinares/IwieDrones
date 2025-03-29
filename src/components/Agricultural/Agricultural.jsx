@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Agricultural.css';
+import Agricultural from './components/Agricultural'
 
 // Componente para tarjetas de servicios agrícolas
 const ServiceCard = ({ image, title, description }) => (

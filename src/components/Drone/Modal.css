@@ -4,7 +4,7 @@
  */
 
 /* Importar variables globales */
-@import './App.css';
+@import './rsc./App.css';
 
 /* Modal para información detallada */
 .modal-backdrop {

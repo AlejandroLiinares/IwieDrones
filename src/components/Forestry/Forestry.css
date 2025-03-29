@@ -1,5 +1,5 @@
 /* Estilos específicos para el componente Forestry */
-@import './variables.css';
+@import './rsc./App.css';
 
 /* Hero Section */
 .forestry-hero {

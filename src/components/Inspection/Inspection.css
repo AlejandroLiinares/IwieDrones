@@ -1,5 +1,5 @@
 /* Estilos específicos para el componente Inspections */
-@import './variables.css';
+@import './rsc./App.css';
 
 /* Hero Section */
 .inspections-hero {

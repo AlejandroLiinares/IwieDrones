@@ -4,7 +4,7 @@
  */
 
 /* Importar variables globales */
-@import './variables.css';
+@import './rsc./App.css';
 
 /* Quote Section */
 .quote-section {
