@@ -50,11 +50,6 @@ h5 {
   font-weight: var(--font-weight-semibold);
 }
 
-h6 {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-}
-
 p {
   margin-bottom: var(--spacing-md);
 }

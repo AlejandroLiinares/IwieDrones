@@ -199,20 +199,17 @@ const Home = () => {
       
       {/* About Us Section */}
       <section className="about-us-section" id="quienes-somos">
-        <div className="container">
-          <div className="about-hero-content">
-            <h2 className="about-title">QUIÉNES SOMOS</h2>
+        <div className="about-us-container">
+          <div className="about-us-content">
+            <h2 className="section-title">QUIÉNES SOMOS</h2>
             <div className="about-divider"></div>
             <p className="about-description">
-              Iwie nace en el año 2022 con el objetivo de brindar servicios con tecnología avanzada en diversas áreas como 
-              agricultura, procesos industriales, educación, sistemas de energía, televigilancia y entretenimiento. Nos 
-              especializamos en ofrecer soluciones tecnológicas avanzadas que optimizan procesos y mejoran la 
-              eficiencia en diversos sectores.
+              Somos una empresa especializada en servicios con drones, comprometidos con la innovación y la excelencia en cada proyecto que emprendemos.
             </p>
           </div>
         </div>
       </section>
-      
+
       {/* Drones Catalog Section */}
       <section className="drones-catalog-section" id="nuestros-drones">
         <div className="container">

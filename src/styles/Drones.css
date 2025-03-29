@@ -10,7 +10,7 @@
 .drones-slider-container {
   position: relative;
   width: 100%;
-  margin: 2rem 0;
+  margin: var(--spacing-xl) 0;
   display: flex;
   align-items: center;
 }
@@ -21,7 +21,7 @@
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
-  padding: 1rem 0;
+  padding: var(--spacing-md) 0;
   width: 100%;
 }
 
@@ -31,25 +31,25 @@
 
 .drone-item {
   flex: 0 0 auto;
-  width: 200px;
-  margin-right: 2rem;
+  width: var(--spacing-4xl);
+  margin-right: var(--spacing-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 200px;
-  padding: 1rem;
+  min-width: var(--spacing-4xl);
+  padding: var(--spacing-md);
   position: relative;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
   height: 420px; /* Altura fija para todos los drones */
   justify-content: space-between; /* Distribuir elementos uniformemente */
 }
 
 .drone-image {
   width: 100%;
-  height: 200px;
+  height: var(--spacing-5xl);
   object-fit: contain;
-  transition: transform 0.3s ease;
-  margin-bottom: 0.5rem;
+  transition: transform var(--transition-normal);
+  margin-bottom: var(--spacing-xs);
 }
 
 .drone-image:hover {
@@ -57,9 +57,9 @@
 }
 
 .drone-title {
-  font-size: 1.2rem;
+  font-size: var(--font-size-lg);
   font-weight: 600;
-  margin: 0.5rem 0;
+  margin: var(--spacing-xs) 0;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(90deg, #00a8ff, #00eeff);
@@ -67,27 +67,27 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.5px;
-  height: 40px; /* Altura fija para los títulos */
+  height: var(--spacing-3xl); /* Altura fija para los títulos */
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0 5px; /* Añadir padding horizontal */
+  padding: 0 var(--spacing-xs); /* Añadir padding horizontal */
   line-height: 1.2; /* Mejorar espaciado entre líneas */
 }
 
 .drone-summary {
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
   color: #666;
   text-align: center;
-  margin: 0.5rem 0 1rem;
-  height: 60px; /* Altura fija para los resúmenes */
+  margin: var(--spacing-xs) 0 var(--spacing-sm);
+  height: var(--spacing-4xl); /* Altura fija para los resúmenes */
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   overflow: hidden;
-  padding: 0 8px; /* Añadir padding horizontal para mejorar la legibilidad */
+  padding: 0 var(--spacing-sm); /* Añadir padding horizontal para mejorar la legibilidad */
   line-height: 1.3; /* Mejorar espaciado entre líneas */
 }
 
@@ -96,14 +96,14 @@
   color: white;
   border: none;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: var(--spacing-2xl);
+  height: var(--spacing-2xl);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 0.5rem;
+  transition: all var(--transition-normal);
+  margin-top: var(--spacing-xs);
 }
 
 .drone-info-toggle:hover {
@@ -115,8 +115,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: var(--spacing-3xl);
+  height: var(--spacing-3xl);
   border-radius: 50%;
   background-color: #fff;
   border: none;
@@ -125,7 +125,7 @@
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
 .slider-nav-button:hover {
@@ -142,54 +142,54 @@
 }
 
 .slider-nav-button i {
-  font-size: 1rem;
+  font-size: var(--font-size-md);
   color: #333;
 }
 
 /* Drones Catalog Section */
 .drones-catalog-section {
-  padding: 5rem 0;
+  padding: var(--spacing-5xl) 0;
   background-color: #f8f9fa;
 }
 
 .drones-catalog-section .container {
-  max-width: 1200px;
+  max-width: var(--max-width-lg);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--spacing-lg);
 }
 
 .drones-catalog-section .section-title {
   color: #333;
-  font-size: 2.5rem;
+  font-size: var(--font-size-2xl);
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-lg);
   text-align: left;
   display: block;
 }
 
 .drones-catalog-section .section-divider {
-  width: 80px;
-  height: 4px;
+  width: var(--spacing-5xl);
+  height: var(--spacing-xs);
   background: linear-gradient(90deg, #00a8ff, #00eeff);
-  margin: 1.5rem 0 3rem 0;
+  margin: var(--spacing-lg) 0 var(--spacing-2xl) 0;
   box-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
-  border-radius: 3px;
+  border-radius: var(--border-radius-md);
   display: block;
 }
 
 /* Estilos específicos para el dron H32X */
 .drone-item:first-child {
-  width: 250px;
-  margin-right: 2.5rem;
+  width: var(--spacing-5xl);
+  margin-right: var(--spacing-2xl);
   height: 420px; /* Misma altura que los demás para mantener alineación */
 }
 
 .drone-item:first-child .drone-image {
   width: 100%;
-  height: 200px;
+  height: var(--spacing-5xl);
   object-fit: contain;
-  transition: transform 0.3s ease;
-  margin-bottom: 0.5rem;
+  transition: transform var(--transition-normal);
+  margin-bottom: var(--spacing-xs);
 }
 
 .drone-item:first-child .drone-image:hover {
@@ -198,7 +198,7 @@
 
 .drone-item:first-child .drone-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.4rem;
+  font-size: var(--font-size-xl);
   font-weight: 700;
   letter-spacing: 1px;
   background: linear-gradient(90deg, #00a8ff, #00eeff);
@@ -206,78 +206,78 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0px 0px 10px rgba(0, 168, 255, 0.2);
-  padding: 0 5px; /* Añadir padding horizontal */
+  padding: 0 var(--spacing-xs); /* Añadir padding horizontal */
   line-height: 1.2; /* Mejorar espaciado entre líneas */
 }
 
 /* Responsive adjustments for drones */
 @media (max-width: 768px) {
   .drone-item {
-    width: 150px;
-    margin-right: 1.5rem;
+    width: var(--spacing-3xl);
+    margin-right: var(--spacing-lg);
   }
   
   .drone-image {
-    height: 150px;
+    height: var(--spacing-4xl);
   }
   
   .drone-title {
-    font-size: 1rem;
-    height: 50px; /* Más altura para títulos largos en pantallas pequeñas */
+    font-size: var(--font-size-md);
+    height: var(--spacing-3xl); /* Más altura para títulos largos en pantallas pequeñas */
     line-height: 1.3; /* Ajustar espaciado entre líneas para pantallas más pequeñas */
   }
   
   .drone-summary {
-    font-size: 0.85rem;
-    height: 70px; /* Más altura para resúmenes en pantallas pequeñas */
+    font-size: var(--font-size-sm);
+    height: var(--spacing-4xl); /* Más altura para resúmenes en pantallas pequeñas */
     line-height: 1.4; /* Ajustar espaciado entre líneas para pantallas más pequeñas */
   }
   
   .drone-item:first-child .drone-image {
-    height: 180px;
+    height: var(--spacing-5xl);
   }
   
   .drone-item:first-child .drone-title {
-    font-size: 1.2rem;
+    font-size: var(--font-size-lg);
   }
   
   .slider-nav-button {
-    width: 30px;
-    height: 30px;
+    width: var(--spacing-2xl);
+    height: var(--spacing-2xl);
   }
   
   .slider-nav-button i {
-    font-size: 0.8rem;
+    font-size: var(--font-size-sm);
   }
 }
 
 @media (max-width: 576px) {
   .drone-item {
-    width: 120px;
-    margin-right: 1rem;
+    width: var(--spacing-2xl);
+    margin-right: var(--spacing-md);
   }
   
   .drone-image {
-    height: 120px;
+    height: var(--spacing-3xl);
   }
   
   .drone-title {
-    font-size: 0.9rem;
-    height: 60px; /* Más altura para títulos largos en pantallas muy pequeñas */
+    font-size: var(--font-size-sm);
+    height: var(--spacing-2xl); /* Más altura para títulos largos en pantallas muy pequeñas */
     line-height: 1.4; /* Ajustar espaciado entre líneas para pantallas muy pequeñas */
   }
   
   .drone-summary {
-    font-size: 0.8rem;
-    height: 80px; /* Más altura para resúmenes en pantallas muy pequeñas */
+    font-size: var(--font-size-xs);
+    height: var(--spacing-3xl); /* Más altura para resúmenes en pantallas muy pequeñas */
     line-height: 1.5; /* Ajustar espaciado entre líneas para pantallas muy pequeñas */
   }
   
   .drone-item:first-child .drone-image {
-    height: 150px;
+    height: var(--spacing-4xl);
   }
   
   .drone-item:first-child .drone-title {
-    font-size: 1.1rem;
+    font-size: var(--font-size-md);
   }
 }
