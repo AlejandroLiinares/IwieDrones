@@ -1,5 +1,5 @@
 /* Estilos específicos para el componente TechnicalService */
-@import './variables.css';
+@import './App.css';
 
 /* Hero Section */
 .technical-hero {

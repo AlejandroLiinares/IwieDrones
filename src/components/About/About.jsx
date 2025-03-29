@@ -45,7 +45,10 @@ const About = () => {
           <h1>Nuestra Historia</h1>
           <div className="about-divider" />
           <p>
-            Somos una empresa especializada en servicios con drones, comprometidos con la innovación y la excelencia en cada proyecto que emprendemos.
+          Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial 
+          de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan 
+          desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de 
+          energía, servicio de televigilancia, asimismo como el área de entretenimiento.
           </p>
         </div>
       </section>

@@ -60,56 +60,6 @@
   color: var(--text-light);
 }
 
-/* Mission and Vision section */
-.about-mission-vision {
-  padding: var(--spacing-5xl) var(--spacing-xl);
-  background-color: var(--background-light);
-}
-
-.mission-vision-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-xl);
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.mission-box, .vision-box {
-  background-color: white;
-  padding: 2.5rem;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.mission-box:hover, .vision-box:hover {
-  transform: translateY(-10px);
-}
-
-.mission-box h2, .vision-box h2 {
-  color: #0056b3;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  position: relative;
-  padding-bottom: 1rem;
-}
-
-.mission-box h2:after, .vision-box h2:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50px;
-  height: 3px;
-  background-color: #00a8ff;
-}
-
-.mission-box p, .vision-box p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #555;
-}
-
 /* Values section */
 .about-values {
   padding: var(--spacing-5xl) var(--spacing-xl);
