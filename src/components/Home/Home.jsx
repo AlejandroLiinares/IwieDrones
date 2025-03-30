@@ -6,7 +6,7 @@ import "./Base.css";
 import { useRef, useState, useEffect } from 'react';
 
 const Home = () => {
-  // Datos de los slides de servicios
+  // Datos de los slides de servicios Sólo quiero poder hacer los cambios que quiera. 
   const serviceSlides = [
     {
       id: 1,
