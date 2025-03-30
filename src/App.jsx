@@ -8,12 +8,12 @@ import Footer from './components/Footer/Footer'
 import Home from './components/Home/Home'
 import Agricultural from './components/Agricultural/Agricultural'
 import Industrial from './components/Industrial/Industrial'
-import Training from './components/Training/Training'
-import Inspections from './components/Inspection/Inspection'
-import Forestry from './components/Forestry/Forestry'
-import TechnicalService from './components/TechnicalService/TechnicalService'
-import Contact from './components/Contact/Contact'
-import About from './components/About/About'
+import Training from './components/Entrenamiento/Entrenamiento'
+import Inspeccion from './components/Inspection/Inspection'
+import Forestal from './components/Forestal/Forestry'
+import ServicioTecnico from './components/ServicioTecnico/TechnicalService'
+import Contacto from './components/Contacto/Contact'
+import AcercaDe from './components/AcercaDe/About'
 
 function App() {
   return (
@@ -26,11 +26,11 @@ function App() {
             <Route path="/agricola" element={<Agricultural />} />
             <Route path="/industrial" element={<Industrial />} />
             <Route path="/capacitaciones" element={<Training />} />
-            <Route path="/inspecciones" element={<Inspections />} />
-            <Route path="/forestal" element={<Forestry />} />
-            <Route path="/servicio-tecnico" element={<TechnicalService />} />
-            <Route path="/contactanos" element={<Contact />} />
-            <Route path="/quienes-somos" element={<About />} />
+            <Route path="/inspecciones" element={<Inspeccion />} />
+            <Route path="/forestal" element={<Forestal />} />
+            <Route path="/servicio-tecnico" element={<ServicioTecnico />} />
+            <Route path="/contactanos" element={<Contacto />} />
+            <Route path="/quienes-somos" element={<AcercaDe />} />
           </Routes>
         </main>
         <Footer />
@@ -39,4 +39,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

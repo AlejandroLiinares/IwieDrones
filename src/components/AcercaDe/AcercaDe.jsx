@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.css";
+import "./AcercaDe.css";
 
 // Componente para tarjetas de valores
 const ValueCard = ({ icon, title, description }) => (
@@ -12,7 +12,7 @@ const ValueCard = ({ icon, title, description }) => (
   </div>
 );
 
-const About = () => {
+const AcercaDe = () => {
   // Datos de valores para facilitar mantenimiento
   const values = [
     {
@@ -89,4 +89,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AcercaDe;

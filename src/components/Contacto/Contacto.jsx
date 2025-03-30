@@ -57,7 +57,7 @@ const FormField = ({ id, label, type = 'text', value, onChange, required = false
   </div>
 );
 
-const Contact = () => {
+const Contacto = () => {
   // Estado del formulario
   const [formData, setFormData] = useState({
     name: '',
@@ -219,4 +219,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contacto;

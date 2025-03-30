@@ -1,10 +1,10 @@
 import React from "react";
-import "./Forestry.css";
+import "./TechnicalService.css";
 
 // Estilos para el componente
 const heroStyle = {
   position: 'relative',
-  backgroundImage: 'url("./forestry-bg.jpg")', // Asumiendo que existe esta imagen
+  backgroundImage: 'url("./technical-service-bg.jpg")', // Asumiendo que existe esta imagen
   backgroundSize: 'cover',
   backgroundPosition: 'center'
 };
@@ -24,14 +24,14 @@ const contentStyle = {
   zIndex: 2
 };
 
-const Forestry = () => {
+const ServicioTecnico = () => {
   return (
     <div className="service-page">
       {/* Hero Section */}
       <section className="service-hero" style={heroStyle}>
         <div className="service-hero-overlay" style={overlayStyle} aria-hidden="true"></div>
         <div className="container" style={contentStyle}>
-          <h1>FORESTAL</h1>
+          <h1>SERVICIO TÉCNICO</h1>
           <p className="coming-soon">Próximamente</p>
         </div>
       </section>
@@ -49,4 +49,4 @@ const Forestry = () => {
   );
 };
 
-export default Forestry;
+export default ServicioTecnico;

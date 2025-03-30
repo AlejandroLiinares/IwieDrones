@@ -1,12 +1,12 @@
 import React from "react";
-import "./TechnicalService.css";
+import "./Inspection.css";
 
 // Estilos para el componente
 const heroStyle = {
-  position: 'relative',
-  backgroundImage: 'url("./technical-service-bg.jpg")', // Asumiendo que existe esta imagen
-  backgroundSize: 'cover',
-  backgroundPosition: 'center'
+  backgroundImage: 'url("./televigilancia.jpg")', 
+  backgroundSize: 'cover', 
+  backgroundPosition: 'center',
+  position: 'relative'
 };
 
 const overlayStyle = {
@@ -24,14 +24,14 @@ const contentStyle = {
   zIndex: 2
 };
 
-const TechnicalService = () => {
+const Inspeccion = () => {
   return (
     <div className="service-page">
       {/* Hero Section */}
       <section className="service-hero" style={heroStyle}>
         <div className="service-hero-overlay" style={overlayStyle} aria-hidden="true"></div>
         <div className="container" style={contentStyle}>
-          <h1>SERVICIO TÉCNICO</h1>
+          <h1>INSPECCIONES</h1>
           <p className="coming-soon">Próximamente</p>
         </div>
       </section>
@@ -49,4 +49,4 @@ const TechnicalService = () => {
   );
 };
 
-export default TechnicalService;
+export default Inspeccion;

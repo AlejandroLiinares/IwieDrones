@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Training.css";
+import "./Entrenamiento.css";
 
-const Training = () => {
+const Entrenamiento = () => {
   return (
     <div className="service-page">
       {/* Hero Section */}
