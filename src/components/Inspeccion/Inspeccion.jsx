@@ -1,9 +1,9 @@
 import React from "react";
-import "./Inspection.css";
+import "./Inspeccion.css";
 
 // Estilos para el componente
 const heroStyle = {
-  backgroundImage: 'url("./televigilancia.jpg")', 
+  backgroundImage: 'url("televigilancia.jpg")', 
   backgroundSize: 'cover', 
   backgroundPosition: 'center',
   position: 'relative'

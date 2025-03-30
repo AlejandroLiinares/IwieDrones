@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 
@@ -9,11 +9,11 @@ import Home from './components/Home/Home'
 import Agricultural from './components/Agricultural/Agricultural'
 import Industrial from './components/Industrial/Industrial'
 import Training from './components/Entrenamiento/Entrenamiento'
-import Inspeccion from './components/Inspection/Inspection'
-import Forestal from './components/Forestal/Forestry'
-import ServicioTecnico from './components/ServicioTecnico/TechnicalService'
-import Contacto from './components/Contacto/Contact'
-import AcercaDe from './components/AcercaDe/About'
+import Inspeccion from './components/Inspeccion/Inspeccion'
+import Forestal from './components/Forestal/Forestal'
+import ServicioTecnico from './components/ServicioTecnico/ServicioTecnico'
+import Contacto from './components/Contacto/Contacto'
+import AcercaDe from './components/AcercaDe/AcercaDe'
 
 function App() {
   return (
@@ -39,4 +39,4 @@ function App() {
   )
 }
 
-export default App;
+export default App

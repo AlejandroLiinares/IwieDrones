@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import './Contact.css';
+import './Contacto.css';
 
 // Opciones de servicios para el formulario
 const serviceOptions = [

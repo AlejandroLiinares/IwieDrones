@@ -1,10 +1,10 @@
 import React from "react";
-import "./Forestry.css";
+import "./Forestal.css";
 
 // Estilos para el componente
 const heroStyle = {
   position: 'relative',
-  backgroundImage: 'url("./forestry-bg.jpg")', // Asumiendo que existe esta imagen
+  backgroundImage: 'url("quienes-somos.jpg")', // Usando una imagen existente en public
   backgroundSize: 'cover',
   backgroundPosition: 'center'
 };

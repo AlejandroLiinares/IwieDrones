@@ -1,10 +1,10 @@
 import React from "react";
-import "./TechnicalService.css";
+import "./ServicioTecnico.css";
 
 // Estilos para el componente
 const heroStyle = {
   position: 'relative',
-  backgroundImage: 'url("./technical-service-bg.jpg")', // Asumiendo que existe esta imagen
+  backgroundImage: 'url("H200.png")', // Usando una imagen existente en public
   backgroundSize: 'cover',
   backgroundPosition: 'center'
 };

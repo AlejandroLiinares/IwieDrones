@@ -12,35 +12,35 @@ const Home = () => {
       id: 1,
       title: "Agrícolas",
       description: "Ofrecemos soluciones de alta precisión para la agricultura con tecnología especializada en aplicación, siembra y monitoreo de cultivos.",
-      image: "./agricola.jpg",
+      image: "agricola.jpg",
       link: "/agricola"
     },
     {
       id: 2,
       title: "Industriales",
       description: "Nuestros servicios industriales están equipados con tecnología avanzada para inspecciones, mapeo 3D, termografía y más.",
-      image: "./industria.jpg",
+      image: "industria.jpg",
       link: "/industrial"
     },
     {
       id: 3,
       title: "Televigilancia",
       description: "Sistemas de vigilancia para monitoreo de seguridad, control de perímetros y supervisión de eventos.",
-      image: "./televigilancia.jpg",
-      link: "/services/surveillance"
+      image: "televigilancia.jpg",
+      link: "/inspecciones"
     },
     {
       id: 4,
       title: "Energía",
       description: "Inspección de infraestructuras energéticas, paneles solares y líneas eléctricas con tecnología especializada.",
-      image: "./energia.jpg",
-      link: "/services/energy"
+      image: "energia.jpg",
+      link: "/industrial"
     },
     {
       id: 5,
       title: "Capacitación y Certificación",
       description: "Programas de formación con certificación oficial, adaptados a diferentes niveles y necesidades.",
-      image: "./capacitacion.jpg",
+      image: "capacitacion.jpg",
       link: "/capacitaciones"
     }
   ];
@@ -56,7 +56,7 @@ const Home = () => {
   // Función para manejar errores de carga de imágenes
   const handleImageError = (e) => {
     console.log(`Error cargando imagen: ${e.target.src}`);
-    e.target.src = 'placeholder.jpg';
+    e.target.src = '/placeholder.jpg';
   };
 
   // Función genérica para navegar por cualquier slider
@@ -142,7 +142,7 @@ const Home = () => {
             </div>
             <div className="quote-image">
               <img 
-                src="./douglas.webp" 
+                src="douglas.webp" 
                 alt="Douglas Adams" 
               />
             </div>
