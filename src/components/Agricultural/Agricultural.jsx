@@ -1,78 +1,59 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Agricultural from './components/Agricultural'
+import './Agricultural.css';
 
 // Componente para tarjetas de servicios agrícolas
 const ServiceCard = ({ image, title, description }) => (
   <div className="service-card">
-    <div className="service-image-circle">
+    <div className="service-image">
       <img src={image} alt={title} />
     </div>
-    <h3>{title}</h3>
-    <p>{description}</p>
+    <div className="service-content">
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <Link to="/contactanos" className="service-button">
+        Contactar
+      </Link>
+    </div>
   </div>
 );
 
 const Agricultural = () => {
-  // Datos de servicios agrícolas
-  const agriculturalServices = [
+  const services = [
     {
       id: 1,
-      image: "/pulverizacion.jpg",
-      title: "Pulverizaciones",
-      description: "Pulverización de agroquímicos líquidos, aplicación de granulados sólidos y siembra de semillas."
+      image: "/agricola1.jpg",
+      title: "Aplicación de Fertilizantes",
+      description: "Sistema de aplicación de fertilizantes de alta precisión para optimizar el rendimiento de los cultivos."
     },
     {
       id: 2,
-      image: "/mapa.png",
-      title: "Mapas multiespectrales",
-      description: "Mapas multiespectrales y térmicos para determinar salud del cultivo según vigor y manejo de riegos prioridad de cuartel."
+      image: "/agricola2.jpg",
+      title: "Control de Plagas",
+      description: "Monitoreo y control de plagas mediante drones equipados con sensores térmicos y multiespectrales."
     },
     {
       id: 3,
-      image: "/planimetria.webp",
-      title: "Planimetría",
-      description: "Planimetría del sector a plantar para determinar espacios de cuarteles tamaños y zonas específicas."
+      image: "/agricola3.jpg",
+      title: "Monitoreo de Cultivos",
+      description: "Sistema de monitoreo continuo de cultivos para detectar problemas tempranos y optimizar recursos."
     }
   ];
 
-  // Estilos para el hero
-  const heroStyle = {
-    backgroundImage: 'url("/agricola.jpg")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    position: 'relative'
-  };
-
-  // Estilos para el overlay
-  const overlayStyle = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    zIndex: 1
-  };
-
   return (
-    <div className="service-page">
-      {/* Hero Section */}
-      <section className="service-hero" style={heroStyle}>
-        <div className="service-hero-overlay" style={overlayStyle}></div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <h1>AGRÍCOLA</h1>
+    <div className="agricultural-page">
+      <section className="agricultural-hero">
+        <div className="hero-content">
+          <h1>Servicios Agrícolas</h1>
+          <p>La tecnología al servicio de la agricultura moderna</p>
         </div>
       </section>
 
-      {/* Servicios Agrícolas Section */}
-      <section className="agricultural-services">
+      <section className="services-section">
         <div className="container">
-          <h2 className="section-title">SERVICIOS</h2>
-          <div className="section-divider" aria-hidden="true"></div>
-          
+          <h2>Nuestros Servicios</h2>
           <div className="services-grid">
-            {agriculturalServices.map(service => (
+            {services.map(service => (
               <ServiceCard
                 key={service.id}
                 image={service.image}

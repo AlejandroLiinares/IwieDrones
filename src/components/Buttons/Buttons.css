@@ -1,5 +1,6 @@
 /* Estilos para botones */
-@import './rsc./App.css';
+/* Importar variables globales */
+@import '../../App.css';
 
 .btn {
   display: inline-flex;

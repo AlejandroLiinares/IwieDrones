@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/Inspections.css';
+import React from "react";
+import "./Inspection.css";
 
 // Estilos para el componente
 const heroStyle = {

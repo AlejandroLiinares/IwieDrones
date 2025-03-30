@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
-import Drone from './components./Drones.css'
+import './Drone.css'
 
-{/* Drones Catalog Section */}
       <section className="drones-catalog-section" id="nuestros-drones">
         <div className="container">
           <h2 className="section-title">NUESTROS DRONES</h2>

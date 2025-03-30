@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/About.css';
+import React from "react";
+import "./About.css";
 
 // Componente para tarjetas de valores
 const ValueCard = ({ icon, title, description }) => (

@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/TechnicalService.css';
+import React from "react";
+import "./TechnicalService.css";
 
 // Estilos para el componente
 const heroStyle = {

@@ -1,5 +1,5 @@
-import React from 'react';
-import '../styles/Forestry.css';
+import React from "react";
+import "./Forestry.css";
 
 // Estilos para el componente
 const heroStyle = {

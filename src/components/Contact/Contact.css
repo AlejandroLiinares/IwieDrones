@@ -1,4 +1,5 @@
-@import './rsc./App.css';
+/* Importar variables globales */
+@import '../../App.css';
 
 .contact-page {
   min-height: 100vh;

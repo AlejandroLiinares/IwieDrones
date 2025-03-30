@@ -1,5 +1,6 @@
 /* Estilos base para elementos HTML */
-@import './rsc./App.css';
+/* Importar variables globales */
+@import '../../App.css';
 
 /* Reset y Base Styles */
 * {
