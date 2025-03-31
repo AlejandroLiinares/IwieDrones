@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
+import './Drone.css';
 
 function Drone() {
     const dronesSliderRef = useRef(null);
@@ -28,10 +29,11 @@ function Drone() {
     };
 
     return (
-        <>
-            <section className="drones-catalog-section" id="nuestros-drones">
+        <div className="home-container">
+            <section className="drones-catalog-section">
                 <div className="container">
                     <h2 className="section-title">NUESTROS DRONES</h2>
+                    <div className="section-divider"></div>
                     
                     <div className="drones-slider-container">
                         <button 
@@ -224,7 +226,7 @@ function Drone() {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     );
 }
 
