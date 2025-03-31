@@ -4,7 +4,7 @@
  */
 
 /* Importar variables globales */
-@import '../../App.css';
+@import url('../../App.css');
 
 /* Home Component Layout */
 .home {
