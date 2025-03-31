@@ -94,12 +94,23 @@
   transition: color 0.3s ease;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover {
   color: #4285f4;
 }
 
-.nav-link::after {
+.nav-link[href="/contacto"] {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.4rem 0;
+  position: relative;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.nav-link[href="/contacto"]::after {
   content: '';
   position: absolute;
   bottom: -5px;
@@ -107,10 +118,10 @@
   width: 0;
   height: 2px;
   background-color: #4285f4;
+  transition: width 0.3s ease;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.nav-link[href="/contacto"]:hover::after {
   width: 100%;
 }
 

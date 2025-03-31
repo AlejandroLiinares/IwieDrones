@@ -71,13 +71,15 @@ const Header = () => {
         <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <ul className="nav-list">
             <li className="nav-item">
-              <Link to="/servicios" 
-                    className={`nav-link ${location.pathname === '/servicios' ? 'active' : ''}`}
+              <span className={`nav-link ${location.pathname === '/servicios' ? 'active' : ''}`}
                     onMouseEnter={toggleServicesDropdown}
-                    onClick={closeServicesDropdown}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      closeServicesDropdown();
+                    }}
               >
                 Servicios
-              </Link>
+              </span>
               <div 
                 className={`services-dropdown ${isServicesDropdownOpen ? 'active' : ''}`}
                 onMouseEnter={handleDropdownMouseEnter}
@@ -106,9 +108,7 @@ const Header = () => {
               </div>
             </li>
             <li className="nav-item">
-              <Link to="/drone" className={`nav-link ${location.pathname === '/drone' ? 'active' : ''}`}>
-                Drones
-              </Link>
+              <span className={`nav-link ${location.pathname === '/drones' ? 'active' : ''}`}>Drones</span>
             </li>
             <li className="nav-item">
               <Link to="/contacto" className={`nav-link ${location.pathname === '/contacto' ? 'active' : ''}`}>

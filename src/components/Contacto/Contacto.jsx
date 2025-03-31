@@ -102,117 +102,109 @@ const Contacto = () => {
     setFormStatus({
       submitted: true,
       success: true,
-      message: '¡Gracias por contactarnos! Te responderemos a la brevedad.'
+      message: '¡Mensaje enviado con éxito! Nos pondremos en contacto contigo a la brevedad.'
     });
-
-    // En un caso real, aquí se enviaría el formulario a un backend
-    console.log('Datos del formulario:', formData);
-    
-    // Resetear el formulario después de 5 segundos
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-        service: 'general'
-      });
-      setFormStatus({
-        submitted: false,
-        success: false,
-        message: ''
-      });
-    }, 5000);
   }, [formData]);
 
   return (
-    <div className="contact-page">
-      {/* Hero Section - Simplificado */}
-      <section className="contact-hero">
-        <div className="container">
-          <h1>Contáctanos</h1>
-          <p>Estamos aquí para ayudarte con cualquier consulta o solicitud de servicio.</p>
+    <div className="service-page">
+      {/* Hero Section */}
+      <section className="service-hero" style={{ 
+        backgroundImage: 'url("/contactanos.jpg")', 
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center',
+        position: 'relative'
+      }}>
+        <div className="service-hero-overlay" style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 1
+        }}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <h1>CONTACTANOS</h1>
+          <p className="coming-soon">Conéctate con nosotros para más información</p>
         </div>
       </section>
 
       {/* Formulario de Contacto */}
-      <section className="contact-form-section">
+      <section className="contact-section">
         <div className="container">
-          <div className="contact-form-container">
-            <h2>Envíanos un Mensaje</h2>
+          <h2>Envíanos un mensaje</h2>
+          <form onSubmit={handleSubmit} className="contact-form">
+            <FormField
+              id="name"
+              label="Nombre"
+              type="text"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              placeholder="Tu nombre completo"
+            />
             
-            {formStatus.submitted && (
-              <div className={`form-message ${formStatus.success ? 'success' : 'error'}`}>
-                {formStatus.message}
-              </div>
-            )}
+            <div className="form-row">
+              <FormField
+                id="email"
+                label="Email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="tu@email.com"
+              />
+              
+              <FormField
+                id="phone"
+                label="Teléfono"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="+56 9 12345678"
+              />
+            </div>
             
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <FormField
-                id="name"
-                label="Nombre Completo"
-                value={formData.name}
-                onChange={handleChange}
-                required={true}
-                placeholder="Ingresa tu nombre completo"
-              />
-              
-              <div className="form-row">
-                <FormField
-                  id="email"
-                  label="Email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required={true}
-                  placeholder="ejemplo@correo.com"
-                />
-                
-                <FormField
-                  id="phone"
-                  label="Teléfono"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="+56 9 XXXX XXXX"
-                />
-              </div>
-              
-              <FormField
-                id="service"
-                label="Servicio de Interés"
-                type="select"
-                value={formData.service}
-                onChange={handleChange}
-                options={serviceOptions}
-              />
-              
-              <FormField
-                id="subject"
-                label="Asunto"
-                value={formData.subject}
-                onChange={handleChange}
-                required={true}
-                placeholder="Asunto de tu mensaje"
-              />
-              
-              <FormField
-                id="message"
-                label="Mensaje"
-                type="textarea"
-                value={formData.message}
-                onChange={handleChange}
-                required={true}
-                placeholder="Escribe tu mensaje aquí..."
-                rows={5}
-              />
-              
-              <button type="submit" className="submit-button">
-                <i className="fas fa-paper-plane"></i> Enviar Mensaje
-              </button>
-            </form>
-          </div>
+            <FormField
+              id="service"
+              label="Servicio de Interés"
+              type="select"
+              value={formData.service}
+              onChange={handleChange}
+              options={serviceOptions}
+            />
+            
+            <FormField
+              id="subject"
+              label="Asunto"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+              placeholder="Ej: Consulta sobre servicios agrícolas"
+            />
+            
+            <FormField
+              id="message"
+              label="Mensaje"
+              type="textarea"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              placeholder="Escribe tu mensaje aquí..."
+              rows={5}
+            />
+            
+            <button type="submit" className="submit-button">
+              Enviar Mensaje
+            </button>
+          </form>
+
+          {formStatus.submitted && (
+            <div className={`form-feedback ${formStatus.success ? 'success' : 'error'}`}>
+              {formStatus.message}
+            </div>
+          )}
         </div>
       </section>
     </div>

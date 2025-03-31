@@ -7,7 +7,7 @@ const Capacitaciones = () => {
     <div className="service-page">
       {/* Hero Section */}
       <section className="service-hero" style={{ 
-        backgroundImage: 'url("./entrenamiento.jpg")', 
+        backgroundImage: 'url("/capacitacion.jpg")', 
         backgroundSize: 'cover', 
         backgroundPosition: 'center',
         position: 'relative'

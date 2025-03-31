@@ -6,7 +6,7 @@ const Inspecciones = () => {
     <div className="service-page">
       {/* Hero Section */}
       <section className="service-hero" style={{ 
-        backgroundImage: 'url("./inspecciones.jpg")', 
+        backgroundImage: 'url("/inspecciones.jpg")', 
         backgroundSize: 'cover', 
         backgroundPosition: 'center',
         position: 'relative'

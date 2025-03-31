@@ -281,6 +281,49 @@
     font-size: var(--font-size-md);
   }
 }
+
+/* Hero Section */
+.service-hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  text-align: center;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.service-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.service-hero-content {
+  max-width: 800px;
+  z-index: 2;
+  position: relative;
+  padding: var(--spacing-xl);
+}
+
+.service-hero h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.service-hero p {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-md);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
 /* Estilos para tarjetas */
 @import './variables.css';
 
