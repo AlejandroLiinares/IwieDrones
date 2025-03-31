@@ -5,6 +5,7 @@ import "./Header.css";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const location = useLocation();
 
   // Controla el scroll para cambiar la apariencia del header
@@ -20,10 +21,20 @@ const Header = () => {
   // Cierra el menú cuando se cambia de ruta
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsServicesDropdownOpen(false);
   }, [location]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleServicesDropdown = (e) => {
+    e.preventDefault();
+    setIsServicesDropdownOpen(!isServicesDropdownOpen);
+  };
+
+  const closeServicesDropdown = () => {
+    setIsServicesDropdownOpen(false);
   };
 
   return (
@@ -52,33 +63,40 @@ const Header = () => {
         <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <ul className="nav-list">
             <li className="nav-item">
-              <Link to="/agricola" className={`nav-link ${location.pathname === '/agricola' ? 'active' : ''}`}>
-                Agrícola
+              <Link to="/servicios" 
+                    className={`nav-link ${location.pathname === '/servicios' ? 'active' : ''}`}
+                    onMouseEnter={toggleServicesDropdown}
+                    onMouseLeave={closeServicesDropdown}
+                    onClick={closeServicesDropdown}
+              >
+                Servicios
               </Link>
+              <div className={`services-dropdown ${isServicesDropdownOpen ? 'active' : ''}`}>
+                <ul>
+                  <li>
+                    <Link to="/agricola" onClick={closeServicesDropdown}>Agrícola</Link>
+                  </li>
+                  <li>
+                    <Link to="/industrial" onClick={closeServicesDropdown}>Industrial</Link>
+                  </li>
+                  <li>
+                    <Link to="/capacitaciones" onClick={closeServicesDropdown}>Capacitaciones</Link>
+                  </li>
+                  <li>
+                    <Link to="/inspecciones" onClick={closeServicesDropdown}>Inspecciones</Link>
+                  </li>
+                  <li>
+                    <Link to="/forestal" onClick={closeServicesDropdown}>Forestal</Link>
+                  </li>
+                  <li>
+                    <Link to="/servicio-tecnico" onClick={closeServicesDropdown}>Servicio Técnico</Link>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li className="nav-item">
-              <Link to="/industrial" className={`nav-link ${location.pathname === '/industrial' ? 'active' : ''}`}>
-                Industrial
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/capacitaciones" className={`nav-link ${location.pathname === '/capacitaciones' ? 'active' : ''}`}>
-                Capacitaciones
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/inspecciones" className={`nav-link ${location.pathname === '/inspecciones' ? 'active' : ''}`}>
-                Inspecciones
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/forestal" className={`nav-link ${location.pathname === '/forestal' ? 'active' : ''}`}>
-                Forestal
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/servicio-tecnico" className={`nav-link ${location.pathname === '/servicio-tecnico' ? 'active' : ''}`}>
-                Servicio Técnico
+              <Link to="/drones" className={`nav-link ${location.pathname === '/drones' ? 'active' : ''}`}>
+                Drones
               </Link>
             </li>
             <li className="nav-item">

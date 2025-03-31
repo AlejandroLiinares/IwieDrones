@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 
 // Componentes
@@ -13,6 +13,7 @@ import Inspecciones from './components/Servicios/Inspecciones/Inspecciones'
 import Forestal from './components/Servicios/Forestal/Forestal'
 import ServicioTecnico from './components/Servicios/ServicioTecnico/ServicioTecnico'
 import Contacto from './components/Contacto/Contacto'
+import Drone from './components/Drone/Drone'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/servicios" element={<Navigate to="/agricola" replace />} />
             <Route path="/agricola" element={<Agricultural />} />
             <Route path="/industrial" element={<Industrial />} />
             <Route path="/capacitaciones" element={<Capacitaciones />} />
@@ -29,6 +31,7 @@ function App() {
             <Route path="/forestal" element={<Forestal />} />
             <Route path="/servicio-tecnico" element={<ServicioTecnico />} />
             <Route path="/contactanos" element={<Contacto />} />
+            <Route path="/drones" element={<Drone />} />
           </Routes>
         </main>
         <Footer />

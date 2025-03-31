@@ -91,6 +91,7 @@
   position: relative;
   white-space: nowrap;
   letter-spacing: 0.5px;
+  transition: color 0.3s ease;
 }
 
 .nav-link:hover,
@@ -111,6 +112,55 @@
 .nav-link:hover::after,
 .nav-link.active::after {
   width: 100%;
+}
+
+/* Services Dropdown */
+.services-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background-color: rgba(7, 24, 57, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.services-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.services-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+}
+
+.services-dropdown li {
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.services-dropdown li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.services-dropdown a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: block;
+  padding: 0.5rem 0;
+}
+
+.services-dropdown a:hover {
+  color: #4285f4;
 }
 
 /* Estilos para el menú móvil */
@@ -225,6 +275,49 @@
   .header-container {
     height: 55px;
     padding: 0.5rem var(--spacing-md);
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 55px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(7, 24, 57, 0.95);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+
+  .nav-list {
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .services-dropdown {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    background-color: transparent;
+    border-radius: 0;
+    min-width: 100%;
+  }
+
+  .services-dropdown ul {
+    padding: 0;
+  }
+
+  .services-dropdown li {
+    padding: 1rem 0;
   }
 }
 
