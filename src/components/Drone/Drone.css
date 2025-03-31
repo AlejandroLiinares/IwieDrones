@@ -285,12 +285,16 @@
 /* Hero Section */
 .service-hero {
   position: relative;
-  height: 90vh;
+  height: 1080px;
+  width: 1920px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-light);
   text-align: center;
+  background-image: url('/drones.jpg');
+  background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }

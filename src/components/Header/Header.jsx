@@ -6,6 +6,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const [isDronesDropdownOpen, setIsDronesDropdownOpen] = useState(false);
   const location = useLocation();
 
   // Controla el scroll para cambiar la apariencia del header
@@ -22,6 +23,7 @@ const Header = () => {
   useEffect(() => {
     setIsMenuOpen(false);
     setIsServicesDropdownOpen(false);
+    setIsDronesDropdownOpen(false);
   }, [location]);
 
   const toggleMenu = () => {
@@ -33,16 +35,33 @@ const Header = () => {
     setIsServicesDropdownOpen(!isServicesDropdownOpen);
   };
 
-  const handleDropdownMouseEnter = () => {
+  const toggleDronesDropdown = (e) => {
+    e.preventDefault();
+    setIsDronesDropdownOpen(!isDronesDropdownOpen);
+  };
+
+  const handleServicesDropdownMouseEnter = () => {
     setIsServicesDropdownOpen(true);
   };
 
-  const handleDropdownMouseLeave = () => {
+  const handleServicesDropdownMouseLeave = () => {
     setIsServicesDropdownOpen(false);
   };
 
   const closeServicesDropdown = () => {
     setIsServicesDropdownOpen(false);
+  };
+
+  const handleDronesDropdownMouseEnter = () => {
+    setIsDronesDropdownOpen(true);
+  };
+
+  const handleDronesDropdownMouseLeave = () => {
+    setIsDronesDropdownOpen(false);
+  };
+
+  const closeDronesDropdown = () => {
+    setIsDronesDropdownOpen(false);
   };
 
   return (
@@ -82,8 +101,8 @@ const Header = () => {
               </span>
               <div 
                 className={`services-dropdown ${isServicesDropdownOpen ? 'active' : ''}`}
-                onMouseEnter={handleDropdownMouseEnter}
-                onMouseLeave={handleDropdownMouseLeave}
+                onMouseEnter={handleServicesDropdownMouseEnter}
+                onMouseLeave={handleServicesDropdownMouseLeave}
               >
                 <ul>
                   <li>
@@ -108,7 +127,26 @@ const Header = () => {
               </div>
             </li>
             <li className="nav-item">
-              <span className={`nav-link ${location.pathname === '/drones' ? 'active' : ''}`}>Drones</span>
+              <span className={`nav-link ${location.pathname === '/drones' ? 'active' : ''}`}
+                    onMouseEnter={toggleDronesDropdown}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      closeDronesDropdown();
+                    }}
+              >
+                Drones
+              </span>
+              <div 
+                className={`services-dropdown ${isDronesDropdownOpen ? 'active' : ''}`}
+                onMouseEnter={handleDronesDropdownMouseEnter}
+                onMouseLeave={handleDronesDropdownMouseLeave}
+              >
+                <ul>
+                  <li><Link to="/drones" onClick={closeDronesDropdown}>Todos los drones</Link></li>
+                  <li><Link to="/drones/agricola" onClick={closeDronesDropdown}>Agrícolas</Link></li>
+                  <li><Link to="/drones/industrial" onClick={closeDronesDropdown}>Industriales</Link></li>
+                </ul>
+              </div>
             </li>
             <li className="nav-item">
               <Link to="/contacto" className={`nav-link ${location.pathname === '/contacto' ? 'active' : ''}`}>

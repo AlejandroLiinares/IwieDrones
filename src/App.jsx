@@ -28,7 +28,8 @@ function App() {
                 <Route path="/forestal" element={<Forestal />} />
                 <Route path="/servicio-tecnico" element={<ServicioTecnico />} />
                 <Route path="/contacto" element={<Contacto />} />
-                <Route path="/drone" element={<Drone />} />
+                <Route path="/drones" element={<Drone />} />
+                <Route path="/drones/:category" element={<Drone />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
             <Footer />

@@ -45,13 +45,10 @@ const Home = () => {
     }
   ];
   
-  // Referencias para los sliders
-  const servicesSliderRef = useRef(null);
-  const dronesSliderRef = useRef(null);
-  
   // Estados para los modales
   const [modalInfo, setModalInfo] = useState({ isOpen: false, title: '', content: '' });
   const [serviceModal, setServiceModal] = useState({ isOpen: false, title: '', description: '' });
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   // Función para manejar errores de carga de imágenes
   const handleImageError = (e) => {
@@ -99,6 +96,14 @@ const Home = () => {
     if (e.target.classList.contains('modal-backdrop')) {
       if (modalInfo.isOpen) closeDroneModal();
       if (serviceModal.isOpen) closeServiceModal();
+    }
+  };
+
+  const handleSlideClick = (direction) => {
+    if (direction === 'left') {
+      setCurrentSlide((prev) => (prev - 1 + serviceSlides.length) % serviceSlides.length);
+    } else {
+      setCurrentSlide((prev) => (prev + 1) % serviceSlides.length);
     }
   };
 
@@ -157,7 +162,9 @@ const Home = () => {
           <div className="section-divider"></div>
           
           <div className="services-content">
-            <div className="services-slider" ref={servicesSliderRef}>
+            <div className="services-slider" style={{
+              transform: `translateX(-${currentSlide * 100}%)`
+            }}>
               {serviceSlides.map((slide) => (
                 <div key={slide.id} className="slide">
                   <div className="slide-content">
@@ -179,14 +186,14 @@ const Home = () => {
             <div className="slider-controls">
               <button 
                 className="slider-arrow" 
-                onClick={() => scrollSlider(servicesSliderRef, 'left')}
+                onClick={() => handleSlideClick('left')}
                 aria-label="Previous slide"
               >
                 &#8249;
               </button>
               <button 
                 className="slider-arrow" 
-                onClick={() => scrollSlider(servicesSliderRef, 'right')}
+                onClick={() => handleSlideClick('right')}
                 aria-label="Next slide"
               >
                 &#8250;

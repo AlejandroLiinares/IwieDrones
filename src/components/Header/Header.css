@@ -131,7 +131,7 @@
   top: 100%;
   left: 0;
   min-width: 200px;
-  background-color: rgba(7, 24, 57, 0.95);
+  background-color: transparent;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   opacity: 0;
@@ -145,6 +145,8 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  background-color: rgba(7, 24, 57, 0.6);
+  backdrop-filter: blur(10px);
 }
 
 .services-dropdown ul {
