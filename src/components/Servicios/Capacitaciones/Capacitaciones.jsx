@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Industrial.css";
+import "./Capacitaciones.css";
 
-const Industrial = () => {
+const Capacitaciones = () => {
   return (
     <div className="service-page">
       {/* Hero Section */}
       <section className="service-hero" style={{ 
-        backgroundImage: 'url("./industria.jpg")', 
+        backgroundImage: 'url("./entrenamiento.jpg")', 
         backgroundSize: 'cover', 
         backgroundPosition: 'center',
         position: 'relative'
@@ -22,22 +22,12 @@ const Industrial = () => {
           zIndex: 1
         }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <h1>INDUSTRIAL</h1>
+          <h1>CAPACITACIONES</h1>
           <p className="coming-soon">Próximamente</p>
-        </div>
-      </section>
-
-      {/* Service Overview */}
-      <section className="service-overview">
-        <div className="container">
-          <div className="overview-content">
-            <div className="overview-text">
-            </div>
-          </div>
         </div>
       </section>
     </div>
   );
 };
 
-export default Industrial;
+export default Capacitaciones;

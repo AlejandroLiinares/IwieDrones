@@ -1,13 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./Entrenamiento.css";
+import "./Inspecciones.css";
 
-const Entrenamiento = () => {
+const Inspecciones = () => {
   return (
     <div className="service-page">
       {/* Hero Section */}
       <section className="service-hero" style={{ 
-        backgroundImage: 'url("./capacitacion.jpg")', 
+        backgroundImage: 'url("./inspecciones.jpg")', 
         backgroundSize: 'cover', 
         backgroundPosition: 'center',
         position: 'relative'
@@ -18,11 +17,11 @@ const Entrenamiento = () => {
           left: 0,
           width: '100%',
           height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          backgroundColor: 'var(--primary-color-overlay)',
           zIndex: 1
         }}></div>
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <h1>CAPACITACIONES</h1>
+          <h1>INSPECCIONES</h1>
           <p className="coming-soon">Próximamente</p>
         </div>
       </section>
@@ -30,4 +29,4 @@ const Entrenamiento = () => {
   );
 };
 
-export default Entrenamiento;
+export default Inspecciones;

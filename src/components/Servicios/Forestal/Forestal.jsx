@@ -1,12 +1,12 @@
 import React from "react";
-import "./Inspeccion.css";
+import "./Forestal.css";
 
 // Estilos para el componente
 const heroStyle = {
-  backgroundImage: 'url("televigilancia.jpg")', 
-  backgroundSize: 'cover', 
-  backgroundPosition: 'center',
-  position: 'relative'
+  position: 'relative',
+  backgroundImage: 'url("forestal.jpg")', // Usando la imagen correcta
+  backgroundSize: 'cover',
+  backgroundPosition: 'center'
 };
 
 const overlayStyle = {
@@ -24,29 +24,19 @@ const contentStyle = {
   zIndex: 2
 };
 
-const Inspeccion = () => {
+const Forestal = () => {
   return (
     <div className="service-page">
       {/* Hero Section */}
       <section className="service-hero" style={heroStyle}>
         <div className="service-hero-overlay" style={overlayStyle} aria-hidden="true"></div>
         <div className="container" style={contentStyle}>
-          <h1>INSPECCIONES</h1>
+          <h1>FORESTAL</h1>
           <p className="coming-soon">Próximamente</p>
-        </div>
-      </section>
-
-      {/* Service Overview */}
-      <section className="service-overview">
-        <div className="container">
-          <div className="overview-content">
-            <div className="overview-text">
-            </div>
-          </div>
         </div>
       </section>
     </div>
   );
 };
 
-export default Inspeccion;
+export default Forestal;

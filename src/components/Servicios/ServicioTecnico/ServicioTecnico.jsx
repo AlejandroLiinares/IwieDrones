@@ -4,7 +4,7 @@ import "./ServicioTecnico.css";
 // Estilos para el componente
 const heroStyle = {
   position: 'relative',
-  backgroundImage: 'url("H200.png")', // Usando una imagen existente en public
+  backgroundImage: 'url("servicio-tecnico.jpg")', // Usando la imagen correcta
   backgroundSize: 'cover',
   backgroundPosition: 'center'
 };

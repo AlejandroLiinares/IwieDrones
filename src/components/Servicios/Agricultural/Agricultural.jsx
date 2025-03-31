@@ -41,11 +41,26 @@ const Agricultural = () => {
   ];
 
   return (
-    <div className="agricultural-page">
-      <section className="agricultural-hero">
-        <div className="hero-content">
-          <h1>Servicios Agrícolas</h1>
-          <p>La tecnología al servicio de la agricultura moderna</p>
+    <div className="service-page">
+      {/* Hero Section */}
+      <section className="service-hero" style={{ 
+        backgroundImage: 'url("./agricola.jpg")', 
+        backgroundSize: 'cover', 
+        backgroundPosition: 'center',
+        position: 'relative'
+      }}>
+        <div className="service-hero-overlay" style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 1
+        }}></div>
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          <h1>AGRÍCOLA</h1>
+          <p className="coming-soon">Próximamente</p>
         </div>
       </section>
 
