@@ -11,7 +11,7 @@ const ServiceCard = ({ image, title, description }) => (
     <div className="service-content">
       <h3>{title}</h3>
       <p>{description}</p>
-      <Link to="/contactanos" className="service-button">
+      <Link to="/contacto" className="service-button">
         Contactar
       </Link>
     </div>

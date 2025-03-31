@@ -33,6 +33,14 @@ const Header = () => {
     setIsServicesDropdownOpen(!isServicesDropdownOpen);
   };
 
+  const handleDropdownMouseEnter = () => {
+    setIsServicesDropdownOpen(true);
+  };
+
+  const handleDropdownMouseLeave = () => {
+    setIsServicesDropdownOpen(false);
+  };
+
   const closeServicesDropdown = () => {
     setIsServicesDropdownOpen(false);
   };
@@ -66,15 +74,18 @@ const Header = () => {
               <Link to="/servicios" 
                     className={`nav-link ${location.pathname === '/servicios' ? 'active' : ''}`}
                     onMouseEnter={toggleServicesDropdown}
-                    onMouseLeave={closeServicesDropdown}
                     onClick={closeServicesDropdown}
               >
                 Servicios
               </Link>
-              <div className={`services-dropdown ${isServicesDropdownOpen ? 'active' : ''}`}>
+              <div 
+                className={`services-dropdown ${isServicesDropdownOpen ? 'active' : ''}`}
+                onMouseEnter={handleDropdownMouseEnter}
+                onMouseLeave={handleDropdownMouseLeave}
+              >
                 <ul>
                   <li>
-                    <Link to="/agricola" onClick={closeServicesDropdown}>Agrícola</Link>
+                    <Link to="/agricultural" onClick={closeServicesDropdown}>Agrícola</Link>
                   </li>
                   <li>
                     <Link to="/industrial" onClick={closeServicesDropdown}>Industrial</Link>
