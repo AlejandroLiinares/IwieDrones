@@ -30,4 +30,4 @@ const Entrenamiento = () => {
   );
 };
 
-export default Training;
+export default Entrenamiento;

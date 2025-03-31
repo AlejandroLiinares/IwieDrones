@@ -1,31 +1,37 @@
-/* Variables CSS globales */
+/*
+ * Variables CSS Globales
+ * Sistema de diseño consistente para Iwie Drones
+ * Última actualización: 2025-03-31
+ */
+
+/* Paleta de Colores - Escala de azul corporativo */
 :root {
   /* Color Palette */
-  --color-darkest: #0C2F52;
-  --color-dark: #11467A;
-  --color-primary: #175DA3;
-  --color-medium: #457DB5;
-  --color-light: #A2BEDA;
-  --color-lightest: #D1DFED;
+  --color-darkest: #0C2F52;  /* Azul más oscuro */
+  --color-dark: #11467A;     /* Azul oscuro */
+  --color-primary: #175DA3;  /* Azul principal */
+  --color-medium: #457DB5;   /* Azul medio */
+  --color-light: #A2BEDA;    /* Azul claro */
+  --color-lightest: #D1DFED; /* Azul más claro */
   
-  /* Asignación de variables funcionales */
-  --primary-color: var(--color-primary);
-  --primary-dark: var(--color-dark);
-  --primary-light: var(--color-medium);
-  --accent-color: var(--color-medium);
-  --background-white: #FFFFFF;
-  --background-light: #FFFFFF;
-  --background-dark: var(--color-darkest);
-  --text-color: var(--color-darkest);
-  --text-light: var(--color-dark);
-  --text-muted: var(--color-medium);
-  --border-color: var(--color-light);
-  --success-color: #28a745;
-  --warning-color: #ffc107;
-  --danger-color: #dc3545;
-  --info-color: var(--color-medium);
+  /* Variables Funcionales - Mapeo de colores a propósitos específicos */
+  --primary-color: var(--color-primary);  /* Color principal */
+  --primary-dark: var(--color-dark);      /* Color oscuro */
+  --primary-light: var(--color-medium);   /* Color medio */
+  --accent-color: var(--color-medium);    /* Color de acento */
+  --background-white: #FFFFFF;            /* Fondo blanco */
+  --background-light: #FFFFFF;            /* Fondo claro */
+  --background-dark: var(--color-darkest);/* Fondo oscuro */
+  --text-color: var(--color-darkest);     /* Texto principal */
+  --text-light: var(--color-dark);        /* Texto secundario */
+  --text-muted: var(--color-medium);      /* Texto suave */
+  --border-color: var(--color-light);     /* Color de bordes */
+  --success-color: #28a745;              /* Éxito */
+  --warning-color: #ffc107;              /* Advertencia */
+  --danger-color: #dc3545;               /* Error */
+  --info-color: var(--color-medium);      /* Información */
 
-  /* Typography */
+  /* Tipografía - Sistema de escalas */
   --font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu', sans-serif;
   --font-secondary: 'Montserrat', 'Helvetica Neue', sans-serif;
   --font-size-base: 16px;
@@ -43,7 +49,7 @@
   --font-weight-medium: 500;
   --font-weight-bold: 700;
 
-  /* Spacing */
+  /* Espaciado - Sistema de espacios */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
@@ -54,7 +60,7 @@
   --spacing-4xl: 6rem;
   --spacing-5xl: 8rem;
 
-  /* Borders */
+  /* Bordes - Estilos estándar */
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
@@ -64,22 +70,22 @@
   --border-width-normal: 2px;
   --border-width-thick: 4px;
 
-  /* Shadows */
+  /* Sombras - Efectos de profundidad */
   --shadow-sm: 0 1px 2px rgba(12, 47, 82, 0.1);
   --shadow-md: 0 4px 6px rgba(12, 47, 82, 0.1);
   --shadow-lg: 0 10px 15px rgba(12, 47, 82, 0.1);
   --shadow-xl: 0 20px 25px rgba(12, 47, 82, 0.1);
   --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
 
-  /* Transitions */
+  /* Transiciones - Animaciones suaves */
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
 
-  /* Container */
+  /* Contenedor - Layout estándar */
   --container-width: 1400px;
   --container-padding: 1rem;
   
-  /* Z-index layers */
+  /* Capas Z-index - Orden de superposición */
   --z-index-dropdown: 1000;
   --z-index-sticky: 1020;
   --z-index-fixed: 1030;

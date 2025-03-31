@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import "./Home.css";
+import "./Base.css";
 import "./Hero.css";
+import "./Home.css";
 import "./Quote.css";
-import "./base.css";
 import { useRef, useState, useEffect } from 'react';
 
 const Home = () => {
-  // Datos de los slides de servicios Sólo quiero poder hacer los cambios que quiera. 
+  // Datos de los slides de servicios
   const serviceSlides = [
     {
       id: 1,
@@ -200,28 +200,14 @@ const Home = () => {
       <section className="about-us-section" id="quienes-somos">
         <div className="about-us-container">
           <div className="about-us-content">
-            <h2 className="section-title">QUIÉNES SOMOS</h2>
+            <h2 className="section-title">¿QUIÉNES SOMOS?</h2>
             <div className="about-divider"></div>
             <p className="about-description">
-              Somos una empresa especializada en servicios con drones, comprometidos con la innovación y la excelencia en cada proyecto que emprendemos.
+              Somos una empresa especializada en soluciones con drones que ofrece servicios profesionales y capacitación en el uso de tecnología aérea.
             </p>
           </div>
         </div>
       </section>
-      
-      {/* Modal para servicios */}
-      {serviceModal.isOpen && (
-        <div className="modal-backdrop" onClick={handleModalBackdropClick}>
-          <div className="modal-card">
-            <button className="modal-close" onClick={closeServiceModal} aria-label="Cerrar modal">
-              <i className="fas fa-times"></i>
-            </button>
-            <h3 className="modal-title">{serviceModal.title}</h3>
-            <div className="modal-divider"></div>
-            <p className="modal-content">{serviceModal.description}</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
