@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
 import './Drone.css';
 import DroneFiltro from './DroneFiltro/DroneFiltro';
+import OptimizedImage from '../UI/OptimizedImage/OptimizedImage';
 
 function Drone() {
     const dronesSliderRef = useRef(null);
@@ -93,7 +94,13 @@ function Drone() {
                         <div className="drones-slider" ref={dronesSliderRef}>
                             {filteredDrones.map((drone, index) => (
                                 <div key={index} className="drone-item">
-                                    <img src={drone.image} alt={`Drone ${drone.title}`} className={drone.title === 'H32X' ? 'drone-image h32x-image' : 'drone-image'} />
+                                    <OptimizedImage
+                                        src={drone.image}
+                                        alt={`Drone ${drone.title}`}
+                                        width={280}
+                                        height={200}
+                                        className={drone.title === 'H32X' ? 'drone-image h32x-image' : 'drone-image'}
+                                    />
                                     <h3 className="drone-title">{drone.title}</h3>
                                     <p className="drone-summary">{drone.summary}</p>
                                     <button 

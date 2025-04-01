@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Agricultural.css';
+import OptimizedImage from '../../UI/OptimizedImage/OptimizedImage';
 
 // Componente para tarjetas de servicios agrícolas
 const ServiceCard = ({ image, title, description }) => (
   <div className="service-card">
     <div className="service-image">
-      <img src={image} alt={title} />
+      <OptimizedImage src={image} alt={title} width={300} height={200} />
     </div>
     <div className="service-content">
       <h3>{title}</h3>
