@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Base.css";
-import "./Hero.css";
 import "./Home.css";
-import "./Quote.css";
 import { useRef, useState } from 'react';
 
 const Home = () => {
