@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import "./Home.css";
 import { useRef, useState } from 'react';
+import ServiceCard from '../UI/Card/ServiceCard';
+import SliderNavButton from '../UI/Button/SliderNavButton';
 
 const Home = () => {
   // Datos de los slides de servicios
@@ -172,51 +174,33 @@ const Home = () => {
           <div className="section-divider"></div>
           
           <div className="services-content">
-            <div className="services-slider" style={{
-              transform: `translateX(-${currentSlide * 100}%)`
-            }}>
-              {serviceSlides.map((slide) => (
-                <div key={slide.id} className="slide">
-                  <div className="slide-content">
-                    <img src={slide.image} alt={slide.title} onError={handleImageError} />
-                    <button 
-                      onClick={(e) => {
-                        e.preventDefault();
-                        openServiceModal(slide.title, slide.description);
-                      }}
-                      className="slide-info-toggle"
-                      aria-label={`Ver más información sobre ${slide.title}`}
-                    >
-                      <i className="fas fa-plus"></i>
-                    </button>
-                    <h3 className="slide-overlay-title">{slide.title}</h3>
+            <div className="services-slider-container">
+              <SliderNavButton 
+                direction="left" 
+                onClick={() => handleSlideClick('left')}
+                ariaLabel="Ver servicio anterior"
+              />
+              
+              <div className="services-slider" style={{
+                transform: `translateX(-${currentSlide * 100}%)`
+              }}>
+                {serviceSlides.map((slide) => (
+                  <div key={slide.id} className="slide">
+                    <ServiceCard
+                      image={slide.image}
+                      title={slide.title}
+                      description={slide.description}
+                      link={slide.link}
+                    />
                   </div>
-                </div>
-              ))}
-            </div>
-            
-            {/* Navigation buttons */}
-            <div className="slider-controls">
-              <button 
-                className="slider-arrow" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleSlideClick('left');
-                }}
-                aria-label="Previous slide"
-              >
-                &#8249;
-              </button>
-              <button 
-                className="slider-arrow" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleSlideClick('right');
-                }}
-                aria-label="Next slide"
-              >
-                &#8250;
-              </button>
+                ))}
+              </div>
+              
+              <SliderNavButton 
+                direction="right" 
+                onClick={() => handleSlideClick('right')}
+                ariaLabel="Ver servicio siguiente"
+              />
             </div>
           </div>
         </div>
