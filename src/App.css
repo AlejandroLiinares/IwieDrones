@@ -273,6 +273,7 @@ a:hover {
   border-color: var(--secondary-color);
 }
 
+
 /* Modal para información detallada */
 .modal-backdrop {
   position: fixed;
