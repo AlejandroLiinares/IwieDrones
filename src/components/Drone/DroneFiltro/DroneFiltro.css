@@ -7,9 +7,9 @@
 
 .drone-filter {
     padding: 0.5rem 1.5rem;
-    border: 2px solid #333;
+    border: 2px solid #1976d2;
     background-color: transparent;
-    color: #333;
+    color: #1976d2;
     border-radius: 25px;
     font-weight: 600;
     cursor: pointer;
@@ -18,10 +18,10 @@
 }
 
 .drone-filter:hover {
-    background-color: rgba(51, 51, 51, 0.1);
+    background-color: #e3f2fd;
 }
 
 .drone-filter.active {
-    background-color: #333;
+    background-color: #1976d2;
     color: white;
 }
