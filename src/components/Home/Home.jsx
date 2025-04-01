@@ -55,19 +55,19 @@ const Home = () => {
     {
       id: 1,
       icon: "fab fa-tiktok",
-      url: "https://www.tiktok.com/@iwiemx",
+      url: "https://www.tiktok.com/@iwiedrones",
       alt: "TikTok"
     },
     {
       id: 2,
       icon: "fab fa-instagram",
-      url: "https://www.instagram.com/iwiemx/",
+      url: "https://www.instagram.com/iwiedrones/",
       alt: "Instagram"
     },
     {
       id: 3,
       icon: "fab fa-facebook",
-      url: "https://www.facebook.com/iwiemx/",
+      url: "https://www.facebook.com/people/Iwie-Drones/100092530085647/",
       alt: "Facebook"
     }
   ];
