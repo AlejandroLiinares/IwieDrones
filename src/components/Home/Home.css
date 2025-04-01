@@ -6,11 +6,26 @@
 /* Importar variables globales */
 @import url('../../App.css');
 
-/* Home Component Layout */
+/* Estilos base */
 .home {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Estilos compartidos */
+.button-style {
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-style:hover {
+  transform: scale(1.1);
 }
 
 /* Services Section */
@@ -82,26 +97,14 @@
   right: 20px;
   width: 60px;
   height: 60px;
-  border-radius: 50%;
   background: rgba(0, 0, 0, 0.7);
-  border: none;
   color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
   z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 1.5rem;
 }
 
 .slide-info-toggle:hover {
   background: rgba(0, 0, 0, 0.9);
-  transform: scale(1.1);
-}
-
-.slide-info-toggle i {
-  font-size: 1.5rem;
 }
 
 .slide img {
@@ -125,114 +128,131 @@
 .slider-arrow {
   width: 40px;
   height: 40px;
-  border: none;
   background: rgba(0, 0, 0, 0.5);
   color: white;
-  cursor: pointer;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
 }
 
 .slider-arrow:hover {
   background: rgba(0, 0, 0, 0.7);
-  transform: scale(1.1);
 }
 
 /* About Us Section */
 .about-us-section {
-  min-height: 100vh;
   position: relative;
-  background: url('/quienes-somos.jpg') no-repeat center center fixed;
-  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-us-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
-.about-us-container {
-  position: relative;
-  z-index: 2;
-  padding: var(--spacing-5xl) var(--spacing-xl);
+.about-us-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
 }
 
-.about-us-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  color: var(--text-white);
-}
-
-.about-us-content .section-title {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-md);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.about-divider {
-  width: var(--spacing-5xl);
-  height: var(--spacing-xs);
-  background-color: var(--primary-color);
-  margin: var(--spacing-lg) auto;
-  border-radius: var(--border-radius-md);
-}
-
-.about-us-content .about-description {
-  font-size: var(--font-size-lg);
-  line-height: var(--line-height-loose);
-  margin-bottom: var(--spacing-xl);
-  opacity: 0.9;
-}
-
-/* About Us Section - Overlay */
-.about-us-section::before {
-  content: '';
+.about-us-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+}
+
+.about-us-content {
+  position: absolute;
+  left: var(--spacing-xl);
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  max-width: 600px;
+}
+
+.about-us-content .section-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+  color: #ffffff;
+}
+
+.about-us-content .about-subtitle {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-loose);
+  opacity: 0.9;
+}
+
+/* Social Networks Section */
+.social-networks-section {
+  padding: var(--spacing-4xl) 0;
+  background-color: var(--background-light);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-3xl);
+  margin-top: var(--spacing-3xl);
+}
+
+.social-link {
+  color: var(--text-dark);
+  font-size: var(--font-size-3xl);
+  transition: color var(--transition-duration) var(--transition-timing);
+  text-decoration: none;
+}
+
+.social-link:hover {
+  color: var(--primary-color);
+}
+
+.social-link i {
+  transition: transform var(--transition-duration) var(--transition-timing);
+}
+
+.social-link:hover i {
+  transform: scale(1.2);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .slide {
     min-width: 250px;
-    height: 300px;
   }
-  
-  .slide-overlay-title {
-    font-size: 1.2rem;
+
+  .about-us-content {
+    left: var(--spacing-md);
   }
-  
-  .slide-info-toggle {
-    width: 50px;
-    height: 50px;
+
+  .social-links {
+    gap: var(--spacing-2xl);
   }
-  
-  .about-us-container {
-    padding: var(--spacing-3xl) var(--spacing-md);
-  }
-  
-  .about-us-content .section-title {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .about-us-content .about-description {
-    font-size: var(--font-size-md);
+
+  .social-link {
+    font-size: var(--font-size-2xl);
   }
 }
 
 @media (max-width: 576px) {
-  .slide {
-    min-width: 200px;
-    height: 250px;
+  .about-us-content {
+    left: var(--spacing-sm);
   }
-  
-  .slide-overlay-title {
-    font-size: 1rem;
+
+  .social-links {
+    gap: var(--spacing-xl);
+  }
+
+  .social-link {
+    font-size: var(--font-size-xl);
   }
 }

@@ -3,7 +3,7 @@ import "./Base.css";
 import "./Hero.css";
 import "./Home.css";
 import "./Quote.css";
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 
 const Home = () => {
   // Datos de los slides de servicios
@@ -44,29 +44,38 @@ const Home = () => {
       link: "/capacitaciones"
     }
   ];
-  
+
   // Estados para los modales
   const [modalInfo, setModalInfo] = useState({ isOpen: false, title: '', content: '' });
   const [serviceModal, setServiceModal] = useState({ isOpen: false, title: '', description: '' });
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // Datos de las redes sociales
+  const socialLinks = [
+    {
+      id: 1,
+      icon: "fab fa-tiktok",
+      url: "https://www.tiktok.com/@iwiemx",
+      alt: "TikTok"
+    },
+    {
+      id: 2,
+      icon: "fab fa-instagram",
+      url: "https://www.instagram.com/iwiemx/",
+      alt: "Instagram"
+    },
+    {
+      id: 3,
+      icon: "fab fa-facebook",
+      url: "https://www.facebook.com/iwiemx/",
+      alt: "Facebook"
+    }
+  ];
+
   // Función para manejar errores de carga de imágenes
   const handleImageError = (e) => {
     console.log(`Error cargando imagen: ${e.target.src}`);
     e.target.src = '/placeholder.jpg';
-  };
-
-  // Función genérica para navegar por cualquier slider
-  const scrollSlider = (sliderRef, direction) => {
-    if (!sliderRef.current) return;
-    
-    const scrollAmount = 300;
-    const currentScroll = sliderRef.current.scrollLeft;
-    
-    sliderRef.current.scrollTo({
-      left: currentScroll + (direction === 'left' ? -scrollAmount : scrollAmount),
-      behavior: 'smooth'
-    });
   };
 
   // Funciones para gestionar modales
@@ -76,12 +85,16 @@ const Home = () => {
 
   const openModal = (setter, data) => {
     setter({ ...data, isOpen: true });
-    toggleBodyScroll(true);
+    setTimeout(() => {
+      toggleBodyScroll(true);
+    }, 100);
   };
 
   const closeModal = (setter, currentState) => {
     setter({ ...currentState, isOpen: false });
-    toggleBodyScroll(false);
+    setTimeout(() => {
+      toggleBodyScroll(false);
+    }, 100);
   };
 
   // Manejadores específicos para cada modal
@@ -170,7 +183,10 @@ const Home = () => {
                   <div className="slide-content">
                     <img src={slide.image} alt={slide.title} onError={handleImageError} />
                     <button 
-                      onClick={() => openServiceModal(slide.title, slide.description)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        openServiceModal(slide.title, slide.description);
+                      }}
                       className="slide-info-toggle"
                       aria-label={`Ver más información sobre ${slide.title}`}
                     >
@@ -186,14 +202,20 @@ const Home = () => {
             <div className="slider-controls">
               <button 
                 className="slider-arrow" 
-                onClick={() => handleSlideClick('left')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleSlideClick('left');
+                }}
                 aria-label="Previous slide"
               >
                 &#8249;
               </button>
               <button 
                 className="slider-arrow" 
-                onClick={() => handleSlideClick('right')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleSlideClick('right');
+                }}
                 aria-label="Next slide"
               >
                 &#8250;
@@ -205,13 +227,38 @@ const Home = () => {
       
       {/* About Us Section */}
       <section className="about-us-section" id="quienes-somos">
-        <div className="about-us-container">
-          <div className="about-us-content">
-            <h2 className="section-title">¿QUIÉNES SOMOS?</h2>
-            <div className="about-divider"></div>
-            <p className="about-description">
-              Somos una empresa especializada en soluciones con drones que ofrece servicios profesionales y capacitación en el uso de tecnología aérea.
-            </p>
+        <div className="about-us-background">
+          <img src="/quienes-somos.jpg" alt="Quienes Somos" className="about-us-image" />
+        </div>
+        <div className="about-us-overlay"></div>
+        <div className="about-us-content">
+          <h2 className="section-title">QUIÉNES SOMOS</h2>
+          <div className="about-divider"></div>
+          <p className="about-subtitle">
+            Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.
+          </p>
+        </div>
+      </section>
+      
+      {/* Social Networks Section */}
+      <section className="social-networks-section" id="redes">
+        <div className="container">
+          <h2 className="section-title">NUESTRAS REDES</h2>
+          <div className="section-divider"></div>
+          
+          <div className="social-links">
+            {socialLinks.map((link) => (
+              <a 
+                key={link.id} 
+                href={link.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="social-link"
+                aria-label={`Visitar ${link.alt}`}
+              >
+                <i className={link.icon}></i>
+              </a>
+            ))}
           </div>
         </div>
       </section>

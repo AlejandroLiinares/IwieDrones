@@ -22,21 +22,21 @@ const Agricultural = () => {
   const services = [
     {
       id: 1,
-      image: "/agricola1.jpg",
-      title: "Aplicación de Fertilizantes",
+      image: "/pulverizacion.jpg",
+      title: "Pulverizaciones",
       description: "Sistema de aplicación de fertilizantes de alta precisión para optimizar el rendimiento de los cultivos."
     },
     {
       id: 2,
-      image: "/agricola2.jpg",
-      title: "Control de Plagas",
-      description: "Monitoreo y control de plagas mediante drones equipados con sensores térmicos y multiespectrales."
+      image: "/mapa.png",
+      title: "Mapas Multiespectrales",
+      description: "Mapas multiespectrales y térmicos para determinar salud del cultivo según vigor y manejo de riegos prioridad de cuartel."
     },
     {
       id: 3,
-      image: "/agricola3.jpg",
-      title: "Monitoreo de Cultivos",
-      description: "Sistema de monitoreo continuo de cultivos para detectar problemas tempranos y optimizar recursos."
+      image: "/planimetria.webp",
+      title: "Planimetría",
+      description: "Planimetría del sector a plantar para determinar espacios de cuarteles tamaños y zonas específicas."
     }
   ];
 
