@@ -1,0 +1,416 @@
+/* 
+ * Membresias.css - Estilos específicos para el componente Membresias de Iwie Drones
+ * Este archivo contiene los estilos para todas las secciones del componente Membresias
+ */
+
+/* 1. Importaciones y Variables */
+@import url('../../App.css');
+
+/* 2. Estilos generales */
+.membresias-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  background-color: var(--color-secondary);
+  margin: 0 auto 3rem;
+}
+
+/* 3. Hero Section */
+.membresias-hero {
+  height: 60vh;
+  min-height: 400px;
+  background-image: url('/membresias.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  color: white;
+}
+
+.membresias-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.membresias-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.membresias-hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.membresias-subtitle {
+  font-size: 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* 4. Beneficios Section */
+.benefits-section {
+  padding: 5rem 0;
+  background-color: var(--color-light);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.benefit-item {
+  background-color: white;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.benefit-icon {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.benefit-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.benefit-description {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 5. Planes Section */
+.plans-section {
+  padding: 5rem 0;
+  background-color: #f9f9f9;
+}
+
+.plans-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.plan-card {
+  width: 300px;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.plan-card.recommended {
+  transform: scale(1.05);
+  border: 2px solid var(--color-secondary);
+  z-index: 2;
+}
+
+.plan-card.recommended:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.recommended-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-bottom-left-radius: 10px;
+}
+
+.plan-title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.plan-price {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.period {
+  font-size: 1rem;
+  color: #666;
+}
+
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.feature-item {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  color: #555;
+}
+
+.feature-item i {
+  color: var(--color-secondary);
+  margin-right: 0.5rem;
+}
+
+.plan-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.plan-button:hover {
+  background-color: var(--color-secondary);
+}
+
+/* 6. FAQ Section */
+.faq-section {
+  padding: 5rem 0;
+  background-color: var(--color-light);
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-5px);
+}
+
+.faq-question {
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.faq-answer {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 7. CTA Section */
+.cta-section {
+  padding: 5rem 0;
+  background-color: var(--color-primary);
+  color: white;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.cta-description {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  opacity: 0.9;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: white;
+  color: var(--color-primary);
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 8. Responsive Styles */
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .membresias-hero h1 {
+    font-size: 3rem;
+  }
+  
+  .membresias-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .benefit-item {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .membresias-hero {
+    height: 50vh;
+  }
+  
+  .membresias-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .membresias-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .plan-card {
+    width: 280px;
+  }
+  
+  .plan-title {
+    font-size: 1.6rem;
+  }
+  
+  .price {
+    font-size: 2.2rem;
+  }
+  
+  .cta-title {
+    font-size: 2.2rem;
+  }
+  
+  .cta-description {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .membresias-hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .membresias-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .benefit-icon {
+    font-size: 2rem;
+  }
+  
+  .benefit-title {
+    font-size: 1.3rem;
+  }
+  
+  .plan-card {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .plan-title {
+    font-size: 1.5rem;
+  }
+  
+  .price {
+    font-size: 2rem;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+}

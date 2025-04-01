@@ -149,6 +149,11 @@ const Header = () => {
               </div>
             </li>
             <li className="nav-item">
+              <Link to="/membresias" className={`nav-link ${location.pathname === '/membresias' ? 'active' : ''}`}>
+                Membresías
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to="/contacto" className={`nav-link ${location.pathname === '/contacto' ? 'active' : ''}`}>
                 Contáctanos
               </Link>

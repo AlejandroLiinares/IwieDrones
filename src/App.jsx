@@ -14,6 +14,7 @@ import Forestal from './components/Servicios/Forestal/Forestal';
 import ServicioTecnico from './components/Servicios/ServicioTecnico/ServicioTecnico';
 import Contacto from './components/Contacto/Contacto';
 import Drone from './components/Drone/Drone'; // La importación es correcta
+import Membresias from './components/Membresias/Membresias';
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/drones" element={<Drone />} />
                 <Route path="/drones/:category" element={<Drone />} />
+                <Route path="/membresias" element={<Membresias />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
             <Footer />
