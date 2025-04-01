@@ -31,23 +31,29 @@
 
 .drone-item {
   flex: 0 0 auto;
-  width: var(--spacing-4xl);
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
   margin-right: var(--spacing-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: var(--spacing-4xl);
-  padding: var(--spacing-md);
   position: relative;
   transition: all var(--transition-normal);
-  height: 420px; /* Altura fija para todos los drones */
-  justify-content: space-between; /* Distribuir elementos uniformemente */
+  height: 400px;
+  justify-content: space-between;
+}
+
+.drone-item-content {
+  width: 100%;
+  padding: var(--spacing-md);
+  box-sizing: border-box;
 }
 
 .drone-image {
-  width: 100%;
-  height: var(--spacing-5xl);
-  object-fit: contain;
+  width: 280px;
+  height: 200px;
+  object-fit: cover;
   transition: transform var(--transition-normal);
   margin-bottom: var(--spacing-xs);
 }
@@ -57,7 +63,7 @@
 }
 
 .drone-title {
-  font-size: var(--font-size-lg);
+  font-size: 1.1rem;
   font-weight: 600;
   margin: var(--spacing-xs) 0;
   text-align: center;
@@ -67,28 +73,15 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.5px;
-  height: var(--spacing-3xl); /* Altura fija para los títulos */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0 var(--spacing-xs); /* Añadir padding horizontal */
-  line-height: 1.2; /* Mejorar espaciado entre líneas */
+  line-height: 1.2;
 }
 
 .drone-summary {
-  font-size: var(--font-size-sm);
+  font-size: 0.9rem;
   color: #666;
   text-align: center;
   margin: var(--spacing-xs) 0 var(--spacing-sm);
-  height: var(--spacing-4xl); /* Altura fija para los resúmenes */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  overflow: hidden;
-  padding: 0 var(--spacing-sm); /* Añadir padding horizontal para mejorar la legibilidad */
-  line-height: 1.3; /* Mejorar espaciado entre líneas */
+  line-height: 1.3;
 }
 
 .drone-info-toggle {
@@ -146,6 +139,62 @@
   color: #333;
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .drone-item {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    margin-right: var(--spacing-lg);
+    height: 380px;
+  }
+  
+  .drone-image {
+    width: 260px;
+    height: 180px;
+  }
+  
+  .drone-title {
+    font-size: 1rem;
+  }
+  
+  .drone-summary {
+    font-size: 0.85rem;
+  }
+  
+  .slider-nav-button {
+    width: var(--spacing-2xl);
+    height: var(--spacing-2xl);
+  }
+  
+  .slider-nav-button i {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 576px) {
+  .drone-item {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    margin-right: var(--spacing-md);
+    height: 350px;
+  }
+  
+  .drone-image {
+    width: 230px;
+    height: 160px;
+  }
+  
+  .drone-title {
+    font-size: 0.95rem;
+  }
+  
+  .drone-summary {
+    font-size: 0.8rem;
+  }
+}
+
 /* Drones Catalog Section */
 .drones-catalog-section {
   padding: var(--spacing-5xl) 0;
@@ -179,15 +228,15 @@
 
 /* Estilos específicos para el dron H32X */
 .drone-item:first-child {
-  width: var(--spacing-5xl);
+  width: 300px;
   margin-right: var(--spacing-2xl);
-  height: 420px; /* Misma altura que los demás para mantener alineación */
+  height: 400px; /* Misma altura que los demás para mantener alineación */
 }
 
 .drone-item:first-child .drone-image {
-  width: 100%;
-  height: var(--spacing-5xl);
-  object-fit: contain;
+  width: 280px;
+  height: 200px;
+  object-fit: cover;
   transition: transform var(--transition-normal);
   margin-bottom: var(--spacing-xs);
 }
@@ -198,7 +247,7 @@
 
 .drone-item:first-child .drone-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: var(--font-size-xl);
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 1px;
   background: linear-gradient(90deg, #00a8ff, #00eeff);
@@ -208,78 +257,6 @@
   text-shadow: 0px 0px 10px rgba(0, 168, 255, 0.2);
   padding: 0 var(--spacing-xs); /* Añadir padding horizontal */
   line-height: 1.2; /* Mejorar espaciado entre líneas */
-}
-
-/* Responsive adjustments for drones */
-@media (max-width: 768px) {
-  .drone-item {
-    width: var(--spacing-3xl);
-    margin-right: var(--spacing-lg);
-  }
-  
-  .drone-image {
-    height: var(--spacing-4xl);
-  }
-  
-  .drone-title {
-    font-size: var(--font-size-md);
-    height: var(--spacing-3xl); /* Más altura para títulos largos en pantallas pequeñas */
-    line-height: 1.3; /* Ajustar espaciado entre líneas para pantallas más pequeñas */
-  }
-  
-  .drone-summary {
-    font-size: var(--font-size-sm);
-    height: var(--spacing-4xl); /* Más altura para resúmenes en pantallas pequeñas */
-    line-height: 1.4; /* Ajustar espaciado entre líneas para pantallas más pequeñas */
-  }
-  
-  .drone-item:first-child .drone-image {
-    height: var(--spacing-5xl);
-  }
-  
-  .drone-item:first-child .drone-title {
-    font-size: var(--font-size-lg);
-  }
-  
-  .slider-nav-button {
-    width: var(--spacing-2xl);
-    height: var(--spacing-2xl);
-  }
-  
-  .slider-nav-button i {
-    font-size: var(--font-size-sm);
-  }
-}
-
-@media (max-width: 576px) {
-  .drone-item {
-    width: var(--spacing-2xl);
-    margin-right: var(--spacing-md);
-  }
-  
-  .drone-image {
-    height: var(--spacing-3xl);
-  }
-  
-  .drone-title {
-    font-size: var(--font-size-sm);
-    height: var(--spacing-2xl); /* Más altura para títulos largos en pantallas muy pequeñas */
-    line-height: 1.4; /* Ajustar espaciado entre líneas para pantallas muy pequeñas */
-  }
-  
-  .drone-summary {
-    font-size: var(--font-size-xs);
-    height: var(--spacing-3xl); /* Más altura para resúmenes en pantallas muy pequeñas */
-    line-height: 1.5; /* Ajustar espaciado entre líneas para pantallas muy pequeñas */
-  }
-  
-  .drone-item:first-child .drone-image {
-    height: var(--spacing-4xl);
-  }
-  
-  .drone-item:first-child .drone-title {
-    font-size: var(--font-size-md);
-  }
 }
 
 /* Hero Section */

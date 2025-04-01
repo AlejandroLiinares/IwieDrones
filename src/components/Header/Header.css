@@ -80,6 +80,7 @@
 
 .nav-item {
   position: relative;
+  padding: 1rem 0;
 }
 
 .nav-link {
@@ -87,7 +88,7 @@
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
-  padding: 0.4rem 0;
+  padding: 1rem 0;
   position: relative;
   white-space: nowrap;
   letter-spacing: 0.5px;
@@ -103,7 +104,7 @@
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 600;
-  padding: 0.4rem 0;
+  padding: 1rem 0;
   position: relative;
   white-space: nowrap;
   letter-spacing: 0.5px;
