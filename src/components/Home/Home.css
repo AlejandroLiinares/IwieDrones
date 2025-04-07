@@ -308,10 +308,6 @@ button {
   background-color: #3c51ec;
 }
 
-.cta-button:hover {
-  background-color: #0c3aa5;
-  color: white;
-}
 
 /* 11. Sección Servicios */
 .services {

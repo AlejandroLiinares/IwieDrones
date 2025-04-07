@@ -135,7 +135,7 @@ const Home = () => {
               <div className="hero-divider"></div>
               <h1 className="hero-title">LA INDUSTRIA DEL FUTURO</h1>
             </div>
-            <a href="#servicios" style={{ color: 'red !important' }} className="cta-button" aria-label="Ver más información sobre nuestros servicios">Más Información</a>
+            <a href="#servicios"className="cta-button" aria-label="Ver más información sobre nuestros servicios">Más Información</a>
           </div>
         </div>
       </section>
