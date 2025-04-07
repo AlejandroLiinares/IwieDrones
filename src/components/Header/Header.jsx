@@ -109,19 +109,13 @@ const Header = () => {
                     <Link to="/agricultural" onClick={closeServicesDropdown}>Agrícola</Link>
                   </li>
                   <li>
-                    <Link to="/industrial" onClick={closeServicesDropdown}>Industrial</Link>
+                    <Link to="/mantencion" onClick={closeServicesDropdown}>Mantención</Link>
                   </li>
                   <li>
-                    <Link to="/capacitaciones" onClick={closeServicesDropdown}>Capacitaciones</Link>
+                    <Link to="/reparacion" onClick={closeServicesDropdown}>Reparación</Link>
                   </li>
                   <li>
-                    <Link to="/inspecciones" onClick={closeServicesDropdown}>Inspecciones</Link>
-                  </li>
-                  <li>
-                    <Link to="/forestal" onClick={closeServicesDropdown}>Forestal</Link>
-                  </li>
-                  <li>
-                    <Link to="/servicio-tecnico" onClick={closeServicesDropdown}>Servicio Técnico</Link>
+                    <Link to="/repuestos" onClick={closeServicesDropdown}>Repuestos</Link>
                   </li>
                 </ul>
               </div>
@@ -150,7 +144,7 @@ const Header = () => {
             </li>
             <li className="nav-item">
               <Link to="/membresias" className={`nav-link ${location.pathname === '/membresias' ? 'active' : ''}`}>
-                Membresías
+                Operador Full-Stack
               </Link>
             </li>
             <li className="nav-item">

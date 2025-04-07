@@ -12,35 +12,28 @@ const Home = () => {
       title: "Agrícolas",
       description: "Ofrecemos soluciones de alta precisión para la agricultura con tecnología especializada en aplicación, siembra y monitoreo de cultivos.",
       image: "/agricola.jpg",
-      link: "/agricola"
+      link: "/agricultural"
     },
     {
       id: 2,
-      title: "Industriales",
-      description: "Nuestros servicios industriales están equipados con tecnología avanzada para inspecciones, mapeo 3D, termografía y más.",
-      image: "/industria.jpg",
-      link: "/industrial"
+      title: "Mantención",
+      description: "Servicio especializado para mantener sus drones en óptimas condiciones y extender su vida útil.",
+      image: "/mantencion.jpg",
+      link: "/mantencion"
     },
     {
       id: 3,
-      title: "Televigilancia",
-      description: "Sistemas de vigilancia para monitoreo de seguridad, control de perímetros y supervisión de eventos.",
-      image: "/televigilancia.jpg",
-      link: "/inspecciones"
+      title: "Reparación",
+      description: "Soluciones profesionales para la reparación de sus equipos con técnicos certificados y repuestos originales.",
+      image: "/reparacion.jpg",
+      link: "/reparacion"
     },
     {
       id: 4,
-      title: "Energía",
-      description: "Inspección de infraestructuras energéticas, paneles solares y líneas eléctricas con tecnología especializada.",
-      image: "/energia.jpg",
-      link: "/industrial"
-    },
-    {
-      id: 5,
-      title: "Capacitación y Certificación",
-      description: "Programas de formación con certificación oficial, adaptados a diferentes niveles y necesidades.",
-      image: "/capacitacion.jpg",
-      link: "/capacitaciones"
+      title: "Repuestos",
+      description: "Componentes originales y compatibles para todos los modelos de drones con garantía de calidad.",
+      image: "/repuestos.jpg",
+      link: "/repuestos"
     }
   ];
 
