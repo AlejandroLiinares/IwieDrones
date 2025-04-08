@@ -21,15 +21,16 @@
 .section-title {
   font-size: 2.5rem;
   text-align: center;
-  color: var(--color-primary);
+  color: #ffffff;
   margin-bottom: 1rem;
   font-weight: 700;
+  letter-spacing: 2px;
 }
 
 .section-divider {
   width: 80px;
   height: 4px;
-  background-color: var(--color-secondary);
+  background-color: #d4af37; /* Gold color for premium feel */
   margin: 0 auto 3rem;
 }
 
@@ -120,10 +121,11 @@
   }
 }
 
-/* 4. Beneficios Section */
+/* 4. Beneficios Section - Premium Black Theme */
 .benefits-section {
   padding: 5rem 0;
-  background-color: var(--color-light);
+  background-color: #0a0a0a;
+  color: #ffffff;
 }
 
 .benefits-grid {
@@ -134,41 +136,46 @@
 }
 
 .benefit-item {
-  background-color: white;
+  background-color: #1a1a1a;
   border-radius: 10px;
   padding: 2rem;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #333;
 }
 
 .benefit-item:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
+  border: 1px solid #555;
 }
 
 .benefit-icon {
   font-size: 2.5rem;
-  color: var(--color-primary);
+  color: #d4af37; /* Gold color for premium feel */
   margin-bottom: 1.5rem;
 }
 
 .benefit-title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--color-primary);
+  color: #ffffff;
   font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .benefit-description {
-  color: #666;
+  color: #aaaaaa;
   line-height: 1.6;
 }
 
-/* 5. Planes Section */
+/* 5. Planes Section - Premium Black Theme */
 .plans-section {
   padding: 5rem 0;
-  background-color: #f9f9f9;
+  background-color: #151515;
+  position: relative;
+  overflow: hidden;
 }
 
 .plans-container {
@@ -182,23 +189,26 @@
 .plan-card {
   width: 300px;
   padding: 2rem;
-  background-color: white;
+  background-color: #0a0a0a;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
+  border: 1px solid #333;
 }
 
 .plan-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #d4af37;
 }
 
 .plan-card.recommended {
   transform: scale(1.05);
-  border: 2px solid var(--color-secondary);
+  border: 2px solid #d4af37;
   z-index: 2;
+  background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
 }
 
 .plan-card.recommended:hover {
@@ -209,20 +219,22 @@
   position: absolute;
   top: 0;
   right: 0;
-  background-color: var(--color-secondary);
-  color: white;
+  background-color: #d4af37;
+  color: #000000;
   padding: 0.5rem 1rem;
   font-size: 0.8rem;
   font-weight: 600;
   border-bottom-left-radius: 10px;
+  letter-spacing: 1px;
 }
 
 .plan-title {
   font-size: 1.8rem;
   text-align: center;
   margin-bottom: 1.5rem;
-  color: var(--color-primary);
+  color: #ffffff;
   font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .plan-price {
@@ -233,12 +245,12 @@
 .price {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: #d4af37;
 }
 
 .period {
   font-size: 1rem;
-  color: #666;
+  color: #aaaaaa;
 }
 
 .plan-features {
@@ -251,11 +263,11 @@
   padding: 0.5rem 0;
   display: flex;
   align-items: center;
-  color: #555;
+  color: #cccccc;
 }
 
 .feature-item i {
-  color: var(--color-secondary);
+  color: #d4af37;
   margin-right: 0.5rem;
 }
 
@@ -263,25 +275,30 @@
   display: block;
   width: 100%;
   padding: 1rem;
-  background-color: var(--color-primary);
-  color: white;
+  background-color: #d4af37;
+  color: #000000;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .plan-button:hover {
-  background-color: var(--color-secondary);
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
 }
 
-/* 6. FAQ Section */
+/* 6. FAQ Section - Premium Black Theme */
 .faq-section {
   padding: 5rem 0;
-  background-color: var(--color-light);
+  background-color: #0a0a0a;
+  color: #ffffff;
 }
 
 .faq-container {
@@ -290,12 +307,13 @@
 }
 
 .faq-item {
-  background-color: white;
+  background-color: #1a1a1a;
   border-radius: 10px;
   padding: 1.5rem 2rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  border: 1px solid #333;
 }
 
 .faq-item:hover {
@@ -304,77 +322,71 @@
 
 .faq-question {
   font-size: 1.3rem;
-  color: var(--color-primary);
+  color: #d4af37;
   margin-bottom: 1rem;
   font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .faq-answer {
-  color: #666;
+  color: #aaaaaa;
   line-height: 1.6;
 }
 
-/* 7. CTA Section */
+/* 7. CTA Section - Premium Black Theme */
 .cta-section {
   padding: 5rem 0;
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   color: white;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .cta-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 2px;
 }
 
 .cta-description {
   font-size: 1.2rem;
   max-width: 600px;
   margin: 0 auto 2rem;
-  opacity: 0.9;
+  color: #aaaaaa;
+  letter-spacing: 1px;
 }
 
-/* Estilos específicos para el botón CTA de la sección CTA */
+/* Estilos específicos para el botón CTA de la sección CTA - Premium Black Theme */
 .cta-section .cta-button {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background-color: white;
-  color: var(--color-primary);
+  background-color: #d4af37;
+  color: #000000;
   border: none;
   border-radius: 50px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
 }
 
 .cta-section .cta-button:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
 }
 
-/* Estilos específicos para el botón de los planes */
-.plan-button {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  background-color: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 1.5rem;
-  width: 100%;
-}
+/* Estilos específicos para el botón de los planes - Ya modificado en sección anterior */
 
-.plan-button:hover {
-  background-color: var(--color-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+/* Estilos hover para el botón de los planes - Ya modificado en sección anterior */
 
 /* 8. Responsive Styles */
 @media (max-width: 992px) {
