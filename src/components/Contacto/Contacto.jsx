@@ -110,22 +110,10 @@ const Contacto = () => {
     <div className="service-page">
       {/* Hero Section */}
       <section className="service-hero" style={{ 
-        backgroundImage: 'url("/contactanos.jpg")', 
-        backgroundSize: 'cover', 
-        backgroundPosition: 'center',
-        position: 'relative'
+        backgroundImage: 'url("/contactanos.jpg")'
       }}>
-        <div className="service-hero-overlay" style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 1
-        }}></div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <h1>CONTACTANOS</h1>
+        <div className="container">
+          <h1>CONTÁCTANOS</h1>
           <p className="coming-soon">Conéctate con nosotros para más información</p>
         </div>
       </section>

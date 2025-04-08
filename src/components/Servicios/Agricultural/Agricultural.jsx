@@ -43,25 +43,14 @@ const Agricultural = () => {
 
   return (
     <div className="service-page">
-      {/* Hero Section */}
+      {/* Hero Section - Full Screen Background */}
       <section className="service-hero" style={{ 
-        backgroundImage: 'url("./agricola.jpg")', 
-        backgroundSize: 'cover', 
-        backgroundPosition: 'center',
-        position: 'relative'
+        backgroundImage: 'url("./agricola.jpg")',
+        backgroundAttachment: 'fixed' // Para un efecto de parallax al hacer scroll
       }}>
-        <div className="service-hero-overlay" style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 1
-        }}></div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+        <div className="container">
           <h1>AGRÍCOLA</h1>
-          <p className="coming-soon">Próximamente</p>
+          {/* Eliminamos el texto "Próximamente" */}
         </div>
       </section>
 

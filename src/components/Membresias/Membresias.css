@@ -35,8 +35,9 @@
 
 /* 3. Hero Section */
 .membresias-hero {
-  height: 60vh;
-  min-height: 400px;
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
   background-image: url('/membresias.jpg');
   background-size: cover;
   background-position: center;
@@ -44,37 +45,79 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
   color: white;
+  margin-bottom: 2rem;
+  overflow: hidden;
 }
 
-.membresias-hero-overlay {
+.membresias-hero::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(rgba(7, 24, 57, 0.7), rgba(7, 24, 57, 0.9));
   z-index: 1;
+}
+
+.membresias-hero-overlay {
+  display: none; /* Ocultamos este elemento ya que usamos ::before */
 }
 
 .membresias-hero .container {
   position: relative;
   z-index: 2;
+  max-width: 800px;
+  padding: 0 2rem;
 }
 
 .membresias-hero h1 {
   font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
 }
 
 .membresias-subtitle {
-  font-size: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  font-size: 1.4rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+/* Responsive styles for hero */
+@media (max-width: 768px) {
+  .membresias-hero {
+    height: 60vh;
+    min-height: 400px;
+  }
+  
+  .membresias-hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .membresias-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .membresias-hero {
+    height: 50vh;
+    min-height: 350px;
+  }
+  
+  .membresias-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .membresias-subtitle {
+    font-size: 1rem;
+  }
 }
 
 /* 4. Beneficios Section */

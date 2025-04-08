@@ -7,6 +7,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [isDronesDropdownOpen, setIsDronesDropdownOpen] = useState(false);
+  const [isMembresiaDropdownOpen, setIsMembresiaDropdownOpen] = useState(false);
   const location = useLocation();
 
   // Controla el scroll para cambiar la apariencia del header
@@ -24,6 +25,7 @@ const Header = () => {
     setIsMenuOpen(false);
     setIsServicesDropdownOpen(false);
     setIsDronesDropdownOpen(false);
+    setIsMembresiaDropdownOpen(false);
   }, [location]);
 
   const toggleMenu = () => {
@@ -34,20 +36,32 @@ const Header = () => {
     e.preventDefault();
     if (type === 'services') {
       setIsDronesDropdownOpen(false);
+      setIsMembresiaDropdownOpen(false);
       setIsServicesDropdownOpen(!isServicesDropdownOpen);
     } else if (type === 'drones') {
       setIsServicesDropdownOpen(false);
+      setIsMembresiaDropdownOpen(false);
       setIsDronesDropdownOpen(!isDronesDropdownOpen);
+    } else if (type === 'membresia') {
+      setIsServicesDropdownOpen(false);
+      setIsDronesDropdownOpen(false);
+      setIsMembresiaDropdownOpen(!isMembresiaDropdownOpen);
     }
   };
 
   const handleDropdownMouseEnter = (type) => {
     if (type === 'services') {
       setIsDronesDropdownOpen(false);
+      setIsMembresiaDropdownOpen(false);
       setIsServicesDropdownOpen(true);
     } else if (type === 'drones') {
       setIsServicesDropdownOpen(false);
+      setIsMembresiaDropdownOpen(false);
       setIsDronesDropdownOpen(true);
+    } else if (type === 'membresia') {
+      setIsServicesDropdownOpen(false);
+      setIsDronesDropdownOpen(false);
+      setIsMembresiaDropdownOpen(true);
     }
   };
 
@@ -56,6 +70,8 @@ const Header = () => {
       setIsServicesDropdownOpen(false);
     } else if (type === 'drones') {
       setIsDronesDropdownOpen(false);
+    } else if (type === 'membresia') {
+      setIsMembresiaDropdownOpen(false);
     }
   };
 
@@ -64,6 +80,8 @@ const Header = () => {
       setIsServicesDropdownOpen(false);
     } else if (type === 'drones') {
       setIsDronesDropdownOpen(false);
+    } else if (type === 'membresia') {
+      setIsMembresiaDropdownOpen(false);
     }
   };
 
@@ -140,9 +158,21 @@ const Header = () => {
               </div>
             </li>
             <li className="nav-item">
-              <Link to="/membresias" className={`nav-link ${location.pathname === '/membresias' ? 'active' : ''}`}>
-                Operador Full-Stack
-              </Link>
+              <span className={`nav-link ${location.pathname === '/membresias' ? 'active' : ''}`}
+                    onMouseEnter={() => handleDropdownMouseEnter('membresia')}
+                    onClick={(e) => toggleDropdown(e, 'membresia')}
+              >
+                Membresía
+              </span>
+              <div 
+                className={`services-dropdown ${isMembresiaDropdownOpen ? 'active' : ''}`}
+                onMouseEnter={() => handleDropdownMouseEnter('membresia')}
+                onMouseLeave={() => handleDropdownMouseLeave('membresia')}
+              >
+                <ul>
+                  <li><Link to="/membresias" onClick={() => closeDropdown('membresia')}>Operador Full Stack</Link></li>
+                </ul>
+              </div>
             </li>
             <li className="nav-item">
               <Link to="/contacto" className={`nav-link ${location.pathname === '/contacto' ? 'active' : ''}`}>
