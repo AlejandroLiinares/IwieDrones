@@ -292,7 +292,8 @@
   opacity: 0.9;
 }
 
-.cta-button {
+/* Estilos específicos para el botón CTA de la sección CTA */
+.cta-section .cta-button {
   display: inline-block;
   padding: 1rem 2.5rem;
   background-color: white;
@@ -305,9 +306,31 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cta-button:hover {
+.cta-section .cta-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos específicos para el botón de los planes */
+.plan-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.plan-button:hover {
+  background-color: var(--color-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* 8. Responsive Styles */

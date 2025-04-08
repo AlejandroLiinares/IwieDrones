@@ -61,6 +61,12 @@ const Home = () => {
       icon: "fab fa-facebook",
       url: "https://www.facebook.com/people/Iwie-Drones/100092530085647/",
       alt: "Facebook"
+    },
+    {
+      id: 4,
+      icon: "fab fa-youtube",
+      url: "https://www.youtube.com/@IwieDrones",
+      alt: "YouTube"
     }
   ];
 
@@ -168,27 +174,32 @@ const Home = () => {
           
           <div className="services-content">
             <div className="services-slider-container">
-              <SliderNavButton 
-                direction="left" 
-                onClick={() => handleSlideClick('left')}
-                ariaLabel="Ver servicio anterior"
-              />
-              
               <div className="services-slider" style={{
                 transform: `translateX(-${currentSlide * 100}%)`
               }}>
                 {serviceSlides.map((slide) => (
                   <div key={slide.id} className="slide">
-                    <ServiceCard
-                      image={slide.image}
-                      title={slide.title}
-                      description={slide.description}
-                      link={slide.link}
-                    />
+                    <div className="service-card">
+                      <div className="service-card-image">
+                        <img src={slide.image} alt={slide.title} />
+                      </div>
+                      <div className="service-card-content">
+                        <h3>{slide.title}</h3>
+                        <p>{slide.description}</p>
+                        <Link to={slide.link} className="service-card-link">Ver más</Link>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
-              
+            </div>
+            
+            <div className="slider-nav-buttons">
+              <SliderNavButton 
+                direction="left" 
+                onClick={() => handleSlideClick('left')}
+                ariaLabel="Ver servicio anterior"
+              />
               <SliderNavButton 
                 direction="right" 
                 onClick={() => handleSlideClick('right')}

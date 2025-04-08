@@ -30,38 +30,41 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const toggleServicesDropdown = (e) => {
+  const toggleDropdown = (e, type) => {
     e.preventDefault();
-    setIsServicesDropdownOpen(!isServicesDropdownOpen);
+    if (type === 'services') {
+      setIsDronesDropdownOpen(false);
+      setIsServicesDropdownOpen(!isServicesDropdownOpen);
+    } else if (type === 'drones') {
+      setIsServicesDropdownOpen(false);
+      setIsDronesDropdownOpen(!isDronesDropdownOpen);
+    }
   };
 
-  const toggleDronesDropdown = (e) => {
-    e.preventDefault();
-    setIsDronesDropdownOpen(!isDronesDropdownOpen);
+  const handleDropdownMouseEnter = (type) => {
+    if (type === 'services') {
+      setIsDronesDropdownOpen(false);
+      setIsServicesDropdownOpen(true);
+    } else if (type === 'drones') {
+      setIsServicesDropdownOpen(false);
+      setIsDronesDropdownOpen(true);
+    }
   };
 
-  const handleServicesDropdownMouseEnter = () => {
-    setIsServicesDropdownOpen(true);
+  const handleDropdownMouseLeave = (type) => {
+    if (type === 'services') {
+      setIsServicesDropdownOpen(false);
+    } else if (type === 'drones') {
+      setIsDronesDropdownOpen(false);
+    }
   };
 
-  const handleServicesDropdownMouseLeave = () => {
-    setIsServicesDropdownOpen(false);
-  };
-
-  const closeServicesDropdown = () => {
-    setIsServicesDropdownOpen(false);
-  };
-
-  const handleDronesDropdownMouseEnter = () => {
-    setIsDronesDropdownOpen(true);
-  };
-
-  const handleDronesDropdownMouseLeave = () => {
-    setIsDronesDropdownOpen(false);
-  };
-
-  const closeDronesDropdown = () => {
-    setIsDronesDropdownOpen(false);
+  const closeDropdown = (type) => {
+    if (type === 'services') {
+      setIsServicesDropdownOpen(false);
+    } else if (type === 'drones') {
+      setIsDronesDropdownOpen(false);
+    }
   };
 
   return (
@@ -91,54 +94,48 @@ const Header = () => {
           <ul className="nav-list">
             <li className="nav-item">
               <span className={`nav-link ${location.pathname === '/servicios' ? 'active' : ''}`}
-                    onMouseEnter={toggleServicesDropdown}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      closeServicesDropdown();
-                    }}
+                    onMouseEnter={() => handleDropdownMouseEnter('services')}
+                    onClick={(e) => toggleDropdown(e, 'services')}
               >
                 Servicios
               </span>
               <div 
                 className={`services-dropdown ${isServicesDropdownOpen ? 'active' : ''}`}
-                onMouseEnter={handleServicesDropdownMouseEnter}
-                onMouseLeave={handleServicesDropdownMouseLeave}
+                onMouseEnter={() => handleDropdownMouseEnter('services')}
+                onMouseLeave={() => handleDropdownMouseLeave('services')}
               >
                 <ul>
                   <li>
-                    <Link to="/agricultural" onClick={closeServicesDropdown}>Agrícola</Link>
+                    <Link to="/agricultural" onClick={() => closeDropdown('services')}>Agrícola</Link>
                   </li>
                   <li>
-                    <Link to="/mantencion" onClick={closeServicesDropdown}>Mantención</Link>
+                    <Link to="/mantencion" onClick={() => closeDropdown('services')}>Mantención</Link>
                   </li>
                   <li>
-                    <Link to="/reparacion" onClick={closeServicesDropdown}>Reparación</Link>
+                    <Link to="/reparacion" onClick={() => closeDropdown('services')}>Reparación</Link>
                   </li>
                   <li>
-                    <Link to="/repuestos" onClick={closeServicesDropdown}>Repuestos</Link>
+                    <Link to="/repuestos" onClick={() => closeDropdown('services')}>Repuestos</Link>
                   </li>
                 </ul>
               </div>
             </li>
             <li className="nav-item">
               <span className={`nav-link ${location.pathname === '/drones' ? 'active' : ''}`}
-                    onMouseEnter={toggleDronesDropdown}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      closeDronesDropdown();
-                    }}
+                    onMouseEnter={() => handleDropdownMouseEnter('drones')}
+                    onClick={(e) => toggleDropdown(e, 'drones')}
               >
                 Drones
               </span>
               <div 
                 className={`services-dropdown ${isDronesDropdownOpen ? 'active' : ''}`}
-                onMouseEnter={handleDronesDropdownMouseEnter}
-                onMouseLeave={handleDronesDropdownMouseLeave}
+                onMouseEnter={() => handleDropdownMouseEnter('drones')}
+                onMouseLeave={() => handleDropdownMouseLeave('drones')}
               >
                 <ul>
-                  <li><Link to="/drones" onClick={closeDronesDropdown}>Todos los drones</Link></li>
-                  <li><Link to="/drones/agricola" onClick={closeDronesDropdown}>Agrícolas</Link></li>
-                  <li><Link to="/drones/industrial" onClick={closeDronesDropdown}>Industriales</Link></li>
+                  <li><Link to="/drones" onClick={() => closeDropdown('drones')}>Todos los drones</Link></li>
+                  <li><Link to="/drones/agricola" onClick={() => closeDropdown('drones')}>Agrícolas</Link></li>
+                  <li><Link to="/drones/industrial" onClick={() => closeDropdown('drones')}>Industriales</Link></li>
                 </ul>
               </div>
             </li>
