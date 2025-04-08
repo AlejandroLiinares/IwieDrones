@@ -53,27 +53,24 @@ function Drone() {
 
     return (
         <div className="home-container">
-            {/* Hero Section */}
-            <section className="service-hero" style={{ 
-                backgroundImage: 'url("/drones.jpg")', 
-                backgroundSize: 'cover', 
+            {/* Hero Section - Simplificado */}
+            <div style={{ 
+                backgroundImage: 'url("/drones.jpg")',
+                backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                position: 'relative'
+                height: '100vh',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
             }}>
-                <div className="service-hero-overlay" style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                    zIndex: 1
-                }}></div>
-                <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-                    <h1>Compañía aérea para tus necesidades</h1>
-                    <p className="coming-soon">Adéntrate a buscar el dron ideal para ti</p>
-                </div>
-            </section>
+                <h1 style={{
+                    color: 'white',
+                    fontSize: '5rem',
+                    textAlign: 'center',
+                    textShadow: '2px 2px 8px rgba(0,0,0,0.7)'
+                }}>DRONES</h1>
+            </div>
 
             <section className="drones-catalog-section">
                 <div className="container">

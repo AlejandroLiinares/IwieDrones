@@ -43,27 +43,24 @@ const Reparacion = () => {
 
   return (
     <div className="service-page">
-      {/* Hero Section */}
-      <section className="service-hero" style={{ 
-        backgroundImage: 'url("./reparacion.jpg")', 
-        backgroundSize: 'cover', 
+      {/* Hero Section - Simplificado */}
+      <div style={{ 
+        backgroundImage: 'url("./reparacion.jpg")',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
-        position: 'relative'
+        height: '100vh',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}>
-        <div className="service-hero-overlay" style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 1
-        }}></div>
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <h1>REPARACIÓN</h1>
-          <p className="hero-subtitle">Soluciones profesionales para la reparación de sus equipos</p>
-        </div>
-      </section>
+        <h1 style={{
+          color: 'white',
+          fontSize: '5rem',
+          textAlign: 'center',
+          textShadow: '2px 2px 8px rgba(0,0,0,0.7)'
+        }}>REPARACIÓN</h1>
+      </div>
 
       <section className="services-section">
         <div className="container">

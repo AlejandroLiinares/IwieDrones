@@ -108,15 +108,24 @@ const Contacto = () => {
 
   return (
     <div className="service-page">
-      {/* Hero Section */}
-      <section className="service-hero" style={{ 
-        backgroundImage: 'url("/contactanos.jpg")'
+      {/* Hero Section - Simplificado */}
+      <div style={{ 
+        backgroundImage: 'url("/contactanos.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
       }}>
-        <div className="container">
-          <h1>CONTÁCTANOS</h1>
-          <p className="coming-soon">Conéctate con nosotros para más información</p>
-        </div>
-      </section>
+        <h1 style={{
+          color: 'white',
+          fontSize: '5rem',
+          textAlign: 'center',
+          textShadow: '2px 2px 8px rgba(0,0,0,0.7)'
+        }}>CONTÁCTANOS</h1>
+      </div>
 
       {/* Formulario de Contacto */}
       <section className="contact-section">

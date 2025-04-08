@@ -54,14 +54,24 @@ const Membresias = () => {
 
   return (
     <div className="membresias-page">
-      {/* Hero Section */}
-      <section className="membresias-hero">
-        <div className="membresias-hero-overlay"></div>
-        <div className="container">
-          <h1>MEMBRESÍAS</h1>
-          <p className="membresias-subtitle">Únete a nuestra comunidad y accede a beneficios exclusivos</p>
-        </div>
-      </section>
+      {/* Hero Section - Simplificado */}
+      <div style={{ 
+        backgroundImage: 'url("/membresias.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <h1 style={{
+          color: 'white',
+          fontSize: '5rem',
+          textAlign: 'center',
+          textShadow: '2px 2px 8px rgba(0,0,0,0.7)'
+        }}>OPERADOR FULL STACK</h1>
+      </div>
 
       {/* Beneficios Section */}
       <section className="benefits-section">
