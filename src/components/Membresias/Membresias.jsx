@@ -56,7 +56,7 @@ const Membresias = () => {
     <div className="membresias-page">
       {/* Hero Section - Simplificado */}
       <div style={{ 
-        backgroundImage: 'url("/membresias.jpg")',
+        backgroundImage: 'url("/membresia.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
@@ -70,7 +70,7 @@ const Membresias = () => {
           fontSize: '5rem',
           textAlign: 'center',
           textShadow: '2px 2px 8px rgba(0,0,0,0.7)'
-        }}>OPERADOR FULL STACK</h1>
+        }}>MEMBRESÍA</h1>
       </div>
 
       {/* Beneficios Section */}
