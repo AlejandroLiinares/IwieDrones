@@ -43,9 +43,9 @@ const Reparacion = () => {
 
   return (
     <div className="service-page">
-      {/* Hero Section - Simplificado */}
+      {/* Hero Section - Simplificado con capa oscura */}
       <div style={{ 
-        backgroundImage: 'url("./reparacion.jpg")',
+        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./reparacion.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
@@ -79,22 +79,22 @@ const Reparacion = () => {
       </section>
 
       {/* Beneficios Section */}
-      <section className="benefits-section">
+      <section className="benefits-section" style={{ backgroundColor: '#f5f5f5' }}>
         <div className="container">
-          <h2>Por Qué Elegirnos</h2>
+          <h2 style={{ color: '#175DA3' }}>Por Qué Elegirnos</h2>
           <div className="benefits-grid">
             <div className="benefit-item">
-              <i className="fas fa-clock"></i>
+              <i className="fas fa-clock" style={{ color: '#175DA3' }}></i>
               <h3>Reparación Rápida</h3>
               <p>Minimizamos el tiempo de inactividad con diagnósticos precisos y reparaciones eficientes.</p>
             </div>
             <div className="benefit-item">
-              <i className="fas fa-certificate"></i>
+              <i className="fas fa-certificate" style={{ color: '#175DA3' }}></i>
               <h3>Garantía de Calidad</h3>
               <p>Todas nuestras reparaciones cuentan con garantía y utilizamos repuestos originales o de alta calidad.</p>
             </div>
             <div className="benefit-item">
-              <i className="fas fa-user-cog"></i>
+              <i className="fas fa-user-cog" style={{ color: '#175DA3' }}></i>
               <h3>Técnicos Certificados</h3>
               <p>Nuestro equipo cuenta con certificaciones y amplia experiencia en reparación de drones.</p>
             </div>
@@ -103,12 +103,12 @@ const Reparacion = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
+      <section className="cta-section" style={{ backgroundColor: '#175DA3', color: 'white' }}>
         <div className="container">
           <div className="cta-content">
-            <h2>¿Su drone necesita reparación?</h2>
-            <p>Contáctenos hoy mismo para un diagnóstico profesional y una solución adaptada a sus necesidades.</p>
-            <Link to="/contacto" className="cta-button">Solicitar Reparación</Link>
+            <h2 style={{ color: 'white' }}>¿Su drone necesita reparación?</h2>
+            <p style={{ color: 'white' }}>Contáctenos hoy mismo para un diagnóstico profesional y una solución adaptada a sus necesidades.</p>
+            <Link to="/contacto" className="cta-button" style={{ backgroundColor: 'white', color: '#175DA3' }}>Solicitar Reparación</Link>
           </div>
         </div>
       </section>

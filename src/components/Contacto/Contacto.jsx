@@ -14,46 +14,52 @@ const serviceOptions = [
 ];
 
 // Componente para campos de formulario
-const FormField = ({ id, label, type = 'text', value, onChange, required = false, placeholder, options = null, rows = null }) => (
+const FormField = ({ id, label, type = 'text', value, onChange, required = false, placeholder, options = null, rows = null, icon = null }) => (
   <div className="form-group">
     <label htmlFor={id}>{label} {required && <span className="required">*</span>}</label>
-    {type === 'select' ? (
-      <select
-        id={id}
-        name={id}
-        value={value}
-        onChange={onChange}
-        aria-required={required}
-      >
-        {options.map(option => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    ) : type === 'textarea' ? (
-      <textarea
-        id={id}
-        name={id}
-        value={value}
-        onChange={onChange}
-        required={required}
-        placeholder={placeholder}
-        rows={rows}
-        aria-required={required}
-      ></textarea>
-    ) : (
-      <input
-        type={type}
-        id={id}
-        name={id}
-        value={value}
-        onChange={onChange}
-        required={required}
-        placeholder={placeholder}
-        aria-required={required}
-      />
-    )}
+    <div className="input-container">
+      {icon && <i className={`fas ${icon} input-icon`}></i>}
+      {type === 'select' ? (
+        <select
+          id={id}
+          name={id}
+          value={value}
+          onChange={onChange}
+          aria-required={required}
+          className={icon ? 'has-icon' : ''}
+        >
+          {options.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      ) : type === 'textarea' ? (
+        <textarea
+          id={id}
+          name={id}
+          value={value}
+          onChange={onChange}
+          required={required}
+          placeholder={placeholder}
+          rows={rows}
+          aria-required={required}
+          className={icon ? 'has-icon' : ''}
+        ></textarea>
+      ) : (
+        <input
+          type={type}
+          id={id}
+          name={id}
+          value={value}
+          onChange={onChange}
+          required={required}
+          placeholder={placeholder}
+          aria-required={required}
+          className={icon ? 'has-icon' : ''}
+        />
+      )}
+    </div>
   </div>
 );
 
@@ -108,9 +114,9 @@ const Contacto = () => {
 
   return (
     <div className="service-page">
-      {/* Hero Section - Simplificado */}
+      {/* Hero Section - Simplificado con capa oscura */}
       <div style={{ 
-        backgroundImage: 'url("/contactanos.jpg")',
+        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/contactanos.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
@@ -131,6 +137,7 @@ const Contacto = () => {
       <section className="contact-section">
         <div className="container">
           <h2>Envíanos un mensaje</h2>
+          <p className="contact-subtitle">Estamos aquí para responder tus consultas y ayudarte con nuestros servicios de drones</p>
           <form onSubmit={handleSubmit} className="contact-form">
             <FormField
               id="name"
@@ -140,6 +147,7 @@ const Contacto = () => {
               onChange={handleChange}
               required
               placeholder="Tu nombre completo"
+              icon="fa-user"
             />
             
             <div className="form-row">
@@ -151,6 +159,7 @@ const Contacto = () => {
                 onChange={handleChange}
                 required
                 placeholder="tu@email.com"
+                icon="fa-envelope"
               />
               
               <FormField
@@ -160,6 +169,7 @@ const Contacto = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="+56 9 12345678"
+                icon="fa-phone"
               />
             </div>
             
@@ -170,6 +180,7 @@ const Contacto = () => {
               value={formData.service}
               onChange={handleChange}
               options={serviceOptions}
+              icon="fa-drone"
             />
             
             <FormField
@@ -179,6 +190,7 @@ const Contacto = () => {
               onChange={handleChange}
               required
               placeholder="Ej: Consulta sobre servicios agrícolas"
+              icon="fa-tag"
             />
             
             <FormField
@@ -190,18 +202,35 @@ const Contacto = () => {
               required
               placeholder="Escribe tu mensaje aquí..."
               rows={5}
+              icon="fa-comment"
             />
             
             <button type="submit" className="submit-button">
-              Enviar Mensaje
+              <i className="fas fa-paper-plane"></i> Enviar Mensaje
             </button>
           </form>
 
           {formStatus.submitted && (
             <div className={`form-feedback ${formStatus.success ? 'success' : 'error'}`}>
+              <i className={`fas ${formStatus.success ? 'fa-check-circle' : 'fa-exclamation-circle'}`}></i>
               {formStatus.message}
             </div>
           )}
+          
+          <div className="contact-info">
+            <div className="contact-info-item">
+              <i className="fas fa-map-marker-alt"></i>
+              <span>Santiago, Chile</span>
+            </div>
+            <div className="contact-info-item">
+              <i className="fas fa-envelope"></i>
+              <span>contacto@iwiedrones.cl</span>
+            </div>
+            <div className="contact-info-item">
+              <i className="fas fa-phone"></i>
+              <span>+56 9 1234 5678</span>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -43,9 +43,9 @@ const Agricultural = () => {
 
   return (
     <div className="service-page">
-      {/* Hero Section - Simplificado */}
+      {/* Hero Section - Simplificado con capa oscura */}
       <div style={{ 
-        backgroundImage: 'url("./agricola.jpg")',
+        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./agricola.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',

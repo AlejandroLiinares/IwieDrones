@@ -43,9 +43,9 @@ const Repuestos = () => {
 
   return (
     <div className="service-page">
-      {/* Hero Section - Simplificado */}
+      {/* Hero Section - Simplificado con capa oscura */}
       <div style={{ 
-        backgroundImage: 'url("./repuestos.jpg")',
+        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./repuestos.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
@@ -79,22 +79,22 @@ const Repuestos = () => {
       </section>
 
       {/* Ventajas Section */}
-      <section className="benefits-section">
+      <section className="benefits-section" style={{ backgroundColor: '#f5f5f5' }}>
         <div className="container">
-          <h2>Ventajas de Nuestros Repuestos</h2>
+          <h2 style={{ color: '#175DA3' }}>Ventajas de Nuestros Repuestos</h2>
           <div className="benefits-grid">
             <div className="benefit-item">
-              <i className="fas fa-check-circle"></i>
+              <i className="fas fa-check-circle" style={{ color: '#175DA3' }}></i>
               <h3>Calidad Garantizada</h3>
               <p>Todos nuestros repuestos cuentan con garantía y son sometidos a rigurosos controles de calidad.</p>
             </div>
             <div className="benefit-item">
-              <i className="fas fa-truck"></i>
+              <i className="fas fa-truck" style={{ color: '#175DA3' }}></i>
               <h3>Envío Rápido</h3>
               <p>Disponemos de stock permanente y servicio de envío rápido a todo el país.</p>
             </div>
             <div className="benefit-item">
-              <i className="fas fa-tools"></i>
+              <i className="fas fa-tools" style={{ color: '#175DA3' }}></i>
               <h3>Asesoría Técnica</h3>
               <p>Nuestro equipo técnico le ayudará a seleccionar los repuestos adecuados para su equipo.</p>
             </div>
@@ -103,12 +103,12 @@ const Repuestos = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
+      <section className="cta-section" style={{ backgroundColor: '#175DA3', color: 'white' }}>
         <div className="container">
           <div className="cta-content">
-            <h2>¿Necesita repuestos para su drone?</h2>
-            <p>Contáctenos para consultar disponibilidad, precios y compatibilidad con su modelo específico.</p>
-            <Link to="/contacto" className="cta-button">Solicitar Información</Link>
+            <h2 style={{ color: 'white' }}>¿Necesita repuestos para su drone?</h2>
+            <p style={{ color: 'white' }}>Contáctenos para consultar disponibilidad, precios y compatibilidad con su modelo específico.</p>
+            <Link to="/contacto" className="cta-button" style={{ backgroundColor: 'white', color: '#175DA3' }}>Solicitar Información</Link>
           </div>
         </div>
       </section>

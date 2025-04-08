@@ -43,9 +43,9 @@ const Mantencion = () => {
 
   return (
     <div className="service-page">
-      {/* Hero Section - Simplificado */}
+      {/* Hero Section - Simplificado con capa oscura */}
       <div style={{ 
-        backgroundImage: 'url("./mantencion.jpg")',
+        backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("./mantencion.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
@@ -79,22 +79,22 @@ const Mantencion = () => {
       </section>
 
       {/* Beneficios Section */}
-      <section className="benefits-section">
+      <section className="benefits-section" style={{ backgroundColor: '#f5f5f5' }}>
         <div className="container">
-          <h2>Beneficios de Nuestro Servicio</h2>
+          <h2 style={{ color: '#175DA3' }}>Beneficios de Nuestro Servicio</h2>
           <div className="benefits-grid">
             <div className="benefit-item">
-              <i className="fas fa-check-circle"></i>
+              <i className="fas fa-check-circle" style={{ color: '#175DA3' }}></i>
               <h3>Mayor Vida Útil</h3>
               <p>Mantenimiento regular que extiende significativamente la vida útil de sus equipos.</p>
             </div>
             <div className="benefit-item">
-              <i className="fas fa-shield-alt"></i>
+              <i className="fas fa-shield-alt" style={{ color: '#175DA3' }}></i>
               <h3>Prevención de Fallos</h3>
               <p>Identificación temprana de posibles problemas antes de que causen daños mayores.</p>
             </div>
             <div className="benefit-item">
-              <i className="fas fa-tools"></i>
+              <i className="fas fa-tools" style={{ color: '#175DA3' }}></i>
               <h3>Técnicos Especializados</h3>
               <p>Nuestro equipo cuenta con certificaciones y amplia experiencia en mantención de drones.</p>
             </div>
@@ -103,12 +103,12 @@ const Mantencion = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
+      <section className="cta-section" style={{ backgroundColor: '#175DA3', color: 'white' }}>
         <div className="container">
           <div className="cta-content">
-            <h2>¿Necesita un servicio de mantención para sus drones?</h2>
-            <p>Contáctenos hoy mismo para programar una revisión o solicitar más información sobre nuestros servicios.</p>
-            <Link to="/contacto" className="cta-button">Solicitar Servicio</Link>
+            <h2 style={{ color: 'white' }}>¿Necesita un servicio de mantención para sus drones?</h2>
+            <p style={{ color: 'white' }}>Contáctenos hoy mismo para programar una revisión o solicitar más información sobre nuestros servicios.</p>
+            <Link to="/contacto" className="cta-button" style={{ backgroundColor: 'white', color: '#175DA3' }}>Solicitar Servicio</Link>
           </div>
         </div>
       </section>

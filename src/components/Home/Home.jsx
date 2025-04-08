@@ -169,8 +169,8 @@ const Home = () => {
       {/* Services Section */}
       <section className="services" id="servicios">
         <div className="container">
-          <h2 className="section-title">NUESTROS SERVICIOS</h2>
-          <div className="section-divider"></div>
+          <h2 className="section-title" style={{ color: '#0a3d62' }}>NUESTROS SERVICIOS</h2>
+          <div className="section-divider" style={{ backgroundColor: '#0a3d62' }}></div>
           
           <div className="services-content">
             <div className="services-slider-container">
@@ -179,14 +179,19 @@ const Home = () => {
               }}>
                 {serviceSlides.map((slide) => (
                   <div key={slide.id} className="slide">
-                    <div className="service-card">
-                      <div className="service-card-image">
-                        <img src={slide.image} alt={slide.title} />
-                      </div>
-                      <div className="service-card-content">
-                        <h3>{slide.title}</h3>
-                        <p>{slide.description}</p>
-                        <Link to={slide.link} className="service-card-link">Ver más</Link>
+                    <div className="service-card" style={{ height: '400px' }}>
+                      <div className="service-card-image" style={{ height: '100%' }}>
+                        <img src={slide.image} alt={slide.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <div className="service-card-overlay" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.1) 100%)' }}>
+                          <h3 className="service-card-title" style={{ color: 'white', fontSize: '2rem', textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}>{slide.title}</h3>
+                          <button 
+                            className="service-card-plus-btn"
+                            onClick={() => openServiceModal(slide.title, slide.description)}
+                            aria-label={`Más información sobre ${slide.title}`}
+                          >
+                            <i className="fas fa-plus"></i>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -218,7 +223,7 @@ const Home = () => {
         <div className="about-us-overlay"></div>
         <div className="about-us-content">
           <h2 className="section-title">QUIÉNES SOMOS</h2>
-          <div className="about-divider"></div>
+          <div className="about-divider" style={{ backgroundColor: '#0a3d62' }}></div>
           <p className="about-subtitle">
             Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.
           </p>
@@ -228,8 +233,8 @@ const Home = () => {
       {/* Social Networks Section */}
       <section className="social-networks-section" id="redes">
         <div className="container">
-          <h2 className="section-title">NUESTRAS REDES</h2>
-          <div className="section-divider"></div>
+          <h2 className="section-title" style={{ color: '#0a3d62' }}>NUESTRAS REDES</h2>
+          <div className="section-divider" style={{ backgroundColor: '#0a3d62' }}></div>
           
           <div className="social-links">
             {socialLinks.map((link) => (
@@ -247,6 +252,27 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Modal para servicios */}
+      {serviceModal.isOpen && (
+        <div className="modal-backdrop" onClick={handleModalBackdropClick}>
+          <div className="modal-content service-modal">
+            <button className="modal-close" onClick={closeServiceModal} aria-label="Cerrar modal">
+              <i className="fas fa-times"></i>
+            </button>
+            <h3>{serviceModal.title}</h3>
+            <p>{serviceModal.description}</p>
+            <div className="modal-actions">
+              <Link 
+                to={serviceSlides.find(slide => slide.title === serviceModal.title)?.link || '/'} 
+                className="modal-action-button"
+              >
+                Ver más detalles
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
