@@ -112,10 +112,16 @@ button {
 @media (max-width: 768px) {
   .container { max-width: 540px; }
   h1 { font-size: var(--font-size-xl); }
+  body { font-size: 0.95rem; }
 }
 
 @media (max-width: 576px) {
   :root { --container-padding: 0.75rem; }
+  body { font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 0.85rem; }
 }
 
 /* 10. Sección Hero */
@@ -135,6 +141,7 @@ button {
   left: 0;
   right: 0;
   box-sizing: border-box;
+  min-height: 500px; /* Asegura una altura mínima en dispositivos pequeños */
 }
 
 .video-container {
@@ -160,6 +167,13 @@ button {
   pointer-events: none;
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 480px) {
+  #youtube-player {
+    width: 140%;
+    height: 140%;
+  }
 }
 
 .hero-overlay {
@@ -206,7 +220,7 @@ button {
 .hero-content {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 3rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -229,10 +243,11 @@ button {
   align-items: center;
   margin-bottom: 0.8rem;
   text-align: center;
-  padding: 1rem;
-  max-width: 90%;
+  padding: 1rem 0.5rem;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 }
 
 .title-container .subtitle {
@@ -244,6 +259,7 @@ button {
   text-transform: none;
   letter-spacing: 2px;
   margin-bottom: 0.7rem;
+  word-wrap: break-word;
 }
 
 .title-container .hero-divider {
@@ -265,6 +281,8 @@ button {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0 auto 0.7rem;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .hero p {
@@ -351,6 +369,7 @@ button {
   justify-content: center;
   padding: 0 10px;
   transition: opacity 0.3s ease;
+  box-sizing: border-box;
 }
 
 .slider-nav-buttons {
@@ -370,6 +389,7 @@ button {
   position: relative;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
 }
 
 .service-card:hover {
@@ -498,8 +518,8 @@ button {
   }
   
   .service-card {
-    max-width: 280px;
-    height: 320px;
+    max-width: 100%;
+    height: 200px;
   }
   
   .service-card-content h3 {
@@ -508,6 +528,64 @@ button {
   
   .service-card-content p {
     font-size: 0.85rem;
+  }
+  
+  .title-container .hero-title { 
+    font-size: 1.6rem; 
+    letter-spacing: 0.5px;
+  }
+  
+  .title-container .subtitle { 
+    font-size: 0.9rem; 
+    letter-spacing: 0.5px;
+  }
+  
+  .hero .cta-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+  
+  .quote-text blockquote { 
+    font-size: 18px; 
+  }
+  
+  .quote-text cite {
+    font-size: 16px;
+  }
+  
+  .quote-image { 
+    flex: 0 0 150px; 
+    height: 150px; 
+  }
+  
+  .service-card-title {
+    font-size: 1.3rem;
+  }
+  
+  .service-card-plus-btn {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .service-card-plus-btn i {
+    font-size: 1rem;
+  }
+  
+  .modal-content {
+    padding: 15px 10px;
+    width: calc(100% - 20px);
+    margin: 0 10px;
+  }
+  
+  .service-modal h3 {
+    font-size: 1.2rem;
+  }
+  
+  .modal-close {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
   }
 }
 
@@ -520,6 +598,13 @@ button {
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .about-us-section {
+    height: auto;
+    min-height: 400px;
+  }
 }
 
 .about-us-background {
@@ -638,12 +723,80 @@ button {
   .social-links {
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
   }
   
   .social-link {
     width: 50px;
     height: 50px;
     font-size: 1.3rem;
+  }
+  
+  .social-networks-section {
+    padding: 3rem 0;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .title-container .hero-title { 
+    font-size: 1.4rem; 
+    padding: 0 5px;
+  }
+  
+  .title-container .subtitle { 
+    font-size: 0.8rem; 
+    padding: 0 5px;
+  }
+  
+  .hero .cta-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    width: 90%;
+    max-width: 250px;
+  }
+  
+  .service-card {
+    height: 180px;
+    max-width: 95%;
+  }
+  
+  .service-card-title {
+    font-size: 1.2rem;
+  }
+  
+  .quote-text blockquote { 
+    font-size: 16px; 
+    padding: 0 10px;
+  }
+  
+  .quote-image { 
+    flex: 0 0 120px; 
+    height: 120px; 
+  }
+  
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    margin: 5px;
+  }
+  
+  .about-us-content {
+    padding: 0 15px;
+  }
+  
+  .about-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  /* Ajuste para el video de fondo */
+  #youtube-player {
+    width: 160%;
+    height: 160%;
   }
 }
 
@@ -662,11 +815,13 @@ button {
   margin: 0 auto;
   position: relative;
   padding: 0 20px;
+  flex-wrap: wrap;
 }
 
 .quote-text {
   flex: 1;
   padding-right: 80px;
+  min-width: 300px;
 }
 
 .quote-text blockquote {
@@ -679,6 +834,7 @@ button {
   margin: 0 0 20px 0;
   position: relative;
   padding-left: 40px;
+  word-wrap: break-word;
 }
 
 .quote-text blockquote::before {
@@ -722,8 +878,8 @@ button {
   .title-container .subtitle { font-size: 1.5rem; }
   
   .slide {
-    min-width: 250px;
-    height: 350px;
+    min-width: 50%;
+    height: auto;
   }
   
   .services-slider {
@@ -733,32 +889,53 @@ button {
   
   .quote-text blockquote { font-size: 24px; }
   .quote-image { flex: 0 0 220px; height: 220px; }
+  
+  .hero-content {
+    padding: 2rem 1rem;
+  }
+  
+  .service-card {
+    height: 280px;
+  }
 }
 
 @media (max-width: 768px) {
-  .title-container .hero-title { font-size: 2rem; }
-  .title-container .subtitle { font-size: 1.2rem; }
+  .title-container .hero-title { 
+    font-size: 2rem; 
+    padding: 0 15px;
+  }
+  .title-container .subtitle { 
+    font-size: 1.2rem; 
+    padding: 0 15px;
+  }
   
   .hero-buttons {
     flex-direction: column;
     gap: 1rem;
+    width: 100%;
+    align-items: center;
   }
   
-    .hero .cta-button {
+  .hero .cta-button {
     width: 100%;
     max-width: 300px;
     justify-content: center;
     background-color: #0800fd;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    text-align: center;
   }
   
   .quote-container {
     flex-direction: column;
     text-align: center;
+    padding: 0 15px;
   }
   
   .quote-text {
     padding-right: 0;
     margin-bottom: 30px;
+    width: 100%;
   }
   
   .quote-text blockquote {
@@ -782,31 +959,123 @@ button {
   }
   
   .slide {
-    min-width: 200px;
-    height: 300px;
+    min-width: 100%;
+    height: auto;
   }
   
   .services-slider {
     gap: 10px;
     padding: 10px;
   }
+  
+  .services-slider-container {
+    padding: 0 10px;
+    overflow-x: hidden;
+  }
+  
+  .service-card {
+    height: 250px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .modal-content {
+    padding: 25px 15px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .service-modal h3 {
+    font-size: 1.5rem;
+  }
+  
+  /* Ajuste para el video de fondo */
+  #youtube-player {
+    width: 150%;
+    height: 150%;
+  }
+  
+  /* Mejora para la sección About Us */
+  .about-us-section {
+    padding: 3rem 0;
+  }
+  
+  .about-us-content {
+    padding: 0 20px;
+  }
 }
 
 @media (max-width: 576px) {
-  .title-container .hero-title { font-size: 1.8rem; }
-  .title-container .subtitle { font-size: 1rem; }
+  .title-container .hero-title { 
+    font-size: 1.8rem; 
+    letter-spacing: 1px;
+    padding: 0 10px;
+  }
+  .title-container .subtitle { 
+    font-size: 1rem; 
+    letter-spacing: 1px;
+    padding: 0 10px;
+  }
   
-  .quote-text blockquote { font-size: 20px; }
-  .quote-image { flex: 0 0 180px; height: 180px; }
+  .hero-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .quote-section {
+    padding: 60px 0 30px;
+  }
+  
+  .quote-text blockquote { 
+    font-size: 20px; 
+    line-height: 1.3;
+  }
+  
+  .quote-image { 
+    flex: 0 0 180px; 
+    height: 180px; 
+  }
   
   .slide {
-    min-width: 180px;
-    height: 280px;
+    min-width: 100%;
+    height: auto;
+    padding: 0 5px;
   }
   
   .services-slider {
     gap: 8px;
-    padding: 8px;
+    padding: 8px 0;
+  }
+  
+  .service-card {
+    height: 220px;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+  
+  .service-card-title {
+    font-size: 1.5rem;
+  }
+  
+  .service-card-plus-btn {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .modal-content {
+    padding: 20px 15px;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  
+  .service-modal h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  
+  .modal-close {
+    top: 10px;
+    right: 10px;
   }
 }
 
@@ -834,14 +1103,15 @@ button {
 .modal-content {
   background-color: white;
   border-radius: 12px;
-  padding: 30px;
+  padding: 30px 20px;
   max-width: 500px;
-  width: 100%;
+  width: calc(100% - 30px);
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   animation: slideIn 0.3s ease;
   max-height: 90vh;
   overflow-y: auto;
+  margin: 0 15px;
 }
 
 @keyframes slideIn {

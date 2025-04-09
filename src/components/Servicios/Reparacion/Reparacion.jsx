@@ -52,13 +52,17 @@ const Reparacion = () => {
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        minHeight: '500px' /* Asegura una altura mínima en dispositivos pequeños */
       }}>
-        <h1 style={{
+        <h1 className="responsive-hero-title" style={{
           color: 'white',
-          fontSize: '5rem',
+          fontSize: 'clamp(2.5rem, 8vw, 5rem)', /* Tamaño de fuente responsivo */
           textAlign: 'center',
-          textShadow: '2px 2px 8px rgba(0,0,0,0.7)'
+          textShadow: '2px 2px 8px rgba(0,0,0,0.7)',
+          padding: '0 15px',
+          maxWidth: '100%',
+          boxSizing: 'border-box'
         }}>REPARACIÓN</h1>
       </div>
 

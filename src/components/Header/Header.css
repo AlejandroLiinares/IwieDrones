@@ -141,14 +141,14 @@
 .services-dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
   min-width: 200px;
   background-color: transparent;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
   transition: all 0.3s ease;
   z-index: 1001;
 }
@@ -156,7 +156,7 @@
 .services-dropdown.active {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
   background-color: rgba(7, 24, 57, 0.6);
   backdrop-filter: blur(10px);
 }
@@ -239,6 +239,7 @@
     padding: 2rem;
     transition: right 0.3s ease;
     z-index: 1001;
+    overflow-y: auto; /* Permite scroll si el menú es muy largo */
   }
   
   .nav-menu.active {
@@ -254,6 +255,7 @@
   .nav-link {
     font-size: 1.35rem;
     padding: 0.5rem 0;
+    text-align: left; /* Alinea el texto a la izquierda en el menú móvil */
   }
   
   .services-dropdown {
@@ -264,6 +266,8 @@
     background-color: rgba(7, 24, 57, 0.95);
     box-shadow: none;
     margin-left: 1rem;
+    width: 100%;
+    max-width: 100%;
   }
   
   .services-dropdown ul {
@@ -272,6 +276,22 @@
   
   .services-dropdown li {
     padding: 0.5rem 0;
+  }
+  
+  .services-dropdown a {
+    text-align: left;
+    padding-left: 1rem;
+  }
+  
+  /* Mejora para el botón de cierre del menú móvil */
+  .nav-menu::before {
+    content: '×';
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
   }
 }
 
@@ -283,32 +303,51 @@
   
   .nav-menu {
     padding: 1rem;
+    width: 80%;
+    max-width: 350px;
   }
   
   .nav-list {
     gap: 1rem;
+    width: 100%;
   }
   
   .nav-link {
     font-size: 1.2rem;
+    padding: 0.8rem 0;
   }
   
   .services-dropdown {
     margin-left: 0.5rem;
+    width: 90%;
   }
   
   .services-dropdown li {
     padding: 0.3rem 0;
+  }
+  
+  .services-dropdown a {
+    font-size: 0.9rem;
+  }
+  
+  .mobile-menu-button {
+    margin-right: 5px;
   }
 }
 
 @media (max-width: 576px) {
   .header-container {
     padding: 0.5rem;
+    height: 50px;
+  }
+  
+  .logo-image {
+    height: 30px;
   }
   
   .nav-menu {
     padding: 0.75rem;
+    width: 85%;
   }
   
   .nav-list {
@@ -317,13 +356,74 @@
   
   .nav-link {
     font-size: 1.1rem;
+    padding: 0.8rem 0.8rem;
   }
   
   .services-dropdown {
     margin-left: 0.3rem;
+    min-width: 180px;
   }
   
   .services-dropdown li {
     padding: 0.2rem 0;
+  }
+  
+  .services-dropdown a {
+    font-size: 0.85rem;
+  }
+  
+  .mobile-menu-button svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    height: 45px;
+    padding: 0.4rem;
+  }
+  
+  .logo-image {
+    height: 25px;
+  }
+  
+  .nav-menu {
+    padding: 1.5rem 0.5rem;
+    width: 90%;
+  }
+  
+  .nav-list {
+    gap: 0.7rem;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.7rem 0.7rem;
+  }
+  
+  .services-dropdown {
+    margin-left: 0.2rem;
+    min-width: 170px;
+  }
+  
+  .services-dropdown li {
+    padding: 0.15rem 0;
+  }
+  
+  .services-dropdown a {
+    font-size: 0.8rem;
+  }
+  
+  .mobile-menu-button svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Ajuste para el botón de cierre del menú móvil */
+  .nav-menu::before {
+    font-size: 1.8rem;
+    top: 10px;
+    right: 15px;
   }
 }
