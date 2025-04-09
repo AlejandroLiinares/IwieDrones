@@ -227,6 +227,7 @@ const Home = () => {
           <p className="about-subtitle">
             Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.
           </p>
+          <Link to="/drones" className="about-cta-button" aria-label="Más información sobre nuestros drones">Más Información</Link>
         </div>
       </section>
       

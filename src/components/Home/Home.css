@@ -660,6 +660,27 @@ button {
   margin-bottom: 2rem;
 }
 
+.about-cta-button {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  background-color: #3c51ec;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  text-align: center;
+}
+
+.about-cta-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #2a3fd8;
+}
+
 @media (max-width: 768px) {
   .about-us-section {
     height: auto;
