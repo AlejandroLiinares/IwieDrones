@@ -178,8 +178,8 @@ const Home = () => {
                 transform: `translateX(-${currentSlide * 100}%)`
               }}>
                 {serviceSlides.map((slide) => (
-                  <div key={slide.id} className="slide">
-                    <div className="service-card" style={{ height: '400px' }}>
+                  <div key={slide.id} className="slide" style={{ padding: '0 10px' }}>
+                    <div className="service-card" style={{ height: '480px', width: '350px' }}>
                       <div className="service-card-image" style={{ height: '100%' }}>
                         <img src={slide.image} alt={slide.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         <div className="service-card-overlay" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.1) 100%)' }}>
