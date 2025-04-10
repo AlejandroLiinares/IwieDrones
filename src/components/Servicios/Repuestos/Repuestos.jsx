@@ -88,24 +88,24 @@ const Repuestos = () => {
       </section>
 
       {/* Ventajas Section */}
-      <section className="benefits-section" style={{ backgroundColor: '#f5f5f5' }}>
+      <section className="benefits-section" style={{ backgroundColor: 'white' }}>
         <div className="container">
-          <h2 style={{ color: '#175DA3' }}>Ventajas de Nuestros Repuestos</h2>
+          <h2 style={{ color: '#1e90ff' }}>Ventajas de Nuestros Repuestos</h2>
           <div className="benefits-grid">
-            <div className="benefit-item">
-              <i className="fas fa-check-circle" style={{ color: '#175DA3' }}></i>
-              <h3>Calidad Garantizada</h3>
-              <p>Todos nuestros repuestos cuentan con garantía y son sometidos a rigurosos controles de calidad.</p>
+            <div className="benefit-item" style={{ backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', border: '1px solid #f0f0f0' }}>
+              <i className="fas fa-check-circle" style={{ color: '#1e90ff', fontSize: '2.5rem', marginBottom: '1rem' }}></i>
+              <h3 style={{ color: '#0a3d62', marginBottom: '1rem' }}>Calidad Garantizada</h3>
+              <p style={{ color: '#333', lineHeight: '1.6' }}>Todos nuestros repuestos cuentan con garantía y son sometidos a rigurosos controles de calidad.</p>
             </div>
-            <div className="benefit-item">
-              <i className="fas fa-truck" style={{ color: '#175DA3' }}></i>
-              <h3>Envío Rápido</h3>
-              <p>Disponemos de stock permanente y servicio de envío rápido a todo el país.</p>
+            <div className="benefit-item" style={{ backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', border: '1px solid #f0f0f0' }}>
+              <i className="fas fa-truck" style={{ color: '#1e90ff', fontSize: '2.5rem', marginBottom: '1rem' }}></i>
+              <h3 style={{ color: '#0a3d62', marginBottom: '1rem' }}>Envío Rápido</h3>
+              <p style={{ color: '#333', lineHeight: '1.6' }}>Disponemos de stock permanente y servicio de envío rápido a todo el país.</p>
             </div>
-            <div className="benefit-item">
-              <i className="fas fa-tools" style={{ color: '#175DA3' }}></i>
-              <h3>Asesoría Técnica</h3>
-              <p>Nuestro equipo técnico le ayudará a seleccionar los repuestos adecuados para su equipo.</p>
+            <div className="benefit-item" style={{ backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', border: '1px solid #f0f0f0' }}>
+              <i className="fas fa-tools" style={{ color: '#1e90ff', fontSize: '2.5rem', marginBottom: '1rem' }}></i>
+              <h3 style={{ color: '#0a3d62', marginBottom: '1rem' }}>Asesoría Técnica</h3>
+              <p style={{ color: '#333', lineHeight: '1.6' }}>Nuestro equipo técnico le ayudará a seleccionar los repuestos adecuados para su equipo.</p>
             </div>
           </div>
         </div>

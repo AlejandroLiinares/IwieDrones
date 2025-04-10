@@ -88,24 +88,24 @@ const Mantencion = () => {
       </section>
 
       {/* Beneficios Section */}
-      <section className="benefits-section" style={{ backgroundColor: '#f5f5f5' }}>
+      <section className="benefits-section" style={{ backgroundColor: 'white' }}>
         <div className="container">
-          <h2 style={{ color: '#175DA3' }}>Beneficios de Nuestro Servicio</h2>
+          <h2 style={{ color: '#1e90ff' }}>Beneficios de Nuestro Servicio</h2>
           <div className="benefits-grid">
-            <div className="benefit-item">
-              <i className="fas fa-check-circle" style={{ color: '#175DA3' }}></i>
-              <h3>Mayor Vida Útil</h3>
-              <p>Mantenimiento regular que extiende significativamente la vida útil de sus equipos.</p>
+            <div className="benefit-item" style={{ backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', border: '1px solid #f0f0f0' }}>
+              <i className="fas fa-check-circle" style={{ color: '#1e90ff', fontSize: '2.5rem', marginBottom: '1rem' }}></i>
+              <h3 style={{ color: '#0a3d62', marginBottom: '1rem' }}>Mayor Vida Útil</h3>
+              <p style={{ color: '#333', lineHeight: '1.6' }}>Mantenimiento regular que extiende significativamente la vida útil de sus equipos.</p>
             </div>
-            <div className="benefit-item">
-              <i className="fas fa-shield-alt" style={{ color: '#175DA3' }}></i>
-              <h3>Prevención de Fallos</h3>
-              <p>Identificación temprana de posibles problemas antes de que causen daños mayores.</p>
+            <div className="benefit-item" style={{ backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', border: '1px solid #f0f0f0' }}>
+              <i className="fas fa-shield-alt" style={{ color: '#1e90ff', fontSize: '2.5rem', marginBottom: '1rem' }}></i>
+              <h3 style={{ color: '#0a3d62', marginBottom: '1rem' }}>Prevención de Fallos</h3>
+              <p style={{ color: '#333', lineHeight: '1.6' }}>Identificación temprana de posibles problemas antes de que causen daños mayores.</p>
             </div>
-            <div className="benefit-item">
-              <i className="fas fa-tools" style={{ color: '#175DA3' }}></i>
-              <h3>Técnicos Especializados</h3>
-              <p>Nuestro equipo cuenta con certificaciones y amplia experiencia en mantención de drones.</p>
+            <div className="benefit-item" style={{ backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', border: '1px solid #f0f0f0' }}>
+              <i className="fas fa-tools" style={{ color: '#1e90ff', fontSize: '2.5rem', marginBottom: '1rem' }}></i>
+              <h3 style={{ color: '#0a3d62', marginBottom: '1rem' }}>Técnicos Especializados</h3>
+              <p style={{ color: '#333', lineHeight: '1.6' }}>Nuestro equipo cuenta con certificaciones y amplia experiencia en mantención de drones.</p>
             </div>
           </div>
         </div>

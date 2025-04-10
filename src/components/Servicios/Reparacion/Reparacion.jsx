@@ -88,24 +88,24 @@ const Reparacion = () => {
       </section>
 
       {/* Beneficios Section */}
-      <section className="benefits-section" style={{ backgroundColor: '#f5f5f5' }}>
+      <section className="benefits-section" style={{ backgroundColor: 'white' }}>
         <div className="container">
-          <h2 style={{ color: '#175DA3' }}>Por Qué Elegirnos</h2>
+          <h2 style={{ color: '#1e90ff' }}>Por Qué Elegirnos</h2>
           <div className="benefits-grid">
-            <div className="benefit-item">
-              <i className="fas fa-clock" style={{ color: '#175DA3' }}></i>
-              <h3>Reparación Rápida</h3>
-              <p>Minimizamos el tiempo de inactividad con diagnósticos precisos y reparaciones eficientes.</p>
+            <div className="benefit-item" style={{ backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', border: '1px solid #f0f0f0' }}>
+              <i className="fas fa-clock" style={{ color: '#1e90ff', fontSize: '2.5rem', marginBottom: '1rem' }}></i>
+              <h3 style={{ color: '#0a3d62', marginBottom: '1rem' }}>Reparación Rápida</h3>
+              <p style={{ color: '#333', lineHeight: '1.6' }}>Minimizamos el tiempo de inactividad con diagnósticos precisos y reparaciones eficientes.</p>
             </div>
-            <div className="benefit-item">
-              <i className="fas fa-certificate" style={{ color: '#175DA3' }}></i>
-              <h3>Garantía de Calidad</h3>
-              <p>Todas nuestras reparaciones cuentan con garantía y utilizamos repuestos originales o de alta calidad.</p>
+            <div className="benefit-item" style={{ backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', border: '1px solid #f0f0f0' }}>
+              <i className="fas fa-certificate" style={{ color: '#1e90ff', fontSize: '2.5rem', marginBottom: '1rem' }}></i>
+              <h3 style={{ color: '#0a3d62', marginBottom: '1rem' }}>Garantía de Calidad</h3>
+              <p style={{ color: '#333', lineHeight: '1.6' }}>Todas nuestras reparaciones cuentan con garantía y utilizamos repuestos originales o de alta calidad.</p>
             </div>
-            <div className="benefit-item">
-              <i className="fas fa-user-cog" style={{ color: '#175DA3' }}></i>
-              <h3>Técnicos Certificados</h3>
-              <p>Nuestro equipo cuenta con certificaciones y amplia experiencia en reparación de drones.</p>
+            <div className="benefit-item" style={{ backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', border: '1px solid #f0f0f0' }}>
+              <i className="fas fa-user-cog" style={{ color: '#1e90ff', fontSize: '2.5rem', marginBottom: '1rem' }}></i>
+              <h3 style={{ color: '#0a3d62', marginBottom: '1rem' }}>Técnicos Certificados</h3>
+              <p style={{ color: '#333', lineHeight: '1.6' }}>Nuestro equipo cuenta con certificaciones y amplia experiencia en reparación de drones.</p>
             </div>
           </div>
         </div>
