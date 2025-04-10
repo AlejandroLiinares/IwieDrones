@@ -492,3 +492,45 @@
     font-size: 1rem;
   }
 }
+
+/* Media query para dispositivos móviles modernos */
+@media only screen and (max-width: 428px) {
+  .membresias-page {
+    padding-top: 55px; /* Espacio para el header fijo */
+  }
+  
+  .benefits-section,
+  .plans-section,
+  .testimonials-section,
+  .cta-section {
+    padding: 2.5rem 1rem;
+  }
+  
+  .benefits-grid {
+    gap: 1.5rem;
+  }
+  
+  .benefit-item {
+    padding: 1.2rem;
+    border-radius: 8px;
+  }
+  
+  .benefit-icon i {
+    font-size: 1.8rem;
+  }
+  
+  .benefit-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .feature-list li {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .section-divider {
+    margin-bottom: 2rem;
+    width: 60px;
+  }
+}

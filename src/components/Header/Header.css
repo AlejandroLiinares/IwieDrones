@@ -197,10 +197,17 @@
   padding: 0.5rem;
   z-index: 1002;
   position: relative;
+  outline: none;
+  margin-left: -5px; /* Cambiado de margin-right a margin-left */
+  transition: transform 0.2s ease;
 }
 
 .mobile-menu-button:hover {
   opacity: 0.8;
+}
+
+.mobile-menu-button:active {
+  transform: scale(0.95);
 }
 
 .mobile-menu-button svg {
@@ -216,9 +223,12 @@
   position: relative;
   margin: 0px auto;
   transform: rotate(0deg);
-  transition: .5s ease-in-out;
+  transition: .3s ease-in-out;
   cursor: pointer;
   z-index: 1010;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .menu-icon span {
@@ -273,6 +283,21 @@
     justify-content: space-between;
   }
   
+  /* Ajuste para alinear el botón de menú a la derecha */
+  .header-container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .mobile-menu-button {
+    order: 2; /* Coloca el botón después del logo */
+    margin-left: auto; /* Empuja el botón hacia la derecha */
+  }
+  
+  .logo-container {
+    order: 1; /* Coloca el logo antes del botón */
+  }
+  
   .logo-container {
     margin-right: 0;
   }
@@ -288,36 +313,96 @@
   .nav-menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: -100%; /* Aparece desde la derecha */
     width: 80%;
-    max-width: 400px;
+    max-width: 320px;
     height: 100vh;
-    background-color: rgba(7, 24, 57, 0.95);
+    background-color: rgba(7, 24, 57, 0.98); /* Fondo azul oscuro corporativo */
     flex-direction: column;
     align-items: flex-start;
-    padding: 4rem 2rem 2rem 2rem; /* Aumentado el padding superior para dejar espacio al botón de cierre */
-    transition: right 0.3s ease;
+    padding: 5rem 0 2rem 0; /* Padding superior para el botón de cierre, sin padding horizontal */
+    transition: right 0.3s ease; /* Cambiado a right */
     z-index: 1001;
-    overflow-y: auto; /* Permite scroll si el menú es muy largo */
-    -webkit-overflow-scrolling: touch; /* Mejora el scroll en iOS */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: -8px 0 25px rgba(0, 0, 0, 0.4); /* Sombra ajustada para lado derecho */
   }
   
   .nav-menu.active {
-    right: 0;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2); /* Sombra para mejorar la visibilidad */
+    right: 0; /* Aparece desde la derecha */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3); /* Sombra ajustada para lado derecho */
   }
   
   .nav-list {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 0; /* Eliminamos el gap para controlar mejor el espacio */
     width: 100%;
-    padding-top: 1rem; /* Espacio adicional en la parte superior */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 0;
+    width: 100%;
+  }
+  
+  /* Estilos específicos para el botón de Contáctanos */
+  .contact-item {
+    margin-top: 0.5rem;
+  }
+  
+  .contact-link {
+    color: white !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Añadir icono de contacto */
+  .contact-link::before {
+    content: '\1F4DE'; /* Icono de teléfono */
+    margin-right: 8px;
+    font-size: 1.1em;
   }
   
   .nav-link {
-    font-size: 1.35rem;
-    padding: 0.8rem 0;
-    text-align: left; /* Alinea el texto a la izquierda en el menú móvil */
+    font-size: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    display: block;
+    width: 100%;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-link:hover,
+  .nav-link:active {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Indicador de dropdown */
+  .nav-item .nav-link::after {
+    content: '\25BC'; /* Flecha hacia abajo */
+    font-size: 0.7em;
+    margin-left: 8px;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Rotar flecha cuando el dropdown está activo */
+  .nav-item:has(.services-dropdown.active) .nav-link::after {
+    transform: translateY(-50%) rotate(180deg);
   }
   
   .services-dropdown {
@@ -325,12 +410,14 @@
     transform: none;
     opacity: 1;
     visibility: visible;
-    background-color: rgba(7, 24, 57, 0.95);
+    background-color: rgba(15, 35, 75, 0.8); /* Fondo más oscuro para el submenu */
     box-shadow: none;
-    margin-left: 1rem;
     width: 100%;
     max-width: 100%;
     display: none; /* Oculto por defecto */
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 0;
+    padding: 0;
   }
   
   .services-dropdown.active {
@@ -338,12 +425,27 @@
   }
   
   .services-dropdown ul {
-    padding: 0.5rem 0;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 100%;
   }
   
   .services-dropdown li {
-    padding: 0.8rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.2s ease;
+    position: relative;
+  }
+  
+  .services-dropdown li:last-child {
+    border-bottom: none;
+  }
+  
+  .services-dropdown li:hover {
+    background-color: rgba(255, 255, 255, 0.05);
   }
   
   .services-dropdown li:last-child {
@@ -352,10 +454,22 @@
   
   .services-dropdown a {
     text-align: left;
-    padding: 0.5rem 1rem;
+    padding: 0.9rem 1.5rem 0.9rem 2.5rem;
     display: block;
     width: 100%;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+  }
+  
+  .services-dropdown a::before {
+    content: '\2022';
+    position: absolute;
+    left: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
   }
   
   /* Mejora para el botón de cierre del menú móvil */
@@ -487,14 +601,9 @@
     padding: 0.5rem 0;
   }
   
-  .services-dropdown li {
-    padding: 0.6rem 0;
-  }
+  /* Eliminada definición duplicada */
   
-  .services-dropdown a {
-    font-size: 1rem;
-    padding: 0.5rem 0.5rem;
-  }
+  /* Eliminada definición duplicada */
   
   .mobile-menu-button {
     padding: 0.6rem;
@@ -532,6 +641,126 @@
 
 /* Media query para dispositivos móviles modernos */
 @media only screen and (max-width: 428px) {
+  /* Ajustes adicionales para el menú móvil */
+  .header-container {
+    padding: 0 1rem;
+  }
+  
+  /* Ajustes específicos para los elementos desplegables */
+  .services-dropdown ul {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none;
+    width: 100%;
+    background-color: rgba(15, 35, 75, 0.8);
+  }
+  
+  /* Ajuste para alinear con el botón principal */
+  .nav-menu .services-dropdown li {
+    padding-left: 0 !important;
+  }
+  
+  /* Ajuste para el contenedor del dropdown */
+  .services-dropdown {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .services-dropdown li {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .services-dropdown li:last-child {
+    border-bottom: none;
+  }
+  
+  .services-dropdown a {
+    display: block;
+    width: 100%;
+    padding: 12px 0 !important;
+    padding-left: 10px !important;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    position: relative;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    text-align: left;
+    margin: 0;
+  }
+  
+  .services-dropdown a:hover,
+  .services-dropdown a:active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding-left: 15px !important;
+  }
+  
+  .services-dropdown a::before {
+    display: none;
+  }
+  
+  /* Mejoras para el botón de Contáctanos en móviles */
+  .contact-item {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  .contact-link {
+    background-color: rgba(66, 133, 244, 0.2); /* Color azul corporativo con transparencia */
+    border-radius: 4px;
+    margin: 0.8rem 1.2rem;
+    padding: 0.8rem 1rem !important;
+    text-align: center;
+    font-weight: 600 !important;
+    letter-spacing: 0.8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .contact-link:hover,
+  .contact-link:active {
+    background-color: rgba(66, 133, 244, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  .nav-menu {
+    width: 85%;
+  }
+  
+  .nav-link {
+    padding: 1rem 1.2rem;
+    font-size: 1.1rem;
+  }
+  
+  .services-dropdown a {
+    padding: 0.9rem 1.2rem 0.9rem 2.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .services-dropdown a::before {
+    left: 1.2rem;
+  }
+  /* Overlay para el fondo cuando el menú está activo */
+  body.menu-open {
+    overflow: hidden;
+  }
+  
+  body.menu-open::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
   .header {
     position: fixed;
     top: 0;
@@ -573,14 +802,54 @@
   }
   
   .services-dropdown a {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    display: block;
+    padding: 1rem 1.5rem 1rem 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.2s ease;
+    position: relative;
+  }
+  
+  .services-dropdown a::before {
+    content: '\2022'; /* Bullet point */
+    position: absolute;
+    left: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .services-dropdown a:hover,
+  .services-dropdown a:active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+  
+  .services-dropdown a:hover {
+    color: white;
   }
   
   /* Mejora del botón de cierre */
   .nav-menu::before {
-    font-size: 2.2rem;
-    top: 18px;
-    right: 22px;
+    content: '\00D7'; /* Símbolo X */
+    position: absolute;
+    font-size: 1.8rem;
+    top: 15px;
+    left: 15px; /* Cambiado de right a left para el menú en el lado derecho */
+    color: white;
+    cursor: pointer;
+    z-index: 1002;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-menu::before:hover,
+  .nav-menu::before:active {
+    background-color: rgba(255, 255, 255, 0.2);
   }
   
   /* Ajustes para el botón de menú */

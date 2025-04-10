@@ -26,10 +26,31 @@ const Header = () => {
     setIsServicesDropdownOpen(false);
     setIsDronesDropdownOpen(false);
     setIsMembresiaDropdownOpen(false);
+    document.body.classList.remove('menu-open');
   }, [location]);
+  
+  // Controla la clase menu-open en el body
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+    
+    return () => {
+      document.body.classList.remove('menu-open');
+    };
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+  
+  // Cierra el menú al hacer clic en el overlay
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains('nav-menu') && isMenuOpen) {
+      setIsMenuOpen(false);
+    }
   };
 
   const toggleDropdown = (e, type) => {
@@ -108,7 +129,7 @@ const Header = () => {
           </div>
         </button>
 
-        <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+        <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`} onClick={handleOverlayClick}>
           <ul className="nav-list">
             <li className="nav-item">
               <span className={`nav-link ${location.pathname === '/servicios' ? 'active' : ''}`}
@@ -174,8 +195,8 @@ const Header = () => {
                 </ul>
               </div>
             </li>
-            <li className="nav-item">
-              <Link to="/contacto" className={`nav-link ${location.pathname === '/contacto' ? 'active' : ''}`}>
+            <li className="nav-item contact-item">
+              <Link to="/contacto" className={`nav-link contact-link ${location.pathname === '/contacto' ? 'active' : ''}`}>
                 Contáctanos
               </Link>
             </li>

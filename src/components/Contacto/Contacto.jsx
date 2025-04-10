@@ -114,7 +114,7 @@ const Contacto = () => {
 
   return (
     <div className="service-page">
-      {/* Hero Section - Simplificado con capa oscura */}
+      {/* Hero Section - Mejorado para responsividad */}
       <div style={{ 
         backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/contactanos.jpg")',
         backgroundSize: 'cover',
@@ -123,13 +123,22 @@ const Contacto = () => {
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        minHeight: '500px', /* Asegura una altura mínima en dispositivos pequeños */
+        maxHeight: '100vh',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
         <h1 style={{
           color: 'white',
-          fontSize: '5rem',
+          fontSize: 'clamp(2.5rem, 8vw, 5rem)', /* Tamaño de fuente responsivo */
           textAlign: 'center',
-          textShadow: '2px 2px 8px rgba(0,0,0,0.7)'
+          textShadow: '2px 2px 8px rgba(0,0,0,0.7)',
+          padding: '0 15px',
+          maxWidth: '100%',
+          boxSizing: 'border-box',
+          position: 'relative',
+          zIndex: 2
         }}>CONTÁCTANOS</h1>
       </div>
 

@@ -427,3 +427,72 @@ textarea ~ .input-icon {
   color: #666;
   font-size: 1.2rem;
 }
+
+/* Estilos responsive */
+@media (max-width: 992px) {
+  .contact-form {
+    padding: 2rem;
+  }
+  
+  .contact-info {
+    padding: 2rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .form-row .form-group {
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .service-page {
+    padding-top: 55px; /* Espacio para el header fijo */
+  }
+}
+
+/* Media query para dispositivos móviles modernos */
+@media only screen and (max-width: 428px) {
+  .service-page {
+    padding-top: 55px; /* Espacio para el header fijo */
+  }
+  
+  .contact-section {
+    padding: 3rem 1rem;
+  }
+  
+  .contact-form {
+    padding: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .contact-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .submit-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .contact-info-item {
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-info-item h3 {
+    font-size: 1.1rem;
+  }
+}
