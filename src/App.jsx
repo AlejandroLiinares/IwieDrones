@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
+import ScrollRestoration from './components/utils/ScrollRestoration';
 
 // Componentes
 import Header from './components/Header/Header';
@@ -17,6 +18,7 @@ import Contacto from './components/Contacto/Contacto';
 function App() {
     return (
         <Router>
+            <ScrollRestoration />
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />

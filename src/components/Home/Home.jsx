@@ -223,7 +223,13 @@ const Home = () => {
         <div className="about-us-overlay"></div>
         <div className="about-us-content">
           <h2 className="section-title">QUIÉNES SOMOS</h2>
-          <div className="about-divider" style={{ backgroundColor: '#0a3d62' }}></div>
+          <div className="about-divider" style={{ 
+            background: 'linear-gradient(to right,rgb(33, 145, 226),rgb(83, 180, 250),rgb(107, 193, 254))', 
+            height: '3px', 
+            width: '120px', 
+            marginBottom: '20px',
+            boxShadow: '0 2px 5px rgba(30, 144, 255, 0.4)'
+          }}></div>
           <p className="about-subtitle">
             Iwie Drones nace en el año 2022 con la finalidad de involucrarse en el mercado exponencial de la prestación de servicios con drones. Las categorías de desarrollo involucradas abarcan desde el apoyo al área agrícola, procesos industriales, fomento de la educación, sistemas de energía, servicio de televigilancia, asimismo como el área de entretenimiento.
           </p>
