@@ -50,11 +50,20 @@ const Header = () => {
   const handleOverlayClick = (e) => {
     if (e.target.classList.contains('nav-menu') && isMenuOpen) {
       setIsMenuOpen(false);
+      // Cerrar todos los dropdowns cuando se cierra el menú
+      setIsServicesDropdownOpen(false);
+      setIsDronesDropdownOpen(false);
+      setIsMembresiaDropdownOpen(false);
     }
   };
 
   const toggleDropdown = (e, type) => {
     e.preventDefault();
+    e.stopPropagation(); // Evitar que el evento se propague
+    
+    // Detectar si estamos en un dispositivo móvil
+    const isMobile = window.innerWidth <= 992;
+    
     if (type === 'services') {
       setIsDronesDropdownOpen(false);
       setIsMembresiaDropdownOpen(false);
@@ -71,6 +80,9 @@ const Header = () => {
   };
 
   const handleDropdownMouseEnter = (type) => {
+    // Solo aplicar hover en dispositivos de escritorio
+    if (window.innerWidth <= 992) return;
+    
     if (type === 'services') {
       setIsDronesDropdownOpen(false);
       setIsMembresiaDropdownOpen(false);
@@ -87,6 +99,9 @@ const Header = () => {
   };
 
   const handleDropdownMouseLeave = (type) => {
+    // Solo aplicar hover en dispositivos de escritorio
+    if (window.innerWidth <= 992) return;
+    
     if (type === 'services') {
       setIsServicesDropdownOpen(false);
     } else if (type === 'drones') {
@@ -103,6 +118,12 @@ const Header = () => {
       setIsDronesDropdownOpen(false);
     } else if (type === 'membresia') {
       setIsMembresiaDropdownOpen(false);
+    }
+    
+    // En dispositivos móviles, no cerramos el menú principal al seleccionar una opción
+    // para permitir que el usuario seleccione otras opciones si lo desea
+    if (window.innerWidth > 992) {
+      setIsMenuOpen(false);
     }
   };
 
