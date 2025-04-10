@@ -29,7 +29,7 @@ const Header = () => {
     document.body.classList.remove('menu-open');
   }, [location]);
   
-  // Controla la clase menu-open en el body
+  // Controla la clase menu-open en el body EH HOLA? POR QUE NO PUEDO SINCRONIZAR?
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('menu-open');
