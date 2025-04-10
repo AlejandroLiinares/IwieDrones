@@ -196,6 +196,7 @@
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1002;
+  position: relative;
 }
 
 .mobile-menu-button:hover {
@@ -206,6 +207,64 @@
   width: 24px;
   height: 24px;
   color: white;
+}
+
+/* Menu Icon */
+.menu-icon {
+  width: 30px;
+  height: 25px;
+  position: relative;
+  margin: 0px auto;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  z-index: 1010;
+}
+
+.menu-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.menu-icon span:nth-child(1) {
+  top: 0px;
+}
+
+.menu-icon span:nth-child(2),
+.menu-icon span:nth-child(3) {
+  top: 10px;
+}
+
+.menu-icon span:nth-child(4) {
+  top: 20px;
+}
+
+.mobile-menu-button.active .menu-icon span:nth-child(1) {
+  top: 10px;
+  width: 0%;
+  left: 50%;
+}
+
+.mobile-menu-button.active .menu-icon span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.mobile-menu-button.active .menu-icon span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.mobile-menu-button.active .menu-icon span:nth-child(4) {
+  top: 10px;
+  width: 0%;
+  left: 50%;
 }
 
 /* Responsive Design */
@@ -236,25 +295,28 @@
     background-color: rgba(7, 24, 57, 0.95);
     flex-direction: column;
     align-items: flex-start;
-    padding: 2rem;
+    padding: 4rem 2rem 2rem 2rem; /* Aumentado el padding superior para dejar espacio al botón de cierre */
     transition: right 0.3s ease;
     z-index: 1001;
     overflow-y: auto; /* Permite scroll si el menú es muy largo */
+    -webkit-overflow-scrolling: touch; /* Mejora el scroll en iOS */
   }
   
   .nav-menu.active {
     right: 0;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2); /* Sombra para mejorar la visibilidad */
   }
   
   .nav-list {
     flex-direction: column;
     gap: 1.5rem;
     width: 100%;
+    padding-top: 1rem; /* Espacio adicional en la parte superior */
   }
   
   .nav-link {
     font-size: 1.35rem;
-    padding: 0.5rem 0;
+    padding: 0.8rem 0;
     text-align: left; /* Alinea el texto a la izquierda en el menú móvil */
   }
   
@@ -268,19 +330,32 @@
     margin-left: 1rem;
     width: 100%;
     max-width: 100%;
+    display: none; /* Oculto por defecto */
+  }
+  
+  .services-dropdown.active {
+    display: block; /* Mostrar solo cuando está activo */
   }
   
   .services-dropdown ul {
-    padding: 0;
+    padding: 0.5rem 0;
   }
   
   .services-dropdown li {
-    padding: 0.5rem 0;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .services-dropdown li:last-child {
+    border-bottom: none;
   }
   
   .services-dropdown a {
     text-align: left;
-    padding-left: 1rem;
+    padding: 0.5rem 1rem;
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
   }
   
   /* Mejora para el botón de cierre del menú móvil */
@@ -289,9 +364,11 @@
     position: absolute;
     top: 15px;
     right: 20px;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: white;
     cursor: pointer;
+    z-index: 1003;
+    line-height: 1;
   }
 }
 
@@ -380,50 +457,139 @@
 
 @media (max-width: 480px) {
   .header-container {
-    height: 45px;
-    padding: 0.4rem;
+    height: 50px;
+    padding: 0.4rem 0.6rem;
   }
   
   .logo-image {
-    height: 25px;
+    height: 28px;
   }
   
   .nav-menu {
-    padding: 1.5rem 0.5rem;
-    width: 90%;
+    padding: 3.5rem 1rem 1.5rem 1rem;
+    width: 85%;
+    max-width: none;
   }
   
   .nav-list {
-    gap: 0.7rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
   }
   
   .nav-link {
-    font-size: 1rem;
-    padding: 0.7rem 0.7rem;
+    font-size: 1.1rem;
+    padding: 0.8rem 0.4rem;
   }
   
   .services-dropdown {
-    margin-left: 0.2rem;
-    min-width: 170px;
+    margin-left: 0.5rem;
+    min-width: 200px;
+    padding: 0.5rem 0;
   }
   
   .services-dropdown li {
-    padding: 0.15rem 0;
+    padding: 0.6rem 0;
   }
   
   .services-dropdown a {
-    font-size: 0.8rem;
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem;
   }
   
-  .mobile-menu-button svg {
-    width: 20px;
+  .mobile-menu-button {
+    padding: 0.6rem;
+  }
+  
+  .menu-icon {
+    width: 25px;
     height: 20px;
+  }
+  
+  .menu-icon span {
+    height: 2px;
+  }
+  
+  .menu-icon span:nth-child(1) {
+    top: 0px;
+  }
+  
+  .menu-icon span:nth-child(2),
+  .menu-icon span:nth-child(3) {
+    top: 9px;
+  }
+  
+  .menu-icon span:nth-child(4) {
+    top: 18px;
   }
   
   /* Ajuste para el botón de cierre del menú móvil */
   .nav-menu::before {
-    font-size: 1.8rem;
-    top: 10px;
-    right: 15px;
+    font-size: 2rem;
+    top: 15px;
+    right: 20px;
+  }
+}
+
+/* Media query para dispositivos móviles modernos */
+@media only screen and (max-width: 428px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .header-container {
+    height: 55px;
+    padding: 0.5rem 1rem;
+  }
+  
+  .logo-image {
+    height: 30px;
+  }
+  
+  .nav-menu {
+    width: 85%;
+    padding: 4rem 1.5rem 2rem 1.5rem;
+  }
+  
+  .nav-list {
+    padding-top: 1.5rem;
+  }
+  
+  .nav-link {
+    font-size: 1.2rem;
+    padding: 1rem 0.5rem;
+  }
+  
+  .services-dropdown {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .services-dropdown li {
+    padding: 0.8rem 0;
+  }
+  
+  .services-dropdown a {
+    font-size: 1.1rem;
+  }
+  
+  /* Mejora del botón de cierre */
+  .nav-menu::before {
+    font-size: 2.2rem;
+    top: 18px;
+    right: 22px;
+  }
+  
+  /* Ajustes para el botón de menú */
+  .menu-icon {
+    width: 28px;
+    height: 22px;
+  }
+  
+  .menu-icon span {
+    height: 2.5px;
   }
 }

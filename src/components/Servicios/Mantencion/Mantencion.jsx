@@ -53,7 +53,10 @@ const Mantencion = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '500px' /* Asegura una altura mínima en dispositivos pequeños */
+        minHeight: '500px', /* Asegura una altura mínima en dispositivos pequeños */
+        maxHeight: '100vh',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
         <h1 className="responsive-hero-title" style={{
           color: 'white',
@@ -62,7 +65,9 @@ const Mantencion = () => {
           textShadow: '2px 2px 8px rgba(0,0,0,0.7)',
           padding: '0 15px',
           maxWidth: '100%',
-          boxSizing: 'border-box'
+          boxSizing: 'border-box',
+          position: 'relative',
+          zIndex: 2
         }}>MANTENCIÓN</h1>
       </div>
 

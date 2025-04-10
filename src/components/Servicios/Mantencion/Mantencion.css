@@ -268,7 +268,27 @@
     
     .container {
         width: 100%;
-        padding: 0 10px;
+        padding: 0 15px;
+    }
+    
+    /* Mejoras para dispositivos móviles */
+    .service-page {
+        padding-top: 55px; /* Espacio para el header fijo */
+    }
+    
+    .service-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .service-content {
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .service-button {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem 1rem;
+        font-weight: 600;
     }
 }
 
