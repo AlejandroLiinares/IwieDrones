@@ -122,26 +122,138 @@ button {
 
 @media (max-width: 480px) {
   body { font-size: 0.85rem; }
+  
+  .hero {
+    min-height: 400px;
+  }
+  
+  .hero-content {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .title-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-divider {
+    width: 60px;
+    height: 2px;
+    margin: 0.5rem auto;
+  }
+  
+  .hero-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
 }
 
 /* 10. Sección Hero */
 .hero {
   position: relative;
-  color: white;
-  text-align: center;
-  overflow: hidden;
+  height: 100vh;
+  min-height: 600px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  background-color: #1a2b47;
+  overflow: hidden;
+  width: 100%;
+}
+
+.hero-image {
+  position: fixed;
+  top: 0;
   left: 0;
-  right: 0;
-  box-sizing: border-box;
-  min-height: 500px; /* Asegura una altura mínima en dispositivos pequeños */
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  will-change: transform; /* Optimización para rendimiento */
+  background-image: url('/iwie.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Cambiar la imagen de fondo en dispositivos móviles */
+@media (max-width: 768px) {
+  .hero-image {
+    background-image: url('/iwie-cel.jpg');
+  }
+}
+
+.hero-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.title-container {
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.hero-divider {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(to right, #4285f4, #0a3d62, #4285f4);
+  margin: 1rem auto;
+  box-shadow: 0 2px 5px rgba(30, 144, 255, 0.4);
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #0a3d62;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #1e90ff;
 }
 
 .video-container {
@@ -334,7 +446,6 @@ button {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   background-color: #2a3fd8;
 }
-
 
 /* 11. Sección Servicios */
 .services {
@@ -922,16 +1033,37 @@ button {
   .service-card {
     height: 280px;
   }
+  
+  .hero {
+    min-height: 500px;
+  }
+  
+  .hero-divider {
+    width: 100px;
+    margin: 0.8rem auto;
+  }
 }
 
 @media (max-width: 768px) {
   .title-container .hero-title { 
     font-size: 2rem; 
     padding: 0 15px;
+    margin-bottom: 1.5rem;
   }
   .title-container .subtitle { 
     font-size: 1.2rem; 
     padding: 0 15px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .hero {
+    min-height: 450px;
+  }
+  
+  .hero-divider {
+    width: 80px;
+    height: 2px;
+    margin: 0.6rem auto;
   }
   
   .hero-buttons {
