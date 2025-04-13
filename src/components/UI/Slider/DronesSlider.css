@@ -1,0 +1,269 @@
+/* 
+ * DronesSlider.css - Estilos específicos para el componente DronesSlider
+ * Este archivo contiene los estilos para el slider de drones con soporte para visualización móvil
+ */
+
+/* Importar variables globales */
+@import '../../../App.css';
+
+/* Contenedor del slider */
+.drones-slider-container {
+  position: relative;
+  width: 100%;
+  margin: var(--spacing-xl) 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Slider principal */
+.drones-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding: var(--spacing-md) 0;
+  width: 100%;
+  -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento táctil en iOS */
+}
+
+.drones-slider::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Mensaje cuando no hay drones disponibles */
+.no-drones-message {
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgba(240, 240, 240, 0.7);
+  border-radius: var(--border-radius-md);
+  margin: 1rem 0;
+}
+
+.no-drones-message p {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Estilos para vista móvil */
+.drones-slider.mobile-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+}
+
+.drones-slider.mobile-view .drone-item {
+  margin-right: 0;
+  width: 100%;
+  min-width: unset;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all var(--transition-normal);
+}
+
+/* Indicador de posición para móvil */
+.mobile-indicator {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  background-color: rgba(240, 240, 240, 0.7);
+  border-radius: 15px;
+  padding: 5px 15px;
+  display: inline-block;
+}
+
+/* Botones de navegación */
+.slider-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--spacing-3xl);
+  height: var(--spacing-3xl);
+  border-radius: 50%;
+  background-color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-normal);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.slider-nav-button:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.slider-nav-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #e0e0e0;
+  box-shadow: none;
+}
+
+.slider-nav-button.disabled:hover {
+  background-color: #e0e0e0;
+  box-shadow: none;
+  transform: translateY(-50%);
+}
+
+.slider-prev {
+  left: 0;
+}
+
+.slider-next {
+  right: 0;
+}
+
+.slider-nav-button i {
+  font-size: var(--font-size-md);
+  color: #333;
+}
+
+/* Estilos para las tarjetas de drones */
+.drone-item {
+  flex: 0 0 auto;
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  margin-right: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all var(--transition-normal);
+  height: 400px;
+  justify-content: space-between;
+}
+
+.drone-card {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 100%;
+  margin: 0 15px;
+  padding-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.drone-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.drone-card-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+}
+
+.drone-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--color-primary);
+}
+
+.drone-card-summary {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #555;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.drone-card-plus-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.drone-card-plus-btn:hover {
+  background-color: var(--color-secondary);
+  transform: rotate(90deg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .drone-item {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    margin-right: var(--spacing-lg);
+    height: 380px;
+  }
+  
+  .drone-card {
+    width: 260px;
+  }
+  
+  .drone-card-title {
+    font-size: 1.3rem;
+  }
+  
+  .drone-card-summary {
+    font-size: 0.85rem;
+    padding: 0 8px;
+  }
+  
+  .slider-nav-button {
+    width: var(--spacing-2xl);
+    height: var(--spacing-2xl);
+  }
+  
+  .slider-nav-button i {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 576px) {
+  .drone-item {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    margin-right: var(--spacing-md);
+    height: 350px;
+  }
+  
+  .drone-card {
+    width: 230px;
+  }
+  
+  .drone-card-title {
+    font-size: 0.95rem;
+  }
+  
+  .drone-card-summary {
+    font-size: 0.8rem;
+    padding: 0 5px;
+  }
+  
+  .slider-nav-button {
+    width: 35px;
+    height: 35px;
+  }
+}

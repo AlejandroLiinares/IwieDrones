@@ -5,6 +5,7 @@ import ServiceCard from '../UI/Card/ServiceCard';
 import SliderNavButton from '../UI/Button/SliderNavButton';
 import DroneFiltro from '../Drone/DroneFiltro/DroneFiltro';
 import OptimizedImage from '../UI/OptimizedImage/OptimizedImage';
+import DronesSlider from '../UI/Slider/DronesSlider';
 
 const Home = () => {
   // Estados para los modales
@@ -31,16 +32,7 @@ const Home = () => {
     { category: 'industrial', image: '/SENTINEL-V13-5.jpg', title: 'SENTINEL V13-5', summary: 'Monitoreo de infraestructuras críticas.', description: 'Especializado en monitoreo de infraestructuras críticas, con sensores avanzados para detección de anomalías y sistemas de transmisión de datos en tiempo real.' }
   ];
 
-  // Funciones para gestionar el scroll y el modal
-  const scrollSlider = (direction) => {
-    if (dronesSliderRef.current) {
-      const scrollAmount = direction === 'left' ? -300 : 300;
-      dronesSliderRef.current.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
+  // Funciones para gestionar el modal
 
   const openDroneModal = (title, description) => {
     setModalInfo({ isOpen: true, title, content: description });
@@ -188,49 +180,7 @@ const Home = () => {
           
           <DroneFiltro onFilterChange={setFilter} />
           
-          <div className="drones-slider-container">
-            <button 
-              className="slider-nav-button slider-prev" 
-              onClick={() => scrollSlider('left')}
-              aria-label="Ver drones anteriores"
-            >
-              <i className="fas fa-chevron-left"></i>
-            </button>
-            
-            <div className="drones-slider" ref={dronesSliderRef}>
-              {filteredDrones.map((drone, index) => (
-                <div key={index} className="drone-item">
-                  <div className="drone-card">
-                    <OptimizedImage
-                      src={drone.image}
-                      alt={`Drone ${drone.title}`}
-                      width={280}
-                      height={280}
-                    />
-                    <div className="drone-card-content">
-                      <h3 className="drone-card-title">{drone.title}</h3>
-                      <p className="drone-card-summary">{drone.summary}</p>
-                      <button 
-                        className="drone-card-plus-btn"
-                        onClick={() => openDroneModal(drone.title, drone.description)}
-                        aria-label={`Más información sobre ${drone.title}`}
-                      >
-                        <i className="fas fa-plus"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <button 
-              className="slider-nav-button slider-next" 
-              onClick={() => scrollSlider('right')}
-              aria-label="Ver drones siguientes"
-            >
-              <i className="fas fa-chevron-right"></i>
-            </button>
-          </div>
+          <DronesSlider drones={filteredDrones} onOpenModal={openDroneModal} />
         </div>
       </section>
 
