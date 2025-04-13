@@ -140,6 +140,47 @@
   color: #333;
 }
 
+/* Mobile view styles */
+.drones-slider.mobile-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+}
+
+.drones-slider.mobile-view .drone-item {
+  margin-right: 0;
+  width: 100%;
+  min-width: unset;
+  max-width: 320px;
+  transition: all var(--transition-normal);
+}
+
+.mobile-indicator {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  background-color: rgba(240, 240, 240, 0.7);
+  border-radius: 15px;
+  padding: 5px 15px;
+  display: inline-block;
+}
+
+.slider-nav-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #e0e0e0;
+}
+
+.slider-nav-button.disabled:hover {
+  background-color: #e0e0e0;
+  box-shadow: none;
+  transform: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .drone-item {

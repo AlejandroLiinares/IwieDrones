@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import './Drone.css';
 import DroneFiltro from './DroneFiltro/DroneFiltro';
 import OptimizedImage from '../UI/OptimizedImage/OptimizedImage';
@@ -7,15 +7,34 @@ function Drone() {
     const dronesSliderRef = useRef(null);
     const [filter, setFilter] = useState('todos');
     
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const [currentDroneIndex, setCurrentDroneIndex] = useState(0);
+    
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+        
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+    
     const scrollSlider = useCallback((ref, direction) => {
-        if (ref.current) {
+        if (isMobile) {
+            // En móvil, navegar por índice
+            setCurrentDroneIndex(prevIndex => {
+                const newIndex = direction === 'left' ? prevIndex - 1 : prevIndex + 1;
+                return Math.max(0, Math.min(newIndex, filteredDrones.length - 1));
+            });
+        } else if (ref.current) {
+            // En desktop, mantener el comportamiento original
             const scrollAmount = direction === 'left' ? -300 : 300;
             ref.current.scrollBy({
                 left: scrollAmount,
                 behavior: 'smooth'
             });
         }
-    }, []);
+    }, [isMobile]);
 
     const openDroneModal = useCallback((title, description) => {
         setModalInfo({ isOpen: true, title, content: description });
@@ -85,40 +104,70 @@ function Drone() {
                     
                     <div className="drones-slider-container">
                         <button 
-                            className="slider-nav-button slider-prev" 
+                            className={`slider-nav-button slider-prev ${currentDroneIndex === 0 ? 'disabled' : ''}`}
                             onClick={() => scrollSlider(dronesSliderRef, 'left')}
                             aria-label="Ver drones anteriores"
+                            disabled={isMobile && currentDroneIndex === 0}
                         >
                             <i className="fas fa-chevron-left"></i>
                         </button>
                         
-                        <div className="drones-slider" ref={dronesSliderRef}>
-                            {filteredDrones.map((drone, index) => (
-                                <div key={index} className="drone-item">
-                                    <OptimizedImage
-                                        src={drone.image}
-                                        alt={`Drone ${drone.title}`}
-                                        width={280}
-                                        height={200}
-                                        className={drone.title === 'H32X' ? 'drone-image h32x-image' : 'drone-image'}
-                                    />
-                                    <h3 className="drone-title">{drone.title}</h3>
-                                    <p className="drone-summary">{drone.summary}</p>
-                                    <button 
-                                        className="drone-info-toggle" 
-                                        onClick={() => openDroneModal(drone.title, drone.description)}
-                                        aria-label={`Ver más información sobre ${drone.title}`}
-                                    >
-                                        <i className="fas fa-plus"></i>
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
+                        {isMobile ? (
+                            <div className="drones-slider mobile-view">
+                                {filteredDrones.length > 0 && (
+                                    <div className="drone-item">
+                                        <OptimizedImage
+                                            src={filteredDrones[currentDroneIndex].image}
+                                            alt={`Drone ${filteredDrones[currentDroneIndex].title}`}
+                                            width={280}
+                                            height={200}
+                                            className={filteredDrones[currentDroneIndex].title === 'H32X' ? 'drone-image h32x-image' : 'drone-image'}
+                                        />
+                                        <h3 className="drone-title">{filteredDrones[currentDroneIndex].title}</h3>
+                                        <p className="drone-summary">{filteredDrones[currentDroneIndex].summary}</p>
+                                        <button 
+                                            className="drone-info-toggle" 
+                                            onClick={() => openDroneModal(filteredDrones[currentDroneIndex].title, filteredDrones[currentDroneIndex].description)}
+                                            aria-label={`Ver más información sobre ${filteredDrones[currentDroneIndex].title}`}
+                                        >
+                                            <i className="fas fa-plus"></i>
+                                        </button>
+                                        <div className="mobile-indicator">
+                                            <span>{currentDroneIndex + 1} / {filteredDrones.length}</span>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="drones-slider" ref={dronesSliderRef}>
+                                {filteredDrones.map((drone, index) => (
+                                    <div key={index} className="drone-item">
+                                        <OptimizedImage
+                                            src={drone.image}
+                                            alt={`Drone ${drone.title}`}
+                                            width={280}
+                                            height={200}
+                                            className={drone.title === 'H32X' ? 'drone-image h32x-image' : 'drone-image'}
+                                        />
+                                        <h3 className="drone-title">{drone.title}</h3>
+                                        <p className="drone-summary">{drone.summary}</p>
+                                        <button 
+                                            className="drone-info-toggle" 
+                                            onClick={() => openDroneModal(drone.title, drone.description)}
+                                            aria-label={`Ver más información sobre ${drone.title}`}
+                                        >
+                                            <i className="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                         
                         <button 
-                            className="slider-nav-button slider-next" 
+                            className={`slider-nav-button slider-next ${isMobile && currentDroneIndex === filteredDrones.length - 1 ? 'disabled' : ''}`}
                             onClick={() => scrollSlider(dronesSliderRef, 'right')}
                             aria-label="Ver drones siguientes"
+                            disabled={isMobile && currentDroneIndex === filteredDrones.length - 1}
                         >
                             <i className="fas fa-chevron-right"></i>
                         </button>
