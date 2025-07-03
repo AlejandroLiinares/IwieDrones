@@ -10,8 +10,8 @@ const DroneBanner = () => {
   };
 
   return (
-    <div className="hero-drone-banner">
-      <div className="drone-banner-container">
+    <div className="hero-drone-banner" style={{ width: '100%', maxWidth: '100vw', overflow: 'hidden' }}>
+      <div className="drone-banner-container" style={{ width: '100%' }}>
         <div className="drone-banner-image">
           <img src="/H300.png" alt="Dron Spider H-300" />
         </div>

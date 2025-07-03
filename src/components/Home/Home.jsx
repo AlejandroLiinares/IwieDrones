@@ -156,9 +156,11 @@ const Home = () => {
   };
 
   return (
-    <div className="home-container">
+    <div className="home-container" style={{ overflow: 'hidden', width: '100%' }}>
       {/* Banner Promocional */}
-      <DroneBanner />
+      <div style={{ width: '100%', overflow: 'hidden' }}>
+        <DroneBanner />
+      </div>
       
       {/* Hero Section */}
       <section className="hero">

@@ -3,11 +3,15 @@
   background: #1a2d5a;
   color: white;
   margin-top: 65px; /* Altura del header */
-  margin-bottom: -180px;
+  margin-bottom: 0;
   border-radius: 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 5; /* Menor que el z-index del header (1000) */
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .drone-banner-container {
@@ -19,6 +23,8 @@
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
+  width: 100%;
+  height: auto;
 }
 
 .drone-banner-image {
@@ -27,14 +33,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 200px;
 }
 
 .drone-banner-image img {
-  max-width: 100%;
+  width: 280px;
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
-  min-width: 250px;
+  max-height: 200px;
 }
 
 .drone-banner-content {
@@ -109,27 +116,35 @@
 @media (max-width: 768px) {
   .hero-drone-banner {
     margin-top: 55px; /* Ajuste para header más pequeño en móvil */
+    width: 100%;
+    left: 0;
+    right: 0;
   }
 
   .drone-banner-container {
     flex-direction: column;
+    text-align: center;
     padding: 15px;
+    height: auto;
   }
   
   .drone-banner-image {
-    flex: 0 0 100%;
+    flex: 0 0 auto;
     margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 280px;
+    width: 100%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 180px;
   }
   
   .drone-banner-image img {
-    width: 350px !important;
+    width: 300px !important;
     height: auto !important;
     object-fit: contain;
+    transition: transform 0.3s ease;
     max-width: none !important;
+    max-height: 180px !important;
   }
   
   .drone-banner-content {
@@ -159,6 +174,10 @@
 @media (max-width: 480px) {
   .hero-drone-banner {
     margin-top: 50px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 0;
   }
 
   .drone-banner-container {
@@ -166,13 +185,14 @@
   }
 
   .drone-banner-image {
-    min-height: 220px;
+    height: 160px;
   }
   
   .drone-banner-image img {
-    width: 280px !important;
+    width: 250px !important;
     height: auto !important;
     max-width: none !important;
+    max-height: 150px !important;
   }
 
   .drone-banner-content {
