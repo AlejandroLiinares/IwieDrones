@@ -34,13 +34,16 @@
   justify-content: center;
   align-items: center;
   height: 200px;
+  margin-top: 70px;
+  margin-bottom: 70px;
 }
 
 .drone-banner-image img {
-  width: 465px;
+  width: 600px;
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
+  max-width: none;
 }
 
 .drone-banner-content {
