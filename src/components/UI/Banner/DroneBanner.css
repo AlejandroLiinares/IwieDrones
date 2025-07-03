@@ -75,7 +75,7 @@
 }
 
 .price-amount {
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #2ecc71;
 }
@@ -212,7 +212,7 @@
   }
 
   .price-amount {
-    font-size: 1.4rem;
+    font-size: 0.9rem;
   }
 
   .urgency-text {

@@ -17,7 +17,7 @@ const DroneBanner = () => {
         </div>
         <div className="drone-banner-content">
           <div className="banner-offer-tag">¡OFERTA DE LANZAMIENTO!</div>
-          <h3 className="drone-banner-title">Dron Spider H-300</h3>
+          <h3 className="drone-banner-title">Dron Spider H-300, <br /> <span>100 Litros de Capacidad</span></h3>
           <div className="drone-banner-price">
             <span className="price-amount">$39.900.000 IVA Incluido</span>
           </div>
