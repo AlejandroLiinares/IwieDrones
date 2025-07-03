@@ -21,8 +21,6 @@
   box-sizing: border-box;
 }
 
-
-
 .drone-banner-image {
   flex: 0 0 40%;
   padding: 0;
@@ -107,8 +105,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilos responsivos para dispositivos móviles */
+/* Estilos responsivos para tablets y dispositivos medianos */
 @media (max-width: 768px) {
+  .hero-drone-banner {
+    margin-top: 55px; /* Ajuste para header más pequeño en móvil */
+  }
+
   .drone-banner-container {
     flex-direction: column;
     padding: 15px;
@@ -120,7 +122,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 300px;
+    min-height: 280px;
   }
   
   .drone-banner-image img {
@@ -133,40 +135,66 @@
   .drone-banner-content {
     flex: 0 0 100%;
     text-align: center;
-  }
-  
-  .drone-banner-button {
-    align-self: center;
-  }
-}
-
-/* Estilos para dispositivos muy pequeños */
-@media (max-width: 480px) {
-  .drone-banner-image {
-    min-height: 250px;
-  }
-  
-  .drone-banner-image img {
-    width: 320px !important;
-    height: auto !important;
-    max-width: none !important;
-  }
-  
-  .drone-banner-title {
-    font-size: 1.5rem;
+    padding: 10px 20px 20px;
   }
   
   .banner-offer-tag {
     font-size: 1rem;
     margin-bottom: 8px;
   }
+
+  .drone-banner-title {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+  }
+
+  .drone-banner-button {
+    align-self: center;
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+}
+
+/* Estilos para smartphones y dispositivos pequeños */
+@media (max-width: 480px) {
+  .hero-drone-banner {
+    margin-top: 50px;
+  }
+
+  .drone-banner-container {
+    padding: 10px;
+  }
+
+  .drone-banner-image {
+    min-height: 220px;
+  }
   
+  .drone-banner-image img {
+    width: 280px !important;
+    height: auto !important;
+    max-width: none !important;
+  }
+
+  .drone-banner-content {
+    padding: 5px 15px 15px;
+  }
+
+  .banner-offer-tag {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
+
+  .drone-banner-title {
+    font-size: 1.5rem;
+    margin: 5px 0;
+  }
+
   .price-amount {
     font-size: 1.4rem;
   }
-  
+
   .urgency-text {
-    font-size: 1rem;
+    font-size: 0.95rem;
     padding: 6px 12px;
   }
   
@@ -176,73 +204,4 @@
   }
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  .floating-drone-banner {
-    bottom: 10px;
-    right: 10px;
-    width: calc(100% - 20px);
-    max-width: none;
-  }
-  
-  .drone-banner-container {
-    flex-direction: row;
-    padding: 10px;
-  }
-  
-  .drone-banner-image {
-    flex: 0 0 30%;
-  }
-  
-  .drone-banner-content {
-    flex: 0 0 70%;
-  }
-  
-  .drone-banner-image img {
-    max-height: 80px;
-  }
-  
-  .banner-offer-tag {
-    font-size: 0.8rem;
-  }
-  
-  .drone-banner-title {
-    font-size: 1.3rem;
-    margin-bottom: 5px;
-  }
-  
-  .price-amount {
-    font-size: 1rem;
-  }
-  
-  .urgency-text {
-    font-size: 0.8rem;
-    padding: 3px 8px;
-  }
-  
-  .drone-banner-button {
-    padding: 6px 15px;
-    font-size: 0.8rem;
-  }
-}
 
-@media (max-width: 480px) {
-  .floating-drone-banner {
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    border-radius: 0;
-  }
-  
-  .drone-banner-image img {
-    max-height: 70px;
-  }
-  
-  .drone-banner-title {
-    font-size: 1.1rem;
-  }
-  
-  .price-amount {
-    font-size: 0.9rem;
-  }
-}
