@@ -124,6 +124,7 @@ button {
   body { font-size: 0.85rem; }
   
   .hero {
+    margin-top: -140px;
     min-height: 400px;
   }
   
