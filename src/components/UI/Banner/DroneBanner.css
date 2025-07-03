@@ -1,0 +1,248 @@
+.hero-drone-banner {
+  width: 100%;
+  background: #1a2d5a;
+  color: white;
+  margin-top: 65px; /* Altura del header */
+  margin-bottom: -180px;
+  border-radius: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 5; /* Menor que el z-index del header (1000) */
+}
+
+.drone-banner-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+
+
+.drone-banner-image {
+  flex: 0 0 40%;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drone-banner-image img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  min-width: 250px;
+}
+
+.drone-banner-content {
+  flex: 0 0 60%;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.banner-offer-tag {
+  color: #ffd700;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.drone-banner-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 10px 0;
+}
+
+.drone-banner-price {
+  margin-bottom: 10px;
+}
+
+.price-amount {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2ecc71;
+}
+
+.drone-banner-urgency {
+  margin-bottom: 15px;
+}
+
+.urgency-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffa07a;
+  background-color: rgba(255, 160, 122, 0.2);
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.drone-banner-button {
+  background-color: #ff7f50;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.drone-banner-button:hover {
+  background-color: #ff6347;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos responsivos para dispositivos móviles */
+@media (max-width: 768px) {
+  .drone-banner-container {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .drone-banner-image {
+    flex: 0 0 100%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+  }
+  
+  .drone-banner-image img {
+    width: 350px !important;
+    height: auto !important;
+    object-fit: contain;
+    max-width: none !important;
+  }
+  
+  .drone-banner-content {
+    flex: 0 0 100%;
+    text-align: center;
+  }
+  
+  .drone-banner-button {
+    align-self: center;
+  }
+}
+
+/* Estilos para dispositivos muy pequeños */
+@media (max-width: 480px) {
+  .drone-banner-image {
+    min-height: 250px;
+  }
+  
+  .drone-banner-image img {
+    width: 320px !important;
+    height: auto !important;
+    max-width: none !important;
+  }
+  
+  .drone-banner-title {
+    font-size: 1.5rem;
+  }
+  
+  .banner-offer-tag {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  
+  .price-amount {
+    font-size: 1.4rem;
+  }
+  
+  .urgency-text {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+  
+  .drone-banner-button {
+    padding: 10px 24px;
+    font-size: 1rem;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .floating-drone-banner {
+    bottom: 10px;
+    right: 10px;
+    width: calc(100% - 20px);
+    max-width: none;
+  }
+  
+  .drone-banner-container {
+    flex-direction: row;
+    padding: 10px;
+  }
+  
+  .drone-banner-image {
+    flex: 0 0 30%;
+  }
+  
+  .drone-banner-content {
+    flex: 0 0 70%;
+  }
+  
+  .drone-banner-image img {
+    max-height: 80px;
+  }
+  
+  .banner-offer-tag {
+    font-size: 0.8rem;
+  }
+  
+  .drone-banner-title {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+  }
+  
+  .price-amount {
+    font-size: 1rem;
+  }
+  
+  .urgency-text {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+  }
+  
+  .drone-banner-button {
+    padding: 6px 15px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-drone-banner {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+  
+  .drone-banner-image img {
+    max-height: 70px;
+  }
+  
+  .drone-banner-title {
+    font-size: 1.1rem;
+  }
+  
+  .price-amount {
+    font-size: 0.9rem;
+  }
+}

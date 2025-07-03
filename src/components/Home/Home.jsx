@@ -6,6 +6,7 @@ import SliderNavButton from '../UI/Button/SliderNavButton';
 import DroneFiltro from '../Drone/DroneFiltro/DroneFiltro';
 import OptimizedImage from '../UI/OptimizedImage/OptimizedImage';
 import DronesSlider from '../UI/Slider/DronesSlider';
+import DroneBanner from '../UI/Banner/DroneBanner';
 
 const Home = () => {
   // Estados para los modales
@@ -156,6 +157,9 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      {/* Banner Promocional */}
+      <DroneBanner />
+      
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-image"></div>
