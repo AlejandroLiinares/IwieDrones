@@ -37,11 +37,10 @@
 }
 
 .drone-banner-image img {
-  width: 280px;
+  width: 465px;
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
-  max-height: 200px;
 }
 
 .drone-banner-content {
@@ -130,6 +129,7 @@
   
   .drone-banner-image {
     flex: 0 0 auto;
+    margin-top: 25px;
     margin-bottom: 15px;
     width: 100%;
     max-width: 350px;
@@ -139,12 +139,11 @@
   }
   
   .drone-banner-image img {
-    width: 300px !important;
+    width: 465px !important;
     height: auto !important;
     object-fit: contain;
     transition: transform 0.3s ease;
     max-width: none !important;
-    max-height: 180px !important;
   }
   
   .drone-banner-content {
@@ -189,10 +188,9 @@
   }
   
   .drone-banner-image img {
-    width: 250px !important;
+    width: 380px !important;
     height: auto !important;
     max-width: none !important;
-    max-height: 150px !important;
   }
 
   .drone-banner-content {
