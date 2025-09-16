@@ -200,19 +200,24 @@ const Header = () => {
               </div>
             </li>
             <li className="nav-item">
-              <span className={`nav-link ${location.pathname === '/membresias' ? 'active' : ''}`}
+              <Link to="/membresias" className={`nav-link ${location.pathname === '/membresias' ? 'active' : ''}`}
                     onMouseEnter={() => handleDropdownMouseEnter('membresia')}
-                    onClick={(e) => toggleDropdown(e, 'membresia')}
+                    onClick={(e) => {
+                      // Evitar que se propague el evento para que no se cierre el menú desplegable
+                      e.stopPropagation();
+                      // Mantener el comportamiento del menú desplegable
+                      toggleDropdown(e, 'membresia');
+                    }}
               >
                 Membresía
-              </span>
+              </Link>
               <div 
                 className={`services-dropdown ${isMembresiaDropdownOpen ? 'active' : ''}`}
                 onMouseEnter={() => handleDropdownMouseEnter('membresia')}
                 onMouseLeave={() => handleDropdownMouseLeave('membresia')}
               >
                 <ul>
-                  <li><Link to="/membresias" onClick={() => closeDropdown('membresia')}>Operador Full Stack</Link></li>
+                  <li><Link to="/membresias" onClick={() => closeDropdown('membresia')}>Planes de Membresía</Link></li>
                 </ul>
               </div>
             </li>
