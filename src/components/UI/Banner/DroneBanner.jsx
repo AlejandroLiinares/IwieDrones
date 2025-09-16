@@ -3,7 +3,7 @@ import './DroneBanner.css';
 
 const DroneBanner = () => {
   const handleReserveClick = () => {
-    const phoneNumber = '56958108312';
+    const phoneNumber = '56975478013';
     const message = 'Hola! me gustaria Reservar el Dron Spider H-300...';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

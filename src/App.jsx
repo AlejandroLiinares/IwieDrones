@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import ScrollRestoration from './components/utils/ScrollRestoration';
+import WhatsAppButton from './components/UI/WhatsAppButton/WhatsAppButton';
 
 // Componentes
 import Header from './components/Header/Header';
@@ -33,6 +34,7 @@ function App() {
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
             <Footer />
+            <WhatsAppButton />
         </Router>
     );
 }
