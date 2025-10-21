@@ -1,12 +1,37 @@
-# React + Vite
+# Página de drones 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📑 Índice
+- [👨‍💻 Desarrollado por](#<-desarrollado-por)
+- [🌐 Página asignada: Catalogo de drones](#️-página-asignada-catalogo-de-drones)
+- [🛠️ Tecnologías aplicadas](#️-tecnologías-aplicadas)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 👨‍💻 Desarrollado por
+- Cristobal Figueroa
+- Alejandro Linares
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🌐 Página asignada: Catalogo de drones
+1. Hero section con CTA para los drones 
+2. Eliminar el video y dejar una imagen de drones  
+3. Catalogo de drones después del primer hero
+4. Cada uno de los servicios a excepción de Agrícola que digan "Proximamente".
+5. Frase con un hombre
+6. Catalogo de Drones
+7. Nuestros servicios con modulos que sean tarjetas
+8. Quienes somos
+9. Nuestras redes  
+
+---
+
+## 🛠️ Tecnologías aplicadas
+**Lenguajes de programación:**  
+- 🌐 HTML  
+- 🎨 CSS  
+- ⚡ JavaScript  
+
+**Framework:** 
+- ♾️ React 
+
